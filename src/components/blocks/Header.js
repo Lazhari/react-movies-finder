@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
 
@@ -21,10 +21,10 @@ class Header extends Component {
                     <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul className="nav navbar-nav">
                             <li>
-                                <Link to="/upcoming">Upcoming Movies</Link>
+                                <NavLink to="/upcoming">Upcoming Movies</NavLink>
                             </li>
                             <li>
-                                <Link to="/series">Popular Series</Link>
+                                <NavLink to="/series">Popular Series</NavLink>
                             </li>
                         </ul>
                     </div>

@@ -16,7 +16,8 @@
     "redux-devtools-extension": "^2.13.2",
     "redux-form": "^6.8.0",
     "redux-promise-middleware": "^4.3.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "underscore.string": "^3.3.4"
   },
   "devDependencies": {
     "react-scripts": "1.0.7"

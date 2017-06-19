@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import { truncate } from 'underscore.string';
 
 import './styles/MovieCard.css';
@@ -14,7 +14,7 @@ const MovieCard = ({movie, loading}) => {
             <img className="card-img-top" src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
                  alt={movie.original_title} onError={onErrorLoadingImage}/>
             <div className="card-block">
-                <h4 className="card-title mt-3">{movie.original_title}</h4>
+                <h4 className="card-title mt-3"><Link to={`/movies/${movie.id}`}>{movie.original_title}</Link></h4>
                 <div className="card-text">
                     {truncate(movie.overview, 50)}
                 </div>

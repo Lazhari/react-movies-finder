@@ -28,7 +28,7 @@ class App extends Component {
                             </Grid.Column>
 
                             <Grid.Column stretched width={14}>
-                                <Segment padded>
+                                <Segment padded color='blue'>
                                     <Route exact path="/" component={HomePage}/>
                                     <Route exact path="/upcoming" component={UpcomingPage}/>
                                     <Route exact path="/series" component={TopSeriesPage}/>

@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'semantic-ui-css/semantic.min.css';
 import './index.css';
 
 ReactDOM.render(

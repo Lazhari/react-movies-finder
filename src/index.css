@@ -1,30 +1,9 @@
 body {
-    font-family: 'Open Sans', sans-serif;
-    background-color: #f3f5f6;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
 }
 
-a:focus, a:hover, a:active {
-    text-decoration: none;
-}
-
-.text-black {
-    color: #333 !important;
-}
-
-a.text-black:focus, a.text-black:hover {
-    color: #7b7b7b !important;
-}
-
-.theme-dropdown .dropdown-menu {
-    position: static;
-    display: block;
-    margin-bottom: 20px;
-}
-
-.theme-showcase > p > .btn {
-    margin: 5px 0;
-}
-
-.theme-showcase .navbar .container {
-    width: auto;
+.error {
+    color: #9f3a38;
 }

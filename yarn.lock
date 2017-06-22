@@ -3547,6 +3547,10 @@ jest@20.0.3:
   dependencies:
     jest-cli "^20.0.3"
 
+jquery@x.*:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"
+
 js-base64@^2.1.9:
   version "2.1.9"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.1.9.tgz#f0e80ae039a4bd654b5f281fc93f04a914a7fcce"
@@ -5438,6 +5442,12 @@ schema-utils@^0.x:
 select-hose@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"
+
+semantic-ui-css@^2.2.10:
+  version "2.2.10"
+  resolved "https://registry.yarnpkg.com/semantic-ui-css/-/semantic-ui-css-2.2.10.tgz#f8f4470dbeffca0f0f3ff4fb71a35c71e88ad89c"
+  dependencies:
+    jquery x.*
 
 semantic-ui-react@^0.69.0:
   version "0.69.0"

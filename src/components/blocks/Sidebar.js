@@ -1,32 +1,22 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { Menu } from 'semantic-ui-react';
 
 const Sidebar = ({ genres, loading, genreId }) => {
     const genreLinks = () => {
         return genres.map(genre => {
             return (
+                <Menu.Item name='home'>
                 <NavLink className="list-group-item" key={genre.id}
                          to={`/genres/${genre.id}/${genre.name}`}>{genre.name}</NavLink>
+                </Menu.Item>
             )
         });
     };
     return (
-        <nav className="navbar navbar-default">
-            <div className="navbar-header">
-                <button className="navbar-toggle" data-toggle="collapse" type="button">
-                    <span className="icon-bar"></span>
-                    <span className="icon-bar"></span>
-                    <span className="icon-bar"></span>
-                </button>
-            </div>
-            <div className="collapse navbar-collapse movies-cat">
-                <div className="panel-heading">Movies Category</div>
-                <ul className="nav nav-stacked" style={{paddingBottom: 10}}>
-                    {genreLinks()}
-                </ul>
-            </div>
-
-        </nav>
+        <Menu pointing vertical>
+            { genreLinks() }
+        </Menu>
     )
 };
 export default Sidebar;

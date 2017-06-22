@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import { Route } from 'react-router-dom';
+import { Container, Segment, Sidebar, Grid } from 'semantic-ui-react';
 
 import Header from './components/blocks/Header';
 
@@ -19,20 +20,24 @@ class App extends Component {
         return (
             <div>
                 <Header/>
-                <div className="container-fluid">
-                    <div className="row">
-                        <div className="col-xs-12 col-sm-4 col-md-3 col-lg-2">
-                            <MoviesCategoryContainer/>
-                        </div>
-                        <div className="col-xs-12 col-sm-8 col-md-9 col-lg-10">
-                            <Route exact path="/" component={HomePage}/>
-                            <Route exact path="/upcoming" component={UpcomingPage}/>
-                            <Route exact path="/series" component={TopSeriesPage}/>
-                            <Route exact path="/genres/:id/:genre" component={GenrePage}/>
-                            <Route exact path="/movies/:id" component={MoviePage}/>
-                        </div>
-                    </div>
-                </div>
+                <Sidebar.Pusher>
+                    <Container style={{marginTop: '50px'}} fluid>
+                        <Grid>
+                            <Grid.Row>
+                                <Grid.Column width={3}>
+                                    <MoviesCategoryContainer/>
+                                </Grid.Column>
+                                <Grid.Column width={13}>
+                                    <Route exact path="/" component={HomePage}/>
+                                    <Route exact path="/upcoming" component={UpcomingPage}/>
+                                    <Route exact path="/series" component={TopSeriesPage}/>
+                                    <Route exact path="/genres/:id/:genre" component={GenrePage}/>
+                                    <Route exact path="/movies/:id" component={MoviePage}/>
+                                </Grid.Column>
+                            </Grid.Row>
+                        </Grid>
+                    </Container>
+                </Sidebar.Pusher>
             </div>
         );
     }

@@ -1,6 +1,18 @@
 body {
-    padding-top: 0px;
-    padding-bottom: 30px;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f3f5f6;
+}
+
+a:focus, a:hover, a:active {
+    text-decoration: none;
+}
+
+.text-black {
+    color: #333 !important;
+}
+
+a.text-black:focus, a.text-black:hover {
+    color: #7b7b7b !important;
 }
 
 .theme-dropdown .dropdown-menu {

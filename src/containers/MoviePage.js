@@ -48,7 +48,7 @@ class MoviePage extends Component {
                                 <h4>Related Movies</h4>
                             </div>
                             <div className="panel-body">
-                                <MoviesCardList movies={this.props.relatedMovies} hideOverview={true} cols={3}/>
+                                <MoviesCardList movies={this.props.relatedMovies} hideOverview={true} cols={4}/>
                             </div>
                         </div>
                     </div>

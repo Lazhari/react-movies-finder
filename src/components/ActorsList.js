@@ -10,7 +10,7 @@ const ActorsList = ({actors, loading}) => {
             {
                 actors.map(actor => {
                     return (
-                        <div className="col-md-2">
+                        <div className="col-md-2" key={actor.id}>
                             <ActorCard actor={actor}/>
                         </div>
                     )

@@ -1,13 +1,11 @@
 import React from 'react';
 import ActorsList from './ActorsList';
+import Labels from './Labels'
 const MovieHeader = ({ movie, genres, productionCompanies, actors }) => {
     const headerStyle = {
         backgroundImage: `linear-gradient(rgba(3, 3, 3, 0.75), rgba(0, 0, 5, 0.85)), url(https://image.tmdb.org/t/p/w1400_and_h450_bestv2${movie.backdrop_path})`,
         backgroundSize: 'cover',
         padding: 5,
-    };
-    const genreLabelStyle = {
-        marginLeft: 3
     };
     const getYear = (stringDate) => {
         const d = new Date(stringDate);
@@ -24,24 +22,17 @@ const MovieHeader = ({ movie, genres, productionCompanies, actors }) => {
                             </a>
                         </div>
                         <div className="media-body">
-                            <div className="row">
+                            <div className="row" style={{color: '#fff'}}>
                                 <div className="col-md-12">
                                     <h1>
                                         {movie.original_title} <small>({getYear(movie.release_date)})</small>
+                                        <strong className="pull-right text-danger">{movie.vote_average} <i className="glyphicon glyphicon-star"></i></strong>
                                     </h1>
-                                    <p>
-                                        {
-                                            genres.map(genre => (<span className="label label-default" key={genre.id} style={genreLabelStyle}>{genre.name}</span>))
-                                        }
-                                    </p>
+                                    <Labels labels={genres}/>
                                     <h4>Overview:</h4>
                                     <p>{movie.overview}</p>
                                     <h4>Production Companies</h4>
-                                    <p>
-                                        {
-                                            productionCompanies.map(genre => (<span className="label label-default" key={genre.id} style={genreLabelStyle}>{genre.name}</span>))
-                                        }
-                                    </p>
+                                    <Labels labels={productionCompanies}/>
                                 </div>
                             </div>
                             <div className="col-md-12">

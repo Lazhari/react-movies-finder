@@ -40,7 +40,7 @@ class GenrePage extends Component {
                     </span>
                 </div>
                 <div className="col-md-12">
-                    <MoviesCardList movies={this.props.movies}/>
+                    <MoviesCardList movies={this.props.movies} cols={6}/>
                 </div>
                 <div className="col-md-12 text-center">
                     <Pagination

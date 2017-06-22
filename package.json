@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.2",
+    "bootstrap": "^3.3.7",
     "classnames": "^2.2.5",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
@@ -18,6 +19,7 @@
     "redux-form": "^6.8.0",
     "redux-promise-middleware": "^4.3.0",
     "redux-thunk": "^2.2.0",
+    "semantic-ui-react": "^0.69.0",
     "underscore.string": "^3.3.4"
   },
   "devDependencies": {

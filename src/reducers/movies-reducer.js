@@ -37,7 +37,8 @@ export default (state = defaultState, action = {}) => {
                 movies:  action.payload.data.results,
                 page: action.payload.data.page,
                 totalPages: action.payload.data.total_pages,
-                totalResults: action.payload.data.total_results
+                totalResults: action.payload.data.total_results,
+                genreId: 0
             }
         }
         case `${FETCH_MOVIES_BY_GENRE}_PENDING`: {

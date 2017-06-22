@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Pagination from 'react-js-pagination';
+import { Grid } from 'semantic-ui-react';
 
 import { fetchMovies } from '../actions/moviesActions';
 
@@ -18,34 +19,26 @@ class HomePage extends Component {
 
     render() {
         return (
-            <div className="row">
-                <div className="col-md-6">
-                    <h2>Popular Movies</h2>
-                </div>
-                <div className="col-md-6">
-                    <span className="pull-right">
-                        <Pagination
-                            activePage={this.props.page}
-                            itemsCountPerPage={20}
-                            totalItemsCount={this.props.totalResults}
-                            pageRangeDisplayed={5}
-                            onChange={this.handlePageChange.bind(this)}
-                        />
-                    </span>
-                </div>
-                <div className="col-md-12">
+            <Grid>
+                <h2>Upcoming Movies</h2>
+                <Grid.Row>
                     <MoviesCardList movies={this.props.movies} cols={6}/>
-                </div>
-                <div className="col-md-12 text-center">
+                </Grid.Row>
+                <Grid.Row centered>
                     <Pagination
                         activePage={this.props.page}
                         itemsCountPerPage={20}
                         totalItemsCount={this.props.totalResults}
                         pageRangeDisplayed={5}
+                        innerClass="ui pagination mini menu pagination-ul"
+                        itemClass="item"
+                        linkClass=""
+                        disabledClass="disabled"
+                        activeClass="active"
                         onChange={this.handlePageChange.bind(this)}
                     />
-                </div>
-            </div>
+                </Grid.Row>
+            </Grid>
         )
     }
 }

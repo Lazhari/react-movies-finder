@@ -1,22 +1,23 @@
 import React from 'react';
-import Masonry from 'react-masonry-component';
+import { Dimmer, Card, Loader } from 'semantic-ui-react';
 
 import MovieCard from './MovieCard';
 
 const MoviesCardList = ({movies, loading, hideOverview=false, cols=3}) => {
     const moviesList = () => {
         return movies.map(movie => (
-            <div className={`col-md-${cols}`} key={movie.id}>
-                <MovieCard movie={movie} loading={loading} hideOverview={hideOverview}/>
-            </div>
+            <MovieCard movie={movie} loading={loading} hideOverview={hideOverview} key={movie.id}/>
         ));
     };
 
     return (
-        <div className="row">
-            <Masonry updateOnEachImageLoad={true}>
+        <div>
+            <Dimmer active={loading}>
+                <Loader />
+            </Dimmer>
+            <Card.Group doubling={true} stackable={true} itemsPerRow={4}>
                 { moviesList() }
-            </Masonry>
+            </Card.Group>
         </div>
     )
 };

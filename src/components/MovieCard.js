@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { truncate } from 'underscore.string';
+import { Card, Image, Icon } from 'semantic-ui-react';
 
 import './styles/MovieCard.css';
 import placeholderImage from '../Images/abstract-image.jpg';
@@ -16,26 +17,32 @@ const MovieCard = ({movie, loading, hideOverview}) => {
     let review = null;
     if(!hideOverview) {
         review = (<div className="card-text">
-            {truncate(movie.overview, 360)}
+            {truncate(movie.overview, 120)}
         </div>);
     }
     return (
-        <div className="list mb-2">
-            <div className="list-header">
-                <NavLink className="list-header-image" to={`/movies/${movie.id}`}>
-                    <img className="card-img-top" src={`https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster_path}`}
-                    alt={movie.original_title} onError={onErrorLoadingImage}/>
-                </NavLink>
-            </div>
-            <div className="list-content">
-                <h2><NavLink to={`/movies/${movie.id}`} className="text-black">{movie.original_title}</NavLink></h2>
-                <span className="list-meta">
-                    <span className="list-meta-item"><i className="glyphicon glyphicon-time"></i> {getYear(movie.release_date) || 'Unknown Released Date'}</span>
-                    <a href={`/movies/${movie.id}`} className="list-meta-item"><i className="glyphicon glyphicon-star"></i> {movie.vote_average}</a>
-                </span>
-                <p>{review}</p>
-            </div>
-        </div>
+        <Card>
+            <Image src={`https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster_path}`} onError={onErrorLoadingImage}/>
+            <Card.Content>
+                <Card.Header>
+                    <NavLink to={`/movies/${movie.id}`} className="text-black">{movie.original_title}</NavLink>
+                </Card.Header>
+                <Card.Meta>
+                        <span className='date'>
+                          Released in {getYear(movie.release_date) || 'Unknown Released Date'}
+                        </span>
+                </Card.Meta>
+                <Card.Description>
+                    {review}
+                </Card.Description>
+            </Card.Content>
+            <Card.Content extra>
+                <a>
+                    {movie.vote_average}
+                    <Icon name='star' color="yellow"/>
+                </a>
+            </Card.Content>
+        </Card>
     )
 };
 

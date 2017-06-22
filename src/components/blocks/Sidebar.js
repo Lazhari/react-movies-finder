@@ -6,15 +6,16 @@ const Sidebar = ({ genres, loading, genreId }) => {
     const genreLinks = () => {
         return genres.map(genre => {
             return (
-                <Menu.Item name='home'>
-                <NavLink className="list-group-item" key={genre.id}
-                         to={`/genres/${genre.id}/${genre.name}`}>{genre.name}</NavLink>
+                <Menu.Item name={genre.name} key={genre.id} active={genre.id === genreId}>
+                    <NavLink className="list-group-item"
+                             to={`/genres/${genre.id}/${genre.name}`}>{genre.name}
+                    </NavLink>
                 </Menu.Item>
             )
         });
     };
     return (
-        <Menu pointing vertical>
+        <Menu pointing vertical fluid size='small'>
             { genreLinks() }
         </Menu>
     )

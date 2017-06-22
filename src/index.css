@@ -1,9 +1,14 @@
 body {
     margin: 0;
     padding: 0;
+    padding-top: 10px;
     font-family: sans-serif;
 }
 
 .error {
     color: #9f3a38;
+}
+
+.pagination-ul {
+    padding-left: 0px !important;
 }

@@ -1,23 +1,19 @@
 import React from 'react';
-import Masonry from 'react-masonry-component';
+import { Card } from 'semantic-ui-react';
 
 import ActorCard from './ActorCard';
 
 const ActorsList = ({actors, loading}) => {
     return (
-        <div className="row">
-            <Masonry updateOnEachImageLoad={true}>
+        <Card.Group itemsPerRow={6}>
             {
                 actors.map(actor => {
                     return (
-                        <div className="col-md-2" key={actor.id}>
-                            <ActorCard actor={actor}/>
-                        </div>
+                        <ActorCard actor={actor} key={actor.id}/>
                     )
                 })
             }
-            </Masonry>
-        </div>
+        </Card.Group>
     )
 };
 

@@ -10,7 +10,7 @@ class Header extends Component {
         return (
             <Sidebar as={Menu} animation='overlay' direction='top' inverted visible={true}>
                 <Menu.Item>
-                    <img src={logo} />
+                    <img src={logo} alt="Movies Finder Application"/>
                 </Menu.Item>
 
                 <Menu.Item name='home' active={window.location.pathname === '/'}>

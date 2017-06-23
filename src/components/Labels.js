@@ -1,15 +1,13 @@
 import React from 'react';
+import { Label } from 'semantic-ui-react';
 
-const Labels = ({labels, className='label label-default'}) => {
-    const genreLabelStyle = {
-        marginLeft: 3
-    };
+const Labels = ({labels}) => {
     return (
-        <p>
+        <Label.Group size="tiny">
             {
-                labels.map(label => (<span className={className} key={label.id} style={genreLabelStyle}>{label.name}</span>))
+                labels.map(label => (<Label color='teal' tag key={label.id}>{label.name}</Label>))
             }
-        </p>
+        </Label.Group>
     )
 };
 

@@ -21,7 +21,7 @@ const MovieCard = ({movie, loading, hideOverview}) => {
         </div>);
     }
     return (
-        <Card>
+        <Card raised>
             <Image src={`https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster_path}`} onError={onErrorLoadingImage}/>
             <Card.Content>
                 <Card.Header>

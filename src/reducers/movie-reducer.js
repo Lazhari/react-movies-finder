@@ -1,4 +1,10 @@
-import { FETCH_MOVIE_DETAILS, FETCH_MOVIE_VIDEOS, FETCH_MOVIE_REVIEWS, FETCH_RELATED_MOVIES, FETCH_MOVIE_CAST } from '../actions/actionsType';
+import {
+    FETCH_MOVIE_DETAILS,
+    FETCH_MOVIE_VIDEOS,
+    FETCH_MOVIE_REVIEWS,
+    FETCH_RELATED_MOVIES,
+    FETCH_MOVIE_CAST
+} from '../actions/actionsType';
 const defaultState = {
     loading: false,
     movie: {},
@@ -79,7 +85,7 @@ export default (state = defaultState, action = {}) => {
             return {
                 ...state,
                 loading: false,
-                actors: action.payload.data.cast.splice(0,6)
+                actors: action.payload.data.cast.splice(0, 6)
             }
         }
         default: {

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Comment, Icon, Header} from 'semantic-ui-react';
+import {Comment, Header} from 'semantic-ui-react';
 
 const ReviewsList = ({reviews}) => {
     return (

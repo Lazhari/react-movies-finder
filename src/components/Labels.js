@@ -1,13 +1,13 @@
 import React from 'react';
-import { Label } from 'semantic-ui-react';
+import { Badge } from 'reactstrap';
 
 const Labels = ({labels}) => {
     return (
-        <Label.Group size="tiny">
+        <div>
             {
-                labels.map(label => (<Label color='teal' tag key={label.id}>{label.name}</Label>))
+                labels.map(label => (<Badge color='primary' key={label.id} style={{marginRight: 5}}>{label.name}</Badge>))
             }
-        </Label.Group>
+        </div>
     )
 };
 

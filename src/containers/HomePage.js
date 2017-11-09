@@ -19,26 +19,30 @@ class HomePage extends Component {
 
     render() {
         return (
-            <Grid>
+            <div>
                 <h2>Upcoming Movies</h2>
-                <Grid.Row>
-                    <MoviesCardList movies={this.props.movies} cols={6}/>
-                </Grid.Row>
-                <Grid.Row centered>
-                    <Pagination
-                        activePage={this.props.page}
-                        itemsCountPerPage={20}
-                        totalItemsCount={this.props.totalResults}
-                        pageRangeDisplayed={5}
-                        innerClass="ui pagination mini menu pagination-ul"
-                        itemClass="item"
-                        linkClass=""
-                        disabledClass="disabled"
-                        activeClass="active"
-                        onChange={this.handlePageChange.bind(this)}
-                    />
-                </Grid.Row>
-            </Grid>
+                <div className="row">
+                    <div className="col-md-12">
+                        <MoviesCardList movies={this.props.movies} cols={6}/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-12 text-center">
+                        <Pagination
+                            activePage={this.props.page}
+                            itemsCountPerPage={20}
+                            totalItemsCount={this.props.totalResults}
+                            pageRangeDisplayed={5}
+                            innerClass="pagination"
+                            itemClass="page-item"
+                            linkClass="page-link"
+                            disabledClass="disabled"
+                            activeClass="active"
+                            onChange={this.handlePageChange.bind(this)}
+                        />
+                    </div>
+                </div>
+            </div>
         )
     }
 }

@@ -19,12 +19,12 @@ class App extends Component {
         return (
             <div>
                 <Header/>
-                <main className="container" role="main">
+                <div className="container-fuild">
                     <div className="row">
-                        <div className="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
+                        <div className="col-6 col-md-2 sidebar-offcanvas" id="sidebar">
                             <MoviesCategoryContainer/>
                         </div>
-                        <div className="col-12 col-md-9">
+                        <div className="col-12 col-md-10">
                             <Route exact path="/" component={HomePage}/>
                             <Route exact path="/upcoming" component={UpcomingPage}/>
                             <Route exact path="/series" component={TopSeriesPage}/>
@@ -32,7 +32,7 @@ class App extends Component {
                             <Route exact path="/movies/:id" component={MoviePage}/>
                         </div>
                     </div>
-                </main>
+                </div>
             </div>
         );
     }

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 
 import { Route } from 'react-router-dom';
-import { Container, Sidebar, Grid, Segment } from 'semantic-ui-react';
 
 import Header from './components/blocks/Header';
 
@@ -20,25 +19,20 @@ class App extends Component {
         return (
             <div>
                 <Header/>
-                <Sidebar.Pusher>
-                    <Container style={{padding: '50px 10px'}} fluid>
-                        <Grid>
-                            <Grid.Column width={2}>
-                                <MoviesCategoryContainer/>
-                            </Grid.Column>
-
-                            <Grid.Column stretched width={14}>
-                                <Segment padded color='blue'>
-                                    <Route exact path="/" component={HomePage}/>
-                                    <Route exact path="/upcoming" component={UpcomingPage}/>
-                                    <Route exact path="/series" component={TopSeriesPage}/>
-                                    <Route exact path="/genres/:id/:genre" component={GenrePage}/>
-                                    <Route exact path="/movies/:id" component={MoviePage}/>
-                                </Segment>
-                            </Grid.Column>
-                        </Grid>
-                    </Container>
-                </Sidebar.Pusher>
+                <main className="container" role="main">
+                    <div className="row">
+                        <div className="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
+                            <MoviesCategoryContainer/>
+                        </div>
+                        <div className="col-12 col-md-9">
+                            <Route exact path="/" component={HomePage}/>
+                            <Route exact path="/upcoming" component={UpcomingPage}/>
+                            <Route exact path="/series" component={TopSeriesPage}/>
+                            <Route exact path="/genres/:id/:genre" component={GenrePage}/>
+                            <Route exact path="/movies/:id" component={MoviePage}/>
+                        </div>
+                    </div>
+                </main>
             </div>
         );
     }

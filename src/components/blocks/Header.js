@@ -9,7 +9,7 @@ class Header extends Component {
     render() {
         return (
             <div>
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <nav className="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
                     <a className="navbar-brand" href="#">
                         <img src={logo} width="30" height="30" className="d-inline-block align-top" alt=""/>
                             Movies Finder Application

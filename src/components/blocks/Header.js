@@ -8,30 +8,41 @@ class Header extends Component {
 
     render() {
         return (
-            <Sidebar as={Menu} animation='overlay' direction='top' inverted visible={true}>
-                <Menu.Item>
-                    <img src={logo} alt="Movies Finder Application"/>
-                </Menu.Item>
+            <div>
+                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                    <a className="navbar-brand" href="#">
+                        <img src={logo} width="30" height="30" className="d-inline-block align-top" alt=""/>
+                            Movies Finder Application
+                    </a>
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
 
-                <Menu.Item name='home' active={window.location.pathname === '/'}>
-                    <Icon name='home'/>
-                    <NavLink className="" activeClassName="active" exact to="/">
-                        Popular Movies
-                    </NavLink>
-                </Menu.Item>
-                <Menu.Item name='upcoming' active={window.location.pathname === '/upcoming'}>
-                    <Icon name='ticket'/>
-                    <NavLink className="" activeClassName="active" exact to="/upcoming">
-                        Upcoming Movies
-                    </NavLink>
-                </Menu.Item>
-                <Menu.Item name='Series' active={window.location.pathname === '/series'}>
-                    <Icon name='trophy'/>
-                    <NavLink className="" activeClassName="active" exact to="/series">
-                        Popular Series
-                    </NavLink>
-                </Menu.Item>
-            </Sidebar>
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav mr-auto">
+                            <li className="nav-item">
+                                <NavLink className="nav-link" activeClassName="active" exact to="/">
+                                    Popular Movies
+                                </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" activeClassName="active" exact to="/upcoming">
+                                    Upcoming Movies
+                                </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" activeClassName="active" exact to="/series">
+                                    Popular Series
+                                </NavLink>
+                            </li>
+                        </ul>
+                        <form className="form-inline my-2 my-lg-0">
+                            <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
+                                <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                </nav>
+            </div>
         )
     }
 }

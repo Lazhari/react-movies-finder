@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Card, Image } from 'semantic-ui-react';
+
+import {Card, CardImg, CardTitle, CardSubtitle, CardBody} from 'reactstrap';
 
 import placeholderImage from '../Images/abstract-image.jpg';
 
@@ -9,16 +10,16 @@ const ActorCard = ({actor}) => {
         e.target.src = placeholderImage;
     };
     return (
+
         <Card>
-            <Image src={`https://image.tmdb.org/t/p/w138_and_h175_bestv2${actor.profile_path}`} onError={onErrorLoadingImage}/>
-            <Card.Content>
-                <Card.Header>
-                    {actor.name}
-                </Card.Header>
-                <Card.Description>
-                    {actor.character}
-                </Card.Description>
-            </Card.Content>
+            <CardImg top width="100%" src={`https://image.tmdb.org/t/p/w138_and_h175_bestv2${actor.profile_path}`}
+                     alt={actor.name} onError={onErrorLoadingImage}/>
+            <CardBody>
+                <CardTitle className="h6">
+                    <a href="#">Card {actor.name}</a>
+                </CardTitle>
+                <CardSubtitle>{actor.character}</CardSubtitle>
+            </CardBody>
         </Card>
 
     )

@@ -1,19 +1,20 @@
 import React from 'react';
-import { Card } from 'semantic-ui-react';
 
 import ActorCard from './ActorCard';
 
 const ActorsList = ({actors, loading}) => {
     return (
-        <Card.Group itemsPerRow={6}>
+        <div className="row">
             {
                 actors.map(actor => {
                     return (
-                        <ActorCard actor={actor} key={actor.id}/>
+                        <div className="col-md-2">
+                            <ActorCard actor={actor} key={actor.id}/>
+                        </div>
                     )
                 })
             }
-        </Card.Group>
+        </div>
     )
 };
 

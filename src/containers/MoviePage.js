@@ -39,31 +39,34 @@ class MoviePage extends Component {
     render() {
         const hasReviews = this.props.reviews && this.props.reviews.length;
         return (
-            <div>
-                <MovieHeader movie={this.props.movie} genres={this.props.genres}
-                             productionCompanies={this.props.productionCompanies} actors={this.props.actors}
-                             trailer={this.props.trailer}/>
-                <Grid>
-                    <Grid.Column width={hasReviews ? 12 : 16}>
-                        <Grid.Row>
-                            <Header as='h2' content='Top Billed Cast' dividing/>
-                            <ActorsList actors={this.props.actors}/>
-                        </Grid.Row>
-                        <Grid.Row>
-                            <Header as='h2' content='Related Movies' dividing/>
-                            <MoviesCardList movies={this.props.relatedMovies} hideOverview={true} itemsPerRow={4}/>
-                        </Grid.Row>
-                    </Grid.Column>
-                    {
-                        hasReviews ?
-                            (
-                                <Grid.Column width={4}>
-                                    <ReviewsList reviews={this.props.reviews}/>
-                                </Grid.Column>
-                            ) :
-                            null
-                    }
-                </Grid>
+            <div className="row">
+                <div className="col-md-12">
+                    <MovieHeader movie={this.props.movie} genres={this.props.genres}
+                                 productionCompanies={this.props.productionCompanies} actors={this.props.actors}
+                                 trailer={this.props.trailer}/>
+                </div>
+                <div className="col-md-12">
+                    <div className="row">
+                        <div className="col-md-8">
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <h2>Top Billed Cast</h2>
+                                    <hr/>
+                                    <ActorsList actors={this.props.actors}/>
+                                </div>
+                            </div>
+                            <div className="col-md-12">
+                                <h2>Related Movies</h2>
+                                <hr/>
+                                <MoviesCardList movies={this.props.relatedMovies} hideOverview={true} itemsPerRow={4}/>
+                            </div>
+                        </div>
+                        <div className="col-md-4">
+                            <ReviewsList reviews={this.props.reviews}/>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         )
     }

@@ -12,10 +12,10 @@ class Header extends Component {
             <div>
                 <nav className="navbar navbar-expand-md fixed-top navbar-blue mv-header">
                     <LoadingBar style={{ backgroundColor: 'white', height: '5px', top: 0, position: 'absolute'}}/>
-                    <a className="navbar-brand" href="#">
+                    <NavLink className="navbar-brand" to="/">
                         <img src={logo} width="50" height="50" className="d-inline-block align-middle" alt=""/>
                             Movies Finder
-                    </a>
+                    </NavLink>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>

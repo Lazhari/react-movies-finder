@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Grid, Header} from 'semantic-ui-react';
 
 import {
     fetchMovie,
@@ -37,7 +36,7 @@ class MoviePage extends Component {
     }
 
     render() {
-        const hasReviews = this.props.reviews && this.props.reviews.length;
+        //const hasReviews = this.props.reviews && this.props.reviews.length;
         return (
             <div className="row">
                 <div className="col-md-12">

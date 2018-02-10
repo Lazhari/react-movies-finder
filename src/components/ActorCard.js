@@ -23,7 +23,7 @@ const ActorCard = ({actor}) => {
                      alt={actor.name} onError={onErrorLoadingImage} style={imageStyle}/>
             <CardBody>
                 <CardTitle className="h6 text-center" style={{fontSize: 14, height: 40}}>
-                    <a href="#">{actor.name}</a>
+                    <a href="">{actor.name}</a>
                 </CardTitle>
                 <CardSubtitle style={{fontSize: 12}} className="text-center">{actor.character}</CardSubtitle>
             </CardBody>

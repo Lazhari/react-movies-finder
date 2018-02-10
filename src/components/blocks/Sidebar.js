@@ -1,13 +1,13 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import ContentLoader from 'react-content-loader'
 
 const Sidebar = ({genres, loading, genreId}) => {
     const genreLinks = () => {
         return genres.map(genre => {
             return (
                 <NavLink className="list-group-item" key={genre.id}
-                         to={`/genres/${genre.id}/${genre.name}`}>{genre.name}
+                         to={`/genres/${genre.id}/${genre.name}`}>
+                    {genre.name}
                 </NavLink>
             )
         });

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Pagination from 'react-js-pagination';
-import { Grid } from 'semantic-ui-react';
 
 import { fetchMovies } from '../actions/moviesActions';
 

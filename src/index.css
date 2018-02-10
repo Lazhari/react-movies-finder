@@ -22,3 +22,26 @@ footer {
     line-height: 1;
     font-size: 2.25em !important;
 }
+
+.list-group-item.active {
+    z-index: 2;
+    color: #fff !important;
+    background-color: #0099cc !important;
+    border-color: #0099cc !important;
+}
+
+a {
+    color: #0099cc !important;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+a:hover {
+    color: #0099cc !important;
+    text-decoration: underline;
+}
+
+.badge-primary {
+    color: #fff;
+    background-color: #0099cc !important;
+}

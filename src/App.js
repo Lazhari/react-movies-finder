@@ -21,10 +21,10 @@ class App extends Component {
                 <Header/>
                 <div className="container-fuild">
                     <div className="row">
-                        <div className="col-6 col-md-2 sidebar-offcanvas" id="sidebar">
+                        <div className="col-6 col-lg-2 col-md-2 sidebar-offcanvas" id="sidebar">
                             <MoviesCategoryContainer/>
                         </div>
-                        <div className="col-12 col-md-10">
+                        <div className="col-12 col-md-10 col-lg-10">
                             <Route exact path="/" component={HomePage}/>
                             <Route exact path="/upcoming" component={UpcomingPage}/>
                             <Route exact path="/series" component={TopSeriesPage}/>

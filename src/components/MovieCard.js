@@ -14,15 +14,9 @@ const MovieCard = ({movie, loading, hideOverview}) => {
     const onErrorLoadingImage = (e) => {
         e.target.src = placeholderImage;
     };
-    let review = null;
-    if (!hideOverview) {
-        review = (<div className="card-text">
-            {truncate(movie.overview, 130)}
-        </div>);
-    }
     const imageStyle = {
         display: 'block',
-        height: '50vh',
+        height: '40vh',
         clipPath: 'polygon(0 0, 100% 0%, 100% 90%, 0 100%)',
         objectFit: 'cover',
         objectPosition: 'center'
@@ -33,7 +27,7 @@ const MovieCard = ({movie, loading, hideOverview}) => {
                      alt={movie.original_title} onError={onErrorLoadingImage} style={imageStyle}/>
             <CardBody>
                 <CardTitle className="text-black text-center h6" style={{height: 40}}>
-                    <NavLink to={`/movies/${movie.id}`}>
+                    <NavLink to={`/movies/${movie.id}`} style={{color: '#494c62', textDecoration: 'none'}}>
                         {movie.original_title}
                     </NavLink>
                 </CardTitle>

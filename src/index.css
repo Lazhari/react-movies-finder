@@ -42,6 +42,13 @@ a:hover {
 }
 
 .badge-primary {
-    color: #fff;
+    color: #fff !important;
     background-color: #0099cc !important;
+}
+
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff !important;
+    background-color: #0099cc !important;
+    border-color: #0099cc !important;
 }

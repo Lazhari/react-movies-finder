@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import { Route } from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 
 import Header from './components/blocks/Header';
 import HomePage from './containers/HomePage';
@@ -25,11 +25,13 @@ class App extends Component {
                             <MoviesCategoryContainer/>
                         </div>
                         <div className="col-12 col-md-10 col-lg-10">
-                            <Route exact path="/" component={HomePage}/>
-                            <Route exact path="/upcoming" component={UpcomingPage}/>
-                            <Route exact path="/series" component={TopSeriesPage}/>
-                            <Route exact path="/genres/:id/:genre" component={GenrePage}/>
-                            <Route exact path="/movies/:id" component={MoviePage}/>
+                            <Switch>
+                                <Route exact path="/" component={HomePage}/>
+                                <Route exact path="/upcoming" component={UpcomingPage}/>
+                                <Route exact path="/series" component={TopSeriesPage}/>
+                                <Route exact path="/genres/:id/:genre" component={GenrePage}/>
+                                <Route exact path="/movies/:id" component={MoviePage}/>
+                            </Switch>
                         </div>
                     </div>
                 </div>

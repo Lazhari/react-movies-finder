@@ -12,7 +12,7 @@ class HomePage extends Component {
     }
 
     handlePageChange(pageNumber) {
-        console.log(`active page is ${pageNumber}`);
+        window.scrollTo(0, 0);
         this.props.fetchMovies(pageNumber);
     }
 

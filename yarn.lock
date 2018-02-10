@@ -5171,6 +5171,12 @@ react-popper@^0.7.2:
     popper.js "^1.12.5"
     prop-types "^15.5.10"
 
+react-redux-loading-bar@3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/react-redux-loading-bar/-/react-redux-loading-bar-3.1.1.tgz#5ec7dcbce0f35649ceaa78373543d70dfe79abd2"
+  dependencies:
+    prop-types "^15.5.6"
+
 react-redux@^5.0.5:
   version "5.0.6"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.6.tgz#23ed3a4f986359d68b5212eaaa681e60d6574946"

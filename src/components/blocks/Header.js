@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import LoadingBar from 'react-redux-loading-bar'
 
 import logo from '../../logo.svg';
 import './Header.css';
@@ -10,6 +11,7 @@ class Header extends Component {
         return (
             <div>
                 <nav className="navbar navbar-expand-md fixed-top navbar-blue mv-header">
+                    <LoadingBar style={{ backgroundColor: 'white', height: '5px', top: 0, position: 'absolute'}}/>
                     <a className="navbar-brand" href="#">
                         <img src={logo} width="50" height="50" className="d-inline-block align-middle" alt=""/>
                             Movies Finder

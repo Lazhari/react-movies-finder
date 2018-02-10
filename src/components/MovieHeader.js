@@ -4,7 +4,7 @@ import Labels from './Labels';
 
 const MovieHeader = ({movie, genres, productionCompanies, trailer}) => {
     const headerStyle = {
-        backgroundImage: `linear-gradient(rgba(3, 3, 3, 0.75), rgba(0, 0, 5, 0.85)), url(https://image.tmdb.org/t/p/w1400_and_h450_bestv2${movie.backdrop_path})`,
+        backgroundImage: `linear-gradient(rgba(3, 3, 3, 0.55), rgba(0, 0, 5, 0.65)), url(https://image.tmdb.org/t/p/w1400_and_h450_bestv2${movie.backdrop_path})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         padding: 5,

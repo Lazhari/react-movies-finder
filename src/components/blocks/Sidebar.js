@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import {Menu} from 'semantic-ui-react';
+import ContentLoader from 'react-content-loader'
 
 const Sidebar = ({genres, loading, genreId}) => {
     const genreLinks = () => {

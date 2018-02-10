@@ -42,12 +42,12 @@ class MoviePage extends Component {
             <div className="row">
                 <div className="col-md-12">
                     <MovieHeader movie={this.props.movie} genres={this.props.genres}
-                                 productionCompanies={this.props.productionCompanies} actors={this.props.actors}
+                                 productionCompanies={this.props.productionCompanies}
                                  trailer={this.props.trailer}/>
                 </div>
                 <div className="col-md-12">
                     <div className="row">
-                        <div className="col-md-8">
+                        <div className="col-md-12">
                             <div className="row">
                                 <div className="col-md-12">
                                     <h2>Top Billed Cast</h2>
@@ -61,7 +61,7 @@ class MoviePage extends Component {
                                 <MoviesCardList movies={this.props.relatedMovies} hideOverview={true} itemsPerRow={4}/>
                             </div>
                         </div>
-                        <div className="col-md-4">
+                        <div className="col-md-12">
                             <ReviewsList reviews={this.props.reviews}/>
                         </div>
                     </div>

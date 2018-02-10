@@ -6,8 +6,17 @@ const MovieHeader = ({movie, genres, productionCompanies, trailer}) => {
     const headerStyle = {
         backgroundImage: `linear-gradient(rgba(3, 3, 3, 0.75), rgba(0, 0, 5, 0.85)), url(https://image.tmdb.org/t/p/w1400_and_h450_bestv2${movie.backdrop_path})`,
         backgroundSize: 'cover',
+        backgroundPosition: 'center',
         padding: 5,
-        color: '#fff'
+        color: '#fff',
+        //clipPath: 'polygon(1% 0, 100% 0, 99% 100%, 0% 100%)'
+    };
+    const headerImage = {
+        backgroundImage:  `url('https://image.tmdb.org/t/p/w300${movie.poster_path}')`,
+        height: '50vh',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        //clipPath: 'polygon(1% 0, 100% 0, 99% 100%, 0% 100%)'
     };
     const getYear = (stringDate) => {
         const d = new Date(stringDate);
@@ -16,10 +25,10 @@ const MovieHeader = ({movie, genres, productionCompanies, trailer}) => {
     return (
         <div className="row">
             <div className="col-md-12">
-                <div class="jumbotron" style={headerStyle}>
-                    <div className="row">
-                        <div className="col-md-4">
-                            <img src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt=""/>
+                <div class="jumbotron">
+                    <div className="row" style={headerStyle}>
+                        <div className="col-md-4" style={headerImage}>
+
                         </div>
                         <div className="col-md-8">
                             <h1>

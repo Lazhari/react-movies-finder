@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.2",
-    "bootstrap": "4.0.0-beta",
+    "bootstrap": "4.0.0",
     "classnames": "^2.2.5",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",

@@ -8,8 +8,8 @@ const ActorsList = ({actors, loading}) => {
             {
                 actors.map(actor => {
                     return (
-                        <div className="col-md-2">
-                            <ActorCard actor={actor} key={actor.id}/>
+                        <div className="col-md-2" key={actor.id}>
+                            <ActorCard actor={actor}/>
                         </div>
                     )
                 })

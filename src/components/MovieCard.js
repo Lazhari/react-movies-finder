@@ -37,11 +37,9 @@ const MovieCard = ({movie, loading, hideOverview}) => {
                         {movie.original_title}
                     </NavLink>
                 </CardTitle>
-                <CardText>
-                    <div className="card-text text-justify" style={{fontSize: 12}}>
-                        {truncate(movie.overview, 85)}
-                        <NavLink to={`/movies/${movie.id}`}>Read more</NavLink>
-                    </div>
+                <CardText className="card-text text-justify" style={{fontSize: 12}}>
+                    {truncate(movie.overview, 85)}
+                    <NavLink to={`/movies/${movie.id}`}>Read more</NavLink>
                 </CardText>
             </CardBody>
             <CardText className="card-footer bg-white">

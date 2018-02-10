@@ -23,32 +23,26 @@ const MovieHeader = ({movie, genres, productionCompanies, trailer}) => {
         return d.getFullYear();
     };
     return (
-        <div className="row">
-            <div className="col-md-12">
-                <div class="jumbotron">
-                    <div className="row" style={headerStyle}>
-                        <div className="col-md-4" style={headerImage}>
+        <div className="row" style={headerStyle}>
+            <div className="col-md-4" style={headerImage}>
 
-                        </div>
-                        <div className="col-md-8">
-                            <h1>
-                                {movie.original_title}
-                                <small>({getYear(movie.release_date)})</small>
-                            </h1>
-                            <Labels labels={genres}/>
-                            <h2>
-                                User Score {movie.vote_average}
-                            </h2>
-                            <p>
-                                {movie.overview}
-                            </p>
-                            <h3>
-                                Production Companies
-                            </h3>
-                            <Labels labels={productionCompanies}/>
-                        </div>
-                    </div>
-                </div>
+            </div>
+            <div className="col-md-8">
+                <h1>
+                    {movie.original_title}
+                    <small>({getYear(movie.release_date)})</small>
+                </h1>
+                <Labels labels={genres}/>
+                <h2>
+                    User Score {movie.vote_average}
+                </h2>
+                <p>
+                    {movie.overview}
+                </p>
+                <h3>
+                    Production Companies
+                </h3>
+                <Labels labels={productionCompanies}/>
             </div>
         </div>
     )

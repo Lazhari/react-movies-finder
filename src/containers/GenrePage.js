@@ -26,7 +26,7 @@ class GenrePage extends Component {
     render() {
         return (
             <div>
-                <h2>{this.props.match.params.genre}</h2>
+                <h1 className="text-center page-title">{this.props.match.params.genre}</h1>
                 <div className="row">
                     <div className="col-md-12">
                         <MoviesCardList movies={this.props.movies} cols={6}/>

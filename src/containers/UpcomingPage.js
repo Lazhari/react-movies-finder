@@ -20,7 +20,7 @@ class UpcomingPage extends Component {
     render() {
         return (
             <div>
-                <h2>Upcoming Movies</h2>
+                <h1 className="text-center page-title">Upcoming Movies</h1>
                 <div className="row">
                     <div className="col-md-12">
                         <MoviesCardList movies={this.props.movies} cols={6}/>

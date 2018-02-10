@@ -17,10 +17,12 @@ class HomePage extends Component {
         this.props.fetchMovies(pageNumber);
     }
 
+
+
     render() {
         return (
             <div>
-                <h2>Upcoming Movies</h2>
+                <h1 className="text-center page-title">Popular Movies</h1>
                 <div className="row">
                     <div className="col-md-12">
                         <MoviesCardList movies={this.props.movies} cols={6}/>

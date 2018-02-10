@@ -29,7 +29,7 @@ const MovieCard = ({movie, loading, hideOverview}) => {
     };
     return (
         <Card>
-            <CardImg top width="100%" src={`https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster_path}`}
+            <CardImg top width="100%" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`}
                      alt={movie.original_title} onError={onErrorLoadingImage} style={imageStyle}/>
             <CardBody>
                 <CardTitle className="text-black text-center h6" style={{height: 40}}>

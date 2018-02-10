@@ -19,7 +19,7 @@ const ActorCard = ({actor}) => {
     return (
 
         <Card>
-            <CardImg top width="100%" src={`https://image.tmdb.org/t/p/w138_and_h175_bestv2${actor.profile_path}`}
+            <CardImg top width="100%" src={`https://image.tmdb.org/t/p/w276_and_h350_face${actor.profile_path}`}
                      alt={actor.name} onError={onErrorLoadingImage} style={imageStyle}/>
             <CardBody>
                 <CardTitle className="h6 text-center" style={{fontSize: 14, height: 40}}>

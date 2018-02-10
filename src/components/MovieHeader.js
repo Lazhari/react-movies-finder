@@ -12,7 +12,7 @@ const MovieHeader = ({movie, genres, productionCompanies, trailer}) => {
         //clipPath: 'polygon(1% 0, 100% 0, 99% 100%, 0% 100%)'
     };
     const headerImage = {
-        backgroundImage:  `url('https://image.tmdb.org/t/p/w300${movie.poster_path}')`,
+        backgroundImage:  `url('https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}')`,
         height: '50vh',
         backgroundSize: 'cover',
         backgroundPosition: 'center',

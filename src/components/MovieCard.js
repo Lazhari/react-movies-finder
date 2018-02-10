@@ -21,6 +21,7 @@ const MovieCard = ({movie, loading, hideOverview}) => {
         objectFit: 'cover',
         objectPosition: 'center'
     };
+    const truncatedOverview = (<span>{truncate(movie.overview, 115)} <NavLink to={`/movies/${movie.id}`}>Read more</NavLink></span>);
     return (
         <Card>
             <CardImg top width="100%" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`}
@@ -31,9 +32,12 @@ const MovieCard = ({movie, loading, hideOverview}) => {
                         {movie.original_title}
                     </NavLink>
                 </CardTitle>
-                <CardText className="card-text text-justify" style={{fontSize: 12}}>
-                    {truncate(movie.overview, 115)}
-                    <NavLink to={`/movies/${movie.id}`}>Read more</NavLink>
+                <CardText className="card-text text-justify" style={{fontSize: 12,height: 55}}>
+                    {
+                        (movie.overview && movie.overview.length > 115) ?
+                            truncatedOverview :
+                            movie.overview
+                    }
                 </CardText>
             </CardBody>
             <CardText className="card-footer bg-white">

@@ -17,7 +17,7 @@ const MovieCard = ({movie, loading, hideOverview}) => {
     let review = null;
     if (!hideOverview) {
         review = (<div className="card-text">
-            {truncate(movie.overview, 120)}
+            {truncate(movie.overview, 130)}
         </div>);
     }
     const imageStyle = {
@@ -38,7 +38,7 @@ const MovieCard = ({movie, loading, hideOverview}) => {
                     </NavLink>
                 </CardTitle>
                 <CardText className="card-text text-justify" style={{fontSize: 12}}>
-                    {truncate(movie.overview, 85)}
+                    {truncate(movie.overview, 115)}
                     <NavLink to={`/movies/${movie.id}`}>Read more</NavLink>
                 </CardText>
             </CardBody>

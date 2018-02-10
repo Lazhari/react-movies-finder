@@ -20,23 +20,40 @@ const MovieCard = ({movie, loading, hideOverview}) => {
             {truncate(movie.overview, 120)}
         </div>);
     }
+    const imageStyle = {
+        display: 'block',
+        height: '50vh',
+        clipPath: 'polygon(0 0, 100% 0%, 100% 90%, 0 100%)',
+        objectFit: 'cover',
+        objectPosition: 'center'
+    };
     return (
-            <Card>
-                <CardImg top width="100%" src={`https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster_path}`}
-                         alt={movie.original_title} onError={onErrorLoadingImage}/>
-                <CardBody>
-                    <CardTitle><NavLink to={`/movies/${movie.id}`} className="text-black">{movie.original_title}</NavLink></CardTitle>
-                    <CardText>{review}</CardText>
-                    <CardText>
-                    <span className="text-muted">
-                        {movie.vote_average} <i className="fa fa-star text-warning"></i>
+        <Card>
+            <CardImg top width="100%" src={`https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster_path}`}
+                     alt={movie.original_title} onError={onErrorLoadingImage} style={imageStyle}/>
+            <CardBody>
+                <CardTitle className="text-black text-center h6" style={{height: 40}}>
+                    <NavLink to={`/movies/${movie.id}`}>
+                        {movie.original_title}
+                    </NavLink>
+                </CardTitle>
+                <CardText>
+                    <div className="card-text text-justify" style={{fontSize: 12}}>
+                        {truncate(movie.overview, 85)}
+                        <NavLink to={`/movies/${movie.id}`}>Read more</NavLink>
+                    </div>
+                </CardText>
+            </CardBody>
+            <CardText className="card-footer bg-white">
+                <span className="text-muted">
+                    {movie.vote_average} <i className="fa fa-star text-warning"></i>
+                </span>
+                <span className="text-muted" style={{float: 'right'}}>
+                        <span
+                            className="badge badge-primary">{getYear(movie.release_date) || 'Unknown Released Date'}</span>
                     </span>
-                        <span className="text-muted" style={{float:'right'}}>
-                        <span className="badge badge-primary">{getYear(movie.release_date) || 'Unknown Released Date'}</span>
-                    </span>
-                    </CardText>
-                </CardBody>
-            </Card>
+            </CardText>
+        </Card>
     )
 };
 

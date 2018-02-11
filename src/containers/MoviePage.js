@@ -49,14 +49,20 @@ class MoviePage extends Component {
                         <h1 className="text-center h3" style={{'padding': '.6em 0px .3em 10px'}}>Top Billed Cast</h1>
                         <ActorsList actors={this.props.actors}/>
                     </div>
-                    <div className="col-md-12">
-                        <h1 className="text-center h3" style={{'padding': '.6em 0px .3em 10px'}}>Reviews</h1>
-                        <ReviewsList reviews={this.props.reviews}/>
-                    </div>
-                    <div className="col-md-12">
-                        <h1 className="text-center h3" style={{'padding': '.3em 0px .3em 10px'}}>Related Movies</h1>
-                        <MoviesCardList movies={this.props.relatedMovies} hideOverview={true} itemsPerRow={4}/>
-                    </div>
+                    {
+                        this.props.reviews.length ?
+                            <div className="col-md-12">
+                                <h1 className="text-center h3" style={{'padding': '.6em 0px .3em 10px'}}>Reviews</h1>
+                                <ReviewsList reviews={this.props.reviews}/>
+                            </div> : null
+                    }
+                    {
+                        this.props.relatedMovies.length ?
+                            <div className="col-md-12">
+                                <h1 className="text-center h3" style={{'padding': '.3em 0px .3em 10px'}}>Related Movies</h1>
+                                <MoviesCardList movies={this.props.relatedMovies} hideOverview={true} itemsPerRow={4}/>
+                            </div> : null
+                    }
                 </div>
             </div>
         )

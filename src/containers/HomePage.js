@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import Pagination from 'react-js-pagination';
 
-import { fetchMovies } from '../actions/moviesActions';
+import {fetchMovies} from '../actions/moviesActions';
 
 import MoviesCardList from '../components/MoviesCardList';
 
@@ -17,7 +17,6 @@ class HomePage extends Component {
     }
 
 
-
     render() {
         return (
             <div>
@@ -26,22 +25,23 @@ class HomePage extends Component {
                     <div className="col-md-12">
                         <MoviesCardList movies={this.props.movies} cols={6}/>
                     </div>
-                </div>
-                <div className="row">
-                    <div className="col-md-12 text-center">
-                        <Pagination
-                            activePage={this.props.page}
-                            itemsCountPerPage={20}
-                            totalItemsCount={this.props.totalResults}
-                            pageRangeDisplayed={5}
-                            innerClass="pagination"
-                            itemClass="page-item"
-                            linkClass="page-link"
-                            disabledClass="disabled"
-                            activeClass="active"
-                            onChange={this.handlePageChange.bind(this)}
-                        />
-                    </div>
+                    {
+                        (this.props.movies && this.props.movies.length) ?
+                            <div className="col-md-12 text-center">
+                                <Pagination
+                                    activePage={this.props.page}
+                                    itemsCountPerPage={20}
+                                    totalItemsCount={this.props.totalResults}
+                                    pageRangeDisplayed={5}
+                                    innerClass="pagination"
+                                    itemClass="page-item"
+                                    linkClass="page-link"
+                                    disabledClass="disabled"
+                                    activeClass="active"
+                                    onChange={this.handlePageChange.bind(this)}
+                                />
+                            </div> : null
+                    }
                 </div>
             </div>
         )
@@ -49,8 +49,8 @@ class HomePage extends Component {
 }
 
 function mapStateToProps(state) {
-    const { movies, loading, page, totalResults }  = state.moviesStore;
-    return { movies, loading, page, totalResults }
+    const {movies, loading, page, totalResults} = state.moviesStore;
+    return {movies, loading, page, totalResults}
 }
 
-export default connect(mapStateToProps, { fetchMovies })(HomePage);
+export default connect(mapStateToProps, {fetchMovies})(HomePage);

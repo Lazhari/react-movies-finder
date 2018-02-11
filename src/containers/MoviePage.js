@@ -6,7 +6,8 @@ import {
     fetchMovieVideos,
     fetchMovieReviews,
     fetchRelatedMovies,
-    fetchMovieActors
+    fetchMovieActors,
+    cleaningMovieReducer
 } from '../actions/movieAction';
 
 import MovieHeader from '../components/MovieHeader';
@@ -26,6 +27,7 @@ class MoviePage extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.match.params.id !== this.props.match.params.id) {
+            this.props.cleaningMovieReducer();
             const {id} = this.props.match.params;
             this.props.fetchMovie(id);
             this.props.fetchMovieVideos(id);
@@ -33,6 +35,10 @@ class MoviePage extends Component {
             this.props.fetchRelatedMovies(id);
             this.props.fetchMovieActors(id);
         }
+    }
+
+    componentWillUnmount() {
+        this.props.cleaningMovieReducer();
     }
 
     render() {
@@ -78,5 +84,6 @@ export default connect(mapStateToProps, {
     fetchMovieVideos,
     fetchMovieReviews,
     fetchRelatedMovies,
-    fetchMovieActors
+    fetchMovieActors,
+    cleaningMovieReducer
 })(MoviePage);

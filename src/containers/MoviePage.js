@@ -45,24 +45,18 @@ class MoviePage extends Component {
                                  trailer={this.props.trailer}/>
                 </div>
                 <div className="col-md-12">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <div className="row">
-                                <div className="col-md-12">
-                                    <h1 className="text-center h3" style={{'padding': '.6em 0px .3em 10px'}}>Top Billed Cast</h1>
-                                    <ActorsList actors={this.props.actors}/>
-                                </div>
-                            </div>
-                            <div className="col-md-12">
-                                <h1 className="text-center h3" style={{'padding': '.3em 0px .3em 10px'}}>Related Movies</h1>
-                                <MoviesCardList movies={this.props.relatedMovies} hideOverview={true} itemsPerRow={4}/>
-                            </div>
-                        </div>
-                        <div className="col-md-12">
-                            <ReviewsList reviews={this.props.reviews}/>
-                        </div>
+                    <div className="col-md-12">
+                        <h1 className="text-center h3" style={{'padding': '.6em 0px .3em 10px'}}>Top Billed Cast</h1>
+                        <ActorsList actors={this.props.actors}/>
                     </div>
-
+                    <div className="col-md-12">
+                        <h1 className="text-center h3" style={{'padding': '.6em 0px .3em 10px'}}>Reviews</h1>
+                        <ReviewsList reviews={this.props.reviews}/>
+                    </div>
+                    <div className="col-md-12">
+                        <h1 className="text-center h3" style={{'padding': '.3em 0px .3em 10px'}}>Related Movies</h1>
+                        <MoviesCardList movies={this.props.relatedMovies} hideOverview={true} itemsPerRow={4}/>
+                    </div>
                 </div>
             </div>
         )

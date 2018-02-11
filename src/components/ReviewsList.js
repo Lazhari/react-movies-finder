@@ -1,27 +1,20 @@
 import React from 'react';
-import {Comment, Header} from 'semantic-ui-react';
 
 const ReviewsList = ({reviews}) => {
     return (
-        <Comment.Group size='small'>
-            <Header as='h2' content='Reviews' dividing/>
+        <div>
             {
                 reviews.map(review => {
                     return (
-                        <Comment key={review.id}>
-                            <Comment.Content>
-                                <Comment.Author as='a' href={review.url}
-                                                target='_blank'> { review.author }:</Comment.Author>
-                                <Comment.Text>
-                                    { review.content }
-                                </Comment.Text>
-                            </Comment.Content>
-                        </Comment>
+                        <blockquote className="blockquote" style={{borderBottom: '1px dashed rgba(0,0,0,.125)'}} key={review.id}>
+                            <p className="text-justify">{ review.content }.</p>
+                            <footer className="blockquote-footer" style={{padding: 5}}>{ review.author }</footer>
+                        </blockquote>
                     )
                 })
             }
-        </Comment.Group>
+        </div>
     )
-}
+};
 
 export default ReviewsList;

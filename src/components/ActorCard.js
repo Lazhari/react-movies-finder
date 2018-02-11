@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 
 import {Card, CardImg, CardTitle, CardSubtitle, CardBody} from 'reactstrap';
 
@@ -30,6 +30,14 @@ const ActorCard = ({actor}) => {
         </Card>
 
     )
+};
+
+ActorCard.propTypes = {
+    actor: PropTypes.shape({
+        profile_path: PropTypes.string,
+        name: PropTypes.string,
+        character: PropTypes.string
+    })
 };
 
 export default ActorCard;

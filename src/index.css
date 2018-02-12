@@ -20,7 +20,10 @@ footer {
 .page-title {
     padding: .3em 0px .3em 10px;
     line-height: 1;
-    font-size: 2.25em !important;
+    font-weight: bold;
+    text-align: left !important;
+    color: #666666 !important;
+    font-size: 1.55em !important;
 }
 
 a {
@@ -42,6 +45,24 @@ a:hover {
 .page-item.active .page-link {
     z-index: 1;
     color: #fff !important;
-    background-color: #0099cc !important;
-    border-color: #0099cc !important;
+    background-image: linear-gradient(136deg, #622774, #c53364);
+    border: none;
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #fff;
+    background-color: transparent;
+    border-radius: 5px;
+    border: none;
+}
+.page-item.disabled .page-link {
+    color: #ffffff;
+    pointer-events: none;
+    cursor: auto;
+    background-color: transparent;
 }

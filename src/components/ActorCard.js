@@ -18,7 +18,7 @@ const ActorCard = ({actor}) => {
     };
     return (
 
-        <Card>
+        <Card style={{backgroundColor: 'transparent'}}>
             <CardImg top width="100%" src={`https://image.tmdb.org/t/p/w276_and_h350_face${actor.profile_path}`}
                      alt={actor.name} onError={onErrorLoadingImage} style={imageStyle}/>
             <CardBody>

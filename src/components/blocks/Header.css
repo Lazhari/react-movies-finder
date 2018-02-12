@@ -1,10 +1,12 @@
 .mv-header {
     padding: 25px !important;
-    background: #0099cc !important;
+    background: #232528 !important;
 }
 
 .navbar-blue .navbar-nav .nav-link {
     color: #ffffff !important;
+    font-size: 14px;
+    font-weight: 600;
 }
 
 .navbar-blue .navbar-brand {
@@ -17,4 +19,9 @@
 
 .navbar-blue .navbar-nav .nav-link {
     color: rgba(255, 255, 255,1);
+}
+
+.nav-link.active {
+    border-radius: 45.6px !important;
+    background-image: linear-gradient(136deg, #622774, #c53364) !important;
 }

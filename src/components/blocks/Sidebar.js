@@ -1,5 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
+import './Sidebar.css';
 
 const Sidebar = ({genres, loading, genreId}) => {
     const genreLinks = () => {

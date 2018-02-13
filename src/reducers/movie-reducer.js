@@ -86,7 +86,7 @@ export default (state = defaultState, action = {}) => {
             return {
                 ...state,
                 loading: false,
-                actors: action.payload.data.cast.splice(0, 6)
+                actors: action.payload.data.cast.splice(0, 8)
             };
         }
         case CLEANING_MOVIE_STATE: {

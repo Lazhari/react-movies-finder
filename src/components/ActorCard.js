@@ -12,20 +12,20 @@ const ActorCard = ({actor}) => {
     const imageStyle = {
         display: 'block',
         height: '20vh',
-        clipPath: 'polygon(0 0, 100% 0%, 100% 90%, 0 100%)',
+        //clipPath: 'polygon(0 0, 100% 0%, 100% 90%, 0 100%)',
         objectFit: 'cover',
         objectPosition: 'center'
     };
     return (
 
-        <Card style={{backgroundColor: 'transparent'}}>
+        <Card style={{backgroundColor: 'transparent', border: 'none'}}>
             <CardImg top width="100%" src={`https://image.tmdb.org/t/p/w276_and_h350_face${actor.profile_path}`}
                      alt={actor.name} onError={onErrorLoadingImage} style={imageStyle}/>
-            <CardBody>
-                <CardTitle className="h6 text-center" style={{fontSize: 14, height: 40}}>
+            <CardBody style={{paddingRight: 0, paddingLeft: 0}}>
+                <CardTitle className="h6" style={{fontSize: 14, height: 30}}>
                     <a href="">{actor.name}</a>
                 </CardTitle>
-                <CardSubtitle style={{fontSize: 12}} className="text-center">{actor.character}</CardSubtitle>
+                <CardSubtitle style={{fontSize: 12, paddingTop: 0, marginTop: 5}}>{actor.character}</CardSubtitle>
             </CardBody>
         </Card>
 

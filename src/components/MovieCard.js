@@ -24,7 +24,7 @@ const MovieCard = ({movie, loading, hideOverview}) => {
     };
     const truncatedOverview = (<span>{truncate(movie.overview, 115)} <NavLink to={`/movies/${movie.id}`}>Read more</NavLink></span>);
     return (
-        <Card style={{backgroundColor: 'rgba(0,0,0,0)'}}>
+        <Card style={{backgroundColor: 'rgba(0,0,0,0)', border: 'none'}}>
             <CardImg top width="100%" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`}
                      alt={movie.original_title} onError={onErrorLoadingImage} style={imageStyle}/>
             <CardBody style={{padding: 10}}>

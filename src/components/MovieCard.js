@@ -26,7 +26,12 @@ const MovieCard = ({movie, loading, hideOverview}) => {
     return (
         <Card style={{backgroundColor: 'rgba(0,0,0,0)', border: 'none'}}>
             <CardImg top width="100%" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`}
-                     alt={movie.original_title} onError={onErrorLoadingImage} style={imageStyle}/>
+                     alt={movie.original_title} onError={onErrorLoadingImage} style={imageStyle}>
+            </CardImg>
+            <h1 className="circle">
+                {movie.vote_average.toString().split('.')[0]}
+                <sup style={{fontSize: 20, verticalAlign: 'middle', fontWeight: 100}}>.{movie.vote_average.toString().split('.')[1] || 0}</sup>
+            </h1>
             <CardBody style={{padding: 10}}>
                 <CardTitle className="" style={{height: 34, color: '#e9e9e9',fontWeight: 'bold', textAlign: 'left', fontSize: 16}}>
                     <NavLink to={`/movies/${movie.id}`} style={{textDecoration: 'none'}}>

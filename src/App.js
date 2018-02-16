@@ -32,7 +32,7 @@ class App extends Component {
                                 <Route exact path="/series" component={TopSeriesPage}/>
                                 <Route exact path="/genres/:id/:genre" component={GenrePage}/>
                                 <Route exact path="/movies/:id" component={MoviePage}/>
-                                <Route exact path="/actor/:id" component={ActorPage}/>
+                                <Route exact path="/actors/:id" component={ActorPage}/>
                             </Switch>
                         </div>
                     </div>

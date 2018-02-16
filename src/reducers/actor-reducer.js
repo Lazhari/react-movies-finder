@@ -1,5 +1,5 @@
 import {
-    GET_PEOPLE_PROFILE
+    GET_ACTOR_PROFILE
 } from '../actions/actionsType';
 
 const defaultState = {
@@ -10,13 +10,13 @@ const defaultState = {
 
 export default (state = defaultState, action={}) => {
     switch (action.type) {
-        case `${GET_PEOPLE_PROFILE}_PENDING`: {
+        case `${GET_ACTOR_PROFILE}_PENDING`: {
             return {
                 ...state,
                 loading: true
             }
         }
-        case `${GET_PEOPLE_PROFILE}_FULFILLED`: {
+        case `${GET_ACTOR_PROFILE}_FULFILLED`: {
             return {
                 ...state,
                 profile: action.payload.data

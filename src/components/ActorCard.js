@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 
 import {Card, CardImg, CardTitle, CardSubtitle, CardBody} from 'reactstrap';
 
@@ -23,7 +24,7 @@ const ActorCard = ({actor}) => {
                      alt={actor.name} onError={onErrorLoadingImage} style={imageStyle}/>
             <CardBody style={{paddingRight: 0, paddingLeft: 0}}>
                 <CardTitle className="h6" style={{fontSize: 14, height: 30}}>
-                    <a href="">{actor.name}</a>
+                    <Link to={`/actors/${actor.id}`}>{actor.name}</Link>
                 </CardTitle>
                 <CardSubtitle style={{fontSize: 12, paddingTop: 0, marginTop: 5}}>{actor.character}</CardSubtitle>
             </CardBody>

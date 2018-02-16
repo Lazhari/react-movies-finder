@@ -9,6 +9,7 @@ import UpcomingPage from './containers/UpcomingPage';
 import GenrePage from './containers/GenrePage';
 import MoviesCategoryContainer from './containers/MoviesCategoryContainer';
 import MoviePage from './containers/MoviePage';
+import ActorPage from './containers/ActorPage';
 
 import './App.css';
 
@@ -31,6 +32,7 @@ class App extends Component {
                                 <Route exact path="/series" component={TopSeriesPage}/>
                                 <Route exact path="/genres/:id/:genre" component={GenrePage}/>
                                 <Route exact path="/movies/:id" component={MoviePage}/>
+                                <Route exact path="/actor/:id" component={ActorPage}/>
                             </Switch>
                         </div>
                     </div>

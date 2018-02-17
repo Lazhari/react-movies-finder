@@ -1,5 +1,6 @@
 import {
-    GET_ACTOR_PROFILE
+    GET_ACTOR_PROFILE,
+    GET_ACTOR_CREDIT_MOVIES
 } from '../actions/actionsType';
 
 const defaultState = {
@@ -8,7 +9,7 @@ const defaultState = {
     movies: []
 };
 
-export default (state = defaultState, action={}) => {
+export default (state = defaultState, action = {}) => {
     switch (action.type) {
         case `${GET_ACTOR_PROFILE}_PENDING`: {
             return {
@@ -20,6 +21,18 @@ export default (state = defaultState, action={}) => {
             return {
                 ...state,
                 profile: action.payload.data
+            }
+        }
+        case `${GET_ACTOR_CREDIT_MOVIES}_PENDING`: {
+            return {
+                ...state,
+                loading: true
+            }
+        }
+        case `${GET_ACTOR_CREDIT_MOVIES}_FULFILLED`: {
+            return {
+                ...state,
+                movies: action.payload.data.cast
             }
         }
         default: {

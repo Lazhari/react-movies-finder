@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import {
     fetchMovie,
@@ -17,7 +17,7 @@ import ReviewsList from '../components/ReviewsList';
 
 class MoviePage extends Component {
     componentWillMount() {
-        const {id} = this.props.match.params;
+        const { id } = this.props.match.params;
         this.props.fetchMovie(id);
         this.props.fetchMovieVideos(id);
         this.props.fetchMovieReviews(id);
@@ -28,7 +28,7 @@ class MoviePage extends Component {
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.match.params.id !== this.props.match.params.id) {
             this.props.cleaningMovieReducer();
-            const {id} = this.props.match.params;
+            const { id } = this.props.match.params;
             this.props.fetchMovie(id);
             this.props.fetchMovieVideos(id);
             this.props.fetchMovieReviews(id);
@@ -47,26 +47,23 @@ class MoviePage extends Component {
             <div className="row">
                 <div className="col-md-12">
                     <MovieHeader movie={this.props.movie} genres={this.props.genres}
-                                 productionCompanies={this.props.productionCompanies}
-                                 trailer={this.props.trailer}/>
+                        productionCompanies={this.props.productionCompanies}
+                        trailer={this.props.trailer}
+                        actors={this.props.actors} />
                 </div>
                 <div className="col-md-12">
-                    <div className="col-md-12">
-                        <h1 className="text-center h3" style={{'padding': '.6em 0px .3em 10px'}}>Top Billed Cast</h1>
-                        <ActorsList actors={this.props.actors}/>
-                    </div>
                     {
                         this.props.reviews.length ?
                             <div className="col-md-12">
-                                <h1 className="text-center h3" style={{'padding': '.6em 0px .3em 10px'}}>Reviews</h1>
-                                <ReviewsList reviews={this.props.reviews}/>
+                                <h1 className="text-center h3" style={{ 'padding': '.6em 0px .3em 10px' }}>Reviews</h1>
+                                <ReviewsList reviews={this.props.reviews} />
                             </div> : null
                     }
                     {
                         this.props.relatedMovies.length ?
                             <div className="col-md-12">
-                                <h1 className="text-center h3" style={{'padding': '.3em 0px .3em 10px'}}>Related Movies</h1>
-                                <MoviesCardList movies={this.props.relatedMovies} hideOverview={true} itemsPerRow={4}/>
+                                <h1 className="text-center h3" style={{ 'padding': '.3em 0px .3em 10px' }}>Related Movies</h1>
+                                <MoviesCardList movies={this.props.relatedMovies} hideOverview={true} itemsPerRow={4} />
                             </div> : null
                     }
                 </div>

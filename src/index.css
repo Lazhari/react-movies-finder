@@ -72,3 +72,14 @@ a:hover {
     background-image: linear-gradient(136deg, #622774, #c53364);
     opacity: .4;
 }
+
+.badge-primary {
+    color: #fff !important;
+    background-color: rgba(72, 74, 77, 0.733) !important;
+    font-weight: 100;
+    font-size: 12px;
+	text-align: left;
+    color: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+    padding: 5px 12px;
+}

@@ -3,11 +3,11 @@ import { Badge } from 'reactstrap';
 
 const Labels = ({ labels }) => {
     return (
-        <div>
+        <span style={{ paddingLeft: 20 }}>
             {
                 labels.map(label => (<Badge color='primary' key={label.id} style={{ marginRight: 5 }}>{label.name}</Badge>))
             }
-        </div>
+        </span>
     )
 };
 

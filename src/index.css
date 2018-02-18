@@ -25,6 +25,10 @@ footer {
     color: #666666 !important;
     font-size: 1.55em !important;
 }
+.modal-content {
+    background-color: transparent;
+    border: none;
+}
 
 a {
     color: #ffffff !important;

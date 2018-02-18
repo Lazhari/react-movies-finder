@@ -4,16 +4,17 @@
 }
 
 .navbar-blue .navbar-nav .nav-link {
-    color: #ffffff !important;
+    color: rgba(255, 255, 255,.5) !important;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 300;
 }
 
 .navbar-blue .navbar-brand {
     color: #ffffff !important;
 }
 
-.navbar-blue .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav .nav-link:hover {
+.navbar-blue .navbar-nav .nav-link:focus,
+.navbar-blue .navbar-nav .nav-link:hover {
     color: #ffffff !important;
 }
 
@@ -23,6 +24,7 @@
 
 .nav-link.active {
     border-radius: 45.6px !important;
+    color: #ffffff !important;
     background-image: linear-gradient(136deg, #622774, #c53364) !important;
     padding-left: 1.4em !important;
     padding-right: 1.4em !important;

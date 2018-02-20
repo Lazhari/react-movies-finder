@@ -40,7 +40,7 @@ class ActorPage extends Component {
                         <CardImg top width="100%" src={`https://image.tmdb.org/t/p/w276_and_h350_face${profile.profile_path}`}
                             alt={profile.name} onError={onErrorLoadingImage} style={imageStyle} />
                         <CardBody style={{ paddingRight: 0, paddingLeft: 0 }}>
-                            <CardTitle className="h6" style={{ fontSize: 14, height: 30 }}>
+                            <CardTitle className="h6" style={{ fontSize: 20, height: 30, color: '#e9e9e9' }}>
                                 <Link to={`/actors/${profile.id}`}>{profile.name}</Link>
                             </CardTitle>
                             <CardSubtitle style={{ fontSize: 12, paddingTop: 0, marginTop: 5 }}>
@@ -53,11 +53,12 @@ class ActorPage extends Component {
                     </Card>
                 </div>
                 <div className="col-md-9">
-                    <p>
+                    <h4 style={{ fontSize: 18, fontWeight: 600, color: '#666666' }}>Biography:</h4>
+                    <p style={{ fontSize: 15, fontWeight: 300, color: '#e9e9e9' }}>
                         {profile.biography}
                     </p>
                 </div>
-                <div className="col-md-12">
+                <div className="col-md-12" style={{ borderTop: 'solid 1px #333437' }}>
                     <h1 className="text-center h3" style={{ 'padding': '.3em 0px .3em 10px' }}>Movies</h1>
                     <MoviesCardList movies={movies} hideOverview={true} itemsPerRow={4} />
                 </div>

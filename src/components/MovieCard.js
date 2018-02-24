@@ -21,7 +21,7 @@ const MovieCard = ({ movie, loading, hideOverview }) => {
         objectPosition: 'center'
     };
     return (
-        <Card style={{ backgroundColor: 'rgba(0,0,0,0)', border: 'none' }}>
+        <Card className="movie-card">
             <CardImg top width="100%" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`}
                 alt={movie.original_title} onError={onErrorLoadingImage} style={imageStyle}>
             </CardImg>

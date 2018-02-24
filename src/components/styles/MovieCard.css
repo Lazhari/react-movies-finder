@@ -90,6 +90,11 @@
     background-image: linear-gradient(168deg, #622774, #c53364);
 }
 
+.movie-card {
+    background-color: transparent !important;
+    border: none !important;
+}
+
 
 
 @media only screen and (max-width: 991px) {

@@ -191,6 +191,32 @@ footer {
       background-color: #232528 !important;
       border-left: 3px solid #c53364 !important; }
 
+.actor-card__face--page {
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 5px; }
+
+.actor-card__info {
+  font-size: 12px;
+  padding-top: 0;
+  margin-top: 5px; }
+
+.actor-page-info__title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #666666; }
+
+.actor-page-info__content {
+  font-size: 15;
+  font-weight: 300;
+  color: #e9e9e9; }
+
+.movies-list {
+  border-top: solid 1px #333437; }
+  .movies-list__title {
+    padding: .3em 0px .3em 10px; }
+
 footer {
   padding: 30px 0; }
 

@@ -27,39 +27,33 @@ class ActorPage extends Component {
         const onErrorLoadingImage = (e) => {
             e.target.src = placeholderImage;
         };
-        const imageStyle = {
-            display: 'block',
-            //clipPath: 'polygon(0 0, 100% 0%, 100% 90%, 0 100%)',
-            objectFit: 'cover',
-            objectPosition: 'center'
-        };
         return (
             <div className="row">
                 <div className="col-md-3">
-                    <Card style={{ backgroundColor: 'transparent', border: 'none' }}>
-                        <CardImg top width="100%" src={`https://image.tmdb.org/t/p/w276_and_h350_face${profile.profile_path}`}
-                            alt={profile.name} onError={onErrorLoadingImage} style={imageStyle} />
-                        <CardBody style={{ paddingRight: 0, paddingLeft: 0 }}>
-                            <CardTitle className="h6" style={{ fontSize: 20, height: 30, color: '#e9e9e9' }}>
+                    <Card style={{ backgroundColor: 'transparent', border: 'none' }} className="actor-card">
+                        <CardImg top src={`https://image.tmdb.org/t/p/w276_and_h350_face${profile.profile_path}`}
+                            alt={profile.name} onError={onErrorLoadingImage} className="actor-card__face--page" />
+                        <CardBody className="actor-card__body">
+                            <CardTitle className="h6 actor-card__name">
                                 <Link to={`/actors/${profile.id}`}>{profile.name}</Link>
                             </CardTitle>
-                            <CardSubtitle style={{ fontSize: 12, paddingTop: 0, marginTop: 5 }}>
+                            <CardSubtitle className="h6 actor-card__info">
                                 <strong>Birth day:</strong> {profile.birthday}
                             </CardSubtitle>
-                            <CardSubtitle style={{ fontSize: 12, paddingTop: 0, marginTop: 5 }}>
+                            <CardSubtitle className="h6 actor-card__info">
                                 <strong>Place of birth:</strong> {profile.place_of_birth}
                             </CardSubtitle>
                         </CardBody>
                     </Card>
                 </div>
-                <div className="col-md-9">
-                    <h4 style={{ fontSize: 18, fontWeight: 600, color: '#666666' }}>Biography:</h4>
-                    <p style={{ fontSize: 15, fontWeight: 300, color: '#e9e9e9' }}>
+                <div className="col-md-9 actor-page-info">
+                    <h4 className="actor-page-info__title">Biography:</h4>
+                    <p className="actor-page-info__content">
                         {profile.biography}
                     </p>
                 </div>
-                <div className="col-md-12" style={{ borderTop: 'solid 1px #333437' }}>
-                    <h1 className="text-center h3" style={{ 'padding': '.3em 0px .3em 10px' }}>Movies</h1>
+                <div className="col-md-12 movies-list">
+                    <h1 className="text-center h3 movies-list__title">Movies</h1>
                     <MoviesCardList movies={movies} hideOverview={true} itemsPerRow={4} />
                 </div>
             </div>

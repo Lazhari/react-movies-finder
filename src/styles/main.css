@@ -177,18 +177,19 @@ footer {
   font-size: 25px; }
 
 .list-group {
-  border: solid 0.5px rgba(35, 37, 40, 0.17);
-  border-radius: 0;
+  border: solid 0.5px rgba(102, 102, 102, 0.17);
+  border-radius: 0px;
   font-size: 14px;
   font-weight: 100 !important; }
   .list-group .list-group-item {
     background-color: transparent !important;
     color: rgba(255, 255, 255, 0.5) !important;
-    border: none !important; }
+    border: none !important;
+    border-radius: 0px; }
     .list-group .list-group-item.active {
       z-index: 2;
       color: #ffffff !important;
-      background-color: #232528 !important;
+      background-color: #2e3135 !important;
       border-left: 3px solid #c53364 !important; }
 
 .actor-card__face--page {

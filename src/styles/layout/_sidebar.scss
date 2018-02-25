@@ -1,0 +1,19 @@
+.list-group {
+    border: solid 0.5px rgba($shark-color, 0.17);
+    border-radius: 0;
+    font-size: 14px;
+    font-weight: 100 !important;
+
+    & .list-group-item {
+        background-color: rgba($black-color,0) !important;
+        color: rgba($white-color,.5) !important;
+        border: none !important;
+    
+        &.active {
+            z-index: 2;
+            color: $white-color !important;
+            background-color: $shark-color !important;
+            border-left: 3px solid $hibiscus-color !important;
+        }
+    }
+}

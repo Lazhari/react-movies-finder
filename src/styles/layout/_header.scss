@@ -1,0 +1,35 @@
+.mv-header {
+    padding: 25px !important;
+    background: $shark-color !important;
+    & .mv-logo {
+        height: 30px;
+    }
+    & .navbar-nav .nav-link {
+        color: rgba($white-color, .5) !important;
+        font-size: 14px;
+        font-weight: 300;
+        &:focus,&:hover {
+            color: $white-color !important;
+        }
+        &.active {
+            border-radius: 45.6px !important;
+            color: $white-color !important;
+            background-image: linear-gradient(136deg, $eminence-color, $hibiscus-color) !important;
+            padding-left: 1.4em !important;
+            padding-right: 1.4em !important;
+        }
+    }
+    & .navbar-brand {
+        color: $white-color !important;
+    }
+    & .navbar-nav .nav-link {
+        color: rgba($white-color, 1);
+    }
+}
+
+.mv-search {
+    & .fa-search {
+        color: $hibiscus-color;
+        font-size: 25px;
+    }
+}

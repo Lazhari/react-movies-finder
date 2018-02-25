@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Card, CardBody, CardTitle, CardImg } from 'reactstrap';
 
-import './styles/MovieCard.css';
+//import './styles/MovieCard.css';
 import placeholderImage from '../Images/abstract-image.jpg';
 
 const MovieCard = ({ movie, loading, hideOverview }) => {
@@ -13,34 +13,22 @@ const MovieCard = ({ movie, loading, hideOverview }) => {
     const onErrorLoadingImage = (e) => {
         e.target.src = placeholderImage;
     };
-    const imageStyle = {
-        display: 'block',
-        height: '50vh',
-        objectFit: 'cover',
-        borderRadius: 5.5,
-        objectPosition: 'center'
-    };
     return (
         <Card className="movie-card">
-            <CardImg top width="100%" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`}
-                alt={movie.original_title} onError={onErrorLoadingImage} style={imageStyle}>
+            <CardImg top src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`}
+                alt={movie.original_title} onError={onErrorLoadingImage} className="movie-card__poster">
             </CardImg>
-            <h1 className="circle">
+            <h1 className="movie-card__vote">
                 {movie.vote_average.toString().split('.')[0]}
-                <sup style={{
-                    fontSize: 20,
-                    verticalAlign: 'middle',
-                    fontWeight: 100
-                }}>.{movie.vote_average.toString().split('.')[1] || 0}</sup>
+                <sup>.{movie.vote_average.toString().split('.')[1] || 0}</sup>
             </h1>
-            <CardBody style={{ padding: 10 }}>
-                <CardTitle className=""
-                    style={{ height: 34, color: '#e9e9e9', fontWeight: 'bold', textAlign: 'left', fontSize: 16 }}>
-                    <NavLink to={`/movies/${movie.id}`} style={{ textDecoration: 'none' }}>
+            <CardBody className="movie-card__body">
+                <CardTitle className="movie-card__title">
+                    <NavLink to={`/movies/${movie.id}`}>
                         {movie.original_title}
                     </NavLink>
                 </CardTitle>
-                <span style={{ color: '#ffffff', opacity: 0.8, fontSize: 14 }}>
+                <span className="movie-card__release-date">
                     {getYear(movie.release_date) || 'Unknown Released Date'}
                 </span>
             </CardBody>

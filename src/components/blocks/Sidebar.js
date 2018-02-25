@@ -1,13 +1,11 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
-import './Sidebar.css';
-
-const Sidebar = ({genres, loading, genreId}) => {
+import { NavLink } from 'react-router-dom';
+const Sidebar = ({ genres, loading, genreId }) => {
     const genreLinks = () => {
         return genres.map(genre => {
             return (
                 <NavLink className="list-group-item" key={genre.id}
-                         to={`/genres/${genre.id}/${genre.name}`}>
+                    to={`/genres/${genre.id}/${genre.name}`}>
                     {genre.name}
                 </NavLink>
             )
@@ -15,7 +13,7 @@ const Sidebar = ({genres, loading, genreId}) => {
     };
     return (
         <div className="list-group">
-            { genreLinks() }
+            {genreLinks()}
         </div>
     )
 };

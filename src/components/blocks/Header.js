@@ -3,17 +3,16 @@ import { NavLink } from 'react-router-dom';
 import LoadingBar from 'react-redux-loading-bar'
 
 import logo from '../../logo.svg';
-import './Header.css';
 
 class Header extends Component {
 
     render() {
         return (
             <div>
-                <nav className="navbar navbar-expand-md fixed-top navbar-blue mv-header">
+                <nav className="navbar navbar-expand-md fixed-top mv-header">
                     <LoadingBar style={{ backgroundColor: 'white', height: '5px', top: 0, position: 'absolute' }} />
                     <NavLink className="navbar-brand" to="/">
-                        <img src={logo} height="30" className="d-inline-block align-middle" alt="" />
+                        <img src={logo} className="d-inline-block align-middle mv-logo" alt="" />
                     </NavLink>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -37,10 +36,10 @@ class Header extends Component {
                                 </NavLink>
                             </li>
                         </ul>
-                        <form className="form-inline my-4 my-lg-0">
+                        <form className="form-inline my-4 my-lg-0 mv-search">
                             <input className="form-control mr-sm-4" type="search" placeholder="Search" aria-label="Search" style={{ display: 'none' }} />
                             <a href="#">
-                                <i className="fa fa-search" style={{ color: '#c53364', fontSize: 25 }}></i>
+                                <i className="fa fa-search"></i>
                             </a>
                         </form>
                     </div>

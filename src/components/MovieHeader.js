@@ -55,9 +55,6 @@ class MovieHeader extends Component {
                 </div>
                 <div className="col-md-3">
                     <img src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`} className="img-responsive" style={headerImage} />
-                    <h1 className="circle" style={{ right: '5%' }}>
-                        {movie.vote_average}
-                    </h1>
                 </div>
                 <div className="col-md-8">
                     <div className="row">

@@ -129,6 +129,24 @@ body {
       vertical-align: middle;
       font-weight: 100; }
 
+.actor-card {
+  background-color: transparent;
+  border: none; }
+  .actor-card__face {
+    display: block;
+    height: 10vh;
+    object-fit: cover;
+    object-position: center; }
+  .actor-card__body {
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 10px; }
+  .actor-card__name {
+    font-size: 14px;
+    height: 30px;
+    color: #e9e9e9;
+    font-weight: 100; }
+
 footer {
   padding: 30px 0; }
 

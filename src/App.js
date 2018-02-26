@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-import {Route, Switch} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import Header from './components/blocks/Header';
 import HomePage from './containers/HomePage';
@@ -11,28 +11,26 @@ import MoviesCategoryContainer from './containers/MoviesCategoryContainer';
 import MoviePage from './containers/MoviePage';
 import ActorPage from './containers/ActorPage';
 
-import './App.css';
-
 class App extends Component {
 
 
     render() {
         return (
             <div>
-                <Header/>
+                <Header />
                 <div className="container-fuild">
                     <div className="row">
                         <div className="col-6 col-lg-2 col-md-2 sidebar-offcanvas" id="sidebar">
-                            <MoviesCategoryContainer/>
+                            <MoviesCategoryContainer />
                         </div>
                         <div className="col-12 col-md-10 col-lg-10">
                             <Switch>
-                                <Route exact path="/" component={HomePage}/>
-                                <Route exact path="/upcoming" component={UpcomingPage}/>
-                                <Route exact path="/series" component={TopSeriesPage}/>
-                                <Route exact path="/genres/:id/:genre" component={GenrePage}/>
-                                <Route exact path="/movies/:id" component={MoviePage}/>
-                                <Route exact path="/actors/:id" component={ActorPage}/>
+                                <Route exact path="/" component={HomePage} />
+                                <Route exact path="/upcoming" component={UpcomingPage} />
+                                <Route exact path="/series" component={TopSeriesPage} />
+                                <Route exact path="/genres/:id/:genre" component={GenrePage} />
+                                <Route exact path="/movies/:id" component={MoviePage} />
+                                <Route exact path="/actors/:id" component={ActorPage} />
                             </Switch>
                         </div>
                     </div>

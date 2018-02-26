@@ -90,7 +90,7 @@ body {
   border: none !important; }
   .movie-card__poster {
     display: block;
-    height: 540px;
+    height: 50vh;
     object-fit: cover;
     border-radius: 5.5px;
     object-position: center; }

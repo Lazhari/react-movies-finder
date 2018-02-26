@@ -7,7 +7,6 @@ import store from './store';
 import App from './App';
 import ScrollToTop from './components/ScrollToTop';
 import registerServiceWorker from './registerServiceWorker';
-//import 'semantic-ui-css/semantic.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/main.css';
 

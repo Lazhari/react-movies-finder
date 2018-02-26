@@ -1,0 +1,27 @@
+.close {
+    font-size: 3.5rem;
+    font-weight: 100;
+    color: #fff;
+    &:hover {
+        font-size: 3.5rem;
+        font-weight: 100;
+        color: #fff;
+    }
+}
+
+.modal {
+    &-content {
+        background-color: $black-color !important;
+        border: none;
+    }
+
+    &-header {
+        border: none;
+        text-align: center;
+        padding-right: 3rem;
+    }
+
+    &-title {
+        font-size: 1.8rem;
+    }
+}

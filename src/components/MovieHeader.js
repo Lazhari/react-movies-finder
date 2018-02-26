@@ -46,9 +46,10 @@ class MovieHeader extends Component {
                 <div className="col-md-12 text-center" style={headerStyle}>
                     <img src={playIcon} onClick={this.toggle} />
                     {
-                        trailer.key ? <Modal isOpen={true} size="lg" isOpen={this.state.modal} toggle={this.toggle}>
+                        trailer.key ? <Modal isOpen={true} size="lg" isOpen={this.state.modal} toggle={this.toggle} style={{ maxWidth: '100%' }}>
+                            <ModalHeader toggle={this.toggle}>{trailer.name}</ModalHeader>
                             <ModalBody>
-                                <ReactPlayer url={`https://www.youtube.com/watch?v=${trailer.key}`} playing width="100%" />
+                                <ReactPlayer url={`https://www.youtube.com/watch?v=${trailer.key}`} playing height="90vh" width="100%" />
                             </ModalBody>
                         </Modal> : null
                     }

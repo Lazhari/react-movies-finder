@@ -183,7 +183,8 @@ footer {
   border: solid 0.05rem rgba(102, 102, 102, 0.17);
   border-radius: 0rem;
   font-size: 1.4rem;
-  font-weight: 100 !important; }
+  font-weight: 100 !important;
+  max-width: 20rem; }
   .list-group .list-group-item {
     background-color: transparent !important;
     color: rgba(255, 255, 255, 0.5) !important;
@@ -220,6 +221,27 @@ footer {
   border-top: solid .1rem #333437; }
   .movies-list__title {
     padding: .3rem 0rem .3rem 1rem; }
+
+.close {
+  font-size: 3.5rem;
+  font-weight: 100;
+  color: #fff; }
+  .close:hover {
+    font-size: 3.5rem;
+    font-weight: 100;
+    color: #fff; }
+
+.modal-content {
+  background-color: #000000 !important;
+  border: none; }
+
+.modal-header {
+  border: none;
+  text-align: center;
+  padding-right: 3rem; }
+
+.modal-title {
+  font-size: 1.8rem; }
 
 footer {
   padding: 3rem 0; }

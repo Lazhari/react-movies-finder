@@ -1,12 +1,15 @@
+html {
+    font-size: 62.5%;
+}
 html,
 body {
     overflow-x: hidden; /* Prevent scroll on narrow devices */
 }
 body {
     font-family: 'Poppins', sans-serif;
-    padding-top: 140px;
-    padding-right: 50px;
-    padding-left: 50px;
+    padding-top: 14rem;
+    padding-right: 5rem;
+    padding-left: 5rem;
     background: #232528;
     color: #e9e9e9;
 }

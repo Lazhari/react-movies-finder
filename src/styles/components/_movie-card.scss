@@ -98,19 +98,19 @@
         display: block;
         height: 50vh;
         object-fit: cover;
-        border-radius: 5.5px;
+        border-radius: .55rem;
         object-position: center;
     }
 
     &__body {
-        padding: 10px;
+        padding: 1rem;
     }
     &__title {
-        height: 34;
+        height: 3.4rem;
         color: #e9e9e9;
         font-weight: bold;
         text-align: left; 
-        font-size: 16px;
+        font-size: 1.6rem;
         // Remove link default text decoration
         & a {
             text-decoration: none;
@@ -119,13 +119,13 @@
     &__release-date{
         color: $white-color;
         opacity: 0.8;
-        font-size: 14px;
+        font-size: 1.4rem;
     }
     &__vote {
-        width: 55px;
-        font-size: 25px;
-        height: 55px;
-        line-height: 55px;
+        width: 5.5rem;
+        font-size: 2.5rem;
+        height: 5.5rem;
+        line-height: 5.5rem;
         position: absolute !important;
         border-radius: 50%;
         -moz-border-radius: 50%;
@@ -133,13 +133,13 @@
         text-align: center;
         color: white;
         text-transform: uppercase;
-        right: 5px;
-        top: 5px;
+        right: .5rem;
+        top: .5rem;
         font-weight: 500;
         background-image: linear-gradient(168deg, #622774, #c53364);
 
         & sup {
-            font-size: 20px;
+            font-size: 2rem;
             vertical-align: middle;
             font-weight: 100;
         }

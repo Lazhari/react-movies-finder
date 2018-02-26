@@ -150,6 +150,68 @@ body {
     color: #e9e9e9;
     font-weight: 100; }
 
+.close {
+  font-size: 3.5rem;
+  font-weight: 100;
+  color: #fff; }
+  .close:hover {
+    font-size: 3.5rem;
+    font-weight: 100;
+    color: #fff; }
+
+.modal-content {
+  background-color: #000000 !important;
+  border: none; }
+
+.modal-header {
+  border: none;
+  text-align: center;
+  padding-right: 3rem; }
+
+.modal-title {
+  font-size: 1.8rem; }
+
+.movie-trailer {
+  background-size: cover;
+  background-position: center;
+  line-height: 32rem;
+  height: 32rem;
+  border-radius: 1rem;
+  color: #ffffff;
+  margin-bottom: 2rem; }
+
+.movie-poster {
+  border-radius: .5rem;
+  width: 100%; }
+
+.movie-title {
+  font-size: 2.8rem;
+  color: #e9e9e9; }
+
+.movie-release {
+  font-size: 1.8rem;
+  color: #e9e9e9; }
+
+.movie-vote {
+  color: #c53364;
+  font-size: 1.8rem; }
+
+.movie-overview h1 {
+  font-size: 1.8rem;
+  color: #e9e9e9; }
+
+.movie-overview p {
+  font-size: 1.6rem;
+  color: #e9e9e9;
+  font-weight: 100; }
+
+.movie-billed {
+  margin-top: 2rem; }
+  .movie-billed h1 {
+    font-size: 1.8rem;
+    color: #e9e9e9;
+    margin-bottom: 2rem; }
+
 footer {
   padding: 3rem 0; }
 
@@ -221,27 +283,6 @@ footer {
   border-top: solid .1rem #333437; }
   .movies-list__title {
     padding: .3rem 0rem .3rem 1rem; }
-
-.close {
-  font-size: 3.5rem;
-  font-weight: 100;
-  color: #fff; }
-  .close:hover {
-    font-size: 3.5rem;
-    font-weight: 100;
-    color: #fff; }
-
-.modal-content {
-  background-color: #000000 !important;
-  border: none; }
-
-.modal-header {
-  border: none;
-  text-align: center;
-  padding-right: 3rem; }
-
-.modal-title {
-  font-size: 1.8rem; }
 
 footer {
   padding: 3rem 0; }

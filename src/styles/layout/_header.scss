@@ -1,12 +1,23 @@
 .mv-header {
     padding: 2.5rem !important;
     background: $shark-color !important;
+
     & .mv-logo {
         height: 3rem;
     }
+
+    & .nav-item {
+      &:not(:last-child) {
+        margin-right: 4rem;
+      }
+      &:first-child {
+        margin-left: 4rem;
+      }
+    }
+
     & .navbar-nav .nav-link {
         color: rgba($white-color, .5) !important;
-        font-size: 1.4rem;
+        font-size: 1.5rem;
         font-weight: 300;
         &:focus,&:hover {
             color: $white-color !important;
@@ -15,8 +26,8 @@
             border-radius: 4.5rem !important;
             color: $white-color !important;
             background-image: linear-gradient(136deg, $eminence-color, $hibiscus-color) !important;
-            padding-left: 1.4rem !important;
-            padding-right: 1.4rem !important;
+            padding-left: 4rem !important;
+            padding-right: 4rem !important;
         }
     }
     & .navbar-brand {

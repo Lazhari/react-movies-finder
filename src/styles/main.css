@@ -93,16 +93,20 @@ body {
   border: none !important; }
   .movie-card__poster {
     display: block;
-    height: 50vh;
+    height: 36rem;
     object-fit: cover;
     border-radius: .55rem;
-    object-position: center; }
+    object-position: center;
+    box-shadow: 0.1rem 0.2rem 1.5rem 0.9rem rgba(0, 0, 0, 0.1);
+    animation: all .2s; }
+    .movie-card__poster:hover {
+      box-shadow: 0.1rem 0.2rem 1.5rem 0.9rem rgba(0, 0, 0, 0.3);
+      transform: translateY(-0.5rem); }
   .movie-card__body {
-    padding: 1rem; }
+    padding: 2.5rem .5rem 2rem .5rem; }
   .movie-card__title {
-    height: 3.4rem;
     color: #e9e9e9;
-    font-weight: bold;
+    font-weight: 300;
     text-align: left;
     font-size: 1.6rem; }
     .movie-card__title a {
@@ -112,10 +116,10 @@ body {
     opacity: 0.8;
     font-size: 1.4rem; }
   .movie-card__vote {
-    width: 5.5rem;
-    font-size: 2.5rem;
-    height: 5.5rem;
-    line-height: 5.5rem;
+    width: 3.8rem;
+    font-size: 2rem;
+    height: 3.8rem;
+    line-height: 3.8rem;
     position: absolute !important;
     border-radius: 50%;
     -moz-border-radius: 50%;
@@ -125,10 +129,11 @@ body {
     text-transform: uppercase;
     right: .5rem;
     top: .5rem;
-    font-weight: 500;
-    background-image: linear-gradient(168deg, #622774, #c53364); }
+    font-weight: 400;
+    background-image: linear-gradient(168deg, #622774, #c53364);
+    box-shadow: 0.1rem 0.2rem 1.5rem 0.9rem rgba(98, 39, 116, 0.3); }
     .movie-card__vote sup {
-      font-size: 2rem;
+      font-size: 1.6rem;
       vertical-align: middle;
       font-weight: 100; }
 
@@ -220,9 +225,13 @@ footer {
   background: #232528 !important; }
   .mv-header .mv-logo {
     height: 3rem; }
+  .mv-header .nav-item:not(:last-child) {
+    margin-right: 4rem; }
+  .mv-header .nav-item:first-child {
+    margin-left: 4rem; }
   .mv-header .navbar-nav .nav-link {
     color: rgba(255, 255, 255, 0.5) !important;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 300; }
     .mv-header .navbar-nav .nav-link:focus, .mv-header .navbar-nav .nav-link:hover {
       color: #ffffff !important; }
@@ -230,8 +239,8 @@ footer {
       border-radius: 4.5rem !important;
       color: #ffffff !important;
       background-image: linear-gradient(136deg, #622774, #c53364) !important;
-      padding-left: 1.4rem !important;
-      padding-right: 1.4rem !important; }
+      padding-left: 4rem !important;
+      padding-right: 4rem !important; }
   .mv-header .navbar-brand {
     color: #ffffff !important; }
   .mv-header .navbar-nav .nav-link {
@@ -290,10 +299,11 @@ footer {
 .page-title {
   padding: .3rem 0px .3rem 1rem;
   line-height: 1;
-  font-weight: bold;
+  font-weight: 500;
   text-align: left !important;
   color: #666666 !important;
-  font-size: 1.55rem !important; }
+  font-size: 2.5rem !important;
+  margin-bottom: 2.5rem; }
 
 .modal-content {
   background-color: transparent;

@@ -7,6 +7,7 @@
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Lazhari_react-movies-finder&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=Lazhari_react-movies-finder)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Lazhari_react-movies-finder&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=Lazhari_react-movies-finder)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Lazhari_react-movies-finder&metric=security_rating)](https://sonarcloud.io/dashboard?id=Lazhari_react-movies-finder)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Lazhari_react-movies-finder&metric=coverage)](https://sonarcloud.io/dashboard?id=Lazhari_react-movies-finder)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=Lazhari_react-movies-finder&metric=code_smells)](https://sonarcloud.io/dashboard?id=Lazhari_react-movies-finder)
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=Lazhari_react-movies-finder&metric=sqale_index)](https://sonarcloud.io/dashboard?id=Lazhari_react-movies-finder)
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=Lazhari_react-movies-finder&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=Lazhari_react-movies-finder)

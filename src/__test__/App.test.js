@@ -3,11 +3,11 @@ import { mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
-import ScrollToTop from "./components/ScrollToTop";
-import App from "./App";
-import store from "./store";
+import ScrollToTop from "../components/ScrollToTop";
+import App from "../App";
+import store from "../store";
 
-import HomePage from "./containers/HomePage";
+import HomePage from "../containers/HomePage";
 
 describe("Testing the / route", () => {
   let wrapper;

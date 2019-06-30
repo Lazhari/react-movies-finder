@@ -15,9 +15,9 @@ const defaultState = {
 
 export default (state = defaultState, action = {}) => {
   switch (action.type) {
-    case `${FETCH_GENRE}_PENDING` ||
-      `${FETCH_MOVIES}_PENDING` ||
-      `${FETCH_MOVIES_BY_GENRE}_PENDING`: {
+    case `${FETCH_GENRE}_PENDING`:
+    case `${FETCH_MOVIES}_PENDING`:
+    case `${FETCH_MOVIES_BY_GENRE}_PENDING`: {
       return {
         ...state,
         loading: true

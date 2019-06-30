@@ -20,11 +20,11 @@ const defaultState = {
 
 export default (state = defaultState, action = {}) => {
   switch (action.type) {
-    case `${FETCH_MOVIE_DETAILS}_PENDING` ||
-      `${FETCH_MOVIE_CAST}_PENDING` ||
-      `${FETCH_MOVIE_VIDEOS}_PENDING` ||
-      `${FETCH_MOVIE_REVIEWS}_PENDING` ||
-      `${FETCH_RELATED_MOVIES}_PENDING`: {
+    case `${FETCH_MOVIE_DETAILS}_PENDING`:
+    case `${FETCH_MOVIE_CAST}_PENDING`:
+    case `${FETCH_MOVIE_VIDEOS}_PENDING`:
+    case `${FETCH_MOVIE_REVIEWS}_PENDING`:
+    case `${FETCH_RELATED_MOVIES}_PENDING`: {
       return {
         ...state,
         loading: true

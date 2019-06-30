@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "flow-bin": "0.65.0",
+    "prettier": "1.18.2",
     "react-scripts": "1.0.7"
   },
   "scripts": {

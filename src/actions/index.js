@@ -1,5 +1,3 @@
-import axios from 'axios';
+import axios from "axios";
 
-export const client = axios.create({
-
-});
+export const client = axios.create({});

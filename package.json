@@ -42,7 +42,7 @@
       "pre-commit": "pretty-quick --staged"
     }
   },
-  "homepage": "http://movies-finder.surge.sh/",
+  "homepage": "https://lazhari.github.io/react-movies-finder",
   "browserslist": {
     "production": [
       ">0.2%",

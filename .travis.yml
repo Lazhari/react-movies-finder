@@ -1,19 +1,21 @@
 language: node_js
-node_js:
-  - "stable"
+node_js: "12"
+cache: yarn
+
 addons:
   sonarcloud:
     organization: $SONAR_ORG
     token:
       secure: $SONAR_TOKEN
-cache:
-  directories:
-    - node_modules
+
+install:
+  - yarn install
+
 script:
-  - sonar-scanner
   # - npm test
   # - npm test -- --coverage
-  - npm run build
+  - yarn build
+  - bash sonar.sh
 
 deploy:
   provider: pages

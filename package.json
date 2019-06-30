@@ -9,9 +9,9 @@
     "node-sass-chokidar": "0.0.3",
     "npm-run-all": "4.1.2",
     "prop-types": "15.6.0",
-    "react": "^15.6.1",
+    "react": "^16.8.6",
     "react-content-loader": "3.0.2",
-    "react-dom": "^15.6.1",
+    "react-dom": "^16.8.6",
     "react-js-pagination": "^2.1.0",
     "react-masonry-component": "^5.0.7",
     "react-player": "^0.18.0",
@@ -34,7 +34,7 @@
     "husky": "^2.7.0",
     "prettier": "1.18.2",
     "pretty-quick": "^1.11.1",
-    "react-scripts": "1.0.7"
+    "react-scripts": "3.0.1"
   },
   "scripts": {
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
@@ -52,5 +52,17 @@
       "pre-commit": "pretty-quick --staged"
     }
   },
-  "homepage": "http://movies-finder.surge.sh/"
+  "homepage": "http://movies-finder.surge.sh/",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }

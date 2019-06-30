@@ -77,9 +77,9 @@ class Header extends Component {
                 aria-label="Search"
                 style={{ display: "none" }}
               />
-              <a>
+              {/* <a href="#">
                 <i className="fa fa-search"></i>
-              </a>
+              </a> */}
             </form>
           </div>
         </nav>

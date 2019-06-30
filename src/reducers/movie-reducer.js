@@ -20,7 +20,11 @@ const defaultState = {
 
 export default (state = defaultState, action = {}) => {
   switch (action.type) {
-    case `${FETCH_MOVIE_DETAILS}_PENDING`: {
+    case `${FETCH_MOVIE_DETAILS}_PENDING` ||
+      `${FETCH_MOVIE_CAST}_PENDING` ||
+      `${FETCH_MOVIE_VIDEOS}_PENDING` ||
+      `${FETCH_MOVIE_REVIEWS}_PENDING` ||
+      `${FETCH_RELATED_MOVIES}_PENDING`: {
       return {
         ...state,
         loading: true
@@ -35,12 +39,7 @@ export default (state = defaultState, action = {}) => {
         productionCompanies: action.payload.data.production_companies
       };
     }
-    case `${FETCH_MOVIE_VIDEOS}_PENDING`: {
-      return {
-        ...state,
-        loading: true
-      };
-    }
+
     case `${FETCH_MOVIE_VIDEOS}_FULFILLED`: {
       const trailer = action.payload.data.results.filter(
         video => video.site === "YouTube"
@@ -52,12 +51,7 @@ export default (state = defaultState, action = {}) => {
         trailer: trailer
       };
     }
-    case `${FETCH_MOVIE_REVIEWS}_PENDING`: {
-      return {
-        ...state,
-        loading: true
-      };
-    }
+
     case `${FETCH_MOVIE_REVIEWS}_FULFILLED`: {
       return {
         ...state,
@@ -65,23 +59,12 @@ export default (state = defaultState, action = {}) => {
         reviews: action.payload.data.results
       };
     }
-    case `${FETCH_RELATED_MOVIES}_PENDING`: {
-      return {
-        ...state,
-        loading: true
-      };
-    }
+
     case `${FETCH_RELATED_MOVIES}_FULFILLED`: {
       return {
         ...state,
         loading: false,
         relatedMovies: action.payload.data.results
-      };
-    }
-    case `${FETCH_MOVIE_CAST}_PENDING`: {
-      return {
-        ...state,
-        loading: true
       };
     }
     case `${FETCH_MOVIE_CAST}_FULFILLED`: {

@@ -1,12 +1,18 @@
 language: node_js
 node_js:
   - "stable"
+addons:
+  sonarcloud:
+    organization: $SONAR_ORG
+    token:
+      secure: $SONAR_TOKEN
 cache:
   directories:
     - node_modules
 script:
-  - npm test
-  - npm test -- --coverage
+  - sonar-scanner
+  # - npm test
+  # - npm test -- --coverage
   - npm run build
 
 deploy:

@@ -15,7 +15,9 @@ const defaultState = {
 
 export default (state = defaultState, action = {}) => {
   switch (action.type) {
-    case `${FETCH_GENRE}_PENDING`: {
+    case `${FETCH_GENRE}_PENDING` ||
+      `${FETCH_MOVIES}_PENDING` ||
+      `${FETCH_MOVIES_BY_GENRE}_PENDING`: {
       return {
         ...state,
         loading: true
@@ -28,12 +30,7 @@ export default (state = defaultState, action = {}) => {
         genres: action.payload.data.genres
       };
     }
-    case `${FETCH_MOVIES}_PENDING`: {
-      return {
-        ...state,
-        loading: true
-      };
-    }
+
     case `${FETCH_MOVIES}_FULFILLED`: {
       return {
         ...state,
@@ -45,12 +42,7 @@ export default (state = defaultState, action = {}) => {
         genreId: 0
       };
     }
-    case `${FETCH_MOVIES_BY_GENRE}_PENDING`: {
-      return {
-        ...state,
-        loading: true
-      };
-    }
+
     case `${FETCH_MOVIES_BY_GENRE}_FULFILLED`: {
       return {
         ...state,

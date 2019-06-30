@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Rating from "react-rating";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import ReactPlayer from "react-player";
 import Labels from "./Labels";
 import ActorsList from "./ActorsList";
@@ -21,7 +21,7 @@ class MovieHeader extends Component {
     });
   }
   render() {
-    const { movie, genres, productionCompanies, trailer, actors } = this.props;
+    const { movie, genres, trailer, actors } = this.props;
     const headerStyle = {
       backgroundImage: `linear-gradient(rgba(3, 3, 3, 0.30), rgba(0, 0, 5, 0.30)), url(https://image.tmdb.org/t/p/w1400_and_h450_bestv2${movie.backdrop_path})`
     };
@@ -32,7 +32,6 @@ class MovieHeader extends Component {
     // Trailer video modal
     const modal = (
       <Modal
-        isOpen={true}
         size="lg"
         isOpen={this.state.modal}
         toggle={this.toggle}
@@ -57,6 +56,7 @@ class MovieHeader extends Component {
         >
           <img
             src={playIcon}
+            alt="Play"
             onClick={this.toggle}
             className="movie-trailer__play-icon"
           />
@@ -65,6 +65,7 @@ class MovieHeader extends Component {
         <div className="col-md-3">
           <img
             src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`}
+            alt={movie.original_title}
             className="img-responsive movie-poster"
           />
         </div>

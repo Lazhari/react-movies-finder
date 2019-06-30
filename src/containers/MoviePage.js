@@ -12,7 +12,6 @@ import {
 
 import MovieHeader from "../components/MovieHeader";
 import MoviesCardList from "../components/MoviesCardList";
-import ActorsList from "../components/ActorsList";
 import ReviewsList from "../components/ReviewsList";
 
 class MoviePage extends Component {

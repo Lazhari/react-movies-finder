@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-import { Card, CardImg, CardTitle, CardSubtitle, CardBody } from "reactstrap";
+import { Card, CardImg, CardTitle, CardBody } from "reactstrap";
 
 import placeholderImage from "../Images/abstract-image.jpg";
 

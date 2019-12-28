@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import { Route, Switch } from "react-router-dom";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 import Header from "./components/blocks/Header";
 import HomePage from "./containers/HomePage";
@@ -11,12 +12,16 @@ import MoviesCategoryContainer from "./containers/MoviesCategoryContainer";
 import MoviePage from "./containers/MoviePage";
 import ActorPage from "./containers/ActorPage";
 
+import theme from "./theme";
+import { ThemeProvider } from "@material-ui/core";
+
 class App extends Component {
   render() {
     return (
-      <div>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
         <Header />
-        <div className="container-fuild">
+        <div className="container-fluid">
           <div className="row">
             <div
               className="col-6 col-lg-2 col-md-2 sidebar-offcanvas"
@@ -36,7 +41,7 @@ class App extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </ThemeProvider>
     );
   }
 }

@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "4.8.1",
     "@material-ui/icons": "4.5.1",
+    "@material-ui/lab": "4.0.0-alpha.37",
     "axios": "^0.19.0",
     "bootstrap": "4.3.1",
     "enzyme": "^3.10.0",

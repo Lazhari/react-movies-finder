@@ -1,6 +1,14 @@
 import React from "react";
 import ContentLoader from "react-content-loader";
+import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
 import MovieCard from "./MovieCard";
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1
+  }
+}));
 
 const MoviesCardList = ({
   movies,
@@ -8,6 +16,7 @@ const MoviesCardList = ({
   hideOverview = false,
   itemsPerRow = 4
 }) => {
+  const classes = useStyles();
   const cardLoader = (
     <ContentLoader height={475} width={400} speed={10}>
       <rect x="1" y="-6" rx="0" ry="0" width="400" height="312" />
@@ -22,11 +31,7 @@ const MoviesCardList = ({
   );
   const moviesList = () => {
     return movies.map(movie => (
-      <div
-        className="col-lg-3 col-sm-4 col-md-4 "
-        style={{ paddingBottom: 10 }}
-        key={movie.id}
-      >
+      <Grid item lg={3} sm={4} md={4} xs={12} key={movie.id}>
         {loading ? (
           cardLoader
         ) : (
@@ -36,11 +41,17 @@ const MoviesCardList = ({
             hideOverview={hideOverview}
           />
         )}
-      </div>
+      </Grid>
     ));
   };
 
-  return <div className="row align-items-start">{moviesList()}</div>;
+  return (
+    <div className={classes.root}>
+      <Grid container spacing={3}>
+        {moviesList()}
+      </Grid>
+    </div>
+  );
 };
 
 export default MoviesCardList;

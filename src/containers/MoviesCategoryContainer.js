@@ -16,6 +16,7 @@ class MoviesCategoryContainer extends Component {
         genres={this.props.genres}
         loading={this.props.loading}
         genreId={this.props.genreId}
+        handleDrawerClose={this.props.handleDrawerClose}
       />
     );
   }

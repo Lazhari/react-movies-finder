@@ -19,7 +19,7 @@ const ActorsList = ({ actors, loading }) => {
   return (
     <div className={classes.root}>
       {actors.map(actor => {
-        return <ActorCard actor={actor} />;
+        return <ActorCard actor={actor} key={actor.id} />;
       })}
     </div>
   );

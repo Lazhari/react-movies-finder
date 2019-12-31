@@ -43,16 +43,14 @@ class MoviePage extends Component {
   render() {
     //const hasReviews = this.props.reviews && this.props.reviews.length;
     return (
-      <div className="row">
-        <div className="col-md-12">
-          <MovieHeader
-            movie={this.props.movie}
-            genres={this.props.genres}
-            productionCompanies={this.props.productionCompanies}
-            trailer={this.props.trailer}
-            actors={this.props.actors}
-          />
-        </div>
+      <div>
+        <MovieHeader
+          movie={this.props.movie}
+          genres={this.props.genres}
+          productionCompanies={this.props.productionCompanies}
+          trailer={this.props.trailer}
+          actors={this.props.actors}
+        />
         <div className="col-md-12">
           {this.props.reviews.length ? (
             <div className="col-md-12">

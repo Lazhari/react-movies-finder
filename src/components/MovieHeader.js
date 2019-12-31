@@ -1,112 +1,143 @@
 import React, { Component } from "react";
-import Rating from "react-rating";
-import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import ReactPlayer from "react-player";
+import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import Rating from "@material-ui/lab/Rating";
+import IconButton from "@material-ui/core/IconButton";
+import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
+import CloseIcon from "@material-ui/icons/Close";
+import Modal from "@material-ui/core/Modal";
+
 import Labels from "./Labels";
 import ActorsList from "./ActorsList";
-import playIcon from "../ic-play.svg";
 
-class MovieHeader extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      modal: false
-    };
-    this.toggle = this.toggle.bind(this);
+const useStyles = makeStyles(theme => ({
+  root: {},
+  header: {
+    height: 320,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 40,
+    marginBottom: 24
+  },
+  generalInfo: {
+    display: "flex",
+    alignItems: "center",
+    "& legend": {
+      width: "inherit",
+      marginRight: 8
+    }
+  },
+  modalContainer: {
+    position: "absolute",
+    height: "90vh",
+    width: "100%",
+    background: "#111"
+  },
+  modalHeader: {
+    height: "10vh",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: 4
   }
+}));
 
-  toggle() {
-    this.setState({
-      modal: !this.state.modal
-    });
-  }
-  render() {
-    const { movie, genres, trailer, actors } = this.props;
-    const headerStyle = {
-      backgroundImage: `linear-gradient(rgba(3, 3, 3, 0.30), rgba(0, 0, 5, 0.30)), url(https://image.tmdb.org/t/p/w1400_and_h450_bestv2${movie.backdrop_path})`
-    };
-    const getYear = stringDate => {
-      const d = new Date(stringDate);
-      return d.getFullYear();
-    };
-    // Trailer video modal
-    const modal = (
-      <Modal
-        size="lg"
-        isOpen={this.state.modal}
-        toggle={this.toggle}
-        style={{ maxWidth: "100%" }}
-      >
-        <ModalHeader toggle={this.toggle}>{trailer.name}</ModalHeader>
-        <ModalBody>
-          <ReactPlayer
-            url={`https://www.youtube.com/watch?v=${trailer.key}`}
-            playing
-            height="90vh"
-            width="100%"
-          />
-        </ModalBody>
-      </Modal>
-    );
-    return (
-      <div className="row">
-        <div
-          className="col-md-12 text-center movie-trailer"
-          style={headerStyle}
+const MovieHeader = ({ movie, genres, trailer, actors }) => {
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+  const headerStyle = {
+    backgroundImage: `linear-gradient(rgba(3, 3, 3, 0.30), rgba(0, 0, 5, 0.30)), url(https://image.tmdb.org/t/p/w1400_and_h450_bestv2${movie.backdrop_path})`
+  };
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  return (
+    <div className={classes.root}>
+      {trailer && trailer.key && (
+        <Modal
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+          disableScrollLock={true}
+          open={open}
+          onClose={handleClose}
         >
-          <img
-            src={playIcon}
-            alt="Play"
-            onClick={this.toggle}
-            className="movie-trailer__play-icon"
-          />
-          {trailer.key ? modal : null}
-        </div>
-        <div className="col-md-3">
+          <div class={classes.modalContainer}>
+            <div className={classes.modalHeader}>
+              <Typography variant="h5" component="h1">
+                Official Trailer
+              </Typography>
+              <IconButton onClick={handleClose}>
+                <CloseIcon />
+              </IconButton>
+            </div>
+            <ReactPlayer
+              url={`https://www.youtube.com/watch?v=${trailer.key}`}
+              controls={true}
+              playing
+              height="80vh"
+              width="100%"
+            />
+          </div>
+        </Modal>
+      )}
+
+      <div className={classes.header} style={headerStyle}>
+        <IconButton onClick={handleOpen} disabled={!trailer || !trailer.key}>
+          <PlayCircleOutlineIcon
+            style={{ fontSize: 64, color: "#c53364" }}
+          ></PlayCircleOutlineIcon>
+        </IconButton>
+      </div>
+      <Grid container spacing={2}>
+        <Grid item lg={3}>
           <img
             src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`}
             alt={movie.original_title}
             className="img-responsive movie-poster"
           />
-        </div>
-        <div className="col-md-8">
-          <div className="row">
-            <div className="col-md-12">
-              <h1 className="movie-title">{movie.original_title}</h1>
-              <h4 className="movie-release">{getYear(movie.release_date)}</h4>
-            </div>
+        </Grid>
+        <Grid item lg={9}>
+          <div>
+            <Typography variant="h5" component="h1">
+              {movie.original_title}
+            </Typography>
+            <Typography variant="h6" component="p">
+              {movie.release_date}
+            </Typography>
           </div>
-          <div className="row">
-            <div className="col-md-12">
-              <p className="movie-vote">
-                {movie.vote_average}{" "}
-                <Rating
-                  initialRating={movie.vote_average}
-                  emptySymbol="fa fa-star-o"
-                  fullSymbol="fa fa-star"
-                  stop={10}
-                  step={2}
-                />
-                <Labels labels={genres} />
-              </p>
-            </div>
+          <div className={classes.generalInfo}>
+            <Typography component="legend">{movie.vote_average}</Typography>
+            <Rating
+              name="read-only"
+              value={movie.vote_average / 2}
+              precision={0.1}
+              readOnly
+            />
+            <Labels labels={genres} />
           </div>
-          <div className="row movie-overview">
-            <div className="col-md-12">
-              <h1>Overview</h1>
-              <p>{movie.overview}</p>
-            </div>
+          <div>
+            <Typography variant="h6" component="h1">
+              Overview
+            </Typography>
+            <Typography variant="body1">{movie.overview}</Typography>
           </div>
-          <div className="row movie-billed">
-            <div className="col-md-12">
-              <h1>Top Billed Cast</h1>
-              <ActorsList actors={actors} />
-            </div>
+          <div>
+            <Typography variant="h6" component="h1">
+              Top Billed Cast
+            </Typography>
+            <ActorsList actors={actors} />
           </div>
-        </div>
-      </div>
-    );
-  }
-}
+        </Grid>
+      </Grid>
+    </div>
+  );
+};
 
 export default MovieHeader;

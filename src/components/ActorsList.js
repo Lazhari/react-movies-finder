@@ -1,16 +1,25 @@
 import React from "react";
 
+import { makeStyles } from "@material-ui/core/styles";
+
 import ActorCard from "./ActorCard";
 
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: "flex",
+    flexWrap: "wrap",
+    "& > *": {
+      margin: theme.spacing(0.5)
+    }
+  }
+}));
+
 const ActorsList = ({ actors, loading }) => {
+  const classes = useStyles();
   return (
-    <div className="row">
+    <div className={classes.root}>
       {actors.map(actor => {
-        return (
-          <div className="col" key={actor.id}>
-            <ActorCard actor={actor} />
-          </div>
-        );
+        return <ActorCard actor={actor} />;
       })}
     </div>
   );

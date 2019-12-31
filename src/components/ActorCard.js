@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 
-import { Card, CardImg, CardTitle, CardBody } from "reactstrap";
+import Chip from "@material-ui/core/Chip";
+import Avatar from "@material-ui/core/Avatar";
+import Link from "@material-ui/core/Link";
 
 import placeholderImage from "../Images/abstract-image.jpg";
 
@@ -11,21 +13,17 @@ const ActorCard = ({ actor }) => {
     e.target.src = placeholderImage;
   };
   return (
-    <Card className="actor-card">
-      <CardImg
-        top
-        width="100%"
-        src={`https://image.tmdb.org/t/p/w276_and_h350_face${actor.profile_path}`}
-        alt={actor.name}
-        onError={onErrorLoadingImage}
-        className="actor-card__face"
+    <Link to={`/actors/${actor.id}`} component={RouterLink}>
+      <Chip
+        avatar={
+          <Avatar
+            alt={actor.name}
+            src={`https://image.tmdb.org/t/p/w276_and_h350_face${actor.profile_path}`}
+          />
+        }
+        label={actor.name}
       />
-      <CardBody className="actor-card__body">
-        <CardTitle className="h6 actor-card__name">
-          <Link to={`/actors/${actor.id}`}>{actor.name}</Link>
-        </CardTitle>
-      </CardBody>
-    </Card>
+    </Link>
   );
 };
 

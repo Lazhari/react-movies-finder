@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import ReactPlayer from "react-player";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -16,6 +16,7 @@ const useStyles = makeStyles(theme => ({
   root: {},
   header: {
     height: 320,
+    width: "100%",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -62,8 +63,8 @@ const MovieHeader = ({ movie, genres, trailer, actors }) => {
     <div className={classes.root}>
       {trailer && trailer.key && (
         <Modal
-          aria-labelledby="simple-modal-title"
-          aria-describedby="simple-modal-description"
+          aria-labelledby="Movie Trailer"
+          aria-describedby="The Movie Trailer"
           disableScrollLock={true}
           open={open}
           onClose={handleClose}

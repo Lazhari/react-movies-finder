@@ -6,12 +6,7 @@ import Chip from "@material-ui/core/Chip";
 import Avatar from "@material-ui/core/Avatar";
 import Link from "@material-ui/core/Link";
 
-import placeholderImage from "../Images/abstract-image.jpg";
-
 const ActorCard = ({ actor }) => {
-  const onErrorLoadingImage = e => {
-    e.target.src = placeholderImage;
-  };
   return (
     <Link to={`/actors/${actor.id}`} component={RouterLink}>
       <Chip

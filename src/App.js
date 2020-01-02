@@ -126,16 +126,14 @@ function App() {
           [classes.contentShift]: open
         })}
       >
-        <div className={classes.drawerHeader}>
-          <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route exact path="/upcoming" component={UpcomingPage} />
-            <Route exact path="/series" component={TopSeriesPage} />
-            <Route exact path="/genres/:id/:genre" component={GenrePage} />
-            <Route exact path="/movies/:id" component={MoviePage} />
-            <Route exact path="/actors/:id" component={ActorPage} />
-          </Switch>
-        </div>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/upcoming" component={UpcomingPage} />
+          <Route exact path="/series" component={TopSeriesPage} />
+          <Route exact path="/genres/:id/:genre" component={GenrePage} />
+          <Route exact path="/movies/:id" component={MoviePage} />
+          <Route exact path="/actors/:id" component={ActorPage} />
+        </Switch>
       </main>
     </ThemeProvider>
   );

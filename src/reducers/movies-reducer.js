@@ -35,7 +35,7 @@ export default (state = defaultState, action = {}) => {
       return {
         ...state,
         loading: false,
-        movies: [...state.movies, ...action.payload.data.results],
+        movies: action.payload.data.results,
         page: action.payload.data.page,
         totalPages: action.payload.data.total_pages,
         totalResults: action.payload.data.total_results,

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Pagination from "react-js-pagination";
-import InfiniteScroll from "react-infinite-scroller";
 
 import { fetchMovies } from "../actions/moviesActions";
 
@@ -9,17 +8,11 @@ import MoviesCardList from "../components/MoviesCardList";
 
 class HomePage extends Component {
   componentWillMount() {
-    // this.props.fetchMovies();
+    this.props.fetchMovies();
   }
 
   handlePageChange(pageNumber) {
-    console.log(pageNumber);
     this.props.fetchMovies(pageNumber);
-  }
-
-  loadMore(page) {
-    console.log(page);
-    return true;
   }
 
   render() {
@@ -27,18 +20,7 @@ class HomePage extends Component {
       <div>
         <h1 className="text-center page-title">Popular Movies</h1>
         <div className="row">
-          <InfiniteScroll
-            pageStart={0}
-            hasMore={true}
-            loadMore={this.handlePageChange.bind(this)}
-            loader={
-              <div className="loader" key={0}>
-                Loading ...
-              </div>
-            }
-          >
-            <MoviesCardList movies={this.props.movies} cols={6} />
-          </InfiniteScroll>
+          <MoviesCardList movies={this.props.movies} cols={6} />
 
           {this.props.movies && this.props.movies.length ? (
             <div className="col-md-12 text-center">

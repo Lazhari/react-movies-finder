@@ -20,8 +20,8 @@ const useStyles = makeStyles(theme => ({
     maxWidth: 345
   },
   media: {
-    height: 0,
-    paddingTop: "168.87%" // 16:9
+    width: "100%",
+    minHeight: 364
   },
   expand: {
     transform: "rotate(0deg)",
@@ -60,10 +60,11 @@ const MovieCard = ({ movie, loading, hideOverview }) => {
         underline="none"
         variant="inherit"
       >
-        <CardMedia
+        <img
+          alt={movie.original_title}
           className={classes.media}
-          image={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`}
-          title={movie.title}
+          onError={onErrorLoadingImage}
+          src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`}
         />
       </Link>
 

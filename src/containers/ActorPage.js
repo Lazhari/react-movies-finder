@@ -1,12 +1,29 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { withStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent";
+import Typography from "@material-ui/core/Typography";
+import Divider from "@material-ui/core/Divider";
+import Grid from "@material-ui/core/Grid";
 
-import { Card, CardImg, CardTitle, CardSubtitle, CardBody } from "reactstrap";
 import MoviesCardList from "../components/MoviesCardList";
 import { getPeopleProfile, getActorCreditMovies } from "../actions/actorAction";
 
-import placeholderImage from "../Images/abstract-image.jpg";
+const styles = {
+  root: {
+    marginTop: 50
+  },
+  media: {
+    height: 0,
+    paddingTop: "56.25%"
+  },
+  divider: {
+    margin: "16px 0"
+  }
+};
 
 class ActorPage extends Component {
   componentWillMount() {
@@ -21,44 +38,53 @@ class ActorPage extends Component {
   }
   render() {
     const { profile, movies } = this.props;
-    const onErrorLoadingImage = e => {
-      e.target.src = placeholderImage;
-    };
+    const { classes } = this.props;
     return (
-      <div className="row">
-        <div className="col-md-3">
-          <Card
-            style={{ backgroundColor: "transparent", border: "none" }}
-            className="actor-card"
-          >
-            <CardImg
-              top
-              src={`https://image.tmdb.org/t/p/w276_and_h350_face${profile.profile_path}`}
-              alt={profile.name}
-              onError={onErrorLoadingImage}
-              className="actor-card__face--page"
+      <div className={classes.root}>
+        <Grid container spacing={2}>
+          <Grid item xs={3}>
+            <Card>
+              <CardMedia
+                className={classes.media}
+                image={`https://image.tmdb.org/t/p/w276_and_h350_face${profile.profile_path}`}
+                title={profile.name}
+              />
+              <CardContent className="actor-card__body">
+                <Typography
+                  gutterBottom
+                  variant="h5"
+                  component="h2"
+                  gutterBottom
+                >
+                  <Link to={`/actors/${profile.id}`}>{profile.name}</Link>
+                </Typography>
+                <Typography variant="body1" gutterBottom>
+                  Birth day: {profile.birthday}
+                </Typography>
+                <Typography variant="body1" gutterBottom>
+                  Place of birth: {profile.place_of_birth}
+                </Typography>
+                <Divider className={classes.divider} />
+                <Typography gutterBottom variant="h5" component="h2">
+                  Biography
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  {profile.biography}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xs={9}>
+            <Typography variant="h5" component="h1" gutterBottom>
+              Known For
+            </Typography>
+            <MoviesCardList
+              movies={movies}
+              hideOverview={true}
+              itemsPerRow={4}
             />
-            <CardBody className="actor-card__body">
-              <CardTitle className="h6 actor-card__name">
-                <Link to={`/actors/${profile.id}`}>{profile.name}</Link>
-              </CardTitle>
-              <CardSubtitle className="h6 actor-card__info">
-                <strong>Birth day:</strong> {profile.birthday}
-              </CardSubtitle>
-              <CardSubtitle className="h6 actor-card__info">
-                <strong>Place of birth:</strong> {profile.place_of_birth}
-              </CardSubtitle>
-            </CardBody>
-          </Card>
-        </div>
-        <div className="col-md-9 actor-page-info">
-          <h4 className="actor-page-info__title">Biography:</h4>
-          <p className="actor-page-info__content">{profile.biography}</p>
-        </div>
-        <div className="col-md-12 movies-list">
-          <h1 className="text-center h3 movies-list__title">Movies</h1>
-          <MoviesCardList movies={movies} hideOverview={true} itemsPerRow={4} />
-        </div>
+          </Grid>
+        </Grid>
       </div>
     );
   }
@@ -71,4 +97,4 @@ function mapStateToProps(state) {
 export default connect(
   mapStateToProps,
   { getPeopleProfile, getActorCreditMovies }
-)(ActorPage);
+)(withStyles(styles)(ActorPage));

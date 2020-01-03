@@ -46,7 +46,7 @@
       "pre-commit": "pretty-quick --staged"
     }
   },
-  "homepage": "https://lazhari.github.io/react-movies-finder",
+  "homepage": ".",
   "browserslist": {
     "production": [
       ">0.2%",

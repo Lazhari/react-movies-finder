@@ -12,7 +12,7 @@ import MoviesCategoryContainer from "./containers/MoviesCategoryContainer";
 import MoviePage from "./containers/MoviePage";
 import ActorPage from "./containers/ActorPage";
 
-import theme from "./theme";
+import customTheme from "./theme";
 import { ThemeProvider } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -94,7 +94,7 @@ function App() {
     setOpen(false);
   };
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={customTheme}>
       <CssBaseline />
       <Header handleDrawerOpen={handleDrawerOpen} open={open} />
       <Drawer
@@ -111,7 +111,7 @@ function App() {
             Categories
           </Typography>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "ltr" ? (
+            {customTheme.direction === "ltr" ? (
               <ChevronLeftIcon />
             ) : (
               <ChevronRightIcon />

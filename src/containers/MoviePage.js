@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import { withStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+
 import {
   fetchMovie,
   fetchMovieVideos,
@@ -13,6 +16,24 @@ import {
 import MovieHeader from "../components/MovieHeader";
 import MoviesCardList from "../components/MoviesCardList";
 import ReviewsList from "../components/ReviewsList";
+
+const styles = {
+  root: {},
+  reviewsContainer: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 16
+  },
+  moviesContainer: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 16
+  }
+};
 
 class MoviePage extends Component {
   componentWillMount() {
@@ -41,9 +62,9 @@ class MoviePage extends Component {
   }
 
   render() {
-    //const hasReviews = this.props.reviews && this.props.reviews.length;
+    const { classes } = this.props;
     return (
-      <div>
+      <div className={classes.root}>
         <MovieHeader
           movie={this.props.movie}
           genres={this.props.genres}
@@ -51,34 +72,26 @@ class MoviePage extends Component {
           trailer={this.props.trailer}
           actors={this.props.actors}
         />
-        <div className="col-md-12">
-          {this.props.reviews.length ? (
-            <div className="col-md-12">
-              <h1
-                className="text-center h3"
-                style={{ padding: ".6em 0px .3em 10px" }}
-              >
-                Reviews
-              </h1>
-              <ReviewsList reviews={this.props.reviews} />
-            </div>
-          ) : null}
-          {this.props.relatedMovies.length ? (
-            <div className="col-md-12">
-              <h1
-                className="text-center h3"
-                style={{ padding: ".3em 0px .3em 10px" }}
-              >
-                Related Movies
-              </h1>
-              <MoviesCardList
-                movies={this.props.relatedMovies}
-                hideOverview={true}
-                itemsPerRow={4}
-              />
-            </div>
-          ) : null}
-        </div>
+        {this.props.reviews && this.props.reviews.length && (
+          <div className={classes.reviewsContainer}>
+            <Typography variant="h5" component="h1" gutterBottom>
+              Reviews
+            </Typography>
+            <ReviewsList reviews={this.props.reviews} />
+          </div>
+        )}
+        {this.props.relatedMovies && this.props.relatedMovies.length && (
+          <div className={classes.moviesContainer}>
+            <Typography variant="h5" component="h1" gutterBottom>
+              Related Movies
+            </Typography>
+            <MoviesCardList
+              movies={this.props.relatedMovies}
+              hideOverview={true}
+              itemsPerRow={4}
+            />
+          </div>
+        )}
       </div>
     );
   }
@@ -98,4 +111,4 @@ export default connect(
     fetchMovieActors,
     cleaningMovieReducer
   }
-)(MoviePage);
+)(withStyles(styles)(MoviePage));

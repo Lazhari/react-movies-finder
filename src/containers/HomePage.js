@@ -1,10 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Pagination from "react-js-pagination";
+import { withStyles } from "@material-ui/core/styles";
+
+import Typography from "@material-ui/core/Typography";
 
 import { fetchMovies } from "../actions/moviesActions";
 
 import MoviesCardList from "../components/MoviesCardList";
+
+const styles = {
+  root: {
+    marginTop: 50
+  }
+};
 
 class HomePage extends Component {
   componentWillMount() {
@@ -16,9 +25,12 @@ class HomePage extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
-      <div>
-        <h1 className="text-center page-title">Popular Movies</h1>
+      <div className={classes.root}>
+        <Typography variant="h4" component="h1" gutterBottom>
+          Popular Movies
+        </Typography>
         <div className="row">
           <MoviesCardList movies={this.props.movies} cols={6} />
 
@@ -52,4 +64,4 @@ function mapStateToProps(state) {
 export default connect(
   mapStateToProps,
   { fetchMovies }
-)(HomePage);
+)(withStyles(styles)(HomePage));

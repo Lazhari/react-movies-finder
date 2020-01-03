@@ -2,9 +2,24 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Pagination from "react-js-pagination";
 
+import { withStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+
 import { fetchMovies } from "../actions/moviesActions";
 
 import MoviesCardList from "../components/MoviesCardList";
+
+const styles = {
+  root: {
+    marginTop: 50
+  },
+  paginationContainer: {
+    marginTop: 24,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+  }
+};
 
 class UpcomingPage extends Component {
   componentWillMount() {
@@ -17,29 +32,26 @@ class UpcomingPage extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
-      <div>
-        <h1 className="text-center page-title">Upcoming Movies</h1>
-        <div className="row">
-          <div className="col-md-12">
-            <MoviesCardList movies={this.props.movies} cols={6} />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-12">
-            <Pagination
-              activePage={this.props.page}
-              itemsCountPerPage={20}
-              totalItemsCount={this.props.totalResults}
-              pageRangeDisplayed={5}
-              innerClass="pagination"
-              itemClass="page-item"
-              linkClass="page-link"
-              disabledClass="disabled"
-              activeClass="active"
-              onChange={this.handlePageChange.bind(this)}
-            />
-          </div>
+      <div className={classes.root}>
+        <Typography variant="h4" component="h1" gutterBottom>
+          Upcoming Movies
+        </Typography>
+        <MoviesCardList movies={this.props.movies} cols={6} />
+        <div className={classes.paginationContainer}>
+          <Pagination
+            activePage={this.props.page}
+            itemsCountPerPage={20}
+            totalItemsCount={this.props.totalResults}
+            pageRangeDisplayed={5}
+            innerClass="pagination"
+            itemClass="page-item"
+            linkClass="page-link"
+            disabledClass="disabled"
+            activeClass="active"
+            onChange={this.handlePageChange.bind(this)}
+          />
         </div>
       </div>
     );
@@ -54,4 +66,4 @@ function mapStateToProps(state) {
 export default connect(
   mapStateToProps,
   { fetchMovies }
-)(UpcomingPage);
+)(withStyles(styles)(UpcomingPage));

@@ -7,7 +7,6 @@ import store from "./store";
 import App from "./App";
 import ScrollToTop from "./components/ScrollToTop";
 import registerServiceWorker from "./registerServiceWorker";
-import "./styles/main.scss";
 
 ReactDOM.render(
   <Router basename="/">

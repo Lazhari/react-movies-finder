@@ -7,17 +7,10 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/styles";
 
-const noTextDecoration = {
-  textDecoration: "inherit"
-};
-
 const useStyles = makeStyles(theme => ({
-  root: {
-    "& a:hover": noTextDecoration
-  },
-  linkItem: {
-    "&:hover": noTextDecoration,
-    "& span:hover": noTextDecoration
+  root: {},
+  linkText: {
+    color: "white"
   }
 }));
 
@@ -26,16 +19,16 @@ const Sidebar = ({ genres, loading, genreId, handleDrawerClose }) => {
   const genreLinks = () => {
     return genres.map(genre => {
       return (
-        <ListItem button key={genre.id} className={classes.root}>
-          <Link
-            component={RouterLink}
-            to={`/genres/${genre.id}/${genre.name}`}
-            onClick={handleDrawerClose}
-            underline="none"
-          >
-            <ListItemText primary={genre.name} className={classes.linkItem} />
-          </Link>
-        </ListItem>
+        <Link
+          component={RouterLink}
+          to={`/genres/${genre.id}/${genre.name}`}
+          onClick={handleDrawerClose}
+          underline="none"
+        >
+          <ListItem button key={genre.id} className={classes.root}>
+            <ListItemText primary={genre.name} className={classes.linkText} />
+          </ListItem>
+        </Link>
       );
     });
   };

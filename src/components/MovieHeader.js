@@ -23,6 +23,11 @@ const useStyles = makeStyles(theme => ({
     marginTop: 40,
     marginBottom: 24
   },
+  moviePoster: {
+    width: "100%",
+    borderRadius: 5,
+    boxShadow: theme.shadows[1]
+  },
   generalInfo: {
     display: "flex",
     alignItems: "center",
@@ -101,7 +106,7 @@ const MovieHeader = ({ movie, genres, trailer, actors }) => {
           <img
             src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`}
             alt={movie.original_title}
-            className="img-responsive movie-poster"
+            className={classes.moviePoster}
           />
         </Grid>
         <Grid item lg={9}>

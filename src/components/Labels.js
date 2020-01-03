@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
 const Labels = ({ labels }) => {
   const classes = useStyles();
   return (
-    <span className={classes.root}>
+    <div className={classes.root}>
       {labels.map(label => (
         <Chip
           variant="outlined"
@@ -24,7 +24,7 @@ const Labels = ({ labels }) => {
           key={label.id}
         />
       ))}
-    </span>
+    </div>
   );
 };
 

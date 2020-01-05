@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Pagination from "react-js-pagination";
+import Pagination from "material-ui-flat-pagination";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 
@@ -30,8 +30,10 @@ class GenrePage extends Component {
     }
   }
 
-  handlePageChange(pageNumber) {
+  handlePageChange(offset) {
+    const pageNumber = offset / 20 + 1;
     this.props.fetchMoviesByGenre(pageNumber, this.props.match.params.id);
+    window.scrollTo(0, 0);
   }
 
   render() {
@@ -44,16 +46,10 @@ class GenrePage extends Component {
         <MoviesCardList movies={this.props.movies} cols={6} />
         <div className={classes.paginationContainer}>
           <Pagination
-            activePage={this.props.page}
-            itemsCountPerPage={20}
-            totalItemsCount={this.props.totalResults}
-            pageRangeDisplayed={5}
-            innerClass="pagination"
-            itemClass="page-item"
-            linkClass="page-link"
-            disabledClass="disabled"
-            activeClass="active"
-            onChange={this.handlePageChange.bind(this)}
+            limit={20}
+            offset={(this.props.page - 1) * 20}
+            total={this.props.totalResults}
+            onClick={(e, offset) => this.handlePageChange(offset)}
           />
         </div>
       </div>

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import Pagination from "react-js-pagination";
 import { withStyles } from "@material-ui/core/styles";
 
 import Typography from "@material-ui/core/Typography";
@@ -24,6 +23,7 @@ class HomePage extends Component {
   handlePageChange(offset) {
     const pageNumber = offset / 20 + 1;
     this.props.fetchMovies(pageNumber);
+    window.scrollTo(0, 0);
   }
 
   render() {

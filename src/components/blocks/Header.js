@@ -28,6 +28,12 @@ const useStyles = makeStyles(theme => ({
       duration: theme.transitions.duration.leavingScreen
     })
   },
+  appTitle: {
+    flexGrow: 1,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+  },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
     marginLeft: drawerWidth,
@@ -43,7 +49,8 @@ const useStyles = makeStyles(theme => ({
     display: "none"
   },
   title: {
-    flexGrow: 1
+    flexGrow: 1,
+    marginLeft: 8
   },
   link: {
     margin: theme.spacing(1, 1.5)
@@ -114,10 +121,12 @@ function Header({ handleDrawerOpen, open }) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
+          <div className={classes.appTitle}>
             <img src={logo} alt="Movies Finder" />
-            Movies Finder
-          </Typography>
+            <Typography variant="h6" className={classes.title}>
+              Movies Finder
+            </Typography>
+          </div>
           <nav>
             <Link
               variant="button"

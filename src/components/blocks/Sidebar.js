@@ -24,8 +24,9 @@ const Sidebar = ({ genres, loading, genreId, handleDrawerClose }) => {
           to={`/genres/${genre.id}/${genre.name}`}
           onClick={handleDrawerClose}
           underline="none"
+          key={genre.id}
         >
-          <ListItem button key={genre.id} className={classes.root}>
+          <ListItem button className={classes.root}>
             <ListItemText primary={genre.name} className={classes.linkText} />
           </ListItem>
         </Link>

@@ -57,7 +57,7 @@ const useStyles = makeStyles(theme => ({
   },
   loadingBar: {
     backgroundColor: "white",
-    height: theme.spacing(1),
+    height: theme.spacing(0.25),
     top: 0,
     position: "absolute"
   },

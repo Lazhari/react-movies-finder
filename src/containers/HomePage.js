@@ -8,6 +8,7 @@ import Pagination from "material-ui-flat-pagination";
 import { fetchMovies } from "../actions/moviesActions";
 
 import MoviesCardList from "../components/MoviesCardList";
+import Loader from "../components/common/Loader";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -17,6 +18,20 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center"
+  },
+  loader: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "calc(100vh - 160px)"
+  },
+  loaderSpinOne: {
+    position: "relative",
+    right: 50
+  },
+  loaderSpinTwo: {
+    position: "relative",
+    right: 80
   }
 }));
 
@@ -39,35 +54,26 @@ const HomePage = () => {
       <Typography variant="h4" component="h1" gutterBottom>
         Popular Movies
       </Typography>
-      <div>
-        <MoviesCardList movies={movies} cols={6} />
+      {loading ? (
+        <Loader />
+      ) : (
+        <div>
+          <MoviesCardList movies={movies} cols={6} />
 
-        {movies && movies.length ? (
-          <div className={classes.paginationContainer}>
-            <Pagination
-              limit={20}
-              offset={(page - 1) * 20}
-              total={totalResults}
-              onClick={(e, offset) => handlePageChange(offset)}
-            />
-          </div>
-        ) : null}
-      </div>
+          {movies && movies.length ? (
+            <div className={classes.paginationContainer}>
+              <Pagination
+                limit={20}
+                offset={(page - 1) * 20}
+                total={totalResults}
+                onClick={(e, offset) => handlePageChange(offset)}
+              />
+            </div>
+          ) : null}
+        </div>
+      )}
     </div>
   );
 };
-
-// class HomePage extends Component {
-//   componentWillMount() {
-//     fetchMovies();
-//   }
-
-//   render() {}
-// }
-
-// function mapStateToProps(state) {
-//   const { movies, loading, page, totalResults } = state.moviesStore;
-//   return { movies, loading, page, totalResults };
-// }
 
 export default HomePage;

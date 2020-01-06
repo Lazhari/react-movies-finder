@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { withStyles } from "@material-ui/core/styles";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { makeStyles } from "@material-ui/core/styles";
 
 import Typography from "@material-ui/core/Typography";
 import Pagination from "material-ui-flat-pagination";
@@ -9,55 +9,65 @@ import { fetchMovies } from "../actions/moviesActions";
 
 import MoviesCardList from "../components/MoviesCardList";
 
-const styles = {
+const useStyles = makeStyles(theme => ({
   root: {
     marginTop: 50
+  },
+  paginationContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
   }
+}));
+
+const HomePage = () => {
+  const dispatch = useDispatch();
+  const { movies, loading, page, totalResults } = useSelector(
+    state => state.moviesStore
+  );
+  const classes = useStyles();
+  const handlePageChange = offset => {
+    const pageNumber = offset / 20 + 1;
+    dispatch(fetchMovies(pageNumber));
+    window.scrollTo(0, 0);
+  };
+  useEffect(() => {
+    dispatch(fetchMovies());
+  }, []);
+  return (
+    <div className={classes.root}>
+      <Typography variant="h4" component="h1" gutterBottom>
+        Popular Movies
+      </Typography>
+      <div>
+        <MoviesCardList movies={movies} cols={6} />
+
+        {movies && movies.length ? (
+          <div className={classes.paginationContainer}>
+            <Pagination
+              limit={20}
+              offset={(page - 1) * 20}
+              total={totalResults}
+              onClick={(e, offset) => handlePageChange(offset)}
+            />
+          </div>
+        ) : null}
+      </div>
+    </div>
+  );
 };
 
-class HomePage extends Component {
-  componentWillMount() {
-    this.props.fetchMovies();
-  }
+// class HomePage extends Component {
+//   componentWillMount() {
+//     fetchMovies();
+//   }
 
-  handlePageChange(offset) {
-    const pageNumber = offset / 20 + 1;
-    this.props.fetchMovies(pageNumber);
-    window.scrollTo(0, 0);
-  }
+//   render() {}
+// }
 
-  render() {
-    const { classes } = this.props;
-    return (
-      <div className={classes.root}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Popular Movies
-        </Typography>
-        <div className="row">
-          <MoviesCardList movies={this.props.movies} cols={6} />
+// function mapStateToProps(state) {
+//   const { movies, loading, page, totalResults } = state.moviesStore;
+//   return { movies, loading, page, totalResults };
+// }
 
-          {this.props.movies && this.props.movies.length ? (
-            <div className="col-md-12 text-center">
-              <Pagination
-                limit={20}
-                offset={(this.props.page - 1) * 20}
-                total={this.props.totalResults}
-                onClick={(e, offset) => this.handlePageChange(offset)}
-              />
-            </div>
-          ) : null}
-        </div>
-      </div>
-    );
-  }
-}
-
-function mapStateToProps(state) {
-  const { movies, loading, page, totalResults } = state.moviesStore;
-  return { movies, loading, page, totalResults };
-}
-
-export default connect(
-  mapStateToProps,
-  { fetchMovies }
-)(withStyles(styles)(HomePage));
+export default HomePage;

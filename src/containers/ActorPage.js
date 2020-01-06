@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -8,6 +8,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
+import Link from "@material-ui/core/Link";
 
 import MoviesCardList from "../components/MoviesCardList";
 import { getPeopleProfile, getActorCreditMovies } from "../actions/actorAction";
@@ -50,9 +51,16 @@ class ActorPage extends Component {
                 title={profile.name}
               />
               <CardContent className="actor-card__body">
-                <Typography gutterBottom variant="h5" component="h2">
-                  <Link to={`/actors/${profile.id}`}>{profile.name}</Link>
-                </Typography>
+                <Link
+                  component={RouterLink}
+                  to={`/actors/${profile.id}`}
+                  underline="none"
+                >
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {profile.name}
+                  </Typography>
+                </Link>
+
                 <Typography variant="body1" gutterBottom>
                   Birth day: {profile.birthday}
                 </Typography>

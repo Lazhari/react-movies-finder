@@ -17,7 +17,8 @@ const useStyles = makeStyles(theme => ({
   paginationContainer: {
     display: "flex",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    marginTop: theme.spacing(2)
   },
   loader: {
     display: "flex",
@@ -48,7 +49,7 @@ const HomePage = () => {
   };
   useEffect(() => {
     dispatch(fetchMovies());
-  }, []);
+  }, [dispatch]);
   return (
     <div className={classes.root}>
       <Typography variant="h4" component="h1" gutterBottom>

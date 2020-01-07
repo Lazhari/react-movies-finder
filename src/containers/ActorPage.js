@@ -1,7 +1,8 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
-import { withStyles } from "@material-ui/core/styles";
+
+import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
@@ -12,8 +13,9 @@ import Link from "@material-ui/core/Link";
 
 import MoviesCardList from "../components/MoviesCardList";
 import { getPeopleProfile, getActorCreditMovies } from "../actions/actorAction";
+import Loader from "../components/common/Loader";
 
-const styles = {
+const useStyles = makeStyles(theme => ({
   root: {
     marginTop: 50
   },
@@ -24,24 +26,23 @@ const styles = {
   divider: {
     margin: "16px 0"
   }
-};
+}));
 
-class ActorPage extends Component {
-  componentWillMount() {
-    const { id } = this.props.match.params;
-    this.props.getPeopleProfile(id);
-    this.props.getActorCreditMovies(id);
-  }
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.match.params.id !== this.props.match.params.id) {
-      this.props.getPeopleProfile(this.props.match.params.id);
-    }
-  }
-  render() {
-    const { profile, movies } = this.props;
-    const { classes } = this.props;
-    return (
-      <div className={classes.root}>
+const ActorPage = ({ match }) => {
+  const dispatch = useDispatch();
+  const { profile, movies, loading } = useSelector(state => state.actorStore);
+  const classes = useStyles();
+
+  useEffect(() => {
+    dispatch(getPeopleProfile(match.params.id));
+    dispatch(getActorCreditMovies(match.params.id));
+  }, [dispatch, match.params.id]);
+
+  return (
+    <div className={classes.root}>
+      {loading ? (
+        <Loader />
+      ) : (
         <Grid container spacing={2}>
           <Grid item xs={3}>
             <Card>
@@ -93,16 +94,9 @@ class ActorPage extends Component {
             />
           </Grid>
         </Grid>
-      </div>
-    );
-  }
-}
+      )}
+    </div>
+  );
+};
 
-function mapStateToProps(state) {
-  return state.actorStore;
-}
-
-export default connect(
-  mapStateToProps,
-  { getPeopleProfile, getActorCreditMovies }
-)(withStyles(styles)(ActorPage));
+export default ActorPage;

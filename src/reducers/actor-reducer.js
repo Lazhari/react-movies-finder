@@ -21,13 +21,15 @@ export default (state = defaultState, action = {}) => {
     case `${GET_ACTOR_PROFILE}_FULFILLED`: {
       return {
         ...state,
-        profile: action.payload.data
+        profile: action.payload.data,
+        loading: false
       };
     }
     case `${GET_ACTOR_CREDIT_MOVIES}_FULFILLED`: {
       return {
         ...state,
-        movies: action.payload.data.cast
+        movies: action.payload.data.cast,
+        loading: false
       };
     }
     default: {

@@ -53,10 +53,16 @@ const useStyles = makeStyles(theme => ({
   },
   drawer: {
     width: drawerWidth,
-    flexShrink: 0
+    flexShrink: 0,
+    [theme.breakpoints.down("md")]: {
+      width: "100%"
+    }
   },
   drawerPaper: {
-    width: drawerWidth
+    width: drawerWidth,
+    [theme.breakpoints.down("md")]: {
+      width: "100%"
+    }
   },
   drawerHeader: {
     display: "flex",

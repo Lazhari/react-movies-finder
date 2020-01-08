@@ -9,6 +9,8 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
 import Link from "@material-ui/core/Link";
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import clsx from "clsx";
 
 import MenuIcon from "@material-ui/icons/Menu";
@@ -102,6 +104,8 @@ const useStyles = makeStyles(theme => ({
 
 function Header({ handleDrawerOpen, open }) {
   const classes = useStyles();
+  const theme = useTheme();
+  const isUpSm = useMediaQuery(theme.breakpoints.up("sm"));
   return (
     <div className={classes.root}>
       <AppBar
@@ -127,48 +131,52 @@ function Header({ handleDrawerOpen, open }) {
               Movies Finder
             </Typography>
           </div>
-          <nav>
-            <Link
-              variant="button"
-              color="textPrimary"
-              component={RouterLink}
-              to="/"
-              className={classes.link}
-            >
-              Popular Movies
-            </Link>
-            <Link
-              variant="button"
-              color="textPrimary"
-              component={RouterLink}
-              to="/upcoming"
-              className={classes.link}
-            >
-              Upcoming Movies
-            </Link>
-            <Link
-              variant="button"
-              color="textPrimary"
-              component={RouterLink}
-              to="/series"
-              className={classes.link}
-            >
-              Popular Series
-            </Link>
-          </nav>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput
-              }}
-              inputProps={{ "aria-label": "search" }}
-            />
-          </div>
+          {isUpSm && (
+            <>
+              <nav>
+                <Link
+                  variant="button"
+                  color="textPrimary"
+                  component={RouterLink}
+                  to="/"
+                  className={classes.link}
+                >
+                  Popular Movies
+                </Link>
+                <Link
+                  variant="button"
+                  color="textPrimary"
+                  component={RouterLink}
+                  to="/upcoming"
+                  className={classes.link}
+                >
+                  Upcoming Movies
+                </Link>
+                <Link
+                  variant="button"
+                  color="textPrimary"
+                  component={RouterLink}
+                  to="/series"
+                  className={classes.link}
+                >
+                  Popular Series
+                </Link>
+              </nav>
+              <div className={classes.search}>
+                <div className={classes.searchIcon}>
+                  <SearchIcon />
+                </div>
+                <InputBase
+                  placeholder="Search…"
+                  classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput
+                  }}
+                  inputProps={{ "aria-label": "search" }}
+                />
+              </div>
+            </>
+          )}
         </Toolbar>
       </AppBar>
     </div>

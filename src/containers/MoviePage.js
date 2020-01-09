@@ -74,7 +74,7 @@ const MoviePage = ({ match }) => {
             trailer={trailer}
             actors={actors}
           />
-          {reviews && reviews.length && (
+          {reviews.length > 0 && (
             <div className={classes.reviewsContainer}>
               <Typography variant="h5" component="h1" gutterBottom>
                 Reviews
@@ -82,7 +82,7 @@ const MoviePage = ({ match }) => {
               <ReviewsList reviews={reviews} />
             </div>
           )}
-          {relatedMovies && relatedMovies.length && (
+          {relatedMovies.length > 0 && (
             <div className={classes.moviesContainer}>
               <Typography variant="h5" component="h1" gutterBottom>
                 Related Movies

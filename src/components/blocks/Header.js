@@ -140,6 +140,7 @@ function Header({ handleDrawerOpen, open }) {
                   component={RouterLink}
                   to="/"
                   className={classes.link}
+                  underline="none"
                 >
                   Popular Movies
                 </Link>
@@ -149,6 +150,7 @@ function Header({ handleDrawerOpen, open }) {
                   component={RouterLink}
                   to="/upcoming"
                   className={classes.link}
+                  underline="none"
                 >
                   Upcoming Movies
                 </Link>
@@ -158,6 +160,7 @@ function Header({ handleDrawerOpen, open }) {
                   component={RouterLink}
                   to="/series"
                   className={classes.link}
+                  underline="none"
                 >
                   Popular Series
                 </Link>

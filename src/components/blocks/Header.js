@@ -16,7 +16,7 @@ import clsx from "clsx";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 
-import logo from "../../logo.svg";
+import Logo from "../common/icons/Logo";
 
 const drawerWidth = 240;
 
@@ -126,7 +126,7 @@ function Header({ handleDrawerOpen, open }) {
             <MenuIcon />
           </IconButton>
           <div className={classes.appTitle}>
-            <img src={logo} alt="Movies Finder" />
+            <Logo fill="#fff" height={54} width={54} />
             <Typography variant="h6" className={classes.title}>
               Movies Finder
             </Typography>

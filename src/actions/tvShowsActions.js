@@ -1,5 +1,5 @@
 import { client } from "./";
-import { FETCH_TV_SHOWS } from "./actionsType";
+import { FETCH_TV_SHOWS, FETCH_TV_GENRES } from "./actionsType";
 
 export function fetchTvShows(page = 1, filters = {}) {
   return dispatch => {
@@ -12,6 +12,17 @@ export function fetchTvShows(page = 1, filters = {}) {
           page,
           ...filters
         }
+      })
+    });
+  };
+}
+
+export function fetchTvGenres() {
+  return dispatch => {
+    dispatch({
+      type: FETCH_TV_GENRES,
+      payload: client.get("/genre/tv/list", {
+        language: "en-US"
       })
     });
   };

@@ -11,6 +11,7 @@ import GenrePage from "./containers/GenrePage";
 import MoviesCategoryContainer from "./containers/MoviesCategoryContainer";
 import MoviePage from "./containers/MoviePage";
 import ActorPage from "./containers/ActorPage";
+import TvShowPage from "./containers/TvShowPage";
 
 import customTheme from "./theme";
 import { ThemeProvider } from "@material-ui/core";
@@ -138,6 +139,7 @@ function App() {
           <Route exact path="/series" component={TopSeriesPage} />
           <Route exact path="/genres/:id/:genre" component={GenrePage} />
           <Route exact path="/movies/:id" component={MoviePage} />
+          <Route exact path="/tvShows/:id" component={TvShowPage} />
           <Route exact path="/actors/:id" component={ActorPage} />
         </Switch>
       </main>

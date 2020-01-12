@@ -137,10 +137,10 @@ function App() {
           <Route exact path="/" component={HomePage} />
           <Route exact path="/upcoming" component={UpcomingPage} />
           <Route exact path="/series" component={TopSeriesPage} />
-          <Route exact path="/genres/:id/:genre" component={GenrePage} />
-          <Route exact path="/movies/:id" component={MoviePage} />
-          <Route exact path="/tvShows/:id" component={TvShowPage} />
-          <Route exact path="/actors/:id" component={ActorPage} />
+          <Route path="/genres/:id/:genre" component={GenrePage} />
+          <Route path="/movies/:id" component={MoviePage} />
+          <Route path="/tvShows/:id" component={TvShowPage} />
+          <Route path="/actors/:id" component={ActorPage} />
         </Switch>
       </main>
     </ThemeProvider>

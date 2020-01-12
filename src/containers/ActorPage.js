@@ -10,6 +10,8 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import MoviesCardList from "../components/MoviesCardList";
 import { getPeopleProfile, getActorCreditMovies } from "../actions/actorAction";
@@ -32,6 +34,8 @@ const ActorPage = ({ match }) => {
   const dispatch = useDispatch();
   const { profile, movies, loading } = useSelector(state => state.actorStore);
   const classes = useStyles();
+  const theme = useTheme();
+  const isUpSm = useMediaQuery(theme.breakpoints.up("sm"));
 
   useEffect(() => {
     dispatch(getPeopleProfile(match.params.id));
@@ -44,7 +48,7 @@ const ActorPage = ({ match }) => {
         <Loader />
       ) : (
         <Grid container spacing={2}>
-          <Grid item xs={3}>
+          <Grid item xs={12} lg={3}>
             <Card>
               <CardMedia
                 className={classes.media}
@@ -68,22 +72,26 @@ const ActorPage = ({ match }) => {
                 <Typography variant="body1" gutterBottom>
                   Place of birth: {profile.place_of_birth}
                 </Typography>
-                <Divider className={classes.divider} />
-                <Typography gutterBottom variant="h5" component="h2">
-                  Biography
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="textSecondary"
-                  component="p"
-                  align="justify"
-                >
-                  {profile.biography}
-                </Typography>
+                {isUpSm && (
+                  <>
+                    <Divider className={classes.divider} />
+                    <Typography gutterBottom variant="h5" component="h2">
+                      Biography
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                      align="justify"
+                    >
+                      {profile.biography}
+                    </Typography>
+                  </>
+                )}
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={9}>
+          <Grid item xs={12} lg={9}>
             <Typography variant="h5" component="h1" gutterBottom>
               Known For
             </Typography>

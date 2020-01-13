@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const MoviePage = ({ match }) => {
+const MoviePage = ({ movieId }) => {
   const dispatch = useDispatch();
   const {
     movie,
@@ -51,15 +51,15 @@ const MoviePage = ({ match }) => {
   const classes = useStyles();
 
   useEffect(() => {
-    dispatch(fetchMovie(match.params.id));
-    dispatch(fetchMovieVideos(match.params.id));
-    dispatch(fetchMovieReviews(match.params.id));
-    dispatch(fetchRelatedMovies(match.params.id));
-    dispatch(fetchMovieActors(match.params.id));
+    dispatch(fetchMovie(movieId));
+    dispatch(fetchMovieVideos(movieId));
+    dispatch(fetchMovieReviews(movieId));
+    dispatch(fetchRelatedMovies(movieId));
+    dispatch(fetchMovieActors(movieId));
     return () => {
       cleaningMovieReducer();
     };
-  }, [dispatch, match.params.id]);
+  }, [dispatch, movieId]);
 
   return (
     <div className={classes.root}>

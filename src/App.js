@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Route, Switch } from "react-router-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import { Router } from "@reach/router";
 
 import Header from "./components/blocks/Header";
 import HomePage from "./containers/HomePage";
@@ -133,15 +133,15 @@ function App() {
           [classes.contentShift]: open
         })}
       >
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/upcoming" component={UpcomingPage} />
-          <Route exact path="/series" component={TopSeriesPage} />
-          <Route path="/genres/:id/:genre" component={GenrePage} />
-          <Route path="/movies/:id" component={MoviePage} />
-          <Route path="/tvShows/:id" component={TvShowPage} />
-          <Route path="/actors/:id" component={ActorPage} />
-        </Switch>
+        <Router>
+          <HomePage path="/" />
+          <UpcomingPage path="/upcoming" />
+          <TopSeriesPage path="/series" />
+          <GenrePage path="/genres/:genreId/:genre" />
+          <MoviePage path="/movies/:movieId" />
+          <TvShowPage path="/tvShows/:tvShowId" />
+          <ActorPage path="/actors/:actorId" />
+        </Router>
       </main>
     </ThemeProvider>
   );

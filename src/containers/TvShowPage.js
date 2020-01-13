@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const TvShowPage = () => {
+const TvShowPage = ({ tvShowId }) => {
   const classes = useStyles();
   return <div className={classes.root}>TV Show Details</div>;
 };

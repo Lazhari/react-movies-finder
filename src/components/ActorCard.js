@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink } from "@reach/router";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Chip from "@material-ui/core/Chip";

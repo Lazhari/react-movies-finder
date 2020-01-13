@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink } from "@reach/router";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const ActorPage = ({ match }) => {
+const ActorPage = ({ actorId }) => {
   const dispatch = useDispatch();
   const { profile, movies, loading } = useSelector(state => state.actorStore);
   const classes = useStyles();
@@ -38,9 +38,9 @@ const ActorPage = ({ match }) => {
   const isUpSm = useMediaQuery(theme.breakpoints.up("sm"));
 
   useEffect(() => {
-    dispatch(getPeopleProfile(match.params.id));
-    dispatch(getActorCreditMovies(match.params.id));
-  }, [dispatch, match.params.id]);
+    dispatch(getPeopleProfile(actorId));
+    dispatch(getActorCreditMovies(actorId));
+  }, [dispatch, actorId]);
 
   return (
     <div className={classes.root}>

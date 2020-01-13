@@ -134,12 +134,14 @@ const MovieHeader = ({ movie, genres, trailer, actors }) => {
             </Typography>
             <Typography variant="body1">{movie.overview}</Typography>
           </div>
-          <div>
-            <Typography variant="h6" component="h1">
-              Top Billed Cast
-            </Typography>
-            <ActorsList actors={actors} />
-          </div>
+          {actors && actors.length ? (
+            <div>
+              <Typography variant="h6" component="h1">
+                Top Billed Cast
+              </Typography>
+              <ActorsList actors={actors} />
+            </div>
+          ) : null}
         </Grid>
       </Grid>
     </div>

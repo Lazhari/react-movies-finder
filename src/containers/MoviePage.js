@@ -67,13 +67,15 @@ const MoviePage = ({ match }) => {
         <Loader />
       ) : (
         <>
-          <MovieHeader
-            movie={movie}
-            genres={genres}
-            productionCompanies={productionCompanies}
-            trailer={trailer}
-            actors={actors}
-          />
+          {movie && movie.id && (
+            <MovieHeader
+              movie={movie}
+              genres={genres}
+              productionCompanies={productionCompanies}
+              trailer={trailer}
+              actors={actors}
+            />
+          )}
           {reviews.length > 0 && (
             <div className={classes.reviewsContainer}>
               <Typography variant="h5" component="h1" gutterBottom>

@@ -12,9 +12,7 @@ export function fetchMovie(id) {
   return dispatch => {
     dispatch({
       type: FETCH_MOVIE_DETAILS,
-      payload: client.get(
-        `/movie/${id}?api_key=fed69657ba4cc6e1078d2a6a95f51c8c&language=en-US`
-      )
+      payload: client.get(`/movie/${id}`)
     });
   };
 }
@@ -23,9 +21,7 @@ export function fetchMovieVideos(id) {
   return dispatch => {
     dispatch({
       type: FETCH_MOVIE_VIDEOS,
-      payload: client.get(
-        `/movie/${id}/videos?api_key=fed69657ba4cc6e1078d2a6a95f51c8c&language=en-US`
-      )
+      payload: client.get(`/movie/${id}/videos`)
     });
   };
 }
@@ -34,9 +30,7 @@ export function fetchMovieReviews(id) {
   return dispatch => {
     dispatch({
       type: FETCH_MOVIE_REVIEWS,
-      payload: client.get(
-        `/movie/${id}/reviews?api_key=fed69657ba4cc6e1078d2a6a95f51c8c&language=en-US`
-      )
+      payload: client.get(`/movie/${id}/reviews`)
     });
   };
 }
@@ -45,9 +39,7 @@ export function fetchRelatedMovies(id) {
   return dispatch => {
     dispatch({
       type: FETCH_RELATED_MOVIES,
-      payload: client.get(
-        `/movie/${id}/similar?api_key=fed69657ba4cc6e1078d2a6a95f51c8c&language=en-US`
-      )
+      payload: client.get(`/movie/${id}/similar`)
     });
   };
 }
@@ -56,9 +48,7 @@ export function fetchMovieActors(id) {
   return dispatch => {
     dispatch({
       type: FETCH_MOVIE_CAST,
-      payload: client.get(
-        `/movie/${id}/credits?api_key=fed69657ba4cc6e1078d2a6a95f51c8c&language=en-US`
-      )
+      payload: client.get(`/movie/${id}/credits`)
     });
   };
 }

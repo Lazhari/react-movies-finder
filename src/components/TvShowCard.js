@@ -10,7 +10,7 @@ import Fab from "@material-ui/core/Fab";
 import Link from "@material-ui/core/Link";
 import { Typography } from "@material-ui/core";
 
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink } from "@reach/router";
 
 import placeholderImage from "../Images/abstract-image.jpg";
 

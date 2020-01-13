@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const GenrePage = ({ match }) => {
+const GenrePage = ({ genre, genreId }) => {
   const dispatch = useDispatch();
   const { movies, loading, page, totalResults } = useSelector(
     state => state.moviesStore
@@ -30,18 +30,18 @@ const GenrePage = ({ match }) => {
 
   const handlePageChange = offset => {
     const pageNumber = offset / 20 + 1;
-    dispatch(fetchMoviesByGenre(pageNumber, match.params.id));
+    dispatch(fetchMoviesByGenre(pageNumber, genreId));
     window.scrollTo(0, 0);
   };
 
   useEffect(() => {
-    dispatch(fetchMoviesByGenre(1, match.params.id));
-  }, [dispatch, match.params.id]);
+    dispatch(fetchMoviesByGenre(1, genreId));
+  }, [dispatch, genreId]);
 
   return (
     <div className={classes.root}>
       <Typography variant="h4" component="h1" gutterBottom>
-        {match.params.genre}
+        {genre}
       </Typography>
       {loading ? (
         <Loader />

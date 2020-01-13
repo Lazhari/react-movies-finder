@@ -1,6 +1,8 @@
-import { FETCH_TV_SHOWS } from "../actions/actionsType";
+import { FETCH_TV_SHOWS, FETCH_TV_GENRES } from "../actions/actionsType";
 const defaultState = {
   tvShows: [],
+  genres: [],
+  loadingGenres: false,
   loading: false,
   page: 1,
   totalPages: 1,
@@ -10,10 +12,12 @@ const defaultState = {
 
 export default (state = defaultState, action = {}) => {
   switch (action.type) {
-    case `${FETCH_TV_SHOWS}_PENDING`: {
+    case `${FETCH_TV_SHOWS}_PENDING`:
+    case `${FETCH_TV_GENRES}_PENDING`: {
       return {
         ...state,
-        loading: true
+        loading: true,
+        loadingGenres: true
       };
     }
     case `${FETCH_TV_SHOWS}_FULFILLED`: {
@@ -24,6 +28,13 @@ export default (state = defaultState, action = {}) => {
         page: action.payload.data.page,
         totalPages: action.payload.data.total_pages,
         totalResults: action.payload.data.total_results
+      };
+    }
+    case `${FETCH_TV_GENRES}_FULFILLED`: {
+      return {
+        ...state,
+        loadingGenres: false,
+        genres: action.payload.data.genres
       };
     }
     default: {

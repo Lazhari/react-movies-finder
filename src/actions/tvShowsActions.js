@@ -22,7 +22,10 @@ export function fetchTvGenres() {
     dispatch({
       type: FETCH_TV_GENRES,
       payload: client.get("/genre/tv/list", {
-        language: "en-US"
+        params: {
+          api_key: "fed69657ba4cc6e1078d2a6a95f51c8c",
+          language: "en-US"
+        }
       })
     });
   };

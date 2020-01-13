@@ -7,8 +7,6 @@ export function fetchTvShows(page = 1, filters = {}) {
       type: FETCH_TV_SHOWS,
       payload: client.get("/discover/tv", {
         params: {
-          api_key: "fed69657ba4cc6e1078d2a6a95f51c8c",
-          language: "en-US",
           page,
           ...filters
         }
@@ -21,12 +19,7 @@ export function fetchTvGenres() {
   return dispatch => {
     dispatch({
       type: FETCH_TV_GENRES,
-      payload: client.get("/genre/tv/list", {
-        params: {
-          api_key: "fed69657ba4cc6e1078d2a6a95f51c8c",
-          language: "en-US"
-        }
-      })
+      payload: client.get("/genre/tv/list")
     });
   };
 }

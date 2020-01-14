@@ -1,34 +1,37 @@
 import React from "react";
-import { mount } from "enzyme";
-import { MemoryRouter } from "@reach/router";
-import { BrowserRouter as Router } from "@reach/router";
+import { render } from "@testing-library/react";
+import {
+  createHistory,
+  createMemorySource,
+  LocationProvider
+} from "@reach/router";
+import "@testing-library/jest-dom/extend-expect";
 import { Provider } from "react-redux";
-import ScrollToTop from "../components/ScrollToTop";
 import App from "../App";
 import store from "../store";
 
-import HomePage from "../containers/HomePage";
+function renderWithRouter(
+  ui,
+  { route = "/", history = createHistory(createMemorySource(route)) } = {}
+) {
+  return {
+    ...render(<LocationProvider history={history}>{ui}</LocationProvider>),
+    history
+  };
+}
 
-describe("Testing the / route", () => {
-  let wrapper;
-  beforeEach(() => {
-    wrapper = mount(
-      <Router basename="/">
-        <Provider store={store}>
-          <ScrollToTop>
-            <MemoryRouter initialEntries={["/"]}>
-              <App />
-            </MemoryRouter>
-          </ScrollToTop>
-        </Provider>
-      </Router>
-    );
-  });
+test("full app rendering/navigating", async () => {
+  const {
+    container,
+    history: { navigate }
+  } = renderWithRouter(
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
+  const appContainer = container;
+  expect(appContainer.innerHTML).toMatch("Popular Movies");
 
-  it("shows a HomePage", () => {
-    expect(wrapper.find(HomePage).length).toEqual(1);
-  });
-  afterEach(() => {
-    wrapper.unmount();
-  });
+  await navigate("/upcoming");
+  expect(container.innerHTML).toMatch("Upcoming Movies");
 });

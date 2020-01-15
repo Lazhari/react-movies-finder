@@ -74,7 +74,7 @@ const sortOptions = [
 const TopSeriesPage = () => {
   const dispatch = useDispatch();
   const { tvShows, loading, page, totalResults, genres } = useSelector(
-    state => state.tvShows
+    state => state.tvShowsStore
   );
   const classes = useStyles();
   const [sortBy, setSortBy] = React.useState("popularity.desc");

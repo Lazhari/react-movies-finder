@@ -1,16 +1,16 @@
 import { combineReducers } from "redux";
 import { loadingBarReducer } from "react-redux-loading-bar";
-import MoviesReducer from "./movies-reducer";
-import MovieReducer from "./movie-reducer";
-import ActorReducer from "./actor-reducer";
-import TvShowsReducer from "./tv-shows-reducer";
+import moviesReducer from "./moviesReducer";
+import movieReducer from "./movieReducer";
+import actorReducer from "./actorReducer";
+import tvShowsReducer from "./tvShowsReducer";
 
 const reducers = {
-  moviesStore: MoviesReducer,
-  movieStore: MovieReducer,
-  actorStore: ActorReducer,
+  moviesStore: moviesReducer,
+  movieStore: movieReducer,
+  actorStore: actorReducer,
   loadingBar: loadingBarReducer,
-  tvShows: TvShowsReducer
+  tvShowsStore: tvShowsReducer
 };
 
 const rootReducer = combineReducers(reducers);

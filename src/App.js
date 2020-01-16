@@ -1,7 +1,7 @@
 import React from "react";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
-import { Router } from "@reach/router";
+import { Router, Redirect } from "@reach/router";
 
 import Header from "./components/blocks/Header";
 import HomePage from "./containers/HomePage";
@@ -134,6 +134,7 @@ function App() {
         })}
       >
         <Router>
+          <Redirect noThrow from="*" to="/" />
           <HomePage path="/" />
           <UpcomingPage path="/upcoming" />
           <TopSeriesPage path="/series" />

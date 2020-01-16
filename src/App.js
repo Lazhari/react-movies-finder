@@ -26,6 +26,13 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import clsx from "clsx";
 
+import BottomNavigation from "@material-ui/core/BottomNavigation";
+import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
+import RestoreIcon from "@material-ui/icons/Restore";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import LocationOnIcon from "@material-ui/icons/LocationOn";
+import Hidden from "@material-ui/core/Hidden";
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -86,6 +93,11 @@ const useStyles = makeStyles(theme => ({
       duration: theme.transitions.duration.enteringScreen
     }),
     marginLeft: 0
+  },
+  BottomNavigation: {
+    position: "fixed",
+    width: "100%",
+    top: "calc(100vh - 56px)"
   }
 }));
 
@@ -144,6 +156,23 @@ function App() {
           <ActorPage path="/actors/:actorId" />
         </Router>
       </main>
+      <Hidden mdUp>
+        <BottomNavigation
+          value={"Recents"}
+          onChange={(event, newValue) => {
+            console.log(newValue);
+          }}
+          showLabels
+          className={classes.BottomNavigation}
+        >
+          <BottomNavigationAction label="Top Movies" icon={<RestoreIcon />} />
+          <BottomNavigationAction label="Up coming" icon={<FavoriteIcon />} />
+          <BottomNavigationAction
+            label="Top Series"
+            icon={<LocationOnIcon />}
+          />
+        </BottomNavigation>
+      </Hidden>
     </ThemeProvider>
   );
 }

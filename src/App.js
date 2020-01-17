@@ -1,7 +1,7 @@
 import React from "react";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
-import { Router, Redirect } from "@reach/router";
+import { Router, Redirect, Link as RouterLink } from "@reach/router";
 
 import Header from "./components/blocks/Header";
 import HomePage from "./containers/HomePage";
@@ -28,9 +28,9 @@ import clsx from "clsx";
 
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-import RestoreIcon from "@material-ui/icons/Restore";
+import LayersIcon from "@material-ui/icons/Layers";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import LocationOnIcon from "@material-ui/icons/LocationOn";
+import TheatersIcon from "@material-ui/icons/Theaters";
 import Hidden from "@material-ui/core/Hidden";
 
 const drawerWidth = 240;
@@ -165,11 +165,23 @@ function App() {
           showLabels
           className={classes.BottomNavigation}
         >
-          <BottomNavigationAction label="Top Movies" icon={<RestoreIcon />} />
-          <BottomNavigationAction label="Up coming" icon={<FavoriteIcon />} />
+          <BottomNavigationAction
+            label="Top Movies"
+            icon={<FavoriteIcon />}
+            component={RouterLink}
+            to="/"
+          />
+          <BottomNavigationAction
+            label="Up coming"
+            icon={<LayersIcon />}
+            component={RouterLink}
+            to="/upcoming"
+          />
           <BottomNavigationAction
             label="Top Series"
-            icon={<LocationOnIcon />}
+            icon={<TheatersIcon />}
+            component={RouterLink}
+            to="/series"
           />
         </BottomNavigation>
       </Hidden>

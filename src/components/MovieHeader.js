@@ -31,9 +31,16 @@ const useStyles = makeStyles(theme => ({
   generalInfo: {
     display: "flex",
     alignItems: "center",
+    marginTop: theme.spacing(2),
     "& legend": {
       width: "inherit",
       marginRight: 8
+    }
+  },
+  rating: {
+    display: "flex",
+    [theme.breakpoints.down("lg")]: {
+      marginBottom: theme.spacing(2)
     }
   },
   modalContainer: {
@@ -119,14 +126,20 @@ const MovieHeader = ({ movie, genres, trailer, actors }) => {
             </Typography>
           </div>
           <div className={classes.generalInfo}>
-            <Typography component="legend">{movie.vote_average}</Typography>
-            <Rating
-              name="read-only"
-              value={movie.vote_average / 2}
-              precision={0.1}
-              readOnly
-            />
-            <Labels labels={genres} />
+            <Grid container>
+              <Grid item lg={6} className={classes.rating}>
+                <Typography component="legend">{movie.vote_average}</Typography>
+                <Rating
+                  name="read-only"
+                  value={movie.vote_average / 2}
+                  precision={0.1}
+                  readOnly
+                />
+              </Grid>
+              <Grid item lg={6}>
+                <Labels labels={genres} />
+              </Grid>
+            </Grid>
           </div>
           <div>
             <Typography variant="h6" component="h1">

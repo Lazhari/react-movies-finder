@@ -1,6 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import { Link as RouterLink } from "@reach/router";
 import Chip from "@material-ui/core/Chip";
+import Link from "@material-ui/core/Link";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -9,6 +11,9 @@ const useStyles = makeStyles(theme => ({
     "& > *": {
       margin: theme.spacing(0.5)
     }
+  },
+  chip: {
+    cursor: "pointer"
   }
 }));
 
@@ -17,12 +22,19 @@ const Labels = ({ labels }) => {
   return (
     <div className={classes.root}>
       {labels.map(label => (
-        <Chip
-          variant="outlined"
-          size="small"
-          label={label.name}
-          key={label.id}
-        />
+        <Link
+          component={RouterLink}
+          to={`/genres/${label.id}/${label.name}`}
+          underline="none"
+        >
+          <Chip
+            variant="outlined"
+            size="small"
+            className={classes.chip}
+            label={label.name}
+            key={label.id}
+          />
+        </Link>
       ))}
     </div>
   );

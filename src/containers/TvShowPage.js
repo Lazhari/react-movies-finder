@@ -5,13 +5,14 @@ import Typography from "@material-ui/core/Typography";
 
 import { getTvShowDetails } from "../actions/tvShowAction";
 import Loader from "../components/common/Loader";
+import Labels from "../components/Labels";
+import ActorsList from "../components/ActorsList";
 
 const useStyles = makeStyles(theme => ({
   root: {
     // display: "flex"
   },
   header: {
-    height: 320,
     width: "100%",
     display: "flex",
     justifyContent: "flex-start",
@@ -26,11 +27,14 @@ const useStyles = makeStyles(theme => ({
     boxShadow: theme.shadows[1]
   },
   infoBlock: {
-    alignSelf: "normal",
     marginLeft: theme.spacing(4)
   },
   subTitle: {
     marginLeft: theme.spacing(1)
+  },
+  labels: {
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2)
   }
 }));
 
@@ -68,10 +72,20 @@ const TvShowPage = ({ tvShowId }) => {
               <Typography variant="h6" component="h2" gutterBottom>
                 Overview
               </Typography>
-              <Typography>{tvShow.overview}</Typography>
-              <Typography variant="h6" component="h2">
-                Featured Crew
-              </Typography>
+              <Typography gutterBottom>{tvShow.overview}</Typography>
+              {tvShow && tvShow.genres && (
+                <div className={classes.labels}>
+                  <Labels labels={tvShow.genres} />
+                </div>
+              )}
+              {tvShow && tvShow.created_by ? (
+                <div>
+                  <Typography variant="h6" component="h1" gutterBottom>
+                    Top Billed Cast
+                  </Typography>
+                  <ActorsList actors={tvShow.created_by} />
+                </div>
+              ) : null}
             </div>
           </div>
         </>

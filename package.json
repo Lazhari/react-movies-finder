@@ -25,7 +25,7 @@
     "redux-form": "^8.2.6",
     "redux-promise-middleware": "^6.1.2",
     "redux-thunk": "^2.2.0",
-    "snyk": "^1.316.1"
+    "snyk": "^1.437.2"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "4.2.4",

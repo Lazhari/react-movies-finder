@@ -3,17 +3,6 @@ import React from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { Router, Redirect, Link as RouterLink } from "@reach/router";
 
-import Header from "./components/blocks/Header";
-import HomePage from "./containers/HomePage";
-import TopSeriesPage from "./containers/TopSeriesPage";
-import UpcomingPage from "./containers/UpcomingPage";
-import GenrePage from "./containers/GenrePage";
-import MoviesCategoryContainer from "./containers/MoviesCategoryContainer";
-import MoviePage from "./containers/MoviePage";
-import ActorPage from "./containers/ActorPage";
-import TvShowPage from "./containers/TvShowPage";
-
-import customTheme from "./theme";
 import { ThemeProvider } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -32,6 +21,18 @@ import LayersIcon from "@material-ui/icons/Layers";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import TheatersIcon from "@material-ui/icons/Theaters";
 import Hidden from "@material-ui/core/Hidden";
+
+import Header from "./components/blocks/Header";
+import HomePage from "./pages/HomePage";
+import TopSeriesPage from "./pages/TopSeriesPage";
+import UpcomingPage from "./pages/UpcomingPage";
+import GenrePage from "./pages/GenrePage";
+import MoviesCategoryContainer from "./pages/MoviesCategoryContainer";
+import MoviePage from "./pages/MoviePage";
+import ActorPage from "./pages/ActorPage";
+import TvShowPage from "./pages/TvShowPage";
+
+import customTheme from "./theme";
 
 const drawerWidth = 240;
 

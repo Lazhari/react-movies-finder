@@ -9,7 +9,7 @@ const defaultState = {
   movies: []
 };
 
-export default (state = defaultState, action = {}) => {
+function actorReducer(state = defaultState, action = {}) {
   switch (action.type) {
     case `${GET_ACTOR_PROFILE}_PENDING`:
     case `${GET_ACTOR_CREDIT_MOVIES}_PENDING`: {
@@ -36,4 +36,6 @@ export default (state = defaultState, action = {}) => {
       return state;
     }
   }
-};
+}
+
+export default actorReducer;

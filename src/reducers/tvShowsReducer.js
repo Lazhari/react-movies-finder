@@ -10,7 +10,7 @@ const defaultState = {
   genreId: 0
 };
 
-export default (state = defaultState, action = {}) => {
+function tvShowsReducer(state = defaultState, action = {}) {
   switch (action.type) {
     case `${FETCH_TV_SHOWS}_PENDING`:
     case `${FETCH_TV_GENRES}_PENDING`: {
@@ -41,4 +41,6 @@ export default (state = defaultState, action = {}) => {
       return state;
     }
   }
-};
+}
+
+export default tvShowsReducer;

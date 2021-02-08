@@ -1,17 +1,18 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Pagination from "material-ui-flat-pagination";
 
+import Pagination from "material-ui-flat-pagination";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 
-import { fetchMovies } from "../actions/moviesActions";
-import MoviesCardList from "../components/MoviesCardList";
-import Loader from "../components/common/Loader";
+import { fetchMovies } from "../src/actions/moviesActions";
+
+import MoviesCardList from "../src/components/MoviesCardList";
+import Loader from "../src/components/common/Loader";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: 50,
+    marginTop: theme.spacing(10),
   },
   paginationContainer: {
     marginTop: 24,

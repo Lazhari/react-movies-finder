@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -13,9 +14,12 @@ import MuiLink from "@material-ui/core/Link";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
-import MoviesCardList from "../components/MoviesCardList";
-import { getPeopleProfile, getActorCreditMovies } from "../actions/actorAction";
-import Loader from "../components/common/Loader";
+import MoviesCardList from "../../src/components/MoviesCardList";
+import {
+  getPeopleProfile,
+  getActorCreditMovies,
+} from "../../src/actions/actorAction";
+import Loader from "../../src/components/common/Loader";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,7 +34,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ActorPage = ({ actorId }) => {
+const ActorPage = () => {
+  const router = useRouter();
+  const { id: actorId } = router.query;
   const dispatch = useDispatch();
   const { profile, movies, loading } = useSelector((state) => state.actorStore);
   const classes = useStyles();
@@ -38,8 +44,10 @@ const ActorPage = ({ actorId }) => {
   const isUpSm = useMediaQuery(theme.breakpoints.up("sm"));
 
   useEffect(() => {
-    dispatch(getPeopleProfile(actorId));
-    dispatch(getActorCreditMovies(actorId));
+    if (actorId) {
+      dispatch(getPeopleProfile(actorId));
+      dispatch(getActorCreditMovies(actorId));
+    }
   }, [dispatch, actorId]);
 
   return (

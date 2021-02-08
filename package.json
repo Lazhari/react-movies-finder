@@ -26,7 +26,7 @@
     "redux-form": "^8.3.7",
     "redux-promise-middleware": "^6.1.2",
     "redux-thunk": "^2.2.0",
-    "snyk": "^1.440.5",
+    "snyk": "^1.446.0",
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {
@@ -66,5 +66,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "snyk": true
 }

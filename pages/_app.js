@@ -24,7 +24,7 @@ import clsx from "clsx";
 
 import theme from "../src/theme";
 import Header from "../src/components/blocks/Header";
-import MoviesCategoryContainer from "../src/pages/MoviesCategoryContainer";
+import Sidebar from "../src/components/blocks/Sidebar";
 import { useStore } from "../src/store";
 
 const drawerWidth = 240;
@@ -154,7 +154,7 @@ export default function App(props) {
                 </IconButton>
               </div>
               <Divider />
-              <MoviesCategoryContainer handleDrawerClose={handleDrawerClose} />
+              <Sidebar handleDrawerClose={handleDrawerClose} />
             </Drawer>
             <Component {...pageProps} />
           </Container>

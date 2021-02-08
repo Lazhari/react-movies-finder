@@ -22,3 +22,6 @@ yarn-error.log*
 
 # ignore the sonarqube report
 .scannerwork/
+
+# ignore next build 
+.next/

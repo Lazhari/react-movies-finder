@@ -10,6 +10,7 @@
     "axios": "^0.21.1",
     "clsx": "1.1.1",
     "material-ui-flat-pagination": "4.1.1",
+    "next": "^10.0.6",
     "prop-types": "15.7.2",
     "react": "^17.0.1",
     "react-content-loader": "6.0.1",
@@ -19,7 +20,6 @@
     "react-player": "^2.8.2",
     "react-redux": "^7.2.2",
     "react-redux-loading-bar": "5.0.0",
-    "react-scripts": "4.0.2",
     "react-spinners": "0.10.4",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.2",
@@ -41,10 +41,10 @@
     "sonarqube-scanner": "^2.8.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "next test",
     "flow": "flow",
     "snyk-protect": "snyk protect",
     "prepare": "yarn run snyk-protect"

@@ -1,9 +1,10 @@
 import React from "react";
 
 import { withStyles } from "@material-ui/core/styles";
-import MuiExpansionPanel from "@material-ui/core/ExpansionPanel";
-import MuiExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-import MuiExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+
+import MuiExpansionPanel from "@material-ui/core/Accordion";
+import MuiExpansionPanelSummary from "@material-ui/core/AccordionSummary";
+import MuiExpansionPanelDetails from "@material-ui/core/AccordionDetails";
 import Typography from "@material-ui/core/Typography";
 
 const ExpansionPanel = withStyles({

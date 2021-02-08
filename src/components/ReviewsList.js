@@ -11,16 +11,16 @@ const ExpansionPanel = withStyles({
     border: "1px solid rgba(0, 0, 0, .125)",
     boxShadow: "none",
     "&:not(:last-child)": {
-      borderBottom: 0
+      borderBottom: 0,
     },
     "&:before": {
-      display: "none"
+      display: "none",
     },
     "&$expanded": {
-      margin: "auto"
-    }
+      margin: "auto",
+    },
   },
-  expanded: {}
+  expanded: {},
 })(MuiExpansionPanel);
 
 const ExpansionPanelSummary = withStyles({
@@ -30,27 +30,27 @@ const ExpansionPanelSummary = withStyles({
     marginBottom: -1,
     minHeight: 56,
     "&$expanded": {
-      minHeight: 56
-    }
+      minHeight: 56,
+    },
   },
   content: {
     "&$expanded": {
-      margin: "12px 0"
-    }
+      margin: "12px 0",
+    },
   },
-  expanded: {}
+  expanded: {},
 })(MuiExpansionPanelSummary);
 
-const ExpansionPanelDetails = withStyles(theme => ({
+const ExpansionPanelDetails = withStyles((theme) => ({
   root: {
-    padding: theme.spacing(2)
-  }
+    padding: theme.spacing(2),
+  },
 }))(MuiExpansionPanelDetails);
 
 const ReviewsList = ({ reviews }) => {
   const [expanded, setExpanded] = React.useState("panel1");
 
-  const handleChange = panel => (event, newExpanded) => {
+  const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
   return (
@@ -61,7 +61,7 @@ const ReviewsList = ({ reviews }) => {
             square
             expanded={expanded === `panel${index + 1}`}
             onChange={handleChange(`panel${index + 1}`)}
-            key={review.id}
+            key={review.id || index}
           >
             <ExpansionPanelSummary
               aria-controls={`panel${index + 1}d-content`}

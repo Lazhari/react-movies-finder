@@ -7,41 +7,39 @@ import CardActions from "@material-ui/core/CardActions";
 import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import Fab from "@material-ui/core/Fab";
-import Link from "@material-ui/core/Link";
+import MuiLink from "@material-ui/core/Link";
 import { Typography } from "@material-ui/core";
 
-import { Link as RouterLink } from "@reach/router";
+import Link from "next/link";
 
-import placeholderImage from "../Images/abstract-image.jpg";
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   card: {
-    maxWidth: 345
+    maxWidth: 345,
   },
   media: {
     width: "100%",
-    minHeight: 364
+    minHeight: 364,
   },
   expand: {
     transform: "rotate(0deg)",
     marginLeft: "auto",
     transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest
-    })
+      duration: theme.transitions.duration.shortest,
+    }),
   },
   expandOpen: {
-    transform: "rotate(180deg)"
+    transform: "rotate(180deg)",
   },
   actions: {
     display: "flex",
-    justifyContent: "space-between"
-  }
+    justifyContent: "space-between",
+  },
 }));
 
 const MovieCard = ({ movie, loading, hideOverview }) => {
   const classes = useStyles();
-  const onErrorLoadingImage = e => {
-    e.target.src = placeholderImage;
+  const onErrorLoadingImage = (e) => {
+    e.target.src = "/abstract-image.jpg";
   };
   return (
     <Card className={classes.card}>
@@ -53,18 +51,19 @@ const MovieCard = ({ movie, loading, hideOverview }) => {
         }
         subheader={"Release: " + movie.release_date || "Unknown"}
       />
-      <Link
-        component={RouterLink}
-        to={`/movies/${movie.id}`}
-        underline="none"
-        variant="inherit"
-      >
-        <img
-          alt={movie.original_title}
-          className={classes.media}
-          onError={onErrorLoadingImage}
-          src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`}
-        />
+      <Link href={`/movies/[mid]`} as={`/movies/${movie.id}`} shallow>
+        <MuiLink
+          underline="none"
+          variant="inherit"
+          href={`/movies/${movie.id}`}
+        >
+          <img
+            alt={movie.original_title}
+            className={classes.media}
+            onError={onErrorLoadingImage}
+            src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`}
+          />
+        </MuiLink>
       </Link>
 
       <CardActions disableSpacing className={classes.actions}>

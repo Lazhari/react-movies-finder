@@ -2,19 +2,12 @@ language: node_js
 node_js: "12"
 cache: yarn
 
-addons:
-  sonarcloud:
-    organization: $SONAR_ORG
-    token:
-      secure: $SONAR_TOKEN
-
 install:
   - yarn install
 
 script:
   - yarn test -- --coverage
   - yarn build
-  - bash sonar.sh
 
 deploy:
   provider: pages

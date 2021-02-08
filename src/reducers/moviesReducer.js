@@ -13,7 +13,7 @@ const defaultState = {
   genreId: 0
 };
 
-export default (state = defaultState, action = {}) => {
+function moviesReducer(state = defaultState, action = {}) {
   switch (action.type) {
     case `${FETCH_GENRE}_PENDING`:
     case `${FETCH_MOVIES}_PENDING`:
@@ -58,4 +58,6 @@ export default (state = defaultState, action = {}) => {
       return state;
     }
   }
-};
+}
+
+export default moviesReducer;

@@ -5,7 +5,7 @@ const defaultState = {
   tvShow: {}
 };
 
-export default (state = defaultState, action = {}) => {
+function tvShowReducer(state = defaultState, action = {}) {
   switch (action.type) {
     case `${FETCH_TV_SHOW_DETAILS}_PENDING`: {
       return {
@@ -23,4 +23,6 @@ export default (state = defaultState, action = {}) => {
     default:
       return state;
   }
-};
+}
+
+export default tvShowReducer;

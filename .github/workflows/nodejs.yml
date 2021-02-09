@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x]
+        node-version: [12.x, 14.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -19,8 +19,8 @@ jobs:
       - name: npm install, build, and test
         run: |
           yarn --frozen-lockfile
+          yarn lint
           yarn build
-          yarn test
         env:
           CI: true
   sonarcloud:
@@ -37,7 +37,7 @@ jobs:
       - name: tests and coverage
         run: |
           yarn install
-          yarn test -- --coverage
+          yarn lint
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
         env:

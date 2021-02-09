@@ -3,6 +3,11 @@ import { makeStyles } from '@material-ui/core/styles'
 import Link from 'next/link'
 import Chip from '@material-ui/core/Chip'
 import MuiLink from '@material-ui/core/Link'
+import { Label } from '../models/common'
+
+interface Props {
+  labels: Label[]
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const Labels = ({ labels }) => {
+const Labels: React.FC<Props> = ({ labels }) => {
   const classes = useStyles()
   return (
     <div className={classes.root}>

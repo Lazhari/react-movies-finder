@@ -17,6 +17,16 @@ import SearchIcon from '@material-ui/icons/Search'
 
 import Logo from '../common/icons/Logo'
 
+interface Props {
+  handleDrawerOpen: () => void
+  open: boolean
+}
+
+interface NavLink {
+  title: string
+  url: string
+}
+
 const drawerWidth = 240
 
 const useStyles = makeStyles((theme) => ({
@@ -101,8 +111,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-function Header({ handleDrawerOpen, open }) {
+const navLinks: NavLink[] = [
+  {
+    title: 'Popular Movies',
+    url: '/',
+  },
+  {
+    title: 'Upcoming Movies',
+    url: '/upcoming',
+  },
+  {
+    title: 'Popular Series',
+    url: '/series',
+  },
+]
+
+const Header: React.FC<Props> = ({ handleDrawerOpen, open }) => {
   const classes = useStyles()
+
   return (
     <div className={classes.root}>
       <AppBar
@@ -130,40 +156,19 @@ function Header({ handleDrawerOpen, open }) {
           </div>
           <Hidden mdDown>
             <nav>
-              <Link href="/" shallow>
-                <MuiLink
-                  variant="button"
-                  color="textPrimary"
-                  href="/"
-                  className={classes.link}
-                  underline="none"
-                >
-                  Popular Movies
-                </MuiLink>
-              </Link>
-              <Link href="/upcoming" shallow>
-                <MuiLink
-                  variant="button"
-                  color="textPrimary"
-                  className={classes.link}
-                  href="/upcoming"
-                  underline="none"
-                >
-                  Upcoming Movies
-                </MuiLink>
-              </Link>
-
-              <Link href="/series" shallow>
-                <MuiLink
-                  variant="button"
-                  color="textPrimary"
-                  className={classes.link}
-                  href="/series"
-                  underline="none"
-                >
-                  Popular Series
-                </MuiLink>
-              </Link>
+              {navLinks.map((item, index) => (
+                <Link href={item.url} key={index} shallow>
+                  <MuiLink
+                    variant="button"
+                    color="textPrimary"
+                    href={item.url}
+                    className={classes.link}
+                    underline="none"
+                  >
+                    {item.title}
+                  </MuiLink>
+                </Link>
+              ))}
             </nav>
           </Hidden>
           <Hidden xsDown>

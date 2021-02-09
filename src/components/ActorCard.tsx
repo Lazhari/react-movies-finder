@@ -1,11 +1,15 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Link from 'next/link'
 
 import { makeStyles } from '@material-ui/core/styles'
 import Chip from '@material-ui/core/Chip'
 import Avatar from '@material-ui/core/Avatar'
 import MuiLink from '@material-ui/core/Link'
+import { Actor } from '../models/actor'
+
+interface Props {
+  actor: Actor
+}
 
 const useStyles = makeStyles(() => ({
   hasCursor: {
@@ -13,7 +17,7 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
-const ActorCard = ({ actor }) => {
+const ActorCard: React.FC<Props> = ({ actor }) => {
   const classes = useStyles()
   return (
     <Link href={`/actors/[id]`} as={`/actors/${actor.id}`} shallow>
@@ -31,14 +35,6 @@ const ActorCard = ({ actor }) => {
       </MuiLink>
     </Link>
   )
-}
-
-ActorCard.propTypes = {
-  actor: PropTypes.shape({
-    profile_path: PropTypes.string,
-    name: PropTypes.string,
-    character: PropTypes.string,
-  }),
 }
 
 export default ActorCard

@@ -3,6 +3,11 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 
 import ActorCard from './ActorCard'
+import { Actor } from '../models/actor'
+
+interface Props {
+  actors: Actor[]
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const ActorsList = ({ actors }) => {
+const ActorsList: React.FC<Props> = ({ actors }) => {
   const classes = useStyles()
   return (
     <div className={classes.root}>

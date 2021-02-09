@@ -9,7 +9,7 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
-const TvShowList = ({ tvShows, loading, hideOverview = false }) => {
+const TvShowList = ({ tvShows }) => {
   const classes = useStyles()
 
   return (
@@ -17,11 +17,7 @@ const TvShowList = ({ tvShows, loading, hideOverview = false }) => {
       <Grid container spacing={3}>
         {tvShows.map((tvShow) => (
           <Grid item lg={3} sm={4} md={4} xs={12} key={tvShow.id}>
-            <TvShowCard
-              tvShow={tvShow}
-              loading={loading}
-              hideOverview={hideOverview}
-            />
+            <TvShowCard tvShow={tvShow} />
           </Grid>
         ))}
       </Grid>

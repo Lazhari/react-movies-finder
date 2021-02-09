@@ -6,7 +6,7 @@ import { createPromise } from 'redux-promise-middleware'
 import { loadingBarMiddleware } from 'react-redux-loading-bar'
 import reducers from './reducers'
 
-const promise = createPromise({ types: { fulfilled: 'success' } })
+const promise = createPromise()
 
 let store
 

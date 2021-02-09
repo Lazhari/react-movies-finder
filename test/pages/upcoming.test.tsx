@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent } from '../testUtils'
+import { render } from '../testUtils'
 import Upcoming from '../../pages/upcoming'
 
 describe('Upcoming page', () => {

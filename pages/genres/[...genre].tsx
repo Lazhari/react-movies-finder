@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
 const GenrePage = () => {
   const router = useRouter()
-  const { genre: genreParams } = router.query
+  const { genre: genreParams } = router.query as { genre: string[] }
   const dispatch = useDispatch()
   const { movies, loading, page, totalResults } = useSelector(
     (state) => state.moviesStore

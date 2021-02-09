@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -57,10 +58,13 @@ const MovieCard = ({ movie, loading, hideOverview }) => {
           variant="inherit"
           href={`/movies/${movie.id}`}
         >
-          <img
+          <Image
             alt={movie.original_title}
             className={classes.media}
             onError={onErrorLoadingImage}
+            layout="responsive"
+            width={600}
+            height={900}
             src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`}
           />
         </MuiLink>

@@ -1,13 +1,13 @@
 import {
   GET_ACTOR_PROFILE,
-  GET_ACTOR_CREDIT_MOVIES
-} from "../actions/actionsType";
+  GET_ACTOR_CREDIT_MOVIES,
+} from '../actions/actionsType'
 
 const defaultState = {
   loading: false,
   profile: {},
-  movies: []
-};
+  movies: [],
+}
 
 function actorReducer(state = defaultState, action = {}) {
   switch (action.type) {
@@ -15,27 +15,27 @@ function actorReducer(state = defaultState, action = {}) {
     case `${GET_ACTOR_CREDIT_MOVIES}_PENDING`: {
       return {
         ...state,
-        loading: true
-      };
+        loading: true,
+      }
     }
     case `${GET_ACTOR_PROFILE}_FULFILLED`: {
       return {
         ...state,
         profile: action.payload.data,
-        loading: false
-      };
+        loading: false,
+      }
     }
     case `${GET_ACTOR_CREDIT_MOVIES}_FULFILLED`: {
       return {
         ...state,
         movies: action.payload.data.cast,
-        loading: false
-      };
+        loading: false,
+      }
     }
     default: {
-      return state;
+      return state
     }
   }
 }
 
-export default actorReducer;
+export default actorReducer

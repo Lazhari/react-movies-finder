@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Upcoming page matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="makeStyles-root-1"
+  >
+    <h1
+      class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
+    >
+      Upcoming Movies
+    </h1>
+    <div
+      class="makeStyles-root-4"
+    >
+      <span
+        class="css-680rou"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;

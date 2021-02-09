@@ -7,7 +7,7 @@ const defaultState = {
   page: 1,
   totalPages: 1,
   totalResults: 0,
-  genreId: 0
+  genreId: 0,
 };
 
 function tvShowsReducer(state = defaultState, action = {}) {
@@ -17,7 +17,7 @@ function tvShowsReducer(state = defaultState, action = {}) {
       return {
         ...state,
         loading: true,
-        loadingGenres: true
+        loadingGenres: true,
       };
     }
     case `${FETCH_TV_SHOWS}_FULFILLED`: {
@@ -27,14 +27,14 @@ function tvShowsReducer(state = defaultState, action = {}) {
         tvShows: action.payload.data.results,
         page: action.payload.data.page,
         totalPages: action.payload.data.total_pages,
-        totalResults: action.payload.data.total_results
+        totalResults: action.payload.data.total_results,
       };
     }
     case `${FETCH_TV_GENRES}_FULFILLED`: {
       return {
         ...state,
         loadingGenres: false,
-        genres: action.payload.data.genres
+        genres: action.payload.data.genres,
       };
     }
     default: {

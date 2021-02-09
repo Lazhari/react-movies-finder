@@ -23,7 +23,7 @@ import Loader from "../../src/components/common/Loader";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: 50,
+    marginTop: theme.spacing(10),
   },
   media: {
     height: 0,

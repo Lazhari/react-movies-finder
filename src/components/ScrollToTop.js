@@ -1,7 +1,7 @@
 import { Component } from "react";
 
 class ScrollToTop extends Component {
-  componentDidUpdate(prevProps) {
+  componentDidUpdate() {
     window.scrollTo(0, 0);
   }
 

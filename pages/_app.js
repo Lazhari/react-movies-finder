@@ -20,7 +20,6 @@ import LayersIcon from "@material-ui/icons/Layers";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import TheatersIcon from "@material-ui/icons/Theaters";
 import Hidden from "@material-ui/core/Hidden";
-import clsx from "clsx";
 
 import theme from "../src/theme";
 import Header from "../src/components/blocks/Header";
@@ -161,9 +160,6 @@ export default function App(props) {
           <Hidden mdUp>
             <BottomNavigation
               value={"Recents"}
-              onChange={(event, newValue) => {
-                console.log(newValue);
-              }}
               showLabels
               className={classes.BottomNavigation}
             >

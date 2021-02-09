@@ -10,7 +10,7 @@ import { makeStyles } from "@material-ui/styles";
 
 import { fetchGenre } from "../../actions/moviesActions";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {},
   linkText: {
     color: "white",
@@ -20,9 +20,7 @@ const useStyles = makeStyles((theme) => ({
 const Sidebar = ({ handleDrawerClose }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { genres, genreId, loading } = useSelector(
-    (state) => state.moviesStore
-  );
+  const { genres } = useSelector((state) => state.moviesStore);
   useEffect(() => {
     dispatch(fetchGenre());
   }, [dispatch]);

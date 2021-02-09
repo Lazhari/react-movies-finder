@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const TvShowCard = ({ tvShow, loading }) => {
+const TvShowCard = ({ tvShow }) => {
   const classes = useStyles();
   const onErrorLoadingImage = (e) => {
     e.target.src = "/abstract-image.jpg";

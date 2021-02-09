@@ -34,13 +34,14 @@ const GenrePage = () => {
 
   const handlePageChange = (offset) => {
     const pageNumber = offset / 20 + 1;
+    const [genreId] = genreParams;
     dispatch(fetchMoviesByGenre(pageNumber, genreId));
     window.scrollTo(0, 0);
   };
 
   useEffect(() => {
     if (genreParams && genreParams.length > 0) {
-      const [genreId, _] = genreParams;
+      const [genreId] = genreParams;
       dispatch(fetchMoviesByGenre(1, genreId));
     }
   }, [dispatch, genreParams]);

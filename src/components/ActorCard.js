@@ -7,7 +7,7 @@ import Chip from "@material-ui/core/Chip";
 import Avatar from "@material-ui/core/Avatar";
 import MuiLink from "@material-ui/core/Link";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   hasCursor: {
     cursor: "pointer",
   },

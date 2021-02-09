@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MovieCard = ({ movie, loading, hideOverview }) => {
+const MovieCard = ({ movie }) => {
   const classes = useStyles();
   const onErrorLoadingImage = (e) => {
     e.target.src = "/abstract-image.jpg";

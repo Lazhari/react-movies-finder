@@ -12,7 +12,7 @@ import Modal from "@material-ui/core/Modal";
 import Labels from "./Labels";
 import ActorsList from "./ActorsList";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {},
   header: {
     height: 320,
@@ -21,12 +21,12 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "center",
     marginTop: 40,
-    marginBottom: 24
+    marginBottom: 24,
   },
   moviePoster: {
     width: "100%",
     borderRadius: 5,
-    boxShadow: theme.shadows[1]
+    boxShadow: theme.shadows[1],
   },
   generalInfo: {
     display: "flex",
@@ -34,35 +34,35 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(2),
     "& legend": {
       width: "inherit",
-      marginRight: 8
-    }
+      marginRight: 8,
+    },
   },
   rating: {
     display: "flex",
     [theme.breakpoints.down("lg")]: {
-      marginBottom: theme.spacing(2)
-    }
+      marginBottom: theme.spacing(2),
+    },
   },
   modalContainer: {
     position: "absolute",
     height: "90vh",
     width: "100%",
-    background: "#111"
+    background: "#111",
   },
   modalHeader: {
     height: "10vh",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: 4
-  }
+    padding: 4,
+  },
 }));
 
 const MovieHeader = ({ movie, genres, trailer, actors }) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const headerStyle = {
-    backgroundImage: `linear-gradient(rgba(3, 3, 3, 0.30), rgba(0, 0, 5, 0.30)), url(https://image.tmdb.org/t/p/w1400_and_h450_bestv2${movie.backdrop_path})`
+    backgroundImage: `linear-gradient(rgba(3, 3, 3, 0.30), rgba(0, 0, 5, 0.30)), url(https://image.tmdb.org/t/p/w1400_and_h450_bestv2${movie.backdrop_path})`,
   };
   const handleOpen = () => {
     setOpen(true);
@@ -81,7 +81,7 @@ const MovieHeader = ({ movie, genres, trailer, actors }) => {
           open={open}
           onClose={handleClose}
         >
-          <div class={classes.modalContainer}>
+          <div className={classes.modalContainer}>
             <div className={classes.modalHeader}>
               <Typography variant="h5" component="h1">
                 Official Trailer

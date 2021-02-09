@@ -4,21 +4,21 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import ActorCard from "./ActorCard";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexWrap: "wrap",
     "& > *": {
-      margin: theme.spacing(0.5)
-    }
-  }
+      margin: theme.spacing(0.5),
+    },
+  },
 }));
 
-const ActorsList = ({ actors, loading }) => {
+const ActorsList = ({ actors }) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      {actors.map(actor => {
+      {actors.map((actor) => {
         return <ActorCard actor={actor} key={actor.id} />;
       })}
     </div>

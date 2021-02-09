@@ -1,25 +1,25 @@
-import { client } from "./";
-import { FETCH_TV_SHOWS, FETCH_TV_GENRES } from "./actionsType";
+import { client } from './'
+import { FETCH_TV_SHOWS, FETCH_TV_GENRES } from './actionsType'
 
 export function fetchTvShows(page = 1, filters = {}) {
-  return dispatch => {
+  return (dispatch) => {
     dispatch({
       type: FETCH_TV_SHOWS,
-      payload: client.get("/discover/tv", {
+      payload: client.get('/discover/tv', {
         params: {
           page,
-          ...filters
-        }
-      })
-    });
-  };
+          ...filters,
+        },
+      }),
+    })
+  }
 }
 
 export function fetchTvGenres() {
-  return dispatch => {
+  return (dispatch) => {
     dispatch({
       type: FETCH_TV_GENRES,
-      payload: client.get("/genre/tv/list")
-    });
-  };
+      payload: client.get('/genre/tv/list'),
+    })
+  }
 }

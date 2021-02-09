@@ -10,7 +10,6 @@ import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
 import Grid from '@material-ui/core/Grid'
-import MuiLink from '@material-ui/core/Link'
 import { useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 
@@ -27,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
   media: {
     height: 0,
-    paddingTop: '56.25%',
+    paddingTop: '90%',
   },
   divider: {
     margin: '16px 0',
@@ -63,17 +62,20 @@ const ActorPage = () => {
                 image={`https://image.tmdb.org/t/p/w276_and_h350_face${profile.profile_path}`}
                 title={profile.name}
               />
-              <CardContent className="actor-card__body">
+              <CardContent>
                 <Link
                   href={`/actors/[id]`}
                   as={`/actors/${profile.id}`}
                   shallow
                 >
-                  <MuiLink href={`/actors/${profile.id}`} underline="none">
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {profile.name}
-                    </Typography>
-                  </MuiLink>
+                  <Typography
+                    gutterBottom
+                    variant="h5"
+                    component="h2"
+                    color="inherit"
+                  >
+                    {profile.name}
+                  </Typography>
                 </Link>
 
                 <Typography variant="body1" gutterBottom>

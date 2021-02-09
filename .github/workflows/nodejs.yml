@@ -20,6 +20,8 @@ jobs:
         run: |
           yarn --frozen-lockfile
           yarn lint
+          yarn type-check
+          yarn test --passWithNoTests --coverage 
           yarn build
         env:
           CI: true

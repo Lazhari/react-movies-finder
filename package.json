@@ -6,7 +6,6 @@
     "@material-ui/core": "4.11.3",
     "@material-ui/icons": "4.11.2",
     "@material-ui/lab": "4.0.0-alpha.57",
-    "@reach/router": "1.3.4",
     "axios": "^0.21.1",
     "clsx": "1.1.1",
     "material-ui-flat-pagination": "4.1.1",
@@ -26,17 +25,22 @@
     "redux-form": "^8.3.7",
     "redux-promise-middleware": "^6.1.2",
     "redux-thunk": "^2.2.0",
-    "snyk": "^1.440.5",
-    "web-vitals": "^1.0.1"
+    "snyk": "^1.440.5"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.19.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-react": "^7.22.0",
     "flow-bin": "0.143.1",
     "gh-pages": "^3.1.0",
-    "husky": "^4.3.8",
-    "prettier": "2.2.1",
+    "husky": "^5.0.9",
+    "jest": "^26.6.3",
+    "jest-watch-typeahead": "^0.6.1",
+    "prettier": "^2.2.1",
     "pretty-quick": "^3.1.0",
     "sonarqube-scanner": "^2.8.0"
   },
@@ -45,6 +49,7 @@
     "build": "next build",
     "start": "next start",
     "test": "next test",
+    "lint": "eslint .",
     "flow": "flow",
     "snyk-protect": "snyk protect",
     "prepare": "yarn run snyk-protect"

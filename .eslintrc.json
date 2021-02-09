@@ -1,3 +1,33 @@
 {
-  "extends": ["react-app", "react-app/jest"]
+  "parser": "babel-eslint",
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "env": {
+    "es6": true,
+    "browser": true,
+    "jest": true,
+    "node": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "react/react-in-jsx-scope": 0,
+    "react/display-name": 0,
+    "react/prop-types": 0,
+    "no-console": [
+      2,
+      {
+        "allow": ["warn", "error"]
+      }
+    ]
+  }
 }

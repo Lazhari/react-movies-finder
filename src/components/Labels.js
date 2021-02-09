@@ -1,24 +1,24 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Link from "next/link";
-import Chip from "@material-ui/core/Chip";
-import MuiLink from "@material-ui/core/Link";
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import Link from 'next/link'
+import Chip from '@material-ui/core/Chip'
+import MuiLink from '@material-ui/core/Link'
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: "flex",
-    flexWrap: "wrap",
-    "& > *": {
+    display: 'flex',
+    flexWrap: 'wrap',
+    '& > *': {
       margin: theme.spacing(0.5),
     },
   },
   chip: {
-    cursor: "pointer",
+    cursor: 'pointer',
   },
-}));
+}))
 
 const Labels = ({ labels }) => {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <div className={classes.root}>
       {labels.map((label) => (
@@ -35,7 +35,7 @@ const Labels = ({ labels }) => {
         </Link>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default Labels;
+export default Labels

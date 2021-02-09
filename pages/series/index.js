@@ -1,34 +1,34 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { makeStyles } from "@material-ui/core/styles";
-import Pagination from "material-ui-flat-pagination";
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { makeStyles } from '@material-ui/core/styles'
+import Pagination from 'material-ui-flat-pagination'
 
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import Input from "@material-ui/core/Input";
-import Chip from "@material-ui/core/Chip";
-import Checkbox from "@material-ui/core/Checkbox";
+import InputLabel from '@material-ui/core/InputLabel'
+import MenuItem from '@material-ui/core/MenuItem'
+import ListItemText from '@material-ui/core/ListItemText'
+import FormControl from '@material-ui/core/FormControl'
+import Select from '@material-ui/core/Select'
+import Input from '@material-ui/core/Input'
+import Chip from '@material-ui/core/Chip'
+import Checkbox from '@material-ui/core/Checkbox'
 
-import { fetchTvShows, fetchTvGenres } from "../../src/actions/tvShowsActions";
-import TvShowList from "../../src/components/TvShowList";
-import Loader from "../../src/components/common/Loader";
+import { fetchTvShows, fetchTvGenres } from '../../src/actions/tvShowsActions'
+import TvShowList from '../../src/components/TvShowList'
+import Loader from '../../src/components/common/Loader'
 
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: 50,
   },
   paginationContainer: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginTop: theme.spacing(2),
   },
   filtersContainer: {
-    display: "flex",
-    justifyContent: "space-between",
+    display: 'flex',
+    justifyContent: 'space-between',
     marginBottom: theme.spacing(2),
   },
   formControl: {
@@ -36,83 +36,83 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 120,
   },
   chips: {
-    display: "flex",
-    flexWrap: "wrap",
+    display: 'flex',
+    flexWrap: 'wrap',
   },
   chip: {
     margin: 2,
   },
-}));
+}))
 
 const sortOptions = [
   {
-    label: "Average Vote DESC",
-    value: "vote_average.desc",
+    label: 'Average Vote DESC',
+    value: 'vote_average.desc',
   },
   {
-    label: "Average Vote ASC",
-    value: "vote_average.asc",
+    label: 'Average Vote ASC',
+    value: 'vote_average.asc',
   },
   {
-    label: "First Air Date DESC",
-    value: "first_air_date.desc",
+    label: 'First Air Date DESC',
+    value: 'first_air_date.desc',
   },
   {
-    label: "First Air Date ASC",
-    value: "first_air_date.asc",
+    label: 'First Air Date ASC',
+    value: 'first_air_date.asc',
   },
   {
-    label: "Popularity DESC",
-    value: "popularity.desc",
+    label: 'Popularity DESC',
+    value: 'popularity.desc',
   },
   {
-    label: "Popularity ASC",
-    value: "popularity.asc",
+    label: 'Popularity ASC',
+    value: 'popularity.asc',
   },
-];
+]
 
 const TopSeriesPage = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const { tvShows, loading, page, totalResults, genres } = useSelector(
     (state) => state.tvShowsStore
-  );
-  const classes = useStyles();
-  const [sortBy, setSortBy] = React.useState("popularity.desc");
-  const [selectedGenres, setSelectedGenres] = React.useState([]);
+  )
+  const classes = useStyles()
+  const [sortBy, setSortBy] = React.useState('popularity.desc')
+  const [selectedGenres, setSelectedGenres] = React.useState([])
 
   const handlePageChange = (offset) => {
-    const pageNumber = offset / 20 + 1;
+    const pageNumber = offset / 20 + 1
     dispatch(
       fetchTvShows(pageNumber, {
         sort_by: sortBy,
-        with_genres: selectedGenres.join(","),
+        with_genres: selectedGenres.join(','),
       })
-    );
-    window.scrollTo(0, 0);
-  };
+    )
+    window.scrollTo(0, 0)
+  }
 
   const handleChange = (event) => {
-    setSortBy(event.target.value);
-  };
+    setSortBy(event.target.value)
+  }
 
   const handleGenresChange = (event) => {
-    setSelectedGenres(event.target.value);
-  };
+    setSelectedGenres(event.target.value)
+  }
 
   useEffect(() => {
     dispatch(
       fetchTvShows(1, {
         sort_by: sortBy,
-        with_genres: selectedGenres.join(","),
+        with_genres: selectedGenres.join(','),
       })
-    );
-  }, [dispatch, sortBy, selectedGenres]);
+    )
+  }, [dispatch, sortBy, selectedGenres])
   useEffect(() => {
-    dispatch(fetchTvGenres());
-  }, [dispatch]);
+    dispatch(fetchTvGenres())
+  }, [dispatch])
 
-  const ITEM_HEIGHT = 48;
-  const ITEM_PADDING_TOP = 8;
+  const ITEM_HEIGHT = 48
+  const ITEM_PADDING_TOP = 8
   const MenuProps = {
     PaperProps: {
       style: {
@@ -120,7 +120,7 @@ const TopSeriesPage = () => {
         width: 250,
       },
     },
-  };
+  }
 
   return (
     <div className={classes.root}>
@@ -191,6 +191,6 @@ const TopSeriesPage = () => {
         </>
       )}
     </div>
-  );
-};
-export default TopSeriesPage;
+  )
+}
+export default TopSeriesPage

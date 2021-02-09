@@ -1,16 +1,16 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import TvShowCard from "./TvShowCard";
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import Grid from '@material-ui/core/Grid'
+import TvShowCard from './TvShowCard'
 
 const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
   },
-}));
+}))
 
 const TvShowList = ({ tvShows, loading, hideOverview = false }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <div className={classes.root}>
@@ -26,7 +26,7 @@ const TvShowList = ({ tvShows, loading, hideOverview = false }) => {
         ))}
       </Grid>
     </div>
-  );
-};
+  )
+}
 
-export default TvShowList;
+export default TvShowList

@@ -1,28 +1,28 @@
-import React from "react";
+import React from 'react'
 
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles'
 
-import ActorCard from "./ActorCard";
+import ActorCard from './ActorCard'
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: "flex",
-    flexWrap: "wrap",
-    "& > *": {
+    display: 'flex',
+    flexWrap: 'wrap',
+    '& > *': {
       margin: theme.spacing(0.5),
     },
   },
-}));
+}))
 
 const ActorsList = ({ actors }) => {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <div className={classes.root}>
       {actors.map((actor) => {
-        return <ActorCard actor={actor} key={actor.id} />;
+        return <ActorCard actor={actor} key={actor.id} />
       })}
     </div>
-  );
-};
+  )
+}
 
-export default ActorsList;
+export default ActorsList

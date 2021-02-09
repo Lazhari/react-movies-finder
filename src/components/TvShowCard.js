@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react'
 
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardActions from "@material-ui/core/CardActions";
-import IconButton from "@material-ui/core/IconButton";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import Fab from "@material-ui/core/Fab";
-import MuiLink from "@material-ui/core/Link";
-import { Typography } from "@material-ui/core";
+import { makeStyles } from '@material-ui/core/styles'
+import Card from '@material-ui/core/Card'
+import CardHeader from '@material-ui/core/CardHeader'
+import CardActions from '@material-ui/core/CardActions'
+import IconButton from '@material-ui/core/IconButton'
+import FavoriteIcon from '@material-ui/icons/Favorite'
+import Fab from '@material-ui/core/Fab'
+import MuiLink from '@material-ui/core/Link'
+import { Typography } from '@material-ui/core'
 
-import Link from "next/link";
+import Link from 'next/link'
 
 // import placeholderImage from "../Images/abstract-image.jpg";
 
@@ -19,30 +19,30 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 345,
   },
   media: {
-    width: "100%",
+    width: '100%',
     minHeight: 364,
   },
   expand: {
-    transform: "rotate(0deg)",
-    marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
+    transform: 'rotate(0deg)',
+    marginLeft: 'auto',
+    transition: theme.transitions.create('transform', {
       duration: theme.transitions.duration.shortest,
     }),
   },
   expandOpen: {
-    transform: "rotate(180deg)",
+    transform: 'rotate(180deg)',
   },
   actions: {
-    display: "flex",
-    justifyContent: "space-between",
+    display: 'flex',
+    justifyContent: 'space-between',
   },
-}));
+}))
 
 const TvShowCard = ({ tvShow }) => {
-  const classes = useStyles();
+  const classes = useStyles()
   const onErrorLoadingImage = (e) => {
-    e.target.src = "/abstract-image.jpg";
-  };
+    e.target.src = '/abstract-image.jpg'
+  }
   return (
     <Card className={classes.card}>
       <CardHeader
@@ -51,7 +51,7 @@ const TvShowCard = ({ tvShow }) => {
             {tvShow.original_name}
           </Typography>
         }
-        subheader={"Release: " + tvShow.first_air_date || "Unknown"}
+        subheader={'Release: ' + tvShow.first_air_date || 'Unknown'}
       />
 
       <Link href={`/series/[id]`} as={`/series/${tvShow.id}`} shallow>
@@ -75,13 +75,13 @@ const TvShowCard = ({ tvShow }) => {
         </IconButton>
         <Fab size="small" color="secondary" aria-label="Ratting">
           <Typography variant="button">
-            {tvShow.vote_average.toString().split(".")[0]}
-            <sup>.{tvShow.vote_average.toString().split(".")[1] || 0}</sup>
+            {tvShow.vote_average.toString().split('.')[0]}
+            <sup>.{tvShow.vote_average.toString().split('.')[1] || 0}</sup>
           </Typography>
         </Fab>
       </CardActions>
     </Card>
-  );
-};
+  )
+}
 
-export default TvShowCard;
+export default TvShowCard

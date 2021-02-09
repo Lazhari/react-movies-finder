@@ -1,25 +1,25 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
-import Divider from "@material-ui/core/Divider";
-import Grid from "@material-ui/core/Grid";
-import MuiLink from "@material-ui/core/Link";
-import { useTheme } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { makeStyles } from '@material-ui/core/styles'
+import Card from '@material-ui/core/Card'
+import CardMedia from '@material-ui/core/CardMedia'
+import CardContent from '@material-ui/core/CardContent'
+import Typography from '@material-ui/core/Typography'
+import Divider from '@material-ui/core/Divider'
+import Grid from '@material-ui/core/Grid'
+import MuiLink from '@material-ui/core/Link'
+import { useTheme } from '@material-ui/core/styles'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
-import MoviesCardList from "../../src/components/MoviesCardList";
+import MoviesCardList from '../../src/components/MoviesCardList'
 import {
   getPeopleProfile,
   getActorCreditMovies,
-} from "../../src/actions/actorAction";
-import Loader from "../../src/components/common/Loader";
+} from '../../src/actions/actorAction'
+import Loader from '../../src/components/common/Loader'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,28 +27,28 @@ const useStyles = makeStyles((theme) => ({
   },
   media: {
     height: 0,
-    paddingTop: "56.25%",
+    paddingTop: '56.25%',
   },
   divider: {
-    margin: "16px 0",
+    margin: '16px 0',
   },
-}));
+}))
 
 const ActorPage = () => {
-  const router = useRouter();
-  const { id: actorId } = router.query;
-  const dispatch = useDispatch();
-  const { profile, movies, loading } = useSelector((state) => state.actorStore);
-  const classes = useStyles();
-  const theme = useTheme();
-  const isUpSm = useMediaQuery(theme.breakpoints.up("sm"));
+  const router = useRouter()
+  const { id: actorId } = router.query
+  const dispatch = useDispatch()
+  const { profile, movies, loading } = useSelector((state) => state.actorStore)
+  const classes = useStyles()
+  const theme = useTheme()
+  const isUpSm = useMediaQuery(theme.breakpoints.up('sm'))
 
   useEffect(() => {
     if (actorId) {
-      dispatch(getPeopleProfile(actorId));
-      dispatch(getActorCreditMovies(actorId));
+      dispatch(getPeopleProfile(actorId))
+      dispatch(getActorCreditMovies(actorId))
     }
-  }, [dispatch, actorId]);
+  }, [dispatch, actorId])
 
   return (
     <div className={classes.root}>
@@ -114,7 +114,7 @@ const ActorPage = () => {
         </Grid>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default ActorPage;
+export default ActorPage

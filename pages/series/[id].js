@@ -1,24 +1,24 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useRouter } from "next/router";
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { useRouter } from 'next/router'
 
-import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
+import { makeStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
 
-import { getTvShowDetails } from "../../src/actions/tvShowAction";
-import Loader from "../../src/components/common/Loader";
-import Labels from "../../src/components/Labels";
-import ActorsList from "../../src/components/ActorsList";
+import { getTvShowDetails } from '../../src/actions/tvShowAction'
+import Loader from '../../src/components/common/Loader'
+import Labels from '../../src/components/Labels'
+import ActorsList from '../../src/components/ActorsList'
 
 const useStyles = makeStyles((theme) => ({
   root: {
     // display: "flex"
   },
   header: {
-    width: "100%",
-    display: "flex",
-    justifyContent: "flex-start",
-    alignItems: "center",
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
     marginTop: theme.spacing(5),
     marginBottom: theme.spacing(4),
     padding: theme.spacing(5),
@@ -38,24 +38,24 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(2),
   },
-}));
+}))
 
 const Series = () => {
-  const router = useRouter();
-  const { id: tvShowId } = router.query;
-  const dispatch = useDispatch();
-  const { tvShow, loading } = useSelector((store) => store.tvShowStore);
-  const classes = useStyles();
+  const router = useRouter()
+  const { id: tvShowId } = router.query
+  const dispatch = useDispatch()
+  const { tvShow, loading } = useSelector((store) => store.tvShowStore)
+  const classes = useStyles()
 
   useEffect(() => {
     if (tvShowId) {
-      dispatch(getTvShowDetails(tvShowId));
+      dispatch(getTvShowDetails(tvShowId))
     }
-  }, [dispatch, tvShowId]);
+  }, [dispatch, tvShowId])
 
   const headerStyle = {
     backgroundImage: `radial-gradient(circle at 20% 50%, rgba(16.47%, 15.29%, 14.51%, 0.98) 0%, rgba(22.35%, 22.35%, 22.35%, 0.88) 100%), url(https://image.tmdb.org/t/p/w1400_and_h450_bestv2${tvShow.backdrop_path})`,
-  };
+  }
   return (
     <div className={classes.root}>
       {loading ? (
@@ -97,7 +97,7 @@ const Series = () => {
         </>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Series;
+export default Series

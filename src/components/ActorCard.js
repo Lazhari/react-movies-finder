@@ -1,20 +1,20 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Link from "next/link";
+import React from 'react'
+import PropTypes from 'prop-types'
+import Link from 'next/link'
 
-import { makeStyles } from "@material-ui/core/styles";
-import Chip from "@material-ui/core/Chip";
-import Avatar from "@material-ui/core/Avatar";
-import MuiLink from "@material-ui/core/Link";
+import { makeStyles } from '@material-ui/core/styles'
+import Chip from '@material-ui/core/Chip'
+import Avatar from '@material-ui/core/Avatar'
+import MuiLink from '@material-ui/core/Link'
 
 const useStyles = makeStyles(() => ({
   hasCursor: {
-    cursor: "pointer",
+    cursor: 'pointer',
   },
-}));
+}))
 
 const ActorCard = ({ actor }) => {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <Link href={`/actors/[id]`} as={`/actors/${actor.id}`} shallow>
       <MuiLink href={`/actors/${actor.id}`} underline="none">
@@ -30,8 +30,8 @@ const ActorCard = ({ actor }) => {
         />
       </MuiLink>
     </Link>
-  );
-};
+  )
+}
 
 ActorCard.propTypes = {
   actor: PropTypes.shape({
@@ -39,6 +39,6 @@ ActorCard.propTypes = {
     name: PropTypes.string,
     character: PropTypes.string,
   }),
-};
+}
 
-export default ActorCard;
+export default ActorCard

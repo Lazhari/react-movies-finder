@@ -1,4 +1,4 @@
-import { FETCH_TV_SHOWS, FETCH_TV_GENRES } from "../actions/actionsType";
+import { FETCH_TV_SHOWS, FETCH_TV_GENRES } from '../actions/actionsType'
 const defaultState = {
   tvShows: [],
   genres: [],
@@ -8,7 +8,7 @@ const defaultState = {
   totalPages: 1,
   totalResults: 0,
   genreId: 0,
-};
+}
 
 function tvShowsReducer(state = defaultState, action = {}) {
   switch (action.type) {
@@ -18,7 +18,7 @@ function tvShowsReducer(state = defaultState, action = {}) {
         ...state,
         loading: true,
         loadingGenres: true,
-      };
+      }
     }
     case `${FETCH_TV_SHOWS}_FULFILLED`: {
       return {
@@ -28,19 +28,19 @@ function tvShowsReducer(state = defaultState, action = {}) {
         page: action.payload.data.page,
         totalPages: action.payload.data.total_pages,
         totalResults: action.payload.data.total_results,
-      };
+      }
     }
     case `${FETCH_TV_GENRES}_FULFILLED`: {
       return {
         ...state,
         loadingGenres: false,
         genres: action.payload.data.genres,
-      };
+      }
     }
     default: {
-      return state;
+      return state
     }
   }
 }
 
-export default tvShowsReducer;
+export default tvShowsReducer

@@ -1,21 +1,21 @@
-import { client } from "./";
+import { client } from './'
 import {
   FETCH_MOVIES,
   FETCH_GENRE,
   FETCH_MOVIES_BY_GENRE,
   FETCH_MOVIE_DETAILS,
-} from "./actionsType";
+} from './actionsType'
 
 export function fetchGenre() {
   return (dispatch) => {
     dispatch({
       type: FETCH_GENRE,
-      payload: client.get("/genre/movie/list"),
-    });
-  };
+      payload: client.get('/genre/movie/list'),
+    })
+  }
 }
 
-export function fetchMovies(page = 1, type = "popular") {
+export function fetchMovies(page = 1, type = 'popular') {
   return (dispatch) => {
     dispatch({
       type: FETCH_MOVIES,
@@ -24,11 +24,11 @@ export function fetchMovies(page = 1, type = "popular") {
           page,
         },
       }),
-    });
-  };
+    })
+  }
 }
 
-export function fetchMoviesByGenre(page = 1, genreId = "") {
+export function fetchMoviesByGenre(page = 1, genreId = '') {
   return (dispatch) => {
     dispatch({
       type: FETCH_MOVIES_BY_GENRE,
@@ -36,12 +36,12 @@ export function fetchMoviesByGenre(page = 1, genreId = "") {
         params: {
           page,
           include_adult: false,
-          sort_by: "created_at.asc",
+          sort_by: 'created_at.asc',
         },
       }),
       genreId,
-    });
-  };
+    })
+  }
 }
 
 export function fetchMovie() {
@@ -49,6 +49,6 @@ export function fetchMovie() {
     dispatch({
       type: FETCH_MOVIE_DETAILS,
       payload: client.get(``),
-    });
-  };
+    })
+  }
 }

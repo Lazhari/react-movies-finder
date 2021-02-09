@@ -1,47 +1,47 @@
-import React from "react";
-import Image from "next/image";
+import React from 'react'
+import Image from 'next/image'
 
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardActions from "@material-ui/core/CardActions";
-import IconButton from "@material-ui/core/IconButton";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import Fab from "@material-ui/core/Fab";
-import MuiLink from "@material-ui/core/Link";
-import { Typography } from "@material-ui/core";
+import { makeStyles } from '@material-ui/core/styles'
+import Card from '@material-ui/core/Card'
+import CardHeader from '@material-ui/core/CardHeader'
+import CardActions from '@material-ui/core/CardActions'
+import IconButton from '@material-ui/core/IconButton'
+import FavoriteIcon from '@material-ui/icons/Favorite'
+import Fab from '@material-ui/core/Fab'
+import MuiLink from '@material-ui/core/Link'
+import { Typography } from '@material-ui/core'
 
-import Link from "next/link";
+import Link from 'next/link'
 
 const useStyles = makeStyles((theme) => ({
   card: {
     maxWidth: 345,
   },
   media: {
-    width: "100%",
+    width: '100%',
     minHeight: 364,
   },
   expand: {
-    transform: "rotate(0deg)",
-    marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
+    transform: 'rotate(0deg)',
+    marginLeft: 'auto',
+    transition: theme.transitions.create('transform', {
       duration: theme.transitions.duration.shortest,
     }),
   },
   expandOpen: {
-    transform: "rotate(180deg)",
+    transform: 'rotate(180deg)',
   },
   actions: {
-    display: "flex",
-    justifyContent: "space-between",
+    display: 'flex',
+    justifyContent: 'space-between',
   },
-}));
+}))
 
 const MovieCard = ({ movie }) => {
-  const classes = useStyles();
+  const classes = useStyles()
   const onErrorLoadingImage = (e) => {
-    e.target.src = "/abstract-image.jpg";
-  };
+    e.target.src = '/abstract-image.jpg'
+  }
   return (
     <Card className={classes.card}>
       <CardHeader
@@ -50,7 +50,7 @@ const MovieCard = ({ movie }) => {
             {movie.original_title}
           </Typography>
         }
-        subheader={"Release: " + movie.release_date || "Unknown"}
+        subheader={'Release: ' + movie.release_date || 'Unknown'}
       />
       <Link href={`/movies/[mid]`} as={`/movies/${movie.id}`} shallow>
         <MuiLink
@@ -76,13 +76,13 @@ const MovieCard = ({ movie }) => {
         </IconButton>
         <Fab size="small" color="secondary" aria-label="Ratting">
           <Typography variant="button">
-            {movie.vote_average.toString().split(".")[0]}
-            <sup>.{movie.vote_average.toString().split(".")[1] || 0}</sup>
+            {movie.vote_average.toString().split('.')[0]}
+            <sup>.{movie.vote_average.toString().split('.')[1] || 0}</sup>
           </Typography>
         </Fab>
       </CardActions>
     </Card>
-  );
-};
+  )
+}
 
-export default MovieCard;
+export default MovieCard

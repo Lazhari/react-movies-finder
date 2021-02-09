@@ -1,76 +1,76 @@
-import React from "react";
-import ReactPlayer from "react-player";
-import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import Rating from "@material-ui/lab/Rating";
-import IconButton from "@material-ui/core/IconButton";
-import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
-import CloseIcon from "@material-ui/icons/Close";
-import Modal from "@material-ui/core/Modal";
+import React from 'react'
+import ReactPlayer from 'react-player'
+import { makeStyles } from '@material-ui/core/styles'
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
+import Rating from '@material-ui/lab/Rating'
+import IconButton from '@material-ui/core/IconButton'
+import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
+import CloseIcon from '@material-ui/icons/Close'
+import Modal from '@material-ui/core/Modal'
 
-import Labels from "./Labels";
-import ActorsList from "./ActorsList";
+import Labels from './Labels'
+import ActorsList from './ActorsList'
 
 const useStyles = makeStyles((theme) => ({
   root: {},
   header: {
     height: 320,
-    width: "100%",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginTop: 40,
     marginBottom: 24,
   },
   moviePoster: {
-    width: "100%",
+    width: '100%',
     borderRadius: 5,
     boxShadow: theme.shadows[1],
   },
   generalInfo: {
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
     marginTop: theme.spacing(2),
-    "& legend": {
-      width: "inherit",
+    '& legend': {
+      width: 'inherit',
       marginRight: 8,
     },
   },
   rating: {
-    display: "flex",
-    [theme.breakpoints.down("lg")]: {
+    display: 'flex',
+    [theme.breakpoints.down('lg')]: {
       marginBottom: theme.spacing(2),
     },
   },
   modalContainer: {
-    position: "absolute",
-    height: "90vh",
-    width: "100%",
-    background: "#111",
+    position: 'absolute',
+    height: '90vh',
+    width: '100%',
+    background: '#111',
   },
   modalHeader: {
-    height: "10vh",
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
+    height: '10vh',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     padding: 4,
   },
-}));
+}))
 
 const MovieHeader = ({ movie, genres, trailer, actors }) => {
-  const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const classes = useStyles()
+  const [open, setOpen] = React.useState(false)
   const headerStyle = {
     backgroundImage: `linear-gradient(rgba(3, 3, 3, 0.30), rgba(0, 0, 5, 0.30)), url(https://image.tmdb.org/t/p/w1400_and_h450_bestv2${movie.backdrop_path})`,
-  };
+  }
   const handleOpen = () => {
-    setOpen(true);
-  };
+    setOpen(true)
+  }
 
   const handleClose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
   return (
     <div className={classes.root}>
       {trailer && trailer.key && (
@@ -104,7 +104,7 @@ const MovieHeader = ({ movie, genres, trailer, actors }) => {
       <div className={classes.header} style={headerStyle}>
         <IconButton onClick={handleOpen} disabled={!trailer || !trailer.key}>
           <PlayCircleOutlineIcon
-            style={{ fontSize: 64, color: "#c53364" }}
+            style={{ fontSize: 64, color: '#c53364' }}
           ></PlayCircleOutlineIcon>
         </IconButton>
       </div>
@@ -158,7 +158,7 @@ const MovieHeader = ({ movie, genres, trailer, actors }) => {
         </Grid>
       </Grid>
     </div>
-  );
-};
+  )
+}
 
-export default MovieHeader;
+export default MovieHeader

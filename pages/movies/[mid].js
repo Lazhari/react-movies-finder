@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useRouter } from "next/router";
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { useRouter } from 'next/router'
 
-import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
+import { makeStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
 
 import {
   fetchMovie,
@@ -12,35 +12,35 @@ import {
   fetchRelatedMovies,
   fetchMovieActors,
   cleaningMovieReducer,
-} from "../../src/actions/movieAction";
+} from '../../src/actions/movieAction'
 
-import MovieHeader from "../../src/components/MovieHeader";
-import MoviesCardList from "../../src/components/MoviesCardList";
-import ReviewsList from "../../src/components/ReviewsList";
-import Loader from "../../src/components/common/Loader";
+import MovieHeader from '../../src/components/MovieHeader'
+import MoviesCardList from '../../src/components/MoviesCardList'
+import ReviewsList from '../../src/components/ReviewsList'
+import Loader from '../../src/components/common/Loader'
 
 const useStyles = makeStyles((theme) => ({
   root: {},
   reviewsContainer: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginTop: theme.spacing(2),
   },
   moviesContainer: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginTop: theme.spacing(2),
   },
-}));
+}))
 
 const MoviePage = () => {
-  const router = useRouter();
-  const { mid } = router.query;
-  const dispatch = useDispatch();
+  const router = useRouter()
+  const { mid } = router.query
+  const dispatch = useDispatch()
   const {
     movie,
     loading,
@@ -50,21 +50,21 @@ const MoviePage = () => {
     reviews,
     relatedMovies,
     productionCompanies,
-  } = useSelector((state) => state.movieStore);
-  const classes = useStyles();
+  } = useSelector((state) => state.movieStore)
+  const classes = useStyles()
 
   useEffect(() => {
     if (mid) {
-      dispatch(fetchMovie(mid));
-      dispatch(fetchMovieVideos(mid));
-      dispatch(fetchMovieReviews(mid));
-      dispatch(fetchRelatedMovies(mid));
-      dispatch(fetchMovieActors(mid));
+      dispatch(fetchMovie(mid))
+      dispatch(fetchMovieVideos(mid))
+      dispatch(fetchMovieReviews(mid))
+      dispatch(fetchRelatedMovies(mid))
+      dispatch(fetchMovieActors(mid))
     }
     return () => {
-      cleaningMovieReducer();
-    };
-  }, [dispatch, mid]);
+      cleaningMovieReducer()
+    }
+  }, [dispatch, mid])
 
   return (
     <div className={classes.root}>
@@ -104,7 +104,7 @@ const MoviePage = () => {
         </>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default MoviePage;
+export default MoviePage

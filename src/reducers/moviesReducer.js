@@ -2,7 +2,7 @@ import {
   FETCH_MOVIES,
   FETCH_GENRE,
   FETCH_MOVIES_BY_GENRE,
-} from "../actions/actionsType";
+} from '../actions/actionsType'
 const defaultState = {
   genres: [],
   loading: false,
@@ -11,7 +11,7 @@ const defaultState = {
   totalPages: 1,
   totalResults: 0,
   genreId: 0,
-};
+}
 
 function moviesReducer(state = defaultState, action = {}) {
   switch (action.type) {
@@ -21,14 +21,14 @@ function moviesReducer(state = defaultState, action = {}) {
       return {
         ...state,
         loading: true,
-      };
+      }
     }
     case `${FETCH_GENRE}_FULFILLED`: {
       return {
         ...state,
         loading: false,
         genres: action.payload.data.genres,
-      };
+      }
     }
 
     case `${FETCH_MOVIES}_FULFILLED`: {
@@ -40,7 +40,7 @@ function moviesReducer(state = defaultState, action = {}) {
         totalPages: action.payload.data.total_pages,
         totalResults: action.payload.data.total_results,
         genreId: 0,
-      };
+      }
     }
 
     case `${FETCH_MOVIES_BY_GENRE}_FULFILLED`: {
@@ -52,12 +52,12 @@ function moviesReducer(state = defaultState, action = {}) {
         totalPages: action.payload.data.total_pages,
         totalResults: action.payload.data.total_results,
         genreId: action.payload.data.id,
-      };
+      }
     }
     default: {
-      return state;
+      return state
     }
   }
 }
 
-export default moviesReducer;
+export default moviesReducer

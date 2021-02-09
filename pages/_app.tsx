@@ -167,21 +167,18 @@ export default function App(props) {
                 <BottomNavigationAction
                   label="Top Movies"
                   icon={<FavoriteIcon />}
-                  to="/"
                 />
               </Link>
               <Link href="/upcoming">
                 <BottomNavigationAction
                   label="Up coming"
                   icon={<LayersIcon />}
-                  to="/upcoming"
                 />
               </Link>
               <Link href="/series">
                 <BottomNavigationAction
                   label="Top Series"
                   icon={<TheatersIcon />}
-                  to="/series"
                 />
               </Link>
             </BottomNavigation>

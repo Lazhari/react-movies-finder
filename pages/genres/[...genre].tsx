@@ -55,7 +55,7 @@ const GenrePage = () => {
         <Loader />
       ) : (
         <>
-          <MoviesCardList movies={movies} cols={6} />
+          <MoviesCardList movies={movies} />
           <div className={classes.paginationContainer}>
             <Pagination
               limit={20}

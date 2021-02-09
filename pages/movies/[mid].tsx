@@ -49,7 +49,6 @@ const MoviePage = () => {
     actors,
     reviews,
     relatedMovies,
-    productionCompanies,
   } = useSelector((state) => state.movieStore)
   const classes = useStyles()
 
@@ -76,7 +75,6 @@ const MoviePage = () => {
             <MovieHeader
               movie={movie}
               genres={genres}
-              productionCompanies={productionCompanies}
               trailer={trailer}
               actors={actors}
             />
@@ -94,11 +92,7 @@ const MoviePage = () => {
               <Typography variant="h5" component="h1" gutterBottom>
                 Related Movies
               </Typography>
-              <MoviesCardList
-                movies={relatedMovies}
-                hideOverview={true}
-                itemsPerRow={4}
-              />
+              <MoviesCardList movies={relatedMovies} />
             </div>
           )}
         </>

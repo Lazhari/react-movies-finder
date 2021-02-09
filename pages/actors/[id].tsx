@@ -105,11 +105,7 @@ const ActorPage = () => {
             <Typography variant="h5" component="h1" gutterBottom>
               Known For
             </Typography>
-            <MoviesCardList
-              movies={movies}
-              hideOverview={true}
-              itemsPerRow={4}
-            />
+            <MoviesCardList movies={movies} />
           </Grid>
         </Grid>
       )}

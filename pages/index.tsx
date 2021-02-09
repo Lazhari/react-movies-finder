@@ -60,7 +60,7 @@ function Home() {
         <Loader />
       ) : (
         <div>
-          <MoviesCardList movies={movies} cols={6} />
+          <MoviesCardList movies={movies} />
           {movies && movies.length ? (
             <div className={classes.paginationContainer}>
               <Pagination

@@ -134,7 +134,7 @@ const TopSeriesPage = () => {
             value={selectedGenres}
             onChange={handleGenresChange}
             input={<Input id="select-multiple-chip" />}
-            renderValue={(selected) => (
+            renderValue={(selected: any) => (
               <div className={classes.chips}>
                 {genres
                   .filter((genre) => selected.includes(genre.id))
@@ -177,7 +177,7 @@ const TopSeriesPage = () => {
         <Loader />
       ) : (
         <>
-          <TvShowList tvShows={tvShows} cols={6} />
+          <TvShowList tvShows={tvShows} />
           {tvShows && tvShows.length ? (
             <div className={classes.paginationContainer}>
               <Pagination

@@ -8,7 +8,7 @@ install:
 script:
   - yarn lint
   - yarn type-check
-  - yarn test --passWithNoTests --coverage
+  - yarn test --coverage
   - yarn build
 
 deploy:

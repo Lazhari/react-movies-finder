@@ -21,7 +21,7 @@ jobs:
           yarn --frozen-lockfile
           yarn lint
           yarn type-check
-          yarn test --passWithNoTests --coverage 
+          yarn test --coverage 
           yarn build
         env:
           CI: true
@@ -40,6 +40,7 @@ jobs:
         run: |
           yarn install
           yarn lint
+          yarn test --coverage
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
         env:

@@ -31,6 +31,7 @@ const ActorCard: React.FC<Props> = ({ actor }) => {
           }
           label={actor.name}
           className={classes.hasCursor}
+          size="medium"
         />
       </MuiLink>
     </Link>

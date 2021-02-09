@@ -9,6 +9,10 @@ import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
 import CloseIcon from '@material-ui/icons/Close'
 import Modal from '@material-ui/core/Modal'
 
+// new UI
+import Paper from '@material-ui/core/Paper'
+import Button from '@material-ui/core/Button'
+
 import Labels from './Labels'
 import ActorsList from './ActorsList'
 
@@ -56,13 +60,56 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     padding: 4,
   },
+  // New Component
+  movieHeader: {
+    position: 'relative',
+    height: theme.spacing(60),
+    backgroundColor: theme.palette.grey[800],
+    color: theme.palette.common.white,
+    marginTop: theme.spacing(8),
+    marginBottom: theme.spacing(4),
+    backgroundImage: 'url(https://source.unsplash.com/random)',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+  },
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    right: 0,
+    left: 0,
+    backgroundColor: 'rgba(0,0,0,.3)',
+  },
+  movieHeaderContent: {
+    position: 'relative',
+    padding: theme.spacing(3),
+    [theme.breakpoints.up('md')]: {
+      padding: theme.spacing(3),
+      paddingRight: 0,
+    },
+  },
+  trailerButtonContainer: {
+    padding: theme.spacing(3),
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  trailerIcon: {
+    marginRight: theme.spacing(1),
+  },
 }))
 
 const MovieHeader = ({ movie, genres, trailer, actors }) => {
   const classes = useStyles()
   const [open, setOpen] = React.useState(false)
   const headerStyle = {
-    backgroundImage: `linear-gradient(rgba(3, 3, 3, 0.30), rgba(0, 0, 5, 0.30)), url(https://image.tmdb.org/t/p/w1400_and_h450_bestv2${movie.backdrop_path})`,
+    // the old version
+    // backgroundImage: `linear-gradient(rgba(3, 3, 3, 0.30), rgba(0, 0, 5, 0.30)), url(https://image.tmdb.org/t/p/w1400_and_h450_bestv2${movie.backdrop_path})`,
+    backgroundImage: `url(https://image.tmdb.org/t/p/w1920_and_h800_bestv2${movie.backdrop_path})`,
   }
   const handleOpen = () => {
     setOpen(true)
@@ -101,52 +148,48 @@ const MovieHeader = ({ movie, genres, trailer, actors }) => {
         </Modal>
       )}
 
-      <div className={classes.header} style={headerStyle}>
-        <IconButton onClick={handleOpen} disabled={!trailer || !trailer.key}>
-          <PlayCircleOutlineIcon
-            style={{ fontSize: 64, color: '#c53364' }}
-          ></PlayCircleOutlineIcon>
-        </IconButton>
-      </div>
-      <Grid container spacing={2}>
-        <Grid item lg={3}>
-          <img
-            src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`}
-            alt={movie.original_title}
-            className={classes.moviePoster}
-          />
-        </Grid>
-        <Grid item lg={9}>
-          <div>
-            <Typography variant="h5" component="h1">
-              {movie.original_title}
-            </Typography>
-            <Typography variant="h6" component="p">
-              {movie.release_date}
-            </Typography>
-          </div>
-          <div className={classes.generalInfo}>
-            <Grid container>
-              <Grid item lg={6} className={classes.rating}>
-                <Typography component="legend">{movie.vote_average}</Typography>
+      <Paper className={classes.movieHeader} style={headerStyle}>
+        <div className={classes.overlay} />
+        <Grid container>
+          <Grid item md={9}>
+            <div className={classes.movieHeaderContent}>
+              <Typography
+                component="h1"
+                variant="h4"
+                color="inherit"
+                gutterBottom
+              >
+                {movie.original_title} ({movie.release_date}){' '}
                 <Rating
                   name="read-only"
                   value={movie.vote_average / 2}
                   precision={0.1}
                   readOnly
                 />
-              </Grid>
-              <Grid item lg={6}>
+              </Typography>
+              <Typography variant="body2" color="inherit" paragraph>
+                {movie.overview}
+              </Typography>
+              <div>
                 <Labels labels={genres} />
-              </Grid>
-            </Grid>
-          </div>
-          <div>
-            <Typography variant="h6" component="h1">
-              Overview
-            </Typography>
-            <Typography variant="body1">{movie.overview}</Typography>
-          </div>
+              </div>
+            </div>
+          </Grid>
+          <Grid item md={3} className={classes.trailerButtonContainer}>
+            <Button
+              size="large"
+              variant="outlined"
+              fullWidth
+              onClick={handleOpen}
+            >
+              <PlayCircleOutlineIcon className={classes.trailerIcon} /> Trailer
+            </Button>
+          </Grid>
+        </Grid>
+      </Paper>
+
+      <Grid container spacing={2}>
+        <Grid item lg={12}>
           {actors && actors.length ? (
             <div>
               <Typography variant="h6" component="h1">

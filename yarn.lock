@@ -2271,7 +2271,7 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@2.2.6, classnames@^2.2.5, classnames@^2.2.6:
+classnames@2.2.6, classnames@^2.2.5:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
   integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
@@ -5688,13 +5688,6 @@ map-visit@^1.0.0:
   integrity sha1-7Nyo8TFE5mDxtb1B8S80edmN+48=
   dependencies:
     object-visit "^1.0.0"
-
-material-ui-flat-pagination@4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/material-ui-flat-pagination/-/material-ui-flat-pagination-4.1.1.tgz#993b0a3abbcdbaed6e8d9d62009d31d6427beda3"
-  integrity sha512-pjzb8747auvMCxzzmYOqHO/+qz1d5IPQqonVHOPg719G+PyP4KX0HhPMl95u9V3gYFeftGh/EiqdT7din49eGw==
-  dependencies:
-    classnames "^2.2.6"
 
 md5.js@^1.3.4:
   version "1.3.5"

@@ -43,11 +43,11 @@ const UpcomingPage: NextPage = () => {
   }
 
   useEffect(() => {
-    if (router.isReady) {
+    if (router?.isReady) {
       const { page = 1 } = router.query
       dispatch(fetchMovies(parseInt(page as string, 10), 'upcoming'))
     }
-  }, [dispatch, router.isReady])
+  }, [dispatch, router?.isReady])
 
   return (
     <div className={classes.root}>

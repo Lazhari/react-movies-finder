@@ -10,11 +10,9 @@ exports[`Home page matches snapshot 1`] = `
     >
       Popular Movies
     </h1>
-    <div
-      class="makeStyles-root-7"
-    >
-      <span
-        class="css-680rou"
+    <div>
+      <div
+        class="MuiGrid-root makeStyles-root-6 MuiGrid-container MuiGrid-spacing-xs-3"
       />
     </div>
   </div>

@@ -107,7 +107,7 @@ const TopSeriesPage: NextPage = () => {
   }
 
   useEffect(() => {
-    if (router.isReady) {
+    if (router?.isReady) {
       const { page = 1 } = router.query
       dispatch(
         fetchTvShows(parseInt(page as string, 10), {
@@ -116,7 +116,7 @@ const TopSeriesPage: NextPage = () => {
         })
       )
     }
-  }, [dispatch, sortBy, selectedGenres, router.isReady])
+  }, [dispatch, sortBy, selectedGenres, router?.isReady])
 
   useEffect(() => {
     dispatch(fetchTvGenres())

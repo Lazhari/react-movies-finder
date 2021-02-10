@@ -56,11 +56,11 @@ const Home: NextPage = () => {
     window.scrollTo(0, 0)
   }
   useEffect(() => {
-    if (router.isReady) {
+    if (router?.isReady) {
       const { page = 1 } = router.query
       dispatch(fetchMovies(parseInt(page as string, 10)))
     }
-  }, [dispatch, router.isReady])
+  }, [dispatch, router?.isReady])
 
   return (
     <div className={classes.root}>

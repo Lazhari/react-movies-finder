@@ -46,12 +46,12 @@ const GenrePage: NextPage = () => {
   }
 
   useEffect(() => {
-    if (router.isReady && genreParams && genreParams.length > 0) {
+    if (router?.isReady && genreParams && genreParams.length > 0) {
       const [genreId] = genreParams
       const { page = 1 } = router.query
       dispatch(fetchMoviesByGenre(parseInt(page as string, 10), genreId))
     }
-  }, [dispatch, genreParams, router.isReady])
+  }, [dispatch, genreParams, router?.isReady])
 
   return (
     <div className={classes.root}>

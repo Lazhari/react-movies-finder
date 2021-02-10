@@ -42,6 +42,7 @@ const TvShowCard = ({ tvShow }) => {
   const classes = useStyles()
   const onErrorLoadingImage = (e) => {
     e.target.src = '/abstract-image.jpg'
+    e.target.srcset = '/abstract-image.jpg'
   }
   return (
     <Card className={classes.card}>

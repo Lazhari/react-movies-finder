@@ -1,9 +1,11 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { NextPage } from 'next'
+import { useRouter } from 'next/router'
 
-import Pagination from 'material-ui-flat-pagination'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
+import Pagination from '@material-ui/lab/Pagination'
 
 import { fetchMovies } from '../src/actions/moviesActions'
 
@@ -22,22 +24,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const UpcomingPage = () => {
+const UpcomingPage: NextPage = () => {
+  const router = useRouter()
   const dispatch = useDispatch()
-  const { movies, loading, page, totalResults } = useSelector(
+  const { movies, loading, page, totalPages } = useSelector(
     (state) => state.moviesStore
   )
   const classes = useStyles()
 
-  const handlePageChange = (offset) => {
-    const pageNumber = offset / 20 + 1
-    dispatch(fetchMovies(pageNumber, 'upcoming'))
+  const handlePageChange = (page: number) => {
+    dispatch(fetchMovies(page, 'upcoming'))
+    router.replace(router.basePath, {
+      query: {
+        page,
+      },
+    })
     window.scrollTo(0, 0)
   }
 
   useEffect(() => {
-    dispatch(fetchMovies(1, 'upcoming'))
-  }, [dispatch])
+    if (router.isReady) {
+      const { page = 1 } = router.query
+      dispatch(fetchMovies(parseInt(page as string, 10), 'upcoming'))
+    }
+  }, [dispatch, router.isReady])
 
   return (
     <div className={classes.root}>
@@ -51,10 +61,11 @@ const UpcomingPage = () => {
           <MoviesCardList movies={movies} />
           <div className={classes.paginationContainer}>
             <Pagination
-              limit={20}
-              offset={(page - 1) * 20}
-              total={totalResults}
-              onClick={(e, offset) => handlePageChange(offset)}
+              count={totalPages}
+              page={page}
+              variant="outlined"
+              shape="rounded"
+              onChange={(e, page) => handlePageChange(page)}
             />
           </div>
         </>

@@ -1,9 +1,11 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { NextPage } from 'next'
+import { useRouter } from 'next/router'
 
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
-import Pagination from 'material-ui-flat-pagination'
+import Pagination from '@material-ui/lab/Pagination'
 
 import { fetchMovies } from '../src/actions/moviesActions'
 
@@ -36,20 +38,29 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-function Home() {
+const Home: NextPage = () => {
   const dispatch = useDispatch()
-  const { movies, loading, page, totalResults } = useSelector((state) => {
+  const router = useRouter()
+
+  const { movies, loading, page, totalPages } = useSelector((state) => {
     return state.moviesStore
   })
   const classes = useStyles()
-  const handlePageChange = (offset) => {
-    const pageNumber = offset / 20 + 1
-    dispatch(fetchMovies(pageNumber))
+  const handlePageChange = (page: number) => {
+    dispatch(fetchMovies(page))
+    router.replace(router.basePath, {
+      query: {
+        page,
+      },
+    })
     window.scrollTo(0, 0)
   }
   useEffect(() => {
-    dispatch(fetchMovies())
-  }, [dispatch])
+    if (router.isReady) {
+      const { page = '' } = router.query
+      dispatch(fetchMovies(parseInt(page as string, 10)))
+    }
+  }, [dispatch, router.isReady])
 
   return (
     <div className={classes.root}>
@@ -64,10 +75,11 @@ function Home() {
           {movies && movies.length ? (
             <div className={classes.paginationContainer}>
               <Pagination
-                limit={20}
-                offset={(page - 1) * 20}
-                total={totalResults}
-                onClick={(e, offset) => handlePageChange(offset)}
+                count={totalPages}
+                page={page}
+                variant="outlined"
+                shape="rounded"
+                onChange={(e, page) => handlePageChange(page)}
               />
             </div>
           ) : null}

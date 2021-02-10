@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles'
-import Pagination from 'material-ui-flat-pagination'
+import Pagination from '@material-ui/lab/Pagination'
+import { NextPage } from 'next'
+import { useRouter } from 'next/router'
 
 import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
@@ -71,23 +73,28 @@ const sortOptions = [
   },
 ]
 
-const TopSeriesPage = () => {
+const TopSeriesPage: NextPage = () => {
+  const router = useRouter()
   const dispatch = useDispatch()
-  const { tvShows, loading, page, totalResults, genres } = useSelector(
+  const { tvShows, loading, page, totalPages, genres } = useSelector(
     (state) => state.tvShowsStore
   )
   const classes = useStyles()
   const [sortBy, setSortBy] = React.useState('popularity.desc')
   const [selectedGenres, setSelectedGenres] = React.useState([])
 
-  const handlePageChange = (offset) => {
-    const pageNumber = offset / 20 + 1
+  const handlePageChange = (page: number) => {
     dispatch(
-      fetchTvShows(pageNumber, {
+      fetchTvShows(page, {
         sort_by: sortBy,
         with_genres: selectedGenres.join(','),
       })
     )
+    router.replace(router.basePath, {
+      query: {
+        page,
+      },
+    })
     window.scrollTo(0, 0)
   }
 
@@ -100,13 +107,17 @@ const TopSeriesPage = () => {
   }
 
   useEffect(() => {
-    dispatch(
-      fetchTvShows(1, {
-        sort_by: sortBy,
-        with_genres: selectedGenres.join(','),
-      })
-    )
-  }, [dispatch, sortBy, selectedGenres])
+    if (router.isReady) {
+      const { page = 1 } = router.query
+      dispatch(
+        fetchTvShows(parseInt(page as string, 10), {
+          sort_by: sortBy,
+          with_genres: selectedGenres.join(','),
+        })
+      )
+    }
+  }, [dispatch, sortBy, selectedGenres, router.isReady])
+
   useEffect(() => {
     dispatch(fetchTvGenres())
   }, [dispatch])
@@ -181,10 +192,11 @@ const TopSeriesPage = () => {
           {tvShows && tvShows.length ? (
             <div className={classes.paginationContainer}>
               <Pagination
-                limit={20}
-                offset={(page - 1) * 20}
-                total={totalResults}
-                onClick={(e, offset) => handlePageChange(offset)}
+                count={totalPages}
+                page={page}
+                variant="outlined"
+                shape="rounded"
+                onChange={(e, page) => handlePageChange(page)}
               />
             </div>
           ) : null}

@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import Pagination from 'material-ui-flat-pagination'
+import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
+import Pagination from '@material-ui/lab/Pagination'
 
 import { fetchMoviesByGenre } from '../../src/actions/moviesActions'
 
@@ -23,28 +24,34 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const GenrePage = () => {
+const GenrePage: NextPage = () => {
   const router = useRouter()
   const { genre: genreParams } = router.query as { genre: string[] }
   const dispatch = useDispatch()
-  const { movies, loading, page, totalResults } = useSelector(
+  const { movies, loading, page, totalPages } = useSelector(
     (state) => state.moviesStore
   )
   const classes = useStyles()
 
-  const handlePageChange = (offset) => {
-    const pageNumber = offset / 20 + 1
+  const handlePageChange = (page: number) => {
     const [genreId] = genreParams
-    dispatch(fetchMoviesByGenre(pageNumber, genreId))
+    dispatch(fetchMoviesByGenre(page, genreId))
+    router.replace({
+      pathname: router.asPath,
+      query: {
+        page,
+      },
+    })
     window.scrollTo(0, 0)
   }
 
   useEffect(() => {
-    if (genreParams && genreParams.length > 0) {
+    if (router.isReady && genreParams && genreParams.length > 0) {
       const [genreId] = genreParams
-      dispatch(fetchMoviesByGenre(1, genreId))
+      const { page = 1 } = router.query
+      dispatch(fetchMoviesByGenre(parseInt(page as string, 10), genreId))
     }
-  }, [dispatch, genreParams])
+  }, [dispatch, genreParams, router.isReady])
 
   return (
     <div className={classes.root}>
@@ -58,10 +65,11 @@ const GenrePage = () => {
           <MoviesCardList movies={movies} />
           <div className={classes.paginationContainer}>
             <Pagination
-              limit={20}
-              offset={(page - 1) * 20}
-              total={totalResults}
-              onClick={(e, offset) => handlePageChange(offset)}
+              count={totalPages}
+              page={page}
+              variant="outlined"
+              shape="rounded"
+              onChange={(e, page) => handlePageChange(page)}
             />
           </div>
         </>

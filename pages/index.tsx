@@ -57,7 +57,7 @@ const Home: NextPage = () => {
   }
   useEffect(() => {
     if (router.isReady) {
-      const { page = '' } = router.query
+      const { page = 1 } = router.query
       dispatch(fetchMovies(parseInt(page as string, 10)))
     }
   }, [dispatch, router.isReady])

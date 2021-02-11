@@ -1,7 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Head from 'next/head'
-import { Provider } from 'react-redux'
 import Link from 'next/link'
 
 import { makeStyles } from '@material-ui/core/styles'
@@ -24,7 +22,7 @@ import Hidden from '@material-ui/core/Hidden'
 import theme from '../src/theme'
 import Header from '../src/components/blocks/Header'
 import Sidebar from '../src/components/blocks/Sidebar'
-import { useStore } from '../src/store'
+import { wrapper } from '../src/store'
 
 const drawerWidth = 240
 
@@ -94,10 +92,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function App(props) {
+function App(props) {
   const { Component, pageProps } = props
   const [open, setOpen] = React.useState(false)
-  const store = useStore(pageProps.initialReduxState)
+  // const store = useStore(pageProps.initialReduxState)
   const classes = useStyles()
 
   const handleDrawerOpen = () => {
@@ -117,79 +115,71 @@ export default function App(props) {
   }, [])
 
   return (
-    <Provider store={store}>
-      <React.Fragment>
-        <Head>
-          <title>Movies Finder v2</title>
-          <meta
-            name="viewport"
-            content="minimum-scale=1, initial-scale=1, width=device-width"
-          />
-        </Head>
-        <ThemeProvider theme={theme}>
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-          <CssBaseline />
-          <Container maxWidth="xl">
-            <Header handleDrawerOpen={handleDrawerOpen} open={open} />
-            <Drawer
-              className={classes.drawer}
-              variant="persistent"
-              anchor="left"
-              open={open}
-              classes={{
-                paper: classes.drawerPaper,
-              }}
-            >
-              <div className={classes.drawerHeader}>
-                <Typography variant="h5" component="h1">
-                  Categories
-                </Typography>
-                <IconButton onClick={handleDrawerClose}>
-                  {theme.direction === 'ltr' ? (
-                    <ChevronLeftIcon />
-                  ) : (
-                    <ChevronRightIcon />
-                  )}
-                </IconButton>
-              </div>
-              <Divider />
-              <Sidebar handleDrawerClose={handleDrawerClose} />
-            </Drawer>
-            <Component {...pageProps} />
-          </Container>
-          <Hidden mdUp>
-            <BottomNavigation
-              value={'Recents'}
-              showLabels
-              className={classes.BottomNavigation}
-            >
-              <Link href="/">
-                <BottomNavigationAction
-                  label="Top Movies"
-                  icon={<FavoriteIcon />}
-                />
-              </Link>
-              <Link href="/upcoming">
-                <BottomNavigationAction
-                  label="Up coming"
-                  icon={<LayersIcon />}
-                />
-              </Link>
-              <Link href="/series">
-                <BottomNavigationAction
-                  label="Top Series"
-                  icon={<TheatersIcon />}
-                />
-              </Link>
-            </BottomNavigation>
-          </Hidden>
-        </ThemeProvider>
-      </React.Fragment>
-    </Provider>
+    <React.Fragment>
+      <Head>
+        <title>Movies Finder v2</title>
+        <meta
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width"
+        />
+      </Head>
+      <ThemeProvider theme={theme}>
+        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+        <CssBaseline />
+        <Container maxWidth="xl">
+          <Header handleDrawerOpen={handleDrawerOpen} open={open} />
+          <Drawer
+            className={classes.drawer}
+            variant="persistent"
+            anchor="left"
+            open={open}
+            classes={{
+              paper: classes.drawerPaper,
+            }}
+          >
+            <div className={classes.drawerHeader}>
+              <Typography variant="h5" component="h1">
+                Categories
+              </Typography>
+              <IconButton onClick={handleDrawerClose}>
+                {theme.direction === 'ltr' ? (
+                  <ChevronLeftIcon />
+                ) : (
+                  <ChevronRightIcon />
+                )}
+              </IconButton>
+            </div>
+            <Divider />
+            <Sidebar handleDrawerClose={handleDrawerClose} />
+          </Drawer>
+          <Component {...pageProps} />
+        </Container>
+        <Hidden mdUp>
+          <BottomNavigation
+            value={'Recents'}
+            showLabels
+            className={classes.BottomNavigation}
+          >
+            <Link href="/">
+              <BottomNavigationAction
+                label="Top Movies"
+                icon={<FavoriteIcon />}
+              />
+            </Link>
+            <Link href="/upcoming">
+              <BottomNavigationAction label="Up coming" icon={<LayersIcon />} />
+            </Link>
+            <Link href="/series">
+              <BottomNavigationAction
+                label="Top Series"
+                icon={<TheatersIcon />}
+              />
+            </Link>
+          </BottomNavigation>
+        </Hidden>
+      </ThemeProvider>
+    </React.Fragment>
   )
 }
 
-App.propTypes = {
-  Component: PropTypes.elementType.isRequired,
-  pageProps: PropTypes.object.isRequired,
-}
+export default wrapper.withRedux(App)

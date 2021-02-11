@@ -19,6 +19,7 @@ import {
   getActorCreditMovies,
 } from '../../src/actions/actorAction'
 import Loader from '../../src/components/common/Loader'
+import SEO from '../../src/components/common/Seo'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,62 +55,70 @@ const ActorPage = () => {
       {loading ? (
         <Loader />
       ) : (
-        <Grid container spacing={2}>
-          <Grid item xs={12} lg={3}>
-            <Card>
-              <CardMedia
-                className={classes.media}
-                image={`https://image.tmdb.org/t/p/w276_and_h350_face${profile.profile_path}`}
-                title={profile.name}
-              />
-              <CardContent>
-                <Link
-                  href={`/actors/[id]`}
-                  as={`/actors/${profile.id}`}
-                  shallow
-                >
-                  <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="h2"
-                    color="inherit"
+        <>
+          {profile && (
+            <SEO
+              title={profile.name || ''}
+              description={profile.biography || ''}
+            />
+          )}
+          <Grid container spacing={2}>
+            <Grid item xs={12} lg={3}>
+              <Card>
+                <CardMedia
+                  className={classes.media}
+                  image={`https://image.tmdb.org/t/p/w276_and_h350_face${profile.profile_path}`}
+                  title={profile.name}
+                />
+                <CardContent>
+                  <Link
+                    href={`/actors/[id]`}
+                    as={`/actors/${profile.id}`}
+                    shallow
                   >
-                    {profile.name}
-                  </Typography>
-                </Link>
-
-                <Typography variant="body1" gutterBottom>
-                  Birth day: {profile.birthday}
-                </Typography>
-                <Typography variant="body1" gutterBottom>
-                  Place of birth: {profile.place_of_birth}
-                </Typography>
-                {isUpSm && (
-                  <>
-                    <Divider className={classes.divider} />
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Biography
-                    </Typography>
                     <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="p"
-                      align="justify"
+                      gutterBottom
+                      variant="h5"
+                      component="h2"
+                      color="inherit"
                     >
-                      {profile.biography}
+                      {profile.name}
                     </Typography>
-                  </>
-                )}
-              </CardContent>
-            </Card>
+                  </Link>
+
+                  <Typography variant="body1" gutterBottom>
+                    Birth day: {profile.birthday}
+                  </Typography>
+                  <Typography variant="body1" gutterBottom>
+                    Place of birth: {profile.place_of_birth}
+                  </Typography>
+                  {isUpSm && (
+                    <>
+                      <Divider className={classes.divider} />
+                      <Typography gutterBottom variant="h5" component="h2">
+                        Biography
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        color="textSecondary"
+                        component="p"
+                        align="justify"
+                      >
+                        {profile.biography}
+                      </Typography>
+                    </>
+                  )}
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={12} lg={9}>
+              <Typography variant="h5" component="h1" gutterBottom>
+                Known For
+              </Typography>
+              <MoviesCardList movies={movies} />
+            </Grid>
           </Grid>
-          <Grid item xs={12} lg={9}>
-            <Typography variant="h5" component="h1" gutterBottom>
-              Known For
-            </Typography>
-            <MoviesCardList movies={movies} />
-          </Grid>
-        </Grid>
+        </>
       )}
     </div>
   )

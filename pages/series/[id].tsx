@@ -9,6 +9,7 @@ import { getTvShowDetails } from '../../src/actions/tvShowAction'
 import Loader from '../../src/components/common/Loader'
 import Labels from '../../src/components/Labels'
 import ActorsList from '../../src/components/ActorsList'
+import SEO from '../../src/components/common/Seo'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,6 +63,7 @@ const Series = () => {
         <Loader></Loader>
       ) : (
         <>
+          <SEO title={tvShow.original_name} description={tvShow.overview} />
           <div className={classes.header} style={headerStyle}>
             <img
               src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${tvShow.poster_path}`}

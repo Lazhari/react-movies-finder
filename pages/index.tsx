@@ -11,6 +11,7 @@ import { fetchMovies } from '../src/actions/moviesActions'
 
 import MoviesCardList from '../src/components/MoviesCardList'
 import Loader from '../src/components/common/Loader'
+import SEO from '../src/components/common/Seo'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,6 +65,10 @@ const Home: NextPage = () => {
 
   return (
     <div className={classes.root}>
+      <SEO
+        title="Popular Movies"
+        description="A list of popular movies on TMDb."
+      />
       <Typography variant="h4" component="h1" gutterBottom>
         Popular Movies
       </Typography>

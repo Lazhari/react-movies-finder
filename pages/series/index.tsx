@@ -17,6 +17,7 @@ import Checkbox from '@material-ui/core/Checkbox'
 import { fetchTvShows, fetchTvGenres } from '../../src/actions/tvShowsActions'
 import TvShowList from '../../src/components/TvShowList'
 import Loader from '../../src/components/common/Loader'
+import SEO from '../../src/components/common/Seo'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -135,6 +136,7 @@ const TopSeriesPage: NextPage = () => {
 
   return (
     <div className={classes.root}>
+      <SEO title="List TV Shows" description="TV shows list" />
       <div className={classes.filtersContainer}>
         <FormControl className={classes.formControl}>
           <InputLabel id="demo-mutiple-chip-label">Genre</InputLabel>

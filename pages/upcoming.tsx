@@ -11,6 +11,7 @@ import { fetchMovies } from '../src/actions/moviesActions'
 
 import MoviesCardList from '../src/components/MoviesCardList'
 import Loader from '../src/components/common/Loader'
+import SEO from '../src/components/common/Seo'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,6 +52,10 @@ const UpcomingPage: NextPage = () => {
 
   return (
     <div className={classes.root}>
+      <SEO
+        title="Upcoming movies"
+        description="A list of upcoming movies in theatres."
+      />
       <Typography variant="h4" component="h1" gutterBottom>
         Upcoming Movies
       </Typography>

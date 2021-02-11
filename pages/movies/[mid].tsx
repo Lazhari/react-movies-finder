@@ -18,7 +18,6 @@ import MovieHeader from '../../src/components/MovieHeader'
 import MoviesCardList from '../../src/components/MoviesCardList'
 import ReviewsList from '../../src/components/ReviewsList'
 import Loader from '../../src/components/common/Loader'
-import SEO from '../../src/components/common/Seo'
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -72,9 +71,6 @@ const MoviePage = () => {
         <Loader />
       ) : (
         <>
-          {movie && movie.id && (
-            <SEO title={movie.original_title} description={movie.summary} />
-          )}
           {movie && movie.id && (
             <MovieHeader
               movie={movie}

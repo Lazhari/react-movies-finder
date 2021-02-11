@@ -11,7 +11,6 @@ import { fetchMoviesByGenre } from '../../src/actions/moviesActions'
 
 import MoviesCardList from '../../src/components/MoviesCardList'
 import Loader from '../../src/components/common/Loader'
-import SEO from '../../src/components/common/Seo'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -56,10 +55,6 @@ const GenrePage: NextPage = () => {
 
   return (
     <div className={classes.root}>
-      <SEO
-        title={(genreParams && genreParams[1]) || ''}
-        description={`${(genreParams && genreParams[1]) || ''} Movies`}
-      />
       <Typography variant="h4" component="h1" gutterBottom>
         {(genreParams && genreParams[1]) || ''}
       </Typography>

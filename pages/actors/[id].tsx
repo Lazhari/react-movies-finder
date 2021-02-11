@@ -19,7 +19,6 @@ import {
   getActorCreditMovies,
 } from '../../src/actions/actorAction'
 import Loader from '../../src/components/common/Loader'
-import SEO from '../../src/components/common/Seo'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -56,12 +55,6 @@ const ActorPage = () => {
         <Loader />
       ) : (
         <>
-          {profile && (
-            <SEO
-              title={profile.name || ''}
-              description={profile.biography || ''}
-            />
-          )}
           <Grid container spacing={2}>
             <Grid item xs={12} lg={3}>
               <Card>

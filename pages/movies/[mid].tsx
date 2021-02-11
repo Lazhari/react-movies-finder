@@ -72,7 +72,9 @@ const MoviePage = () => {
         <Loader />
       ) : (
         <>
-          <SEO title={movie.original_title} description={movie.summary} />
+          {movie && movie.id && (
+            <SEO title={movie.original_title} description={movie.summary} />
+          )}
           {movie && movie.id && (
             <MovieHeader
               movie={movie}

@@ -14,6 +14,7 @@ const SEO: React.FC<Props> = ({
 }) => {
   return (
     <Head>
+      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <title>{`${title} | ${siteTitle}`}</title>
       <meta name="description" content={description} />
       <meta property="og:type" content="website" />

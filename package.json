@@ -13,8 +13,7 @@
     "snyk-protect": "snyk protect",
     "prepare": "yarn run snyk-protect",
     "test": "jest",
-    "test-all": "yarn lint && yarn type-check && yarn test",
-    "postinstall": "husky install"
+    "test-all": "yarn lint && yarn type-check && yarn test"
   },
   "husky": {
     "hooks": {
@@ -59,7 +58,7 @@
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-react": "^7.22.0",
     "gh-pages": "^3.1.0",
-    "husky": "^5.0.9",
+    "husky": "4.3.8",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
     "jest-dom": "^4.0.0",

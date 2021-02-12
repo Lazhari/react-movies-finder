@@ -7,12 +7,8 @@ import { useRouter } from 'next/router'
 
 import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
-import ListItemText from '@material-ui/core/ListItemText'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
-import Input from '@material-ui/core/Input'
-import Chip from '@material-ui/core/Chip'
-import Checkbox from '@material-ui/core/Checkbox'
 
 import { fetchTvShows, fetchTvGenres } from '../../src/actions/tvShowsActions'
 import TvShowList from '../../src/components/TvShowList'
@@ -21,7 +17,7 @@ import SEO from '../../src/components/common/Seo'
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: 50,
+    marginTop: theme.spacing(10),
   },
   paginationContainer: {
     display: 'flex',
@@ -31,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
   filtersContainer: {
     display: 'flex',
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
     marginBottom: theme.spacing(2),
   },
   formControl: {
@@ -82,13 +78,13 @@ const TopSeriesPage: NextPage = () => {
   )
   const classes = useStyles()
   const [sortBy, setSortBy] = React.useState('popularity.desc')
-  const [selectedGenres, setSelectedGenres] = React.useState([])
+  const [selectedGenres, setSelectedGenres] = React.useState()
 
   const handlePageChange = (page: number) => {
     dispatch(
       fetchTvShows(page, {
         sort_by: sortBy,
-        with_genres: selectedGenres.join(','),
+        with_genres: selectedGenres,
       })
     )
     router.replace(router.basePath, {
@@ -105,6 +101,7 @@ const TopSeriesPage: NextPage = () => {
 
   const handleGenresChange = (event) => {
     setSelectedGenres(event.target.value)
+    setSortBy('popularity.desc')
   }
 
   useEffect(() => {
@@ -113,7 +110,7 @@ const TopSeriesPage: NextPage = () => {
       dispatch(
         fetchTvShows(parseInt(page as string, 10), {
           sort_by: sortBy,
-          with_genres: selectedGenres.join(','),
+          with_genres: selectedGenres,
         })
       )
     }
@@ -123,60 +120,34 @@ const TopSeriesPage: NextPage = () => {
     dispatch(fetchTvGenres())
   }, [dispatch])
 
-  const ITEM_HEIGHT = 48
-  const ITEM_PADDING_TOP = 8
-  const MenuProps = {
-    PaperProps: {
-      style: {
-        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-        width: 250,
-      },
-    },
-  }
-
   return (
     <div className={classes.root}>
       <SEO title="List TV Shows" description="TV shows list" />
       <div className={classes.filtersContainer}>
-        <FormControl className={classes.formControl}>
-          <InputLabel id="demo-mutiple-chip-label">Genre</InputLabel>
+        <FormControl variant="outlined" className={classes.formControl}>
+          <InputLabel id="genre-label">Genre</InputLabel>
           <Select
-            labelId="demo-mutiple-chip-label"
-            id="demo-mutiple-chip"
-            multiple
+            labelId="genre-label"
+            id="genre-label"
             value={selectedGenres}
             onChange={handleGenresChange}
-            input={<Input id="select-multiple-chip" />}
-            renderValue={(selected: any) => (
-              <div className={classes.chips}>
-                {genres
-                  .filter((genre) => selected.includes(genre.id))
-                  .map((genre) => (
-                    <Chip
-                      key={genre.id}
-                      label={genre.name}
-                      className={classes.chip}
-                    />
-                  ))}
-              </div>
-            )}
-            MenuProps={MenuProps}
+            label="Genre"
           >
             {genres.map((genre) => (
-              <MenuItem key={genre.id} value={genre.id}>
-                <Checkbox checked={selectedGenres.indexOf(genre.id) > -1} />
-                <ListItemText primary={genre.name} />
+              <MenuItem value={genre.id} key={genre.id}>
+                {genre.name}
               </MenuItem>
             ))}
           </Select>
         </FormControl>
-        <FormControl className={classes.formControl}>
-          <InputLabel id="demo-simple-select-label">Sorted By</InputLabel>
+        <FormControl variant="outlined" className={classes.formControl}>
+          <InputLabel id="sort-by-label">Sorted By</InputLabel>
           <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
+            labelId="sort-by-label"
+            id="sort-by-label-select-outlined"
             value={sortBy}
             onChange={handleChange}
+            label="Sorted By"
           >
             {sortOptions.map((sortOption) => (
               <MenuItem value={sortOption.value} key={sortOption.value}>

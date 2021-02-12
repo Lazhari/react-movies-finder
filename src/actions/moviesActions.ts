@@ -1,4 +1,4 @@
-import { client } from './'
+import { client } from '.'
 import {
   FETCH_MOVIES,
   FETCH_GENRE,

@@ -2,7 +2,7 @@ import {
   FETCH_MOVIES,
   FETCH_GENRE,
   FETCH_MOVIES_BY_GENRE,
-} from '../actions/actionsType'
+} from '@actions/actionsType'
 const defaultState = {
   genres: [],
   loading: false,

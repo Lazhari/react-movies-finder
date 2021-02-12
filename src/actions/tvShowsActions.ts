@@ -1,4 +1,4 @@
-import { client } from './'
+import { client } from '.'
 import { FETCH_TV_SHOWS, FETCH_TV_GENRES } from './actionsType'
 
 export function fetchTvShows(page = 1, filters = {}) {

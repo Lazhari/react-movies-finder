@@ -1,4 +1,4 @@
-import { client } from './'
+import { client } from '.'
 import {
   FETCH_MOVIE_DETAILS,
   FETCH_MOVIE_VIDEOS,

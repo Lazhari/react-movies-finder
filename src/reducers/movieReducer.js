@@ -5,7 +5,7 @@ import {
   FETCH_RELATED_MOVIES,
   FETCH_MOVIE_CAST,
   CLEANING_MOVIE_STATE,
-} from '../actions/actionsType'
+} from '@actions/actionsType'
 const defaultState = {
   loading: false,
   movie: {},

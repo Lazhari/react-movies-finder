@@ -1,4 +1,4 @@
-import { client } from './'
+import { client } from '.'
 import { GET_ACTOR_PROFILE, GET_ACTOR_CREDIT_MOVIES } from './actionsType'
 
 export function getPeopleProfile(person_id) {

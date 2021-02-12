@@ -1,7 +1,7 @@
 import {
   GET_ACTOR_PROFILE,
   GET_ACTOR_CREDIT_MOVIES,
-} from '../actions/actionsType'
+} from '@actions/actionsType'
 
 const defaultState = {
   loading: false,

@@ -1,7 +1,15 @@
 
 {
-    "compilerOptions": {
+  "compilerOptions": {
       "target": "es5",
+      "baseUrl": ".",
+      "paths": {
+        "@src/*": ["src/*"],
+        "@components/*": ["src/components/*"],
+        "@actions/*": ["src/actions/*"],
+        "@models/*": ["src/models/*"],
+        "@reducers/*": ["src/reducers/*"],
+      },
       "lib": ["dom", "dom.iterable", "esnext"],
       "allowJs": true,
       "skipLibCheck": true,

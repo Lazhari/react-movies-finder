@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import Chip from '@material-ui/core/Chip'
 import Avatar from '@material-ui/core/Avatar'
 import MuiLink from '@material-ui/core/Link'
-import { Actor } from '../models/actor'
+import { Actor } from '@models/actor'
 
 interface Props {
   actor: Actor

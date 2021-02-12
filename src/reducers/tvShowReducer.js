@@ -1,4 +1,4 @@
-import { FETCH_TV_SHOW_DETAILS } from '../actions/actionsType'
+import { FETCH_TV_SHOW_DETAILS } from '@actions/actionsType'
 
 const defaultState = {
   loading: false,

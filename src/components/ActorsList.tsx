@@ -3,7 +3,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 
 import ActorCard from './ActorCard'
-import { Actor } from '../models/actor'
+import { Actor } from '@models/actor'
 
 interface Props {
   actors: Actor[]

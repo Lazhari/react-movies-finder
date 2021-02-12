@@ -1,4 +1,4 @@
-import { FETCH_TV_SHOWS, FETCH_TV_GENRES } from '../actions/actionsType'
+import { FETCH_TV_SHOWS, FETCH_TV_GENRES } from '@actions/actionsType'
 const defaultState = {
   tvShows: [],
   genres: [],

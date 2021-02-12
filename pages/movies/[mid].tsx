@@ -12,12 +12,12 @@ import {
   fetchRelatedMovies,
   fetchMovieActors,
   cleaningMovieReducer,
-} from '../../src/actions/movieAction'
+} from '@actions/movieAction'
 
-import MovieHeader from '../../src/components/MovieHeader'
-import MoviesCardList from '../../src/components/MoviesCardList'
-import ReviewsList from '../../src/components/ReviewsList'
-import Loader from '../../src/components/common/Loader'
+import MovieHeader from '@components/MovieHeader'
+import MoviesCardList from '@components/MoviesCardList'
+import ReviewsList from '@components/ReviewsList'
+import Loader from '@components/common/Loader'
 
 const useStyles = makeStyles((theme) => ({
   root: {},

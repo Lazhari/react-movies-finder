@@ -19,10 +19,10 @@ import FavoriteIcon from '@material-ui/icons/Favorite'
 import TheatersIcon from '@material-ui/icons/Theaters'
 import Hidden from '@material-ui/core/Hidden'
 
-import theme from '../src/theme'
-import Header from '../src/components/blocks/Header'
-import Sidebar from '../src/components/blocks/Sidebar'
-import { wrapper } from '../src/store'
+import theme from '@src/theme'
+import Header from '@components/blocks/Header'
+import Sidebar from '@components/blocks/Sidebar'
+import { wrapper } from '@src/store'
 
 const drawerWidth = 240
 

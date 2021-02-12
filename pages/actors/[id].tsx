@@ -13,12 +13,10 @@ import Grid from '@material-ui/core/Grid'
 import { useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 
-import MoviesCardList from '../../src/components/MoviesCardList'
-import {
-  getPeopleProfile,
-  getActorCreditMovies,
-} from '../../src/actions/actorAction'
-import Loader from '../../src/components/common/Loader'
+import { getPeopleProfile, getActorCreditMovies } from '@actions/actorAction'
+
+import MoviesCardList from '@components/MoviesCardList'
+import Loader from '@components/common/Loader'
 
 const useStyles = makeStyles((theme) => ({
   root: {

@@ -1,7 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import ClipLoader from 'react-spinners/ClipLoader'
-import pink from '@material-ui/core/colors/pink'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -16,7 +15,7 @@ const Loader = () => {
   const classes = useStyles()
   return (
     <div className={classes.root}>
-      <ClipLoader color={pink[600]} size={60} />
+      <CircularProgress color="secondary" />
     </div>
   )
 }

@@ -13,7 +13,8 @@
     "snyk-protect": "snyk protect",
     "prepare": "yarn run snyk-protect",
     "test": "jest",
-    "test-all": "yarn lint && yarn type-check && yarn test"
+    "test-all": "yarn lint && yarn type-check && yarn test",
+    "postinstall": "husky install"
   },
   "husky": {
     "hooks": {
@@ -22,7 +23,7 @@
     }
   },
   "lint-staged": {
-    "*.@(js|jsx)": [
+    "*.@(ts|tsx|js|jsx)": [
       "yarn lint",
       "yarn format"
     ]

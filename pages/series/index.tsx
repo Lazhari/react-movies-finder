@@ -78,7 +78,7 @@ const TopSeriesPage: NextPage = () => {
   )
   const classes = useStyles()
   const [sortBy, setSortBy] = React.useState('popularity.desc')
-  const [selectedGenres, setSelectedGenres] = React.useState()
+  const [selectedGenres, setSelectedGenres] = React.useState('')
 
   const handlePageChange = (page: number) => {
     dispatch(

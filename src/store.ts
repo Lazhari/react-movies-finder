@@ -17,4 +17,4 @@ const makeStore: MakeStore<any> = (_context: Context) =>
     )
   )
 
-export const wrapper = createWrapper<any>(makeStore, { debug: true })
+export const wrapper = createWrapper<any>(makeStore, { debug: false })

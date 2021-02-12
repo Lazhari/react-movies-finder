@@ -154,7 +154,7 @@ const Header: React.FC<Props> = ({ handleDrawerOpen, open }) => {
               Movies Finder
             </Typography>
           </div>
-          <Hidden mdDown>
+          <Hidden smDown>
             <nav>
               {navLinks.map((item, index) => (
                 <Link href={item.url} key={index} shallow>
@@ -170,8 +170,6 @@ const Header: React.FC<Props> = ({ handleDrawerOpen, open }) => {
                 </Link>
               ))}
             </nav>
-          </Hidden>
-          <Hidden xsDown>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />

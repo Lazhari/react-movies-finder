@@ -16,7 +16,7 @@ import Link from 'next/link'
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    maxWidth: 345,
+    // maxWidth: 345,
   },
   media: {
     width: '100%',

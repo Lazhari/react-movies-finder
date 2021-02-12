@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton'
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
 import CloseIcon from '@material-ui/icons/Close'
 import Modal from '@material-ui/core/Modal'
+import Hidden from '@material-ui/core/Hidden'
 
 // new UI
 import Paper from '@material-ui/core/Paper'
@@ -107,8 +108,6 @@ const MovieHeader = ({ movie, genres, trailer, actors }) => {
   const classes = useStyles()
   const [open, setOpen] = React.useState(false)
   const headerStyle = {
-    // the old version
-    // backgroundImage: `linear-gradient(rgba(3, 3, 3, 0.30), rgba(0, 0, 5, 0.30)), url(https://image.tmdb.org/t/p/w1400_and_h450_bestv2${movie.backdrop_path})`,
     backgroundImage: `url(https://image.tmdb.org/t/p/w1920_and_h800_bestv2${movie.backdrop_path})`,
   }
   const handleOpen = () => {
@@ -151,7 +150,7 @@ const MovieHeader = ({ movie, genres, trailer, actors }) => {
       <Paper className={classes.movieHeader} style={headerStyle}>
         <div className={classes.overlay} />
         <Grid container>
-          <Grid item md={9}>
+          <Grid item md={9} xs={12}>
             <div className={classes.movieHeaderContent}>
               <Typography
                 component="h1"
@@ -159,7 +158,8 @@ const MovieHeader = ({ movie, genres, trailer, actors }) => {
                 color="inherit"
                 gutterBottom
               >
-                {movie.original_title} ({movie.release_date}){' '}
+                {movie.original_title}{' '}
+                <Hidden xsDown>({movie.release_date})</Hidden>
                 <Rating
                   name="read-only"
                   value={movie.vote_average / 2}
@@ -175,7 +175,7 @@ const MovieHeader = ({ movie, genres, trailer, actors }) => {
               </div>
             </div>
           </Grid>
-          <Grid item md={3} className={classes.trailerButtonContainer}>
+          <Grid item md={3} xs={12} className={classes.trailerButtonContainer}>
             <Button
               size="large"
               variant="outlined"

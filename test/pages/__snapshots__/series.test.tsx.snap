@@ -12,20 +12,20 @@ exports[`Home page matches snapshot 1`] = `
         class="MuiFormControl-root makeStyles-formControl-4"
       >
         <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
           data-shrink="false"
-          id="demo-mutiple-chip-label"
+          id="genre-label"
         >
           Genre
         </label>
         <div
-          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
         >
           <div
             aria-haspopup="listbox"
-            aria-labelledby="demo-mutiple-chip-label demo-mutiple-chip"
-            class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
-            id="demo-mutiple-chip"
+            aria-labelledby="genre-label genre-label"
+            class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
+            id="genre-label"
             role="button"
             tabindex="0"
           >
@@ -36,13 +36,12 @@ exports[`Home page matches snapshot 1`] = `
           <input
             aria-hidden="true"
             class="MuiSelect-nativeInput"
-            id="select-multiple-chip"
             tabindex="-1"
             value=""
           />
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSelect-icon"
+            class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -50,26 +49,38 @@ exports[`Home page matches snapshot 1`] = `
               d="M7 10l5 5 5-5z"
             />
           </svg>
+          <fieldset
+            aria-hidden="true"
+            class="PrivateNotchedOutline-root-7 MuiOutlinedInput-notchedOutline"
+          >
+            <legend
+              class="PrivateNotchedOutline-legendLabelled-9"
+            >
+              <span>
+                Genre
+              </span>
+            </legend>
+          </fieldset>
         </div>
       </div>
       <div
         class="MuiFormControl-root makeStyles-formControl-4"
       >
         <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
           data-shrink="true"
-          id="demo-simple-select-label"
+          id="sort-by-label"
         >
           Sorted By
         </label>
         <div
-          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
         >
           <div
             aria-haspopup="listbox"
-            aria-labelledby="demo-simple-select-label demo-simple-select"
-            class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
-            id="demo-simple-select"
+            aria-labelledby="sort-by-label sort-by-label-select-outlined"
+            class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
+            id="sort-by-label-select-outlined"
             role="button"
             tabindex="0"
           >
@@ -83,7 +94,7 @@ exports[`Home page matches snapshot 1`] = `
           />
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSelect-icon"
+            class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -91,11 +102,23 @@ exports[`Home page matches snapshot 1`] = `
               d="M7 10l5 5 5-5z"
             />
           </svg>
+          <fieldset
+            aria-hidden="true"
+            class="PrivateNotchedOutline-root-7 MuiOutlinedInput-notchedOutline"
+          >
+            <legend
+              class="PrivateNotchedOutline-legendLabelled-9 PrivateNotchedOutline-legendNotched-10"
+            >
+              <span>
+                Sorted By
+              </span>
+            </legend>
+          </fieldset>
         </div>
       </div>
     </div>
     <div
-      class="makeStyles-root-8"
+      class="makeStyles-root-12"
     >
       <span
         class="css-680rou"

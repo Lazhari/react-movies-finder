@@ -1,6 +1,10 @@
-import React, { useEffect } from 'react'
+import { useEffect, FC, ReactElement } from 'react'
 
-const ScrollToTop: React.FC = ({ children }) => {
+interface Props {
+  children: ReactElement
+}
+
+const ScrollToTop: FC<Props> = ({ children }) => {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])

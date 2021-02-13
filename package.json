@@ -18,13 +18,14 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "yarn run type-check"
+      "pre-push": "yarn test"
     }
   },
   "lint-staged": {
     "*.@(ts|tsx|js|jsx)": [
       "yarn lint",
-      "yarn format"
+      "yarn format",
+      "yarn type-check"
     ]
   },
   "dependencies": {

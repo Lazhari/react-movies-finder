@@ -12,6 +12,8 @@ import { fetchMovies } from '@actions/moviesActions'
 import MoviesCardList from '@components/MoviesCardList'
 import Loader from '@components/common/Loader'
 import SEO from '@components/common/Seo'
+import { RootState } from '@src/reducers'
+import { MoviesState } from '@src/reducers/moviesReducer'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,7 +45,10 @@ const Home: NextPage = () => {
   const dispatch = useDispatch()
   const router = useRouter()
 
-  const { movies, loading, page, totalPages } = useSelector((state) => {
+  const { movies, loading, page, totalPages } = useSelector<
+    RootState,
+    MoviesState
+  >((state) => {
     return state.moviesStore
   })
   const classes = useStyles()

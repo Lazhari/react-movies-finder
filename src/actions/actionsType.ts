@@ -1,9 +1,10 @@
 import { Actor } from '@models/actor'
-import { Movie } from '@models/movie'
+import { Genre } from '@models/common'
 import {
   ActorMovieCreditsResponse,
   AxiosAction,
   AsyncAxiosAction,
+  MoviesListResponse,
 } from './types'
 
 export const FETCH_MOVIES = 'FETCH_MOVIES'
@@ -23,37 +24,65 @@ export const GET_ACTOR_CREDIT_MOVIES_FULFILLED =
 export const FETCH_TV_SHOWS = 'FETCH_TV_SHOWS'
 export const FETCH_TV_GENRES = 'FETCH_TV_GENRES'
 
-interface FetchMoviesAction {
-  type: typeof FETCH_MOVIES
-  payload: Movie[]
-}
-
-interface FetchMoviesByGenre {
-  type: typeof FETCH_MOVIES_BY_GENRE
-  payload: Movie[]
-}
-
+/**
+ * ActorActionTypes
+ */
 export type GetActorCreditMovies = AxiosAction<
   typeof GET_ACTOR_CREDIT_MOVIES,
   ActorMovieCreditsResponse
 >
-
 export type AsyncGetActorCreditMovies = AsyncAxiosAction<
   typeof GET_ACTOR_CREDIT_MOVIES,
   ActorMovieCreditsResponse
 >
-
 export type GetActorProfile = AxiosAction<typeof GET_ACTOR_PROFILE, Actor>
 export type AsyncGetActorProfile = AsyncAxiosAction<
   typeof GET_ACTOR_PROFILE,
   Actor
 >
 
-export type MovieActionTypes = FetchMoviesAction | FetchMoviesByGenre
 export type ActorActionTypes = GetActorProfile | GetActorCreditMovies
 export type AsyncActorActionTypes =
   | AsyncGetActorProfile
   | AsyncGetActorCreditMovies
+
+/**
+ * MoviesActionTypes
+ */
+export type FetchMoviesAction = AxiosAction<
+  typeof FETCH_MOVIES,
+  MoviesListResponse
+>
+export type AsyncFetchMoviesAction = AsyncAxiosAction<
+  typeof FETCH_MOVIES,
+  MoviesListResponse
+>
+
+export type FetchGenreAction = AxiosAction<
+  typeof FETCH_GENRE,
+  { genres: Genre[] }
+>
+export type AsyncFetchGenreAction = AsyncAxiosAction<
+  typeof FETCH_GENRE,
+  { genres: Genre[] }
+>
+
+export type FetchMoviesByGenreAction = AxiosAction<
+  typeof FETCH_MOVIES_BY_GENRE,
+  MoviesListResponse
+> & { genreId: string }
+export type AsyncFetchMoviesByGenreAction = AsyncAxiosAction<
+  typeof FETCH_MOVIES_BY_GENRE,
+  MoviesListResponse
+> & { genreId: string }
+
+export type MoviesActionTypes =
+  | FetchMoviesAction
+  | AsyncFetchMoviesAction
+  | FetchGenreAction
+  | AsyncFetchGenreAction
+  | FetchMoviesByGenreAction
+  | AsyncFetchMoviesByGenreAction
 
 /**
  * TV Show Action types

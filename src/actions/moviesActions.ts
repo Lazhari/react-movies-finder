@@ -1,25 +1,37 @@
+import { RootState } from '@src/reducers'
+import { MoviesListResponse } from './types'
+import { Genre } from '@models/common'
 import { client } from '.'
 import {
   FETCH_MOVIES,
   FETCH_GENRE,
   FETCH_MOVIES_BY_GENRE,
-  FETCH_MOVIE_DETAILS,
+  MoviesActionTypes,
 } from './actionsType'
+import { ThunkAction } from 'redux-thunk'
 
-export function fetchGenre() {
+export function fetchGenre(): ThunkAction<
+  void,
+  RootState,
+  unknown,
+  MoviesActionTypes
+> {
   return (dispatch) => {
     dispatch({
       type: FETCH_GENRE,
-      payload: client.get('/genre/movie/list'),
+      payload: client.get<{ genres: Genre[] }>('/genre/movie/list'),
     })
   }
 }
 
-export function fetchMovies(page = 1, type = 'popular') {
+export function fetchMovies(
+  page = 1,
+  type = 'popular'
+): ThunkAction<void, RootState, unknown, MoviesActionTypes> {
   return (dispatch) => {
     dispatch({
       type: FETCH_MOVIES,
-      payload: client.get(`/movie/${type}`, {
+      payload: client.get<MoviesListResponse>(`/movie/${type}`, {
         params: {
           page,
         },
@@ -28,11 +40,14 @@ export function fetchMovies(page = 1, type = 'popular') {
   }
 }
 
-export function fetchMoviesByGenre(page = 1, genreId = '') {
+export function fetchMoviesByGenre(
+  page = 1,
+  genreId = ''
+): ThunkAction<void, RootState, unknown, MoviesActionTypes> {
   return (dispatch) => {
     dispatch({
       type: FETCH_MOVIES_BY_GENRE,
-      payload: client.get(`/genre/${genreId}/movies`, {
+      payload: client.get<MoviesListResponse>(`/genre/${genreId}/movies`, {
         params: {
           page,
           include_adult: false,
@@ -40,15 +55,6 @@ export function fetchMoviesByGenre(page = 1, genreId = '') {
         },
       }),
       genreId,
-    })
-  }
-}
-
-export function fetchMovie() {
-  return (dispatch) => {
-    dispatch({
-      type: FETCH_MOVIE_DETAILS,
-      payload: client.get(``),
     })
   }
 }

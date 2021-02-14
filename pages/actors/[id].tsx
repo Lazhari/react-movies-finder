@@ -17,6 +17,8 @@ import { getPeopleProfile, getActorCreditMovies } from '@actions/actorAction'
 
 import MoviesCardList from '@components/MoviesCardList'
 import Loader from '@components/common/Loader'
+import { RootState } from '@src/reducers'
+import { ActorState } from '@src/reducers/actorReducer'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,7 +37,9 @@ const ActorPage = () => {
   const router = useRouter()
   const { id: actorId } = router.query
   const dispatch = useDispatch()
-  const { profile, movies, loading } = useSelector((state) => state.actorStore)
+  const { profile, movies, loading } = useSelector<RootState, ActorState>(
+    (state: RootState) => state.actorStore
+  )
   const classes = useStyles()
   const theme = useTheme()
   const isUpSm = useMediaQuery(theme.breakpoints.up('sm'))

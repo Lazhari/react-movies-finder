@@ -1,4 +1,3 @@
-import { Reducer } from 'redux'
 import {
   GET_ACTOR_PROFILE,
   GET_ACTOR_CREDIT_MOVIES,
@@ -6,6 +5,7 @@ import {
   GetActorCreditMovies,
 } from '@actions/actionsType'
 import { Actor, Cast } from '@src/models/actor'
+import { Reducer } from 'redux'
 
 export interface ActorState {
   loading: boolean
@@ -20,7 +20,7 @@ const defaultState: ActorState = {
 }
 
 const actorReducer: Reducer<ActorState, ActorActionTypes> = (
-  state = defaultState,
+  state: ActorState = defaultState,
   action: ActorActionTypes
 ) => {
   switch (action.type) {

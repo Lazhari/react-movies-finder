@@ -7,9 +7,9 @@ import { MakeStore, createWrapper, Context } from 'next-redux-wrapper'
 
 const promise = createPromise()
 
-import reducers from './reducers'
+import reducers, { RootState } from './reducers'
 
-const makeStore: MakeStore<any> = (_context: Context) =>
+const makeStore: MakeStore<RootState> = (_context: Context) =>
   createStore(
     reducers,
     composeWithDevTools(
@@ -17,4 +17,4 @@ const makeStore: MakeStore<any> = (_context: Context) =>
     )
   )
 
-export const wrapper = createWrapper<any>(makeStore, { debug: false })
+export const wrapper = createWrapper<RootState>(makeStore, { debug: false })

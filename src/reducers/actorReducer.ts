@@ -1,15 +1,28 @@
+import { Reducer } from 'redux'
 import {
   GET_ACTOR_PROFILE,
   GET_ACTOR_CREDIT_MOVIES,
+  ActorActionTypes,
+  GetActorCreditMovies,
 } from '@actions/actionsType'
+import { Actor, Cast } from '@src/models/actor'
 
-const defaultState = {
+export interface ActorState {
+  loading: boolean
+  profile: Actor
+  movies: Cast[]
+}
+
+const defaultState: ActorState = {
   loading: false,
-  profile: {},
+  profile: {} as Actor,
   movies: [],
 }
 
-function actorReducer(state = defaultState, action = {}) {
+const actorReducer: Reducer<ActorState, ActorActionTypes> = (
+  state = defaultState,
+  action: ActorActionTypes
+) => {
   switch (action.type) {
     case `${GET_ACTOR_PROFILE}_PENDING`:
     case `${GET_ACTOR_CREDIT_MOVIES}_PENDING`: {
@@ -21,14 +34,14 @@ function actorReducer(state = defaultState, action = {}) {
     case `${GET_ACTOR_PROFILE}_FULFILLED`: {
       return {
         ...state,
-        profile: action.payload.data,
+        profile: action.payload.data as Actor,
         loading: false,
       }
     }
     case `${GET_ACTOR_CREDIT_MOVIES}_FULFILLED`: {
       return {
         ...state,
-        movies: action.payload.data.cast,
+        movies: (action as GetActorCreditMovies).payload.data.cast,
         loading: false,
       }
     }

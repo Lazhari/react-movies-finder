@@ -1,3 +1,11 @@
+import { Actor } from '@models/actor'
+import { Movie } from '@models/movie'
+import {
+  ActorMovieCreditsResponse,
+  AxiosAction,
+  AsyncAxiosAction,
+} from './types'
+
 export const FETCH_MOVIES = 'FETCH_MOVIES'
 export const FETCH_MOVIES_BY_GENRE = 'FETCH_MOVIES_BY_GENRE'
 export const FETCH_GENRE = 'FETCH_GENRE'
@@ -8,9 +16,45 @@ export const FETCH_RELATED_MOVIES = 'FETCH_RELATED_MOVIES'
 export const FETCH_MOVIE_CAST = 'FETCH_CREDITS_MOVIES'
 export const CLEANING_MOVIE_STATE = 'CLEANING_MOVIE_STATE'
 export const GET_ACTOR_PROFILE = 'GET_ACTOR_PROFILE'
+export const GET_ACTOR_PROFILE_FULFILLED = 'GET_ACTOR_PROFILE_FULFILLED'
 export const GET_ACTOR_CREDIT_MOVIES = 'GET_ACTOR_CREDIT_MOVIES'
+export const GET_ACTOR_CREDIT_MOVIES_FULFILLED =
+  'GET_ACTOR_CREDIT_MOVIES_FULFILLED'
 export const FETCH_TV_SHOWS = 'FETCH_TV_SHOWS'
 export const FETCH_TV_GENRES = 'FETCH_TV_GENRES'
+
+interface FetchMoviesAction {
+  type: typeof FETCH_MOVIES
+  payload: Movie[]
+}
+
+interface FetchMoviesByGenre {
+  type: typeof FETCH_MOVIES_BY_GENRE
+  payload: Movie[]
+}
+
+export type GetActorCreditMovies = AxiosAction<
+  typeof GET_ACTOR_CREDIT_MOVIES,
+  ActorMovieCreditsResponse
+>
+
+export type AsyncGetActorCreditMovies = AsyncAxiosAction<
+  typeof GET_ACTOR_CREDIT_MOVIES,
+  ActorMovieCreditsResponse
+>
+
+export type GetActorProfile = AxiosAction<typeof GET_ACTOR_PROFILE, Actor>
+export type AsyncGetActorProfile = AsyncAxiosAction<
+  typeof GET_ACTOR_PROFILE,
+  Actor
+>
+
+export type MovieActionTypes = FetchMoviesAction | FetchMoviesByGenre
+export type ActorActionTypes = GetActorProfile | GetActorCreditMovies
+export type AsyncActorActionTypes =
+  | AsyncGetActorProfile
+  | AsyncGetActorCreditMovies
+
 /**
  * TV Show Action types
  */

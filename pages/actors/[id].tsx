@@ -42,8 +42,8 @@ const ActorPage = () => {
 
   useEffect(() => {
     if (actorId) {
-      dispatch(getPeopleProfile(actorId))
-      dispatch(getActorCreditMovies(actorId))
+      dispatch(getPeopleProfile(parseInt(actorId as string, 10)))
+      dispatch(getActorCreditMovies(parseInt(actorId as string, 10)))
     }
   }, [dispatch, actorId])
 

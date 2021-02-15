@@ -1,3 +1,7 @@
+import { ThunkAction } from 'redux-thunk'
+
+import { MovieDetails } from '@models/movie'
+import { RootState } from '@src/reducers'
 import { client } from '.'
 import {
   FETCH_MOVIE_DETAILS,
@@ -6,54 +10,76 @@ import {
   FETCH_MOVIE_CAST,
   FETCH_MOVIE_REVIEWS,
   CLEANING_MOVIE_STATE,
+  MovieActionTypes,
 } from './actionsType'
+import {
+  CreditsResponse,
+  MoviesListResponse,
+  ReviewListResponse,
+  VideoResponse,
+} from './types'
 
-export function fetchMovie(id) {
+export function fetchMovie(
+  id: number
+): ThunkAction<void, RootState, unknown, MovieActionTypes> {
   return (dispatch) => {
     dispatch({
       type: FETCH_MOVIE_DETAILS,
-      payload: client.get(`/movie/${id}`),
+      payload: client.get<MovieDetails>(`/movie/${id}`),
     })
   }
 }
 
-export function fetchMovieVideos(id) {
+export function fetchMovieVideos(
+  id: number
+): ThunkAction<void, RootState, unknown, MovieActionTypes> {
   return (dispatch) => {
     dispatch({
       type: FETCH_MOVIE_VIDEOS,
-      payload: client.get(`/movie/${id}/videos`),
+      payload: client.get<VideoResponse>(`/movie/${id}/videos`),
     })
   }
 }
 
-export function fetchMovieReviews(id) {
+export function fetchMovieReviews(
+  id: number
+): ThunkAction<void, RootState, unknown, MovieActionTypes> {
   return (dispatch) => {
     dispatch({
       type: FETCH_MOVIE_REVIEWS,
-      payload: client.get(`/movie/${id}/reviews`),
+      payload: client.get<ReviewListResponse>(`/movie/${id}/reviews`),
     })
   }
 }
 
-export function fetchRelatedMovies(id) {
+export function fetchRelatedMovies(
+  id: number
+): ThunkAction<void, RootState, unknown, MovieActionTypes> {
   return (dispatch) => {
     dispatch({
       type: FETCH_RELATED_MOVIES,
-      payload: client.get(`/movie/${id}/similar`),
+      payload: client.get<MoviesListResponse>(`/movie/${id}/similar`),
     })
   }
 }
 
-export function fetchMovieActors(id) {
+export function fetchMovieActors(
+  id: number
+): ThunkAction<void, RootState, unknown, MovieActionTypes> {
   return (dispatch) => {
     dispatch({
       type: FETCH_MOVIE_CAST,
-      payload: client.get(`/movie/${id}/credits`),
+      payload: client.get<CreditsResponse>(`/movie/${id}/credits`),
     })
   }
 }
 
-export function cleaningMovieReducer() {
+export function cleaningMovieReducer(): ThunkAction<
+  void,
+  RootState,
+  unknown,
+  MovieActionTypes
+> {
   return (dispatch) => {
     dispatch({
       type: CLEANING_MOVIE_STATE,

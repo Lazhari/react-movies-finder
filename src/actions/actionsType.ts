@@ -1,3 +1,4 @@
+import { MovieDetails } from '@models/movie'
 import { Actor } from '@models/actor'
 import { Genre } from '@models/common'
 import {
@@ -5,6 +6,9 @@ import {
   AxiosAction,
   AsyncAxiosAction,
   MoviesListResponse,
+  ReviewListResponse,
+  VideoResponse,
+  CreditsResponse,
 } from './types'
 
 export const FETCH_MOVIES = 'FETCH_MOVIES'
@@ -83,6 +87,71 @@ export type MoviesActionTypes =
   | AsyncFetchGenreAction
   | FetchMoviesByGenreAction
   | AsyncFetchMoviesByGenreAction
+
+/**
+ * Movie Actions
+ */
+export type FetchMovieDetailsAction = AxiosAction<
+  typeof FETCH_MOVIE_DETAILS,
+  MovieDetails
+>
+export type AsyncFetchMovieDetailsAction = AsyncAxiosAction<
+  typeof FETCH_MOVIE_DETAILS,
+  MovieDetails
+>
+
+export type FetchMovieVideosAction = AxiosAction<
+  typeof FETCH_MOVIE_VIDEOS,
+  VideoResponse
+>
+export type AsyncFetchMovieVideosAction = AsyncAxiosAction<
+  typeof FETCH_MOVIE_VIDEOS,
+  VideoResponse
+>
+
+export type FetchMovieReviewsAction = AxiosAction<
+  typeof FETCH_MOVIE_REVIEWS,
+  ReviewListResponse
+>
+export type AsyncFetchMovieReviewsAction = AsyncAxiosAction<
+  typeof FETCH_MOVIE_REVIEWS,
+  ReviewListResponse
+>
+
+export type FetchRelatedMoviesAction = AxiosAction<
+  typeof FETCH_RELATED_MOVIES,
+  MoviesListResponse
+>
+export type AsyncFetchRelatedMoviesAction = AsyncAxiosAction<
+  typeof FETCH_RELATED_MOVIES,
+  MoviesListResponse
+>
+
+export type CleaningMovieStateAction = {
+  type: typeof CLEANING_MOVIE_STATE
+}
+
+export type FetchMovieCastAction = AxiosAction<
+  typeof FETCH_MOVIE_CAST,
+  CreditsResponse
+>
+export type AsyncFetchMovieCastAction = AsyncAxiosAction<
+  typeof FETCH_MOVIE_CAST,
+  CreditsResponse
+>
+
+export type MovieActionTypes =
+  | FetchMovieDetailsAction
+  | AsyncFetchMovieDetailsAction
+  | FetchMovieVideosAction
+  | AsyncFetchMovieVideosAction
+  | FetchMovieReviewsAction
+  | AsyncFetchMovieReviewsAction
+  | FetchRelatedMoviesAction
+  | AsyncFetchRelatedMoviesAction
+  | CleaningMovieStateAction
+  | FetchMovieCastAction
+  | AsyncFetchMovieCastAction
 
 /**
  * TV Show Action types

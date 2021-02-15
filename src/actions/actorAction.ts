@@ -1,3 +1,4 @@
+import { RootState } from '@src/reducers'
 import { client } from '.'
 import { ActorMovieCreditsResponse } from './types'
 import {
@@ -13,7 +14,7 @@ import { ThunkAction } from 'redux-thunk'
  */
 export function getPeopleProfile(
   personId: number
-): ThunkAction<void, any, unknown, AsyncActorActionTypes> {
+): ThunkAction<void, RootState, unknown, AsyncActorActionTypes> {
   return (dispatch) => {
     dispatch({
       type: GET_ACTOR_PROFILE,
@@ -27,7 +28,7 @@ export function getPeopleProfile(
  */
 export function getActorCreditMovies(
   personId: number
-): ThunkAction<void, any, unknown, AsyncActorActionTypes> {
+): ThunkAction<void, RootState, unknown, AsyncActorActionTypes> {
   return (dispatch) => {
     dispatch({
       type: GET_ACTOR_CREDIT_MOVIES,

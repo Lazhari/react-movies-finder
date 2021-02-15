@@ -1,6 +1,8 @@
+import { AxiosResponse } from 'axios'
+import { Video, MovieCast } from '@models/movie'
 import { Cast, Crew } from '@models/actor'
 import { Movie } from '@models/movie'
-import { AxiosResponse } from 'axios'
+import { Review } from '@models/review'
 
 export interface ActorMovieCreditsResponse {
   id: number
@@ -17,6 +19,7 @@ export interface ListResponse<R> {
 }
 
 export type MoviesListResponse = ListResponse<Movie>
+export type ReviewListResponse = ListResponse<Review>
 
 export interface AxiosAction<T, D> {
   type: T
@@ -26,4 +29,15 @@ export interface AxiosAction<T, D> {
 export interface AsyncAxiosAction<T, D> {
   type: T
   payload: Promise<AxiosResponse<D>>
+}
+
+export interface VideoResponse {
+  id: number
+  results: Video[]
+}
+
+export interface CreditsResponse {
+  id: number
+  cast: MovieCast[]
+  crew: Crew[]
 }

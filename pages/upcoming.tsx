@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Pagination from '@material-ui/lab/Pagination'
+import { Container } from '@material-ui/core'
 
 import { fetchMovies } from '@actions/moviesActions'
 
@@ -51,31 +52,33 @@ const UpcomingPage: NextPage = () => {
   }, [dispatch, router?.isReady])
 
   return (
-    <div className={classes.root}>
-      <SEO
-        title="Upcoming movies"
-        description="A list of upcoming movies in theatres."
-      />
-      <Typography variant="h4" component="h1" gutterBottom>
-        Upcoming Movies
-      </Typography>
-      {loading ? (
-        <Loader />
-      ) : (
-        <>
-          <MoviesCardList movies={movies} />
-          <div className={classes.paginationContainer}>
-            <Pagination
-              count={totalPages}
-              page={page}
-              variant="outlined"
-              shape="rounded"
-              onChange={(e, page) => handlePageChange(page)}
-            />
-          </div>
-        </>
-      )}
-    </div>
+    <Container maxWidth="xl">
+      <div className={classes.root}>
+        <SEO
+          title="Upcoming movies"
+          description="A list of upcoming movies in theatres."
+        />
+        <Typography variant="h4" component="h1" gutterBottom>
+          Upcoming Movies
+        </Typography>
+        {loading ? (
+          <Loader />
+        ) : (
+          <>
+            <MoviesCardList movies={movies} />
+            <div className={classes.paginationContainer}>
+              <Pagination
+                count={totalPages}
+                page={page}
+                variant="outlined"
+                shape="rounded"
+                onChange={(e, page) => handlePageChange(page)}
+              />
+            </div>
+          </>
+        )}
+      </div>
+    </Container>
   )
 }
 

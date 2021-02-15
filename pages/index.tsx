@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Pagination from '@material-ui/lab/Pagination'
+import Container from '@material-ui/core/Container'
 
 import { fetchMovies } from '@actions/moviesActions'
 
@@ -64,33 +65,35 @@ const Home: NextPage = () => {
   }, [dispatch, router?.isReady])
 
   return (
-    <div className={classes.root}>
-      <SEO
-        title="Popular Movies"
-        description="A list of popular movies on TMDb."
-      />
-      <Typography variant="h4" component="h1" gutterBottom>
-        Popular Movies
-      </Typography>
-      {loading ? (
-        <Loader />
-      ) : (
-        <div>
-          <MoviesCardList movies={movies} />
-          {movies && movies.length ? (
-            <div className={classes.paginationContainer}>
-              <Pagination
-                count={totalPages}
-                page={page}
-                variant="outlined"
-                shape="rounded"
-                onChange={(e, page) => handlePageChange(page)}
-              />
-            </div>
-          ) : null}
-        </div>
-      )}
-    </div>
+    <Container maxWidth="xl">
+      <div className={classes.root}>
+        <SEO
+          title="Popular Movies"
+          description="A list of popular movies on TMDb."
+        />
+        <Typography variant="h4" component="h1" gutterBottom>
+          Popular Movies
+        </Typography>
+        {loading ? (
+          <Loader />
+        ) : (
+          <div>
+            <MoviesCardList movies={movies} />
+            {movies && movies.length ? (
+              <div className={classes.paginationContainer}>
+                <Pagination
+                  count={totalPages}
+                  page={page}
+                  variant="outlined"
+                  shape="rounded"
+                  onChange={(e, page) => handlePageChange(page)}
+                />
+              </div>
+            ) : null}
+          </div>
+        )}
+      </div>
+    </Container>
   )
 }
 

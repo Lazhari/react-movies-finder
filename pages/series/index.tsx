@@ -9,6 +9,7 @@ import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
+import { Container } from '@material-ui/core'
 
 import { fetchTvShows, fetchTvGenres } from '../../src/actions/tvShowsActions'
 import TvShowList from '../../src/components/TvShowList'
@@ -121,61 +122,63 @@ const TopSeriesPage: NextPage = () => {
   }, [dispatch])
 
   return (
-    <div className={classes.root}>
-      <SEO title="List TV Shows" description="TV shows list" />
-      <div className={classes.filtersContainer}>
-        <FormControl variant="outlined" className={classes.formControl}>
-          <InputLabel id="genre-label">Genre</InputLabel>
-          <Select
-            labelId="genre-label"
-            id="genre-label"
-            value={selectedGenres}
-            onChange={handleGenresChange}
-            label="Genre"
-          >
-            {genres.map((genre) => (
-              <MenuItem value={genre.id} key={genre.id}>
-                {genre.name}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-        <FormControl variant="outlined" className={classes.formControl}>
-          <InputLabel id="sort-by-label">Sorted By</InputLabel>
-          <Select
-            labelId="sort-by-label"
-            id="sort-by-label-select-outlined"
-            value={sortBy}
-            onChange={handleChange}
-            label="Sorted By"
-          >
-            {sortOptions.map((sortOption) => (
-              <MenuItem value={sortOption.value} key={sortOption.value}>
-                {sortOption.label}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
+    <Container maxWidth="xl">
+      <div className={classes.root}>
+        <SEO title="List TV Shows" description="TV shows list" />
+        <div className={classes.filtersContainer}>
+          <FormControl variant="outlined" className={classes.formControl}>
+            <InputLabel id="genre-label">Genre</InputLabel>
+            <Select
+              labelId="genre-label"
+              id="genre-label"
+              value={selectedGenres}
+              onChange={handleGenresChange}
+              label="Genre"
+            >
+              {genres.map((genre) => (
+                <MenuItem value={genre.id} key={genre.id}>
+                  {genre.name}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <FormControl variant="outlined" className={classes.formControl}>
+            <InputLabel id="sort-by-label">Sorted By</InputLabel>
+            <Select
+              labelId="sort-by-label"
+              id="sort-by-label-select-outlined"
+              value={sortBy}
+              onChange={handleChange}
+              label="Sorted By"
+            >
+              {sortOptions.map((sortOption) => (
+                <MenuItem value={sortOption.value} key={sortOption.value}>
+                  {sortOption.label}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </div>
+        {loading ? (
+          <Loader />
+        ) : (
+          <>
+            <TvShowList tvShows={tvShows} />
+            {tvShows && tvShows.length ? (
+              <div className={classes.paginationContainer}>
+                <Pagination
+                  count={totalPages}
+                  page={page}
+                  variant="outlined"
+                  shape="rounded"
+                  onChange={(e, page) => handlePageChange(page)}
+                />
+              </div>
+            ) : null}
+          </>
+        )}
       </div>
-      {loading ? (
-        <Loader />
-      ) : (
-        <>
-          <TvShowList tvShows={tvShows} />
-          {tvShows && tvShows.length ? (
-            <div className={classes.paginationContainer}>
-              <Pagination
-                count={totalPages}
-                page={page}
-                variant="outlined"
-                shape="rounded"
-                onChange={(e, page) => handlePageChange(page)}
-              />
-            </div>
-          ) : null}
-        </>
-      )}
-    </div>
+    </Container>
   )
 }
 export default TopSeriesPage

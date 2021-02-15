@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import Pagination from '@material-ui/lab/Pagination'
+import Container from '@material-ui/core/Container'
 
 import { fetchMoviesByGenre } from '@actions/moviesActions'
 
@@ -54,27 +55,29 @@ const GenrePage: NextPage = () => {
   }, [dispatch, genreParams, router?.isReady])
 
   return (
-    <div className={classes.root}>
-      <Typography variant="h4" component="h1" gutterBottom>
-        {(genreParams && genreParams[1]) || ''}
-      </Typography>
-      {loading ? (
-        <Loader />
-      ) : (
-        <>
-          <MoviesCardList movies={movies} />
-          <div className={classes.paginationContainer}>
-            <Pagination
-              count={totalPages}
-              page={page}
-              variant="outlined"
-              shape="rounded"
-              onChange={(e, page) => handlePageChange(page)}
-            />
-          </div>
-        </>
-      )}
-    </div>
+    <Container maxWidth="xl">
+      <div className={classes.root}>
+        <Typography variant="h4" component="h1" gutterBottom>
+          {(genreParams && genreParams[1]) || ''}
+        </Typography>
+        {loading ? (
+          <Loader />
+        ) : (
+          <>
+            <MoviesCardList movies={movies} />
+            <div className={classes.paginationContainer}>
+              <Pagination
+                count={totalPages}
+                page={page}
+                variant="outlined"
+                shape="rounded"
+                onChange={(e, page) => handlePageChange(page)}
+              />
+            </div>
+          </>
+        )}
+      </div>
+    </Container>
   )
 }
 

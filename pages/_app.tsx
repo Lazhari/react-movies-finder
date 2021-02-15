@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { makeStyles } from '@material-ui/core/styles'
 import { ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import Container from '@material-ui/core/Container'
 import Drawer from '@material-ui/core/Drawer'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
@@ -126,8 +125,8 @@ function App(props) {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <Container maxWidth="xl">
-          <Header handleDrawerOpen={handleDrawerOpen} open={open} />
+        <Header handleDrawerOpen={handleDrawerOpen} open={open} />
+        <main>
           <Drawer
             className={classes.drawer}
             variant="persistent"
@@ -153,7 +152,8 @@ function App(props) {
             <Sidebar handleDrawerClose={handleDrawerClose} />
           </Drawer>
           <Component {...pageProps} />
-        </Container>
+        </main>
+        {/* Small Screen navigation */}
         <Hidden mdUp>
           <BottomNavigation
             value={'Recents'}
@@ -177,6 +177,7 @@ function App(props) {
             </Link>
           </BottomNavigation>
         </Hidden>
+        {/* End */}
       </ThemeProvider>
     </React.Fragment>
   )

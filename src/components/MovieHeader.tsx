@@ -15,7 +15,6 @@ import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
 
 import Labels from './Labels'
-import ActorsList from './ActorsList'
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -107,7 +106,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const MovieHeader = ({ movie, genres, trailer, actors }) => {
+const MovieHeader = ({ movie, genres, trailer }) => {
   const classes = useStyles()
   const [open, setOpen] = React.useState(false)
   const headerStyle = {
@@ -190,19 +189,6 @@ const MovieHeader = ({ movie, genres, trailer, actors }) => {
           </Grid>
         </Grid>
       </Paper>
-
-      <Grid container spacing={2}>
-        <Grid item lg={12}>
-          {actors && actors.length ? (
-            <div>
-              <Typography variant="h6" component="h1">
-                Top Billed Cast
-              </Typography>
-              <ActorsList actors={actors} />
-            </div>
-          ) : null}
-        </Grid>
-      </Grid>
     </div>
   )
 }

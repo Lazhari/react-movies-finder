@@ -8,6 +8,16 @@ export enum Status {
   RELEASED = 'Released',
   CANCELED = 'Canceled',
 }
+export interface Video {
+  id: string
+  iso_639_1: string
+  iso_3166_1: string
+  key: string
+  name: string
+  site: string
+  size: number
+  type: string
+}
 
 export interface Movie {
   id: number
@@ -24,6 +34,21 @@ export interface Movie {
   vote_count: number
   video: boolean
   vote_average: number
+}
+
+export interface MovieCast {
+  id: number
+  adult: boolean
+  gender?: number
+  known_for_department: string
+  name: string
+  original_name: string
+  popularity: number
+  profile_path?: string
+  cast_id: number
+  character: string
+  credit_id: string
+  order: number
 }
 
 export interface MovieDetails {

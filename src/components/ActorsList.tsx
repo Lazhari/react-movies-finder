@@ -4,9 +4,10 @@ import { makeStyles } from '@material-ui/core/styles'
 
 import ActorCard from './ActorCard'
 import { Actor } from '@models/actor'
+import { MovieCast } from '@src/models/movie'
 
 interface Props {
-  actors: Actor[]
+  actors: Array<Actor | MovieCast>
 }
 
 const useStyles = makeStyles((theme) => ({

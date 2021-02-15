@@ -22,6 +22,8 @@ import MovieHeader from '@components/MovieHeader'
 import MoviesCardList from '@components/MoviesCardList'
 import ReviewsList from '@components/ReviewsList'
 import Loader from '@components/common/Loader'
+import { RootState } from '@src/reducers'
+import { MovieState } from '@src/reducers/movieReducer'
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -53,16 +55,17 @@ const MoviePage = () => {
     actors,
     reviews,
     relatedMovies,
-  } = useSelector((state) => state.movieStore)
+  } = useSelector<RootState, MovieState>((state) => state.movieStore)
   const classes = useStyles()
 
   useEffect(() => {
     if (mid) {
-      dispatch(fetchMovie(mid))
-      dispatch(fetchMovieVideos(mid))
-      dispatch(fetchMovieReviews(mid))
-      dispatch(fetchRelatedMovies(mid))
-      dispatch(fetchMovieActors(mid))
+      const movieId = parseInt(mid as string, 10)
+      dispatch(fetchMovie(movieId))
+      dispatch(fetchMovieVideos(movieId))
+      dispatch(fetchMovieReviews(movieId))
+      dispatch(fetchRelatedMovies(movieId))
+      dispatch(fetchMovieActors(movieId))
     }
     return () => {
       cleaningMovieReducer()

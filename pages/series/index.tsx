@@ -15,6 +15,7 @@ import { fetchTvShows, fetchTvGenres } from '../../src/actions/tvShowsActions'
 import TvShowList from '../../src/components/TvShowList'
 import Loader from '../../src/components/common/Loader'
 import SEO from '../../src/components/common/Seo'
+import { RootState } from '@src/reducers'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -74,9 +75,10 @@ const sortOptions = [
 const TopSeriesPage: NextPage = () => {
   const router = useRouter()
   const dispatch = useDispatch()
-  const { tvShows, loading, page, totalPages, genres } = useSelector(
-    (state) => state.tvShowsStore
-  )
+  const { tvShows, loading, page, totalPages, genres } = useSelector<
+    RootState,
+    any
+  >((state) => state.tvShowsStore)
   const classes = useStyles()
   const [sortBy, setSortBy] = React.useState('popularity.desc')
   const [selectedGenres, setSelectedGenres] = React.useState('')

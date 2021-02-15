@@ -5,20 +5,46 @@ import {
   FETCH_RELATED_MOVIES,
   FETCH_MOVIE_CAST,
   CLEANING_MOVIE_STATE,
+  MovieActionTypes,
+  FetchMovieDetailsAction,
+  FetchMovieVideosAction,
+  FetchMovieReviewsAction,
+  FetchRelatedMoviesAction,
+  FetchMovieCastAction,
 } from '@actions/actionsType'
-const defaultState = {
+import { Genre, ProductionCompany } from '@models/common'
+import { Movie, MovieCast, MovieDetails, Video } from '@models/movie'
+import { Review } from '@models/review'
+import { Reducer } from 'redux'
+
+export interface MovieState {
+  loading: boolean
+  movie: MovieDetails
+  genres: Genre[]
+  productionCompanies: ProductionCompany[]
+  videos: Video[]
+  trailer: Video
+  reviews: Review[]
+  relatedMovies: Movie[]
+  actors: MovieCast[]
+}
+
+const defaultState: MovieState = {
   loading: false,
-  movie: {},
+  movie: {} as MovieDetails,
   genres: [],
   productionCompanies: [],
   videos: [],
-  trailer: {},
+  trailer: {} as Video,
   reviews: [],
   relatedMovies: [],
   actors: [],
 }
 
-function movieReducer(state = defaultState, action = {}) {
+const movieReducer: Reducer<MovieState, MovieActionTypes> = (
+  state: MovieState = defaultState,
+  action: MovieActionTypes
+) => {
   switch (action.type) {
     case `${FETCH_MOVIE_DETAILS}_PENDING`:
     case `${FETCH_MOVIE_CAST}_PENDING`:
@@ -31,23 +57,24 @@ function movieReducer(state = defaultState, action = {}) {
       }
     }
     case `${FETCH_MOVIE_DETAILS}_FULFILLED`: {
+      const { data } = (action as FetchMovieDetailsAction).payload
       return {
         ...state,
         loading: false,
-        movie: action.payload.data,
-        genres: action.payload.data.genres,
-        productionCompanies: action.payload.data.production_companies,
+        movie: data,
+        genres: data.genres,
+        productionCompanies: data.production_companies,
       }
     }
 
     case `${FETCH_MOVIE_VIDEOS}_FULFILLED`: {
-      const trailer = action.payload.data.results.filter(
+      const trailer = (action as FetchMovieVideosAction).payload.data.results.filter(
         (video) => video.site === 'YouTube'
       )[0]
       return {
         ...state,
         loading: false,
-        videos: action.payload.data.results,
+        videos: (action as FetchMovieVideosAction).payload.data.results,
         trailer: trailer,
       }
     }
@@ -56,7 +83,7 @@ function movieReducer(state = defaultState, action = {}) {
       return {
         ...state,
         loading: false,
-        reviews: action.payload.data.results,
+        reviews: (action as FetchMovieReviewsAction).payload.data.results,
       }
     }
 
@@ -64,28 +91,21 @@ function movieReducer(state = defaultState, action = {}) {
       return {
         ...state,
         loading: false,
-        relatedMovies: action.payload.data.results,
+        relatedMovies: (action as FetchRelatedMoviesAction).payload.data
+          .results,
       }
     }
     case `${FETCH_MOVIE_CAST}_FULFILLED`: {
       return {
         ...state,
         loading: false,
-        actors: action.payload.data.cast.splice(0, 8),
+        actors: (action as FetchMovieCastAction).payload.data.cast.splice(0, 8),
       }
     }
     case CLEANING_MOVIE_STATE: {
       return {
         ...state,
-        loading: false,
-        movie: {},
-        genres: [],
-        productionCompanies: [],
-        videos: [],
-        trailer: {},
-        reviews: [],
-        relatedMovies: [],
-        actors: [],
+        ...defaultState,
       }
     }
     default: {

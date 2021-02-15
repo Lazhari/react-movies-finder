@@ -15,7 +15,6 @@ import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
 
 import Labels from './Labels'
-import ActorsList from './ActorsList'
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -85,6 +84,9 @@ const useStyles = makeStyles((theme) => ({
     left: 0,
     backgroundColor: 'rgba(0,0,0,.3)',
   },
+  movieInfoContainer: {
+    backgroundImage: 'linear-gradient(to top,#111216, #303030)',
+  },
   movieHeaderContent: {
     position: 'relative',
     padding: theme.spacing(3),
@@ -104,7 +106,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const MovieHeader = ({ movie, genres, trailer, actors }) => {
+const MovieHeader = ({ movie, genres, trailer }) => {
   const classes = useStyles()
   const [open, setOpen] = React.useState(false)
   const headerStyle = {
@@ -149,7 +151,7 @@ const MovieHeader = ({ movie, genres, trailer, actors }) => {
 
       <Paper className={classes.movieHeader} style={headerStyle}>
         <div className={classes.overlay} />
-        <Grid container>
+        <Grid container className={classes.movieInfoContainer}>
           <Grid item md={9} xs={12}>
             <div className={classes.movieHeaderContent}>
               <Typography
@@ -187,19 +189,6 @@ const MovieHeader = ({ movie, genres, trailer, actors }) => {
           </Grid>
         </Grid>
       </Paper>
-
-      <Grid container spacing={2}>
-        <Grid item lg={12}>
-          {actors && actors.length ? (
-            <div>
-              <Typography variant="h6" component="h1">
-                Top Billed Cast
-              </Typography>
-              <ActorsList actors={actors} />
-            </div>
-          ) : null}
-        </Grid>
-      </Grid>
     </div>
   )
 }

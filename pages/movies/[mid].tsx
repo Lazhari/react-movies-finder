@@ -4,6 +4,10 @@ import { useRouter } from 'next/router'
 
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
+import { Container } from '@material-ui/core'
+import Grid from '@material-ui/core/Grid'
+
+import ActorsList from '@components/ActorsList'
 
 import {
   fetchMovie,
@@ -72,29 +76,38 @@ const MoviePage = () => {
       ) : (
         <>
           {movie && movie.id && (
-            <MovieHeader
-              movie={movie}
-              genres={genres}
-              trailer={trailer}
-              actors={actors}
-            />
+            <MovieHeader movie={movie} genres={genres} trailer={trailer} />
           )}
-          {reviews.length > 0 && (
-            <div className={classes.reviewsContainer}>
-              <Typography variant="h5" component="h1" gutterBottom>
-                Reviews
-              </Typography>
-              <ReviewsList reviews={reviews} />
-            </div>
-          )}
-          {relatedMovies.length > 0 && (
-            <div className={classes.moviesContainer}>
-              <Typography variant="h5" component="h1" gutterBottom>
-                Related Movies
-              </Typography>
-              <MoviesCardList movies={relatedMovies} />
-            </div>
-          )}
+          <Container maxWidth="xl">
+            <Grid container spacing={2}>
+              <Grid item lg={12}>
+                {actors && actors.length ? (
+                  <div>
+                    <Typography variant="h6" component="h1">
+                      Top Billed Cast
+                    </Typography>
+                    <ActorsList actors={actors} />
+                  </div>
+                ) : null}
+              </Grid>
+            </Grid>
+            {reviews.length > 0 && (
+              <div className={classes.reviewsContainer}>
+                <Typography variant="h5" component="h1" gutterBottom>
+                  Reviews
+                </Typography>
+                <ReviewsList reviews={reviews} />
+              </div>
+            )}
+            {relatedMovies.length > 0 && (
+              <div className={classes.moviesContainer}>
+                <Typography variant="h5" component="h1" gutterBottom>
+                  Related Movies
+                </Typography>
+                <MoviesCardList movies={relatedMovies} />
+              </div>
+            )}
+          </Container>
         </>
       )}
     </div>

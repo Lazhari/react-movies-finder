@@ -85,6 +85,9 @@ const useStyles = makeStyles((theme) => ({
     left: 0,
     backgroundColor: 'rgba(0,0,0,.3)',
   },
+  movieInfoContainer: {
+    backgroundImage: 'linear-gradient(to top,#111216, #303030)',
+  },
   movieHeaderContent: {
     position: 'relative',
     padding: theme.spacing(3),
@@ -149,7 +152,7 @@ const MovieHeader = ({ movie, genres, trailer, actors }) => {
 
       <Paper className={classes.movieHeader} style={headerStyle}>
         <div className={classes.overlay} />
-        <Grid container>
+        <Grid container className={classes.movieInfoContainer}>
           <Grid item md={9} xs={12}>
             <div className={classes.movieHeaderContent}>
               <Typography

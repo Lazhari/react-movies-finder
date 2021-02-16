@@ -32,3 +32,8 @@ export interface ProductionCompany {
   logo_path?: string
   origin_country: string
 }
+
+export interface Keyword {
+  id: number
+  name: string
+}

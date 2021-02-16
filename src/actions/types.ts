@@ -1,6 +1,9 @@
 import { AxiosResponse } from 'axios'
-import { Video, MovieCast } from '@models/movie'
+import { Keyword } from '@models/common'
+import { TvShow } from '@models/tv'
+import { Video } from '@models/movie'
 import { Cast, Crew } from '@models/actor'
+import { CreditCast, CreditCrew } from '@models/credit'
 import { Movie } from '@models/movie'
 import { Review } from '@models/review'
 
@@ -20,6 +23,7 @@ export interface ListResponse<R> {
 
 export type MoviesListResponse = ListResponse<Movie>
 export type ReviewListResponse = ListResponse<Review>
+export type TvShowsList = ListResponse<TvShow>
 
 export interface AxiosAction<T, D> {
   type: T
@@ -31,13 +35,18 @@ export interface AsyncAxiosAction<T, D> {
   payload: Promise<AxiosResponse<D>>
 }
 
-export interface VideoResponse {
+export interface VideosResponse {
   id: number
   results: Video[]
 }
 
 export interface CreditsResponse {
   id: number
-  cast: MovieCast[]
-  crew: Crew[]
+  cast: CreditCast[]
+  crew: CreditCrew[]
+}
+
+export interface KeywordsList {
+  id: number
+  results: Keyword
 }

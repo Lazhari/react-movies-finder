@@ -16,7 +16,7 @@ import {
   CreditsResponse,
   MoviesListResponse,
   ReviewListResponse,
-  VideoResponse,
+  VideosResponse,
 } from './types'
 
 export function fetchMovie(
@@ -36,7 +36,7 @@ export function fetchMovieVideos(
   return (dispatch) => {
     dispatch({
       type: FETCH_MOVIE_VIDEOS,
-      payload: client.get<VideoResponse>(`/movie/${id}/videos`),
+      payload: client.get<VideosResponse>(`/movie/${id}/videos`),
     })
   }
 }

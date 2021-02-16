@@ -4,7 +4,7 @@ import {
   ActorActionTypes,
   GetActorCreditMovies,
 } from '@actions/actionsType'
-import { Actor, Cast } from '@src/models/actor'
+import { Actor, Cast } from '@models/actor'
 import { Reducer } from 'redux'
 
 export interface ActorState {

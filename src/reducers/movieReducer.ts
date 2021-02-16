@@ -13,7 +13,8 @@ import {
   FetchMovieCastAction,
 } from '@actions/actionsType'
 import { Genre, ProductionCompany } from '@models/common'
-import { Movie, MovieCast, MovieDetails, Video } from '@models/movie'
+import { CreditCast } from '@models/credit'
+import { Movie, MovieDetails, Video } from '@models/movie'
 import { Review } from '@models/review'
 import { Reducer } from 'redux'
 
@@ -26,7 +27,7 @@ export interface MovieState {
   trailer: Video
   reviews: Review[]
   relatedMovies: Movie[]
-  actors: MovieCast[]
+  actors: CreditCast[]
 }
 
 const defaultState: MovieState = {

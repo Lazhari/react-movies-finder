@@ -6,10 +6,11 @@ import Chip from '@material-ui/core/Chip'
 import Avatar from '@material-ui/core/Avatar'
 import MuiLink from '@material-ui/core/Link'
 import { Actor } from '@models/actor'
-import { MovieCast } from '@models/movie'
+import { CreditCast } from '@models/credit'
+import { TvShowCreator } from '@src/models/tv'
 
 interface Props {
-  actor: Actor | MovieCast
+  actor: Actor | CreditCast | TvShowCreator
 }
 
 const useStyles = makeStyles(() => ({

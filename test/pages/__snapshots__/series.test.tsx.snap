@@ -3,141 +3,145 @@
 exports[`Home page matches snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="makeStyles-root-1"
+    class="MuiContainer-root MuiContainer-maxWidthXl"
   >
     <div
-      class="makeStyles-filtersContainer-3"
+      class="makeStyles-root-1"
     >
       <div
-        class="MuiFormControl-root makeStyles-formControl-4"
+        class="makeStyles-filtersContainer-3"
       >
-        <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
-          data-shrink="false"
-          id="genre-label"
-        >
-          Genre
-        </label>
         <div
-          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+          class="MuiFormControl-root makeStyles-formControl-4"
         >
-          <div
-            aria-haspopup="listbox"
-            aria-labelledby="genre-label genre-label"
-            class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+            data-shrink="false"
             id="genre-label"
-            role="button"
-            tabindex="0"
           >
-            <span>
-              ​
-            </span>
-          </div>
-          <input
-            aria-hidden="true"
-            class="MuiSelect-nativeInput"
-            tabindex="-1"
-            value=""
-          />
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M7 10l5 5 5-5z"
-            />
-          </svg>
-          <fieldset
-            aria-hidden="true"
-            class="PrivateNotchedOutline-root-7 MuiOutlinedInput-notchedOutline"
-          >
-            <legend
-              class="PrivateNotchedOutline-legendLabelled-9"
-            >
-              <span>
-                Genre
-              </span>
-            </legend>
-          </fieldset>
-        </div>
-      </div>
-      <div
-        class="MuiFormControl-root makeStyles-formControl-4"
-      >
-        <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
-          data-shrink="true"
-          id="sort-by-label"
-        >
-          Sorted By
-        </label>
-        <div
-          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
-        >
+            Genre
+          </label>
           <div
-            aria-haspopup="listbox"
-            aria-labelledby="sort-by-label sort-by-label-select-outlined"
-            class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
-            id="sort-by-label-select-outlined"
-            role="button"
-            tabindex="0"
+            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
           >
-            Popularity DESC
-          </div>
-          <input
-            aria-hidden="true"
-            class="MuiSelect-nativeInput"
-            tabindex="-1"
-            value="popularity.desc"
-          />
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M7 10l5 5 5-5z"
-            />
-          </svg>
-          <fieldset
-            aria-hidden="true"
-            class="PrivateNotchedOutline-root-7 MuiOutlinedInput-notchedOutline"
-          >
-            <legend
-              class="PrivateNotchedOutline-legendLabelled-9 PrivateNotchedOutline-legendNotched-10"
+            <div
+              aria-haspopup="listbox"
+              aria-labelledby="genre-label genre-label"
+              class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
+              id="genre-label"
+              role="button"
+              tabindex="0"
             >
               <span>
-                Sorted By
+                ​
               </span>
-            </legend>
-          </fieldset>
+            </div>
+            <input
+              aria-hidden="true"
+              class="MuiSelect-nativeInput"
+              tabindex="-1"
+              value=""
+            />
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+            <fieldset
+              aria-hidden="true"
+              class="PrivateNotchedOutline-root-7 MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                class="PrivateNotchedOutline-legendLabelled-9"
+              >
+                <span>
+                  Genre
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+        </div>
+        <div
+          class="MuiFormControl-root makeStyles-formControl-4"
+        >
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+            data-shrink="true"
+            id="sort-by-label"
+          >
+            Sorted By
+          </label>
+          <div
+            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+          >
+            <div
+              aria-haspopup="listbox"
+              aria-labelledby="sort-by-label sort-by-label-select-outlined"
+              class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
+              id="sort-by-label-select-outlined"
+              role="button"
+              tabindex="0"
+            >
+              Popularity DESC
+            </div>
+            <input
+              aria-hidden="true"
+              class="MuiSelect-nativeInput"
+              tabindex="-1"
+              value="popularity.desc"
+            />
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+            <fieldset
+              aria-hidden="true"
+              class="PrivateNotchedOutline-root-7 MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                class="PrivateNotchedOutline-legendLabelled-9 PrivateNotchedOutline-legendNotched-10"
+              >
+                <span>
+                  Sorted By
+                </span>
+              </legend>
+            </fieldset>
+          </div>
         </div>
       </div>
-    </div>
-    <div
-      class="makeStyles-root-12"
-    >
       <div
-        class="MuiCircularProgress-root MuiCircularProgress-colorSecondary MuiCircularProgress-indeterminate"
-        role="progressbar"
-        style="width: 40px; height: 40px;"
+        class="makeStyles-root-12"
       >
-        <svg
-          class="MuiCircularProgress-svg"
-          viewBox="22 22 44 44"
+        <div
+          class="MuiCircularProgress-root MuiCircularProgress-colorSecondary MuiCircularProgress-indeterminate"
+          role="progressbar"
+          style="width: 40px; height: 40px;"
         >
-          <circle
-            class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
-            cx="44"
-            cy="44"
-            fill="none"
-            r="20.2"
-            stroke-width="3.6"
-          />
-        </svg>
+          <svg
+            class="MuiCircularProgress-svg"
+            viewBox="22 22 44 44"
+          >
+            <circle
+              class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
+              cx="44"
+              cy="44"
+              fill="none"
+              r="20.2"
+              stroke-width="3.6"
+            />
+          </svg>
+        </div>
       </div>
     </div>
   </div>

@@ -25,6 +25,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: theme.spacing(4),
+    [theme.breakpoints.down('sm')]: {
+      marginBottom: theme.spacing(10),
+    },
   },
 }))
 

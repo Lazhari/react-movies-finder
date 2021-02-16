@@ -27,6 +27,10 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(4),
+    [theme.breakpoints.down('sm')]: {
+      marginBottom: theme.spacing(10),
+    },
   },
   filtersContainer: {
     display: 'flex',

@@ -11,11 +11,12 @@ import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
 import { Container } from '@material-ui/core'
 
-import { fetchTvShows, fetchTvGenres } from '../../src/actions/tvShowsActions'
-import TvShowList from '../../src/components/TvShowList'
-import Loader from '../../src/components/common/Loader'
-import SEO from '../../src/components/common/Seo'
+import { fetchTvShows, fetchTvGenres } from '@actions/tvShowsActions'
+import TvShowList from '@components/TvShowList'
+import Loader from '@components/common/Loader'
+import SEO from '@components/common/Seo'
 import { RootState } from '@src/reducers'
+import { TvShowsState } from '@src/reducers/tvShowsReducer'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
   },
   filtersContainer: {
     display: 'flex',
-    // justifyContent: 'space-between',
     marginBottom: theme.spacing(2),
   },
   formControl: {
@@ -77,7 +77,7 @@ const TopSeriesPage: NextPage = () => {
   const dispatch = useDispatch()
   const { tvShows, loading, page, totalPages, genres } = useSelector<
     RootState,
-    any
+    TvShowsState
   >((state) => state.tvShowsStore)
   const classes = useStyles()
   const [sortBy, setSortBy] = React.useState('popularity.desc')

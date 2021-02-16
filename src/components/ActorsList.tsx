@@ -4,10 +4,11 @@ import { makeStyles } from '@material-ui/core/styles'
 
 import ActorCard from './ActorCard'
 import { Actor } from '@models/actor'
-import { MovieCast } from '@src/models/movie'
+import { Credit } from '@models/credit'
+import { TvShowCreator } from '@src/models/tv'
 
 interface Props {
-  actors: Array<Actor | MovieCast>
+  actors: Array<Actor | Credit | TvShowCreator>
 }
 
 const useStyles = makeStyles((theme) => ({

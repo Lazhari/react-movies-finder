@@ -3,10 +3,10 @@ import { makeStyles } from '@material-ui/core/styles'
 import Link from 'next/link'
 import Chip from '@material-ui/core/Chip'
 import MuiLink from '@material-ui/core/Link'
-import { Label } from '@models/common'
+import { Genre } from '@models/common'
 
 interface Props {
-  labels: Label[]
+  labels: Genre[]
 }
 
 const useStyles = makeStyles((theme) => ({

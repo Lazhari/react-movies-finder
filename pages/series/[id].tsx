@@ -5,11 +5,13 @@ import { useRouter } from 'next/router'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 
-import { getTvShowDetails } from '../../src/actions/tvShowAction'
-import Loader from '../../src/components/common/Loader'
-import Labels from '../../src/components/Labels'
-import ActorsList from '../../src/components/ActorsList'
-import SEO from '../../src/components/common/Seo'
+import { getTvShowDetails } from '@actions/tvShowAction'
+import Loader from '@components/common/Loader'
+import Labels from '@components/Labels'
+import ActorsList from '@components/ActorsList'
+import SEO from '@components/common/Seo'
+import { RootState } from '@src/reducers'
+import { TvShowState } from '@src/reducers/tvShowReducer'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -45,12 +47,15 @@ const Series = () => {
   const router = useRouter()
   const { id: tvShowId } = router.query
   const dispatch = useDispatch()
-  const { tvShow, loading } = useSelector((store) => store.tvShowStore)
+  const { tvShow, loading } = useSelector<RootState, TvShowState>(
+    (store) => store.tvShowStore
+  )
   const classes = useStyles()
 
   useEffect(() => {
     if (tvShowId) {
-      dispatch(getTvShowDetails(tvShowId))
+      const id = parseInt(tvShowId as string, 10)
+      dispatch(getTvShowDetails(id))
     }
   }, [dispatch, tvShowId])
 

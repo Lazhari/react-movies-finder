@@ -1,53 +1,31 @@
 import React, { useEffect } from 'react'
+import { NextPage } from 'next'
 import { useSelector, useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
 
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, Theme } from '@material-ui/core/styles'
+import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 
-import { getTvShowDetails } from '@actions/tvShowAction'
+import { getTvShowCredits, getTvShowDetails } from '@actions/tvShowAction'
 import Loader from '@components/common/Loader'
-import Labels from '@components/Labels'
-import ActorsList from '@components/ActorsList'
 import SEO from '@components/common/Seo'
 import { RootState } from '@src/reducers'
 import { TvShowState } from '@src/reducers/tvShowReducer'
+import TvShowHeader from '@src/components/TvShowHeader'
+import ActorsList from '@components/ActorsList'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((_theme: Theme) => ({
   root: {
     // display: "flex"
   },
-  header: {
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    marginTop: theme.spacing(5),
-    marginBottom: theme.spacing(4),
-    padding: theme.spacing(5),
-  },
-  moviePoster: {
-    width: theme.spacing(25),
-    borderRadius: 5,
-    boxShadow: theme.shadows[1],
-  },
-  infoBlock: {
-    marginLeft: theme.spacing(4),
-  },
-  subTitle: {
-    marginLeft: theme.spacing(1),
-  },
-  labels: {
-    marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(2),
-  },
 }))
 
-const Series = () => {
+const Series: NextPage = () => {
   const router = useRouter()
   const { id: tvShowId } = router.query
   const dispatch = useDispatch()
-  const { tvShow, loading } = useSelector<RootState, TvShowState>(
+  const { tvShow, cast, loading } = useSelector<RootState, TvShowState>(
     (store) => store.tvShowStore
   )
   const classes = useStyles()
@@ -56,12 +34,10 @@ const Series = () => {
     if (tvShowId) {
       const id = parseInt(tvShowId as string, 10)
       dispatch(getTvShowDetails(id))
+      dispatch(getTvShowCredits(id))
     }
   }, [dispatch, tvShowId])
 
-  const headerStyle = {
-    backgroundImage: `radial-gradient(circle at 20% 50%, rgba(16.47%, 15.29%, 14.51%, 0.98) 0%, rgba(22.35%, 22.35%, 22.35%, 0.88) 100%), url(https://image.tmdb.org/t/p/w1400_and_h450_bestv2${tvShow.backdrop_path})`,
-  }
   return (
     <div className={classes.root}>
       {loading ? (
@@ -69,38 +45,20 @@ const Series = () => {
       ) : (
         <>
           <SEO title={tvShow.original_name} description={tvShow.overview} />
-          <div className={classes.header} style={headerStyle}>
-            <img
-              src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${tvShow.poster_path}`}
-              alt={tvShow.original_name}
-              className={classes.moviePoster}
-            />
-            <div className={classes.infoBlock}>
-              <Typography variant="h4" component="h1" gutterBottom>
-                {tvShow.original_name}
-                <small className={classes.subTitle}>
-                  ({tvShow.first_air_date})
-                </small>
-              </Typography>
-              <Typography variant="h6" component="h2" gutterBottom>
-                Overview
-              </Typography>
-              <Typography gutterBottom>{tvShow.overview}</Typography>
-              {tvShow && tvShow.genres && (
-                <div className={classes.labels}>
-                  <Labels labels={tvShow.genres} />
-                </div>
-              )}
-              {tvShow && tvShow.created_by ? (
+          <TvShowHeader tvShow={tvShow} />
+
+          <Container maxWidth="xl">
+            <div>
+              {cast && cast.length ? (
                 <div>
-                  <Typography variant="h6" component="h1" gutterBottom>
+                  <Typography variant="h6" component="h1">
                     Top Billed Cast
                   </Typography>
-                  <ActorsList actors={tvShow.created_by} />
+                  <ActorsList actors={cast} />
                 </div>
               ) : null}
             </div>
-          </div>
+          </Container>
         </>
       )}
     </div>

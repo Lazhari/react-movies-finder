@@ -1,15 +1,22 @@
 import React from 'react'
 
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, Theme } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Rating from '@material-ui/lab/Rating'
+import Modal from '@material-ui/core/Modal'
+import CloseIcon from '@material-ui/icons/Close'
+import IconButton from '@material-ui/core/IconButton'
+import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
+
+import ReactPlayer from 'react-player'
 
 import Labels from './Labels'
 import ActorsList from './ActorsList'
 
 import { TvShowDetails } from '@models/tv'
+import { Video } from '@models/movie'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     width: '100%',
     display: 'flex',
@@ -24,6 +31,18 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  posterWithPlayerContainer: {
+    position: 'relative',
+  },
+  playButton: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+  },
+  playIcon: {
+    fontSize: theme.spacing(8),
   },
   rating: {
     marginTop: theme.spacing(1),
@@ -43,14 +62,29 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(2),
   },
+  modalContainer: {
+    position: 'absolute',
+    height: '90vh',
+    width: '100%',
+    background: '#111',
+  },
+  modalHeader: {
+    height: '10vh',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 4,
+  },
 }))
 
 interface Props {
   tvShow: TvShowDetails
+  video?: Video | undefined
 }
 
-const TvShowHeader: React.FC<Props> = ({ tvShow }) => {
+const TvShowHeader: React.FC<Props> = ({ tvShow, video }) => {
   const classes = useStyles()
+  const [open, setOpen] = React.useState(false)
 
   const headerStyle = {
     backgroundImage: `radial-gradient(
@@ -63,12 +97,48 @@ const TvShowHeader: React.FC<Props> = ({ tvShow }) => {
 
   return (
     <div className={classes.root} style={headerStyle}>
+      {video?.key && (
+        <Modal
+          aria-labelledby="Movie Trailer"
+          aria-describedby="The Movie Trailer"
+          disableScrollLock={true}
+          open={open}
+          onClose={() => setOpen(false)}
+        >
+          <div className={classes.modalContainer}>
+            <div className={classes.modalHeader}>
+              <Typography variant="h5" component="h1">
+                Official Trailer
+              </Typography>
+              <IconButton onClick={() => setOpen(false)}>
+                <CloseIcon />
+              </IconButton>
+            </div>
+            <ReactPlayer
+              url={`https://www.youtube.com/watch?v=${video.key}`}
+              controls={true}
+              playing
+              height="80vh"
+              width="100%"
+            />
+          </div>
+        </Modal>
+      )}
+
       <div className={classes.moviePosterContainer}>
-        <img
-          src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${tvShow.poster_path}`}
-          alt={tvShow.original_name}
-          className={classes.moviePoster}
-        />
+        <div className={classes.posterWithPlayerContainer}>
+          <img
+            src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${tvShow.poster_path}`}
+            alt={tvShow.original_name}
+            className={classes.moviePoster}
+          />
+          <IconButton
+            onClick={() => setOpen(true)}
+            className={classes.playButton}
+          >
+            <PlayCircleOutlineIcon className={classes.playIcon} />
+          </IconButton>
+        </div>
         <Rating
           className={classes.rating}
           name="read-only"
@@ -94,7 +164,7 @@ const TvShowHeader: React.FC<Props> = ({ tvShow }) => {
         {tvShow && tvShow.created_by ? (
           <div>
             <Typography variant="h6" component="h1" gutterBottom>
-              Top Billed Cast
+              Created By
             </Typography>
             <ActorsList actors={tvShow.created_by} />
           </div>

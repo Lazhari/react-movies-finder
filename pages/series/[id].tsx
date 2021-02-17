@@ -7,7 +7,11 @@ import { makeStyles, Theme } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 
-import { getTvShowCredits, getTvShowDetails } from '@actions/tvShowAction'
+import {
+  getTvShowCredits,
+  getTvShowDetails,
+  getTvShowVideos,
+} from '@actions/tvShowAction'
 import Loader from '@components/common/Loader'
 import SEO from '@components/common/Seo'
 import { RootState } from '@src/reducers'
@@ -25,7 +29,7 @@ const Series: NextPage = () => {
   const router = useRouter()
   const { id: tvShowId } = router.query
   const dispatch = useDispatch()
-  const { tvShow, cast, loading } = useSelector<RootState, TvShowState>(
+  const { tvShow, cast, video, loading } = useSelector<RootState, TvShowState>(
     (store) => store.tvShowStore
   )
   const classes = useStyles()
@@ -35,6 +39,7 @@ const Series: NextPage = () => {
       const id = parseInt(tvShowId as string, 10)
       dispatch(getTvShowDetails(id))
       dispatch(getTvShowCredits(id))
+      dispatch(getTvShowVideos(id))
     }
   }, [dispatch, tvShowId])
 
@@ -45,7 +50,7 @@ const Series: NextPage = () => {
       ) : (
         <>
           <SEO title={tvShow.original_name} description={tvShow.overview} />
-          <TvShowHeader tvShow={tvShow} />
+          <TvShowHeader tvShow={tvShow} video={video} />
 
           <Container maxWidth="xl">
             <div>

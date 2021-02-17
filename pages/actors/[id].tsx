@@ -12,6 +12,7 @@ import Divider from '@material-ui/core/Divider'
 import Grid from '@material-ui/core/Grid'
 import { useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
+import Container from '@material-ui/core/Container'
 
 import { getPeopleProfile, getActorCreditMovies } from '@actions/actorAction'
 
@@ -56,7 +57,7 @@ const ActorPage = () => {
       {loading ? (
         <Loader />
       ) : (
-        <>
+        <Container maxWidth="xl">
           <Grid container spacing={2}>
             <Grid item xs={12} lg={3}>
               <Card>
@@ -113,7 +114,7 @@ const ActorPage = () => {
               <MoviesCardList movies={movies} />
             </Grid>
           </Grid>
-        </>
+        </Container>
       )}
     </div>
   )

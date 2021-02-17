@@ -4,7 +4,7 @@ import { ServerStyleSheets } from '@material-ui/core/styles'
 import theme from '@src/theme'
 
 export default class AppDocument extends Document {
-  render() {
+  render(): React.ReactElement {
     return (
       <Html lang="en">
         <Head>

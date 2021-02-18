@@ -6,10 +6,12 @@ import { useRouter } from 'next/router'
 import { makeStyles, Theme } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
+import Grid from '@material-ui/core/Grid'
 
 import {
   getTvShowCredits,
   getTvShowDetails,
+  getTvShowRecommendations,
   getTvShowVideos,
 } from '@actions/tvShowAction'
 import Loader from '@components/common/Loader'
@@ -18,10 +20,14 @@ import { RootState } from '@src/reducers'
 import { TvShowState } from '@src/reducers/tvShowReducer'
 import TvShowHeader from '@src/components/TvShowHeader'
 import ActorsList from '@components/ActorsList'
+import TvShowList from '@components/TvShowList'
 
-const useStyles = makeStyles((_theme: Theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     // display: "flex"
+  },
+  hasMarginBottom: {
+    marginBottom: theme.spacing(4),
   },
 }))
 
@@ -29,9 +35,10 @@ const Series: NextPage = () => {
   const router = useRouter()
   const { id: tvShowId } = router.query
   const dispatch = useDispatch()
-  const { tvShow, cast, video, loading } = useSelector<RootState, TvShowState>(
-    (store) => store.tvShowStore
-  )
+  const { tvShow, cast, video, recommendations, loading } = useSelector<
+    RootState,
+    TvShowState
+  >((store) => store.tvShowStore)
   const classes = useStyles()
 
   useEffect(() => {
@@ -40,6 +47,7 @@ const Series: NextPage = () => {
       dispatch(getTvShowDetails(id))
       dispatch(getTvShowCredits(id))
       dispatch(getTvShowVideos(id))
+      dispatch(getTvShowRecommendations(id))
     }
   }, [dispatch, tvShowId])
 
@@ -53,16 +61,22 @@ const Series: NextPage = () => {
           <TvShowHeader tvShow={tvShow} video={video} />
 
           <Container maxWidth="xl">
-            <div>
+            <Grid container>
               {cast && cast.length ? (
-                <div>
+                <Grid item className={classes.hasMarginBottom}>
                   <Typography variant="h6" component="h1">
                     Top Billed Cast
                   </Typography>
                   <ActorsList actors={cast} />
-                </div>
+                </Grid>
               ) : null}
-            </div>
+              <Grid item className={classes.hasMarginBottom}>
+                <Typography variant="h5" component="h1" gutterBottom>
+                  Recommended TV Shows
+                </Typography>
+                <TvShowList tvShows={recommendations} />
+              </Grid>
+            </Grid>
           </Container>
         </>
       )}

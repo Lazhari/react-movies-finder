@@ -1,14 +1,16 @@
+import { FetchTvShowRecommendationsAction } from './../actions/actionsType'
 import { Reducer } from 'redux'
 import {
   FETCH_TV_SHOW_DETAILS,
   FETCH_TV_SHOW_CREDITS,
   FETCH_TV_SHOW_VIDEOS,
+  FETCH_TV_SHOW_RECOMMENDATIONS,
   FetchTvShowCreditsAction,
   FetchTvShowDetailsAction,
   TvShowsActionTypes,
   FetchTvShowVideosAction,
 } from '@actions/actionsType'
-import { TvShowDetails } from '@models/tv'
+import { TvShowDetails, TvShow } from '@models/tv'
 import { CreditCast } from '@models/credit'
 import { Video } from '@models/movie'
 
@@ -17,6 +19,7 @@ export interface TvShowState {
   tvShow: TvShowDetails
   cast: CreditCast[]
   video: Video | undefined
+  recommendations: TvShow[]
 }
 
 const defaultState: TvShowState = {
@@ -24,6 +27,7 @@ const defaultState: TvShowState = {
   tvShow: {} as TvShowDetails,
   cast: [],
   video: undefined,
+  recommendations: [],
 }
 
 const tvShowReducer: Reducer<TvShowState, TvShowsActionTypes> = (
@@ -58,6 +62,14 @@ const tvShowReducer: Reducer<TvShowState, TvShowsActionTypes> = (
         video: (action as FetchTvShowVideosAction).payload.data.results.filter(
           (v) => v.site === 'YouTube'
         )[0],
+      }
+    }
+    case `${FETCH_TV_SHOW_RECOMMENDATIONS}_FULFILLED`: {
+      return {
+        ...state,
+        loading: false,
+        recommendations: (action as FetchTvShowRecommendationsAction).payload
+          .data.results,
       }
     }
     default:

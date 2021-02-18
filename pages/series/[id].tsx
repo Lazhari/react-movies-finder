@@ -21,6 +21,7 @@ import { TvShowState } from '@src/reducers/tvShowReducer'
 import TvShowHeader from '@src/components/TvShowHeader'
 import ActorsList from '@components/ActorsList'
 import TvShowList from '@components/TvShowList'
+import TvSeasonCard from '@components/TvSeasonCard'
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -63,19 +64,41 @@ const Series: NextPage = () => {
           <Container maxWidth="xl">
             <Grid container>
               {cast && cast.length ? (
-                <Grid item className={classes.hasMarginBottom}>
+                <Grid item xs={12} className={classes.hasMarginBottom}>
                   <Typography variant="h6" component="h1">
                     Top Billed Cast
                   </Typography>
                   <ActorsList actors={cast} />
                 </Grid>
               ) : null}
-              <Grid item className={classes.hasMarginBottom}>
+              <Grid item xs={12} className={classes.hasMarginBottom}>
                 <Typography variant="h5" component="h1" gutterBottom>
-                  Recommended TV Shows
+                  Seasons
                 </Typography>
-                <TvShowList tvShows={recommendations} />
+                <Grid container spacing={4}>
+                  {tvShow.seasons?.map((season) => (
+                    <Grid
+                      item
+                      xs={12}
+                      sm={6}
+                      md={4}
+                      lg={3}
+                      xl={2}
+                      key={season.id}
+                    >
+                      <TvSeasonCard season={season} />
+                    </Grid>
+                  ))}
+                </Grid>
               </Grid>
+              {recommendations?.length > 0 && (
+                <Grid item xs={12} className={classes.hasMarginBottom}>
+                  <Typography variant="h5" component="h1" gutterBottom>
+                    Recommended TV Shows
+                  </Typography>
+                  <TvShowList tvShows={recommendations} />
+                </Grid>
+              )}
             </Grid>
           </Container>
         </>

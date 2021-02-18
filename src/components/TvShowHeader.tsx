@@ -1,12 +1,14 @@
 import React from 'react'
 
-import { makeStyles, Theme } from '@material-ui/core/styles'
+import { makeStyles, Theme, useTheme } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Rating from '@material-ui/lab/Rating'
 import Modal from '@material-ui/core/Modal'
 import CloseIcon from '@material-ui/icons/Close'
 import IconButton from '@material-ui/core/IconButton'
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
+import Grid from '@material-ui/core/Grid'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 import ReactPlayer from 'react-player'
 
@@ -53,7 +55,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     boxShadow: theme.shadows[1],
   },
   infoBlock: {
-    marginLeft: theme.spacing(4),
+    // [theme.breakpoints.up('sm')]: {
+    //   marginLeft: theme.spacing(4),
+    // },
   },
   subTitle: {
     marginLeft: theme.spacing(1),
@@ -85,6 +89,7 @@ interface Props {
 const TvShowHeader: React.FC<Props> = ({ tvShow, video }) => {
   const classes = useStyles()
   const [open, setOpen] = React.useState(false)
+  const theme = useTheme()
 
   const headerStyle = {
     backgroundImage: `radial-gradient(
@@ -94,7 +99,6 @@ const TvShowHeader: React.FC<Props> = ({ tvShow, video }) => {
         url(https://image.tmdb.org/t/p/w1400_and_h450_bestv2${tvShow.backdrop_path}
     )`,
   }
-
   return (
     <div className={classes.root} style={headerStyle}>
       {video?.key && (
@@ -124,52 +128,65 @@ const TvShowHeader: React.FC<Props> = ({ tvShow, video }) => {
           </div>
         </Modal>
       )}
-
-      <div className={classes.moviePosterContainer}>
-        <div className={classes.posterWithPlayerContainer}>
-          <img
-            src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${tvShow.poster_path}`}
-            alt={tvShow.original_name}
-            className={classes.moviePoster}
+      <Grid
+        container
+        spacing={useMediaQuery(theme.breakpoints.down('sm')) ? 4 : 1}
+      >
+        <Grid
+          item
+          xs={12}
+          sm={4}
+          md={3}
+          lg={2}
+          className={classes.moviePosterContainer}
+        >
+          <div className={classes.posterWithPlayerContainer}>
+            <img
+              src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${tvShow.poster_path}`}
+              alt={tvShow.original_name}
+              className={classes.moviePoster}
+            />
+            <IconButton
+              onClick={() => setOpen(true)}
+              className={classes.playButton}
+            >
+              <PlayCircleOutlineIcon className={classes.playIcon} />
+            </IconButton>
+          </div>
+          <Rating
+            className={classes.rating}
+            name="read-only"
+            value={tvShow.vote_average / 2}
+            precision={0.1}
+            readOnly
           />
-          <IconButton
-            onClick={() => setOpen(true)}
-            className={classes.playButton}
-          >
-            <PlayCircleOutlineIcon className={classes.playIcon} />
-          </IconButton>
-        </div>
-        <Rating
-          className={classes.rating}
-          name="read-only"
-          value={tvShow.vote_average / 2}
-          precision={0.1}
-          readOnly
-        />
-      </div>
-      <div className={classes.infoBlock}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          {tvShow.original_name}
-          <small className={classes.subTitle}>({tvShow.first_air_date})</small>
-        </Typography>
-        <Typography variant="h6" component="h2" gutterBottom>
-          Overview
-        </Typography>
-        <Typography gutterBottom>{tvShow.overview}</Typography>
-        {tvShow && tvShow.genres && (
-          <div className={classes.labels}>
-            <Labels labels={tvShow.genres} />
-          </div>
-        )}
-        {tvShow && tvShow.created_by ? (
-          <div>
-            <Typography variant="h6" component="h1" gutterBottom>
-              Created By
-            </Typography>
-            <ActorsList actors={tvShow.created_by} />
-          </div>
-        ) : null}
-      </div>
+        </Grid>
+        <Grid item xs={12} sm={8} md={9} lg={10} className={classes.infoBlock}>
+          <Typography variant="h4" component="h1" gutterBottom>
+            {tvShow.original_name}
+            <small className={classes.subTitle}>
+              ({tvShow.first_air_date})
+            </small>
+          </Typography>
+          <Typography variant="h6" component="h2" gutterBottom>
+            Overview
+          </Typography>
+          <Typography gutterBottom>{tvShow.overview}</Typography>
+          {tvShow && tvShow.genres && (
+            <div className={classes.labels}>
+              <Labels labels={tvShow.genres} />
+            </div>
+          )}
+          {tvShow && tvShow.created_by ? (
+            <div>
+              <Typography variant="h6" component="h1" gutterBottom>
+                Created By
+              </Typography>
+              <ActorsList actors={tvShow.created_by} />
+            </div>
+          ) : null}
+        </Grid>
+      </Grid>
     </div>
   )
 }

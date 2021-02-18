@@ -51,7 +51,10 @@ const TvSeasonCard: React.FC<Props> = ({ season }) => {
             {season.name}
           </Typography>
           <Typography variant="subtitle1" color="textSecondary">
-            {season.air_date} | {season.episode_count} Episodes
+            {season.air_date}
+          </Typography>
+          <Typography variant="subtitle1" color="textSecondary">
+            {season.episode_count} Episodes
           </Typography>
         </CardContent>
       </div>

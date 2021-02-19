@@ -6,7 +6,7 @@ import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 
-import NotFoundIcon from '@components/common/icons/NotFound'
+import NotFoundIcon from '@components/common/icons/NotFoundIcon'
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {

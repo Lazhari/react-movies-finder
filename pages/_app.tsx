@@ -2,8 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 
-import { makeStyles } from '@material-ui/core/styles'
-import { ThemeProvider } from '@material-ui/core/styles'
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Drawer from '@material-ui/core/Drawer'
 import Typography from '@material-ui/core/Typography'
@@ -94,7 +93,6 @@ const useStyles = makeStyles((theme) => ({
 function App(props) {
   const { Component, pageProps } = props
   const [open, setOpen] = React.useState(false)
-  // const store = useStore(pageProps.initialReduxState)
   const classes = useStyles()
 
   const handleDrawerOpen = () => {

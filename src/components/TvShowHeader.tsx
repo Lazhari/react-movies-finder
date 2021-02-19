@@ -78,7 +78,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 interface Props {
   tvShow: TvShowDetails
-  video?: Video | undefined
+  video?: Video
 }
 
 const TvShowHeader: React.FC<Props> = ({ tvShow, video }) => {

@@ -1,10 +1,9 @@
 import { AxiosResponse } from 'axios'
 import { Keyword } from '@models/common'
 import { TvShow } from '@models/tv'
-import { Video } from '@models/movie'
+import { Video, Movie } from '@models/movie'
 import { Cast, Crew } from '@models/actor'
 import { CreditCast, CreditCrew } from '@models/credit'
-import { Movie } from '@models/movie'
 import { Review } from '@models/review'
 
 export interface ActorMovieCreditsResponse {

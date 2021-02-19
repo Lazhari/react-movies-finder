@@ -13,8 +13,6 @@ import { Typography } from '@material-ui/core'
 import Link from 'next/link'
 import { TvShow } from '@models/tv'
 
-// import placeholderImage from "../Images/abstract-image.jpg";
-
 const useStyles = makeStyles((theme) => ({
   card: {
     // maxWidth: 345,

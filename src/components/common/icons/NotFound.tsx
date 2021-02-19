@@ -1,7 +1,7 @@
 import * as React from 'react'
-import SvgIcon from '@material-ui/core/SvgIcon'
+import SvgIcon, { SvgIconProps } from '@material-ui/core/SvgIcon'
 
-function NotFoundIcon(props) {
+const NotFoundIcon: React.FC<SvgIconProps> = (props) => {
   return (
     <SvgIcon {...props} viewBox="0 0, 60 60">
       <path d="M57 0H3C1.346 0 0 1.346 0 3v56a1 1 0 001 1h58a1 1 0 001-1V3c0-1.654-1.346-3-3-3zM3 2h54c.551 0 1 .449 1 1v5H2V3c0-.551.449-1 1-1zm16 51v5h-8v-5h8zm2 0h8v5h-8v-5zm10 0h8v5h-8v-5zm10 0h8v5h-8v-5zM2 51V17h56v34H2zm0-36v-5h56v5H2zm0 38h7v5H2v-5zm49 5v-5h7v5h-7z" />

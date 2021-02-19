@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { NextPage } from 'next'
 import { useSelector, useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
 
@@ -43,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const MoviePage = () => {
+const MoviePage: NextPage = () => {
   const router = useRouter()
   const { mid } = router.query
   const dispatch = useDispatch()

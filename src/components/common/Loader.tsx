@@ -11,7 +11,7 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
-const Loader = () => {
+const Loader: React.FC = () => {
   const classes = useStyles()
   return (
     <div className={classes.root}>

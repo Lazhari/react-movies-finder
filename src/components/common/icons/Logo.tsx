@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Logo = (props) => {
+const Logo: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
       height={props.height || 91}

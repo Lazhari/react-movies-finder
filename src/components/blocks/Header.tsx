@@ -44,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    cursor: 'pointer',
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -148,12 +149,14 @@ const Header: React.FC<Props> = ({ handleDrawerOpen, open }) => {
           >
             <MenuIcon />
           </IconButton>
-          <div className={classes.appTitle}>
-            <Logo fill="#fff" height={54} width={54} />
-            <Typography variant="h6" className={classes.title}>
-              Movies Finder
-            </Typography>
-          </div>
+          <Link href="/">
+            <div className={classes.appTitle}>
+              <Logo fill="#fff" height={54} width={54} />
+              <Typography variant="h6" className={classes.title}>
+                Movies Finder
+              </Typography>
+            </div>
+          </Link>
           <Hidden smDown>
             <nav>
               {navLinks.map((item, index) => (

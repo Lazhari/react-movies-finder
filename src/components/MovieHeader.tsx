@@ -15,6 +15,8 @@ import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
 
 import Labels from './Labels'
+import { MovieDetails, Video } from '@models/movie'
+import { Genre } from '@models/common'
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -106,7 +108,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const MovieHeader = ({ movie, genres, trailer }) => {
+interface Props {
+  movie: MovieDetails
+  genres: Genre[]
+  trailer: Video
+}
+
+const MovieHeader: React.FC<Props> = ({ movie, genres, trailer }) => {
   const classes = useStyles()
   const [open, setOpen] = React.useState(false)
   const headerStyle = {

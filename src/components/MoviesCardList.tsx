@@ -3,6 +3,9 @@ import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import MovieCard from './MovieCard'
 
+import { Movie } from '@models/movie'
+import { Cast } from '@models/actor'
+
 const useStyles = makeStyles(() => ({
   root: {
     display: 'flex',
@@ -10,7 +13,11 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
-const MoviesCardList = ({ movies }) => {
+interface Props {
+  movies: Array<Movie | Cast>
+}
+
+const MoviesCardList: React.FC<Props> = ({ movies }) => {
   const classes = useStyles()
   const moviesList = () => {
     return movies.map((movie) => (

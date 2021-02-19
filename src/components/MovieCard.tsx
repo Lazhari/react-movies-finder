@@ -12,6 +12,8 @@ import MuiLink from '@material-ui/core/Link'
 import { Typography } from '@material-ui/core'
 
 import Link from 'next/link'
+import { Movie } from '@models/movie'
+import { Cast } from '@models/actor'
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -37,7 +39,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const MovieCard = ({ movie }) => {
+interface Props {
+  movie: Movie | Cast
+}
+
+const MovieCard: React.FC<Props> = ({ movie }) => {
   const classes = useStyles()
   const onErrorLoadingImage = (e) => {
     e.target.src = '/abstract-image.jpg'

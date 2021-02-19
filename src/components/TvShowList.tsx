@@ -2,6 +2,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import TvShowCard from './TvShowCard'
+import { TvShow } from '@models/tv'
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -9,7 +10,11 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
-const TvShowList = ({ tvShows }) => {
+interface Props {
+  tvShows: TvShow[]
+}
+
+const TvShowList: React.FC<Props> = ({ tvShows }) => {
   const classes = useStyles()
 
   return (

@@ -54,11 +54,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     borderRadius: 5,
     boxShadow: theme.shadows[1],
   },
-  infoBlock: {
-    // [theme.breakpoints.up('sm')]: {
-    //   marginLeft: theme.spacing(4),
-    // },
-  },
   subTitle: {
     marginLeft: theme.spacing(1),
   },
@@ -161,7 +156,7 @@ const TvShowHeader: React.FC<Props> = ({ tvShow, video }) => {
             readOnly
           />
         </Grid>
-        <Grid item xs={12} sm={8} md={9} lg={10} className={classes.infoBlock}>
+        <Grid item xs={12} sm={8} md={9} lg={10}>
           <Typography variant="h4" component="h1" gutterBottom>
             {tvShow.original_name}
             <small className={classes.subTitle}>

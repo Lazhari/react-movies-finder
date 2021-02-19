@@ -11,6 +11,7 @@ import MuiLink from '@material-ui/core/Link'
 import { Typography } from '@material-ui/core'
 
 import Link from 'next/link'
+import { TvShow } from '@models/tv'
 
 // import placeholderImage from "../Images/abstract-image.jpg";
 
@@ -38,7 +39,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const TvShowCard = ({ tvShow }) => {
+interface Props {
+  tvShow: TvShow
+}
+
+const TvShowCard: React.FC<Props> = ({ tvShow }) => {
   const classes = useStyles()
   const onErrorLoadingImage = (e) => {
     e.target.src = '/abstract-image.jpg'

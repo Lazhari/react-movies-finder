@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import ActorCard from './ActorCard'
 import { Actor } from '@models/actor'
 import { Credit } from '@models/credit'
-import { TvShowCreator } from '@src/models/tv'
+import { TvShowCreator } from '@models/tv'
 
 interface Props {
   actors: Array<Actor | Credit | TvShowCreator>

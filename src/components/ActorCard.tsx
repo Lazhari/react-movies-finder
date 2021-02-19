@@ -7,7 +7,7 @@ import Avatar from '@material-ui/core/Avatar'
 import MuiLink from '@material-ui/core/Link'
 import { Actor } from '@models/actor'
 import { Credit } from '@models/credit'
-import { TvShowCreator } from '@src/models/tv'
+import { TvShowCreator } from '@models/tv'
 
 interface Props {
   actor: Actor | Credit | TvShowCreator

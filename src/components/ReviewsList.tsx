@@ -6,6 +6,7 @@ import MuiExpansionPanel from '@material-ui/core/Accordion'
 import MuiExpansionPanelSummary from '@material-ui/core/AccordionSummary'
 import MuiExpansionPanelDetails from '@material-ui/core/AccordionDetails'
 import Typography from '@material-ui/core/Typography'
+import { Review } from '@models/review'
 
 const ExpansionPanel = withStyles({
   root: {
@@ -48,7 +49,11 @@ const ExpansionPanelDetails = withStyles((theme) => ({
   },
 }))(MuiExpansionPanelDetails)
 
-const ReviewsList = ({ reviews }) => {
+interface Props {
+  reviews: Review[]
+}
+
+const ReviewsList: React.FC<Props> = ({ reviews }) => {
   const [expanded, setExpanded] = React.useState('panel1')
 
   const handleChange = (panel) => (event, newExpanded) => {

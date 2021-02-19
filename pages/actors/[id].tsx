@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { NextPage } from 'next'
 import { useSelector, useDispatch } from 'react-redux'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -34,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const ActorPage = () => {
+const ActorPage: NextPage = () => {
   const router = useRouter()
   const { id: actorId } = router.query
   const dispatch = useDispatch()

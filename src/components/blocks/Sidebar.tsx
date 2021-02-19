@@ -19,7 +19,14 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
-const Sidebar = ({ handleDrawerClose }) => {
+interface Props {
+  handleDrawerClose: ((
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => void) &
+    ((event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void)
+}
+
+const Sidebar: React.FC<Props> = ({ handleDrawerClose }) => {
   const classes = useStyles()
   const dispatch = useDispatch()
   const { genres } = useSelector<RootState, MoviesState>(

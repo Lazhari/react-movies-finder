@@ -2,7 +2,7 @@ import React from 'react'
 import { render } from '../testUtils'
 import SeriesPage from '../../pages/series'
 
-describe('Home page', () => {
+describe('TV shows page', () => {
   it('matches snapshot', () => {
     const { asFragment } = render(<SeriesPage />, {})
     expect(asFragment()).toMatchSnapshot()

@@ -1,10 +1,10 @@
 import React from 'react'
 import { render } from '../testUtils'
-import Upcoming from '../../pages/upcoming'
+import NotFound from '../../pages/404'
 
-describe('Upcoming movies page', () => {
+describe('404 page', () => {
   it('matches snapshot', () => {
-    const { asFragment } = render(<Upcoming />, {})
+    const { asFragment } = render(<NotFound />, {})
     expect(asFragment()).toMatchSnapshot()
   })
 

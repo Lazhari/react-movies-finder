@@ -22,56 +22,51 @@ import {
 export function fetchMovie(
   id: number
 ): ThunkAction<void, RootState, unknown, MovieActionTypes> {
-  return (dispatch) => {
+  return (dispatch) =>
     dispatch({
       type: FETCH_MOVIE_DETAILS,
       payload: client.get<MovieDetails>(`/movie/${id}`),
     })
-  }
 }
 
 export function fetchMovieVideos(
   id: number
 ): ThunkAction<void, RootState, unknown, MovieActionTypes> {
-  return (dispatch) => {
+  return (dispatch) =>
     dispatch({
       type: FETCH_MOVIE_VIDEOS,
       payload: client.get<VideosResponse>(`/movie/${id}/videos`),
     })
-  }
 }
 
 export function fetchMovieReviews(
   id: number
 ): ThunkAction<void, RootState, unknown, MovieActionTypes> {
-  return (dispatch) => {
+  return (dispatch) =>
     dispatch({
       type: FETCH_MOVIE_REVIEWS,
       payload: client.get<ReviewListResponse>(`/movie/${id}/reviews`),
     })
-  }
 }
 
 export function fetchRelatedMovies(
   id: number
 ): ThunkAction<void, RootState, unknown, MovieActionTypes> {
-  return (dispatch) => {
+  return (dispatch) =>
     dispatch({
       type: FETCH_RELATED_MOVIES,
       payload: client.get<MoviesListResponse>(`/movie/${id}/similar`),
     })
-  }
 }
 
 export function fetchMovieActors(
   id: number
 ): ThunkAction<void, RootState, unknown, MovieActionTypes> {
-  return (dispatch) => {
+  return (dispatch) =>
     dispatch({
       type: FETCH_MOVIE_CAST,
       payload: client.get<CreditsResponse>(`/movie/${id}/credits`),
     })
-  }
 }
 
 export function cleaningMovieReducer(): ThunkAction<
@@ -80,10 +75,9 @@ export function cleaningMovieReducer(): ThunkAction<
   unknown,
   MovieActionTypes
 > {
-  return (dispatch) => {
+  return (dispatch) =>
     dispatch({
       type: CLEANING_MOVIE_STATE,
       payload: {},
     })
-  }
 }

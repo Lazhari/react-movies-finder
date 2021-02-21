@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Actor page matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="makeStyles-root-1"
+  >
+    <div
+      class="MuiContainer-root MuiContainer-maxWidthXl"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
+      >
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-lg-3"
+        >
+          <div
+            class="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"
+          >
+            <div
+              class="MuiCardMedia-root makeStyles-media-2"
+              style="background-image: url(https://image.tmdb.org/t/p/w276_and_h350_faceundefined);"
+            />
+            <div
+              class="MuiCardContent-root"
+            >
+              <h2
+                class="MuiTypography-root MuiTypography-h5 MuiTypography-colorInherit MuiTypography-gutterBottom"
+              />
+              <p
+                class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
+              >
+                Birth day: 
+              </p>
+              <p
+                class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
+              >
+                Place of birth: 
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-lg-9"
+        >
+          <h1
+            class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+          >
+            Known For
+          </h1>
+          <div
+            class="MuiGrid-root makeStyles-root-4 MuiGrid-container MuiGrid-spacing-xs-3"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

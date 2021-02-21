@@ -16,7 +16,7 @@ export function getPeopleProfile(
   personId: number
 ): ThunkAction<void, RootState, unknown, AsyncActorActionTypes> {
   return (dispatch) => {
-    dispatch({
+    return dispatch({
       type: GET_ACTOR_PROFILE,
       payload: client.get<Actor>(`/person/${personId}`),
     })
@@ -30,7 +30,7 @@ export function getActorCreditMovies(
   personId: number
 ): ThunkAction<void, RootState, unknown, AsyncActorActionTypes> {
   return (dispatch) => {
-    dispatch({
+    return dispatch({
       type: GET_ACTOR_CREDIT_MOVIES,
       payload: client.get<ActorMovieCreditsResponse>(
         `/person/${personId}/movie_credits`

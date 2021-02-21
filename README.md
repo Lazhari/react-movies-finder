@@ -1,6 +1,6 @@
-# React Movies Finder
+# [React Movies Finder](https://movies-finder.vercel.app/)
 
-> Movies Finder app using React
+> React Movies Finder is a Next/React/Redux app to find movies and TV shows using the [Movie DB api](https://developers.themoviedb.org/3)
 
 [![Build Status](https://travis-ci.org/Lazhari/react-movies-finder.svg?branch=master)](https://travis-ci.org/Lazhari/react-movies-finder)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Lazhari_react-movies-finder&metric=alert_status)](https://sonarcloud.io/dashboard?id=Lazhari_react-movies-finder)
@@ -13,3 +13,18 @@
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=Lazhari_react-movies-finder&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=Lazhari_react-movies-finder)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=Lazhari_react-movies-finder&metric=ncloc)](https://sonarcloud.io/dashboard?id=Lazhari_react-movies-finder)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Lazhari_react-movies-finder&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=Lazhari_react-movies-finder)
+
+Check the latest version [here](https://movies-finder.vercel.app/)
+
+## Installtion and Set up 
+
+### Requirements
+
+- node (v10.x or higher).
+- Yarn or npm 
+
+### Get Start
+
+- `git clone https://github.com/Lazhari/react-movies-finder.git`
+- `yarn`
+- `yarn dev`

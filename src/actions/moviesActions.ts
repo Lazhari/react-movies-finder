@@ -16,19 +16,18 @@ export function fetchGenre(): ThunkAction<
   unknown,
   MoviesActionTypes
 > {
-  return (dispatch) => {
+  return (dispatch) =>
     dispatch({
       type: FETCH_GENRE,
       payload: client.get<{ genres: Genre[] }>('/genre/movie/list'),
     })
-  }
 }
 
 export function fetchMovies(
   page = 1,
   type = 'popular'
 ): ThunkAction<void, RootState, unknown, MoviesActionTypes> {
-  return (dispatch) => {
+  return (dispatch) =>
     dispatch({
       type: FETCH_MOVIES,
       payload: client.get<MoviesListResponse>(`/movie/${type}`, {
@@ -37,14 +36,13 @@ export function fetchMovies(
         },
       }),
     })
-  }
 }
 
 export function fetchMoviesByGenre(
   page = 1,
   genreId = ''
 ): ThunkAction<void, RootState, unknown, MoviesActionTypes> {
-  return (dispatch) => {
+  return (dispatch) =>
     dispatch({
       type: FETCH_MOVIES_BY_GENRE,
       payload: client.get<MoviesListResponse>(`/genre/${genreId}/movies`, {
@@ -56,5 +54,4 @@ export function fetchMoviesByGenre(
       }),
       genreId,
     })
-  }
 }

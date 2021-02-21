@@ -13,7 +13,7 @@ export function fetchTvShows(
   page = 1,
   filters = {}
 ): ThunkAction<void, RootState, unknown, TvShowsActionTypes> {
-  return (dispatch) => {
+  return (dispatch) =>
     dispatch({
       type: FETCH_TV_SHOWS,
       payload: client.get<TvShowsList>('/discover/tv', {
@@ -23,7 +23,6 @@ export function fetchTvShows(
         },
       }),
     })
-  }
 }
 
 export function fetchTvGenres(): ThunkAction<
@@ -32,10 +31,9 @@ export function fetchTvGenres(): ThunkAction<
   unknown,
   TvShowsActionTypes
 > {
-  return (dispatch) => {
+  return (dispatch) =>
     dispatch({
       type: FETCH_TV_GENRES,
       payload: client.get<{ genres: Genre[] }>('/genre/tv/list'),
     })
-  }
 }

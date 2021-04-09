@@ -3,6 +3,11 @@
 > React Movies Finder is a Next/React/Redux app to find movies and TV shows using the [Movie DB api](https://developers.themoviedb.org/3)
 
 [![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/lazhari/react-movies-finder/general)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=Lazhari%2Freact-movies-finder&benchmark=INFRASTRUCTURE+SECURITY)
+[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/lazhari/react-movies-finder/cis_aws)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=Lazhari%2Freact-movies-finder&benchmark=CIS+AWS+V1.2)
+[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/lazhari/react-movies-finder/cis_azure)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=Lazhari%2Freact-movies-finder&benchmark=CIS+AZURE+V1.1)
+[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/lazhari/react-movies-finder/pci)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=Lazhari%2Freact-movies-finder&benchmark=PCI-DSS+V3.2)
+[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/lazhari/react-movies-finder/nist)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=Lazhari%2Freact-movies-finder&benchmark=NIST-800-53)
+[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/lazhari/react-movies-finder/hipaa)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=Lazhari%2Freact-movies-finder&benchmark=HIPAA)
 [![Build Status](https://travis-ci.org/Lazhari/react-movies-finder.svg?branch=master)](https://travis-ci.org/Lazhari/react-movies-finder)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Lazhari_react-movies-finder&metric=alert_status)](https://sonarcloud.io/dashboard?id=Lazhari_react-movies-finder)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Lazhari_react-movies-finder&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=Lazhari_react-movies-finder)

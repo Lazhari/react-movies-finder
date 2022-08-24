@@ -1,4 +1,4 @@
-# [React Movies Finder](https://movies-finder.vercel.app/)
+# [React Movies Finder](https://movies-finder-v2.vercel.app/)
 
 > React Movies Finder is a Next/React/Redux app to find movies and TV shows using the [Movie DB api](https://developers.themoviedb.org/3)
 
@@ -20,7 +20,7 @@
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=Lazhari_react-movies-finder&metric=ncloc)](https://sonarcloud.io/dashboard?id=Lazhari_react-movies-finder)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Lazhari_react-movies-finder&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=Lazhari_react-movies-finder)
 
-Check the latest version [here](https://movies-finder.vercel.app/)
+Check the latest version [here](https://movies-finder-v2.vercel.app/)
 
 ## Installtion and Set up
 

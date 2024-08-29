@@ -1,6 +1,7 @@
 'use client'
 
-import Image from 'next/image'
+import { MoviesReqOptions } from '@/types/movies'
+import { LoaderCircle } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 
@@ -8,10 +9,11 @@ let page = 2
 export type MovieCard = JSX.Element
 
 interface LoadMoreProps {
-  fetchAction: (page: number) => Promise<MovieCard[]>
+  fetchAction: (opts: MoviesReqOptions) => Promise<MovieCard[]>
+  genreId?: number
 }
 
-export function LoadMore({ fetchAction }: LoadMoreProps) {
+export function LoadMore({ fetchAction, genreId }: LoadMoreProps) {
   const { ref, inView } = useInView()
   const [data, setData] = useState<MovieCard[]>([])
   const [loading, setLoading] = useState(false)
@@ -21,7 +23,7 @@ export function LoadMore({ fetchAction }: LoadMoreProps) {
       setLoading(true)
       const delay = 500
       const timeoutId = setTimeout(async () => {
-        const newData = await fetchAction(page)
+        const newData = await fetchAction({ page, genreId })
         setData([...data, ...newData])
         setLoading(false)
         page++
@@ -29,7 +31,7 @@ export function LoadMore({ fetchAction }: LoadMoreProps) {
 
       return () => clearTimeout(timeoutId)
     }
-  }, [inView, data])
+  }, [inView, data, genreId])
 
   return (
     <>
@@ -39,13 +41,7 @@ export function LoadMore({ fetchAction }: LoadMoreProps) {
       <section className="flex justify-center items-center w-full">
         <div ref={ref}>
           {inView && loading && (
-            <Image
-              src="./spinner.svg"
-              alt="spinner"
-              width={56}
-              height={56}
-              className="object-contain"
-            />
+            <LoaderCircle className="w-12 h-12 animate-spin" />
           )}
         </div>
       </section>

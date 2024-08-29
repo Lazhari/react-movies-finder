@@ -9,27 +9,26 @@ export default function Header() {
     <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
       <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
         <Link
-          href="#"
+          href="/"
           className="flex items-center gap-2 text-lg font-semibold md:text-base"
         >
-          {/* <Package2 className="h-6 w-6" /> */}
           <Popcorn className="h-8 w-8" />
           <span className="sr-only">Movies Finder</span>
         </Link>
         <Link
-          href="#"
+          href="/"
           className="text-foreground transition-colors hover:text-foreground"
         >
           Popular
         </Link>
         <Link
-          href="#"
+          href="/upcoming"
           className="text-muted-foreground transition-colors hover:text-foreground"
         >
           Upcoming
         </Link>
         <Link
-          href="#"
+          href="/series"
           className="text-muted-foreground transition-colors hover:text-foreground"
         >
           Series
@@ -45,23 +44,23 @@ export default function Header() {
         <SheetContent side="left">
           <nav className="grid gap-6 text-lg font-medium">
             <Link
-              href="#"
+              href="/"
               className="flex items-center gap-2 text-lg font-semibold"
             >
               <Popcorn className="h-8 w-8" />
               <span className="sr-only">Movies Finder</span>
             </Link>
-            <Link href="#" className="hover:text-foreground">
+            <Link href="/" className="hover:text-foreground">
               Popular
             </Link>
             <Link
-              href="#"
+              href="/upcoming"
               className="text-muted-foreground hover:text-foreground"
             >
               Upcoming
             </Link>
             <Link
-              href="#"
+              href="/series"
               className="text-muted-foreground hover:text-foreground"
             >
               Series

@@ -1,6 +1,5 @@
 'use client'
 
-import { fetchMovies } from '@/app/actions'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
@@ -8,7 +7,11 @@ import { useInView } from 'react-intersection-observer'
 let page = 2
 export type MovieCard = JSX.Element
 
-export function LoadMore() {
+interface LoadMoreProps {
+  fetchAction: (page: number) => Promise<MovieCard[]>
+}
+
+export function LoadMore({ fetchAction }: LoadMoreProps) {
   const { ref, inView } = useInView()
   const [data, setData] = useState<MovieCard[]>([])
   const [loading, setLoading] = useState(false)
@@ -18,7 +21,7 @@ export function LoadMore() {
       setLoading(true)
       const delay = 500
       const timeoutId = setTimeout(async () => {
-        const newData = await fetchMovies(page)
+        const newData = await fetchAction(page)
         setData([...data, ...newData])
         setLoading(false)
         page++

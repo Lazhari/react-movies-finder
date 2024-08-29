@@ -23,3 +23,13 @@ export async function fetchMovies(page = 1) {
     <MovieCard key={movie.id} movie={movie} index={idx} />
   ))
 }
+
+export async function fetchUpcomingMovies(page = 1) {
+  const resp = await fetch(
+    `${baseURL}/movie/upcoming?api_key=${apiKey}&page=${page}`
+  )
+  const data = await resp.json()
+  return data?.results?.map((movie: Movie, idx: number) => (
+    <MovieCard key={movie.id} movie={movie} index={idx} />
+  ))
+}

@@ -48,15 +48,8 @@ const MoviePage: NextPage = () => {
   const router = useRouter()
   const { mid } = router.query
   const dispatch = useDispatch()
-  const {
-    movie,
-    loading,
-    genres,
-    trailer,
-    actors,
-    reviews,
-    relatedMovies,
-  } = useSelector<RootState, MovieState>((state) => state.movieStore)
+  const { movie, loading, genres, trailer, actors, reviews, relatedMovies } =
+    useSelector<RootState, MovieState>((state) => state.movieStore)
   const classes = useStyles()
 
   useEffect(() => {

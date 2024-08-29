@@ -20,4 +20,4 @@ function readJson {
 
 VERSION=`readJson package.json version` || exit 1;
 
-yarn sonar-scanner -X -Dsonar.projectVersion=$VERSION
+npm sonar-scanner -X -Dsonar.projectVersion=$VERSION

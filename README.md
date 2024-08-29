@@ -32,8 +32,8 @@ Check the latest version [here](https://movies-finder-v2.vercel.app/)
 ### Get Start
 
 - `git clone https://github.com/Lazhari/react-movies-finder.git`
-- `yarn`
-- `yarn dev`
+- `npm install`
+- `npm dev`
 
 ## License
 

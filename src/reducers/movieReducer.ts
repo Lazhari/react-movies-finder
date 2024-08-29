@@ -69,9 +69,9 @@ const movieReducer: Reducer<MovieState, MovieActionTypes> = (
     }
 
     case `${FETCH_MOVIE_VIDEOS}_FULFILLED`: {
-      const trailer = (action as FetchMovieVideosAction).payload.data.results.filter(
-        (video) => video.site === 'YouTube'
-      )[0]
+      const trailer = (
+        action as FetchMovieVideosAction
+      ).payload.data.results.filter((video) => video.site === 'YouTube')[0]
       return {
         ...state,
         loading: false,

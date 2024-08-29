@@ -71,13 +71,9 @@ const moviesReducer: Reducer<MoviesState, MoviesActionTypes> = (
     }
 
     case `${FETCH_MOVIES_BY_GENRE}_FULFILLED`: {
-      const {
-        results,
-        page,
-        total_pages,
-        total_results,
-        id,
-      } = (action as FetchMoviesByGenreAction).payload.data
+      const { results, page, total_pages, total_results, id } = (
+        action as FetchMoviesByGenreAction
+      ).payload.data
       return {
         ...state,
         loading: false,

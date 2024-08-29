@@ -6,18 +6,18 @@ import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import MuiLink from '@material-ui/core/Link'
-import { makeStyles } from '@material-ui/styles'
+// import { makeStyles } from '@material-ui/styles'
 
-import { fetchGenre } from '@actions/moviesActions'
-import { RootState } from '@src/reducers'
-import { MoviesState } from '@src/reducers/moviesReducer'
+import { fetchGenre } from '@/actions/moviesActions'
+import { RootState } from '@/reducers'
+import { MoviesState } from '@/reducers/moviesReducer'
 
-const useStyles = makeStyles(() => ({
-  root: {},
-  linkText: {
-    color: 'white',
-  },
-}))
+// const useStyles = makeStyles(() => ({
+//   root: {},
+//   linkText: {
+//     color: 'white',
+//   },
+// }))
 
 interface Props {
   handleDrawerClose: ((
@@ -27,7 +27,7 @@ interface Props {
 }
 
 const Sidebar: React.FC<Props> = ({ handleDrawerClose }) => {
-  const classes = useStyles()
+  // const classes = useStyles()
   const dispatch = useDispatch()
   const { genres } = useSelector<RootState, MoviesState>(
     (state) => state.moviesStore
@@ -52,10 +52,10 @@ const Sidebar: React.FC<Props> = ({ handleDrawerClose }) => {
               underline="none"
               key={genre.id}
             >
-              <ListItem button className={classes.root}>
+              <ListItem button>
                 <ListItemText
                   primary={genre.name}
-                  className={classes.linkText}
+                  // className={classes.linkText}
                 />
               </ListItem>
             </MuiLink>

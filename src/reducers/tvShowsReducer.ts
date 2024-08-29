@@ -43,12 +43,9 @@ const tvShowsReducer: Reducer<TvShowsState, TvShowsActionTypes> = (
       }
     }
     case `${FETCH_TV_SHOWS}_FULFILLED`: {
-      const {
-        results,
-        page,
-        total_pages,
-        total_results,
-      } = (action as FetchTvShowsAction).payload.data
+      const { results, page, total_pages, total_results } = (
+        action as FetchTvShowsAction
+      ).payload.data
       return {
         ...state,
         loading: false,

@@ -13,7 +13,7 @@ export default async function Home() {
         <h2 className="text-2xl font-bold text-primary">
           Explore Popular Movies
         </h2>
-        <section className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-10">
+        <section className="grid xl:grid-cols-5 lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-10">
           {movies}
         </section>
         <LoadMore fetchAction={fetchMovies} />

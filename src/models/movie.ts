@@ -1,4 +1,4 @@
-import { Country, Language, Genre, ProductionCompany } from './common'
+import { Country, Genre, Language, ProductionCompany } from './common'
 
 export enum Status {
   RUMORED = 'Rumored',
@@ -40,7 +40,7 @@ export interface MovieDetails {
   id: number
   imdb_id?: string
   adult: boolean
-  backdrop_path?: string
+  backdrop_path: string
   belongs_to_collection?: any
   budget: number
   genres: Genre[]
@@ -53,7 +53,7 @@ export interface MovieDetails {
   production_countries: Country[]
   release_date: string
   revenue: number
-  runtime?: number
+  runtime: number
   spoken_languages: Language[]
   status: Status
   tagline?: string

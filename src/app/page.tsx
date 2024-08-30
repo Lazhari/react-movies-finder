@@ -7,7 +7,7 @@ export default async function Home() {
   const { genres }: { genres: { name: string; id: number }[] } =
     await fetchGenres()
   return (
-    <>
+    <main className="flex flex-1 flex-col gap-2 px-4 md:gap-4">
       <GenreCarousel genres={genres} />
       <div className="sm:p-8 sm:py-4 px-4 flex flex-col gap-10">
         <h2 className="text-2xl font-bold text-primary">
@@ -18,6 +18,6 @@ export default async function Home() {
         </section>
         <LoadMore fetchAction={fetchMovies} />
       </div>
-    </>
+    </main>
   )
 }

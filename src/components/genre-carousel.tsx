@@ -14,7 +14,7 @@ interface GenreCarouselProps {
 
 export default function GenreCarousel({ genres }: GenreCarouselProps) {
   return (
-    <div className="sm:p-8 sm:py-4 px-4 flex flex-col gap-5">
+    <div className="sm:p-8 sm:py-4 px-4 flex flex-col gap-4">
       <h2 className="text-2xl font-bold text-primary">Explore by Genre</h2>
       <Carousel
         opts={{

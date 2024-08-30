@@ -33,8 +33,9 @@ export default function MovieCard({ movie, index }: MovieCardProps) {
           <div className="relative aspect-[2/3] w-full">
             <Image
               src={
-                `https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}` ||
-                '/placeholder.svg?height=450&width=300'
+                movie.poster_path
+                  ? `https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`
+                  : '/placeholder.svg'
               }
               alt={`${movie.title} poster`}
               layout="fill"

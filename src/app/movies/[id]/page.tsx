@@ -1,6 +1,10 @@
 import Cast from '@/components/movies/cast'
 import MovieHero from '@/components/movies/hero'
-import { fetchMovieCredits, fetchMovieDetail } from './actions'
+import {
+  fetchMovieCredits,
+  fetchMovieDetail,
+  FetchMovieVideos,
+} from './actions'
 
 interface MoviePageProps {
   params: {
@@ -13,9 +17,13 @@ export default async function MoviePage({
 }: Readonly<MoviePageProps>) {
   const movieDetails = await fetchMovieDetail(id)
   const credits = await fetchMovieCredits(id)
+  const { trailers, videos } = await FetchMovieVideos(id)
   return (
     <>
-      <MovieHero movie={movieDetails} />
+      <MovieHero
+        movie={movieDetails}
+        trailers={trailers.length > 0 ? trailers : videos}
+      />
       <div>
         <Cast cast={credits.cast} title={movieDetails.title} />
       </div>

@@ -1,5 +1,5 @@
 import GenreCarousel from '@/components/genre-carousel'
-import { LoadMore } from '@/components/movies/load-more'
+import { LoadMore } from '@/components/load-more'
 import { fetchGenres, fetchMovies } from './actions'
 
 export default async function Home() {

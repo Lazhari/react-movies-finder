@@ -1,4 +1,4 @@
-import { LoadMore } from '@/components/movies/load-more'
+import { LoadMore } from '@/components/load-more'
 import { fetchMoviesByGenre } from '../../actions'
 
 interface GenrePageProps {

@@ -28,7 +28,7 @@ export default function Header() {
           Upcoming
         </Link>
         <Link
-          href="/series"
+          href="/tv"
           className="text-muted-foreground transition-colors hover:text-foreground"
         >
           Series
@@ -60,7 +60,7 @@ export default function Header() {
               Upcoming
             </Link>
             <Link
-              href="/series"
+              href="/tv"
               className="text-muted-foreground hover:text-foreground"
             >
               Series

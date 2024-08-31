@@ -37,7 +37,7 @@ export async function fetchMovieVideos(id: number) {
 
 export async function fetchRelatedMovies(id: number) {
   const resp = await fetch(
-    `${baseURL}/movie/${id}/recommendations?api_key=${apiKey}&limit=16`
+    `${baseURL}/movie/${id}/similar?api_key=${apiKey}&limit=16`
   )
   const data = await resp.json()
   return data?.results?.map((movie: Movie, idx: number) => (

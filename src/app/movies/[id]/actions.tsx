@@ -1,6 +1,7 @@
 'use server'
 
-import { MovieDetails } from '@/models/movie'
+import MovieCard from '@/components/movies/card'
+import { Movie, MovieDetails } from '@/models/movie'
 import { MovieCredits } from '@/types/credits'
 import { MovieVideos } from '@/types/movies'
 
@@ -19,7 +20,7 @@ export async function fetchMovieCredits(id: number) {
   return data
 }
 
-export async function FetchMovieVideos(id: number) {
+export async function fetchMovieVideos(id: number) {
   const resp = await fetch(`${baseURL}/movie/${id}/videos?api_key=${apiKey}`)
   const data: MovieVideos = await resp.json()
 
@@ -32,4 +33,19 @@ export async function FetchMovieVideos(id: number) {
     trailers,
     videos: data.results,
   }
+}
+
+export async function fetchRelatedMovies(id: number) {
+  const resp = await fetch(
+    `${baseURL}/movie/${id}/recommendations?api_key=${apiKey}&limit=16`
+  )
+  const data = await resp.json()
+  return data?.results?.map((movie: Movie, idx: number) => (
+    <MovieCard
+      key={movie.id}
+      movie={movie}
+      index={idx}
+      releaseDateFormat="year"
+    />
+  ))
 }

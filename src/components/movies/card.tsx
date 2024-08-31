@@ -8,13 +8,22 @@ import { MotionDiv } from '../ui/motion-div'
 type MovieCardProps = {
   movie: Movie
   index: number
+  releaseDateFormat?: 'year' | 'full'
 }
 
 const variant = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 },
 }
-export default function MovieCard({ movie, index }: MovieCardProps) {
+export default function MovieCard({
+  movie,
+  index,
+  releaseDateFormat = 'full',
+}: MovieCardProps) {
+  const releaseData =
+    releaseDateFormat === 'year'
+      ? new Date(movie.release_date).getFullYear()
+      : movie.release_date
   return (
     <Link href={`/movies/${movie.id}`} passHref>
       <MotionDiv
@@ -47,9 +56,7 @@ export default function MovieCard({ movie, index }: MovieCardProps) {
             <h3 className="truncate text-md font-bold">{movie.title}</h3>
           </CardHeader>
           <CardContent className="flex items-center justify-between p-4 pt-0">
-            <p className="text-sm text-muted-foreground">
-              {movie.release_date}
-            </p>
+            <p className="text-sm text-muted-foreground">{releaseData}</p>
             <div className="flex items-center space-x-1">
               <StarIcon className="h-4 w-4 text-yellow-400" />
               <span className="text-sm font-medium">

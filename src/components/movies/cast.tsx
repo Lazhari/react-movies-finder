@@ -40,7 +40,7 @@ export default function Cast({ cast, title }: CastProps) {
                       alt={member.name}
                       width={112}
                       height={112}
-                      className="object-cover"
+                      className="object-cover transition-transform duration-300 ease-in-out transform hover:scale-110"
                     />
                   </div>
                   <div className="text-center">

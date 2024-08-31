@@ -1,71 +1,100 @@
-'use client'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel'
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog'
 
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Calendar, Clock, Star } from 'lucide-react'
-import { useEffect, useState } from 'react'
+interface ReviewsProps {
+  reviews: Review[]
+}
 
-export default function Reviews() {
-  const [scrollY, setScrollY] = useState(0)
+export default function Reviews({ reviews }: ReviewsProps) {
+  const ReviewCard = ({ review }: { review: Review }) => (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Card className="bg-background h-full flex flex-col cursor-pointer hover:bg-accent transition-colors">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <div className="flex items-center space-x-2">
+              <Avatar>
+                <AvatarImage
+                  src={`https://image.tmdb.org/t/p/original${review.author_details.avatar_path}`}
+                  alt={review.author}
+                />
+                <AvatarFallback>
+                  {review.author
+                    .split(' ')
+                    .map((n) => n[0])
+                    .join('')}
+                </AvatarFallback>
+              </Avatar>
+              <CardTitle className="text-lg font-semibold">
+                {review.author}
+              </CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent className="flex-grow">
+            <p className="text-muted-foreground line-clamp-3">
+              {review.content}
+            </p>
+          </CardContent>
+        </Card>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[640px]">
+        <DialogHeader>
+          <DialogTitle className="flex items-center gap-x-2">
+            <Avatar>
+              <AvatarImage
+                src={`https://image.tmdb.org/t/p/original${review.author_details.avatar_path}`}
+                alt={review.author}
+              />
+              <AvatarFallback>
+                {review.author
+                  .split(' ')
+                  .map((n) => n[0])
+                  .join('')}
+              </AvatarFallback>
+            </Avatar>
+            {review.author}&lsquo;s Review
+          </DialogTitle>
+        </DialogHeader>
+        <p className="mt-4 text-muted-foreground">{review.content}</p>
+      </DialogContent>
+    </Dialog>
+  )
 
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
   return (
-    <div className="relative h-screen w-full overflow-hidden">
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?w=1200&h=800&fit=crop')",
-          transform: `translateY(${scrollY * 0.5}px)`,
+    <div className="w-full mx-auto px-6 md:px-12 mt-6">
+      <h2 className="text-xl font-bold mb-2">Reviews</h2>
+      <Carousel
+        opts={{
+          align: 'start',
+          loop: true,
         }}
-      />
-      <div className="absolute inset-0 bg-black bg-opacity-50" />
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-white px-4">
-        <h1
-          className="text-4xl md:text-6xl font-bold text-center mb-4 animate-fade-in-up"
-          style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}
-        >
-          Interstellar Odyssey
-        </h1>
-        <p className="text-xl md:text-2xl text-center mb-8 max-w-2xl animate-fade-in-up animation-delay-200">
-          A journey beyond the stars that will challenge everything you know
-          about space and time.
-        </p>
-        <div className="flex flex-wrap justify-center gap-4 mb-8 animate-fade-in-up animation-delay-400">
-          <Badge variant="secondary" className="flex items-center gap-1">
-            <Calendar className="h-4 w-4" />
-            <span>Release: 2023</span>
-          </Badge>
-          <Badge variant="secondary" className="flex items-center gap-1">
-            <Clock className="h-4 w-4" />
-            <span>Duration: 2h 49m</span>
-          </Badge>
-          <Badge variant="secondary" className="flex items-center gap-1">
-            <Star className="h-4 w-4" />
-            <span>Rating: 9.2/10</span>
-          </Badge>
-        </div>
-        <div className="flex flex-wrap justify-center gap-4 animate-fade-in-up animation-delay-600">
-          <Button
-            size="lg"
-            className="bg-primary hover:bg-primary/90 text-primary-foreground"
-          >
-            Watch Now
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="bg-background/20 hover:bg-background/30 text-white border-white"
-          >
-            Add to Watchlist
-          </Button>
-        </div>
-      </div>
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
+        className="w-full"
+      >
+        <CarouselContent>
+          {reviews.map((review) => (
+            <CarouselItem key={review.id} className="md:basis-1/2 lg:basis-1/3">
+              <div className="p-1">
+                <ReviewCard review={review} />
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
     </div>
   )
 }

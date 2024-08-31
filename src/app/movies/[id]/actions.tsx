@@ -49,3 +49,11 @@ export async function fetchRelatedMovies(id: number) {
     />
   ))
 }
+
+export async function fetchMovieReviews(id: number) {
+  const resp = await fetch(
+    `${baseURL}/movie/${id}/reviews?api_key=${apiKey}&limit=5`
+  )
+  const data: ReviewsResponse = await resp.json()
+  return data?.results
+}

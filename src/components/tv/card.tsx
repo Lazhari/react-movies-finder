@@ -52,10 +52,13 @@ export default function TVShowCard({ tv, index }: TVCardProps) {
               {tv.name}
             </h3>
             <div className="flex items-center justify-between text-sm">
-              <div className="flex items-center text-muted-foreground">
-                <Calendar className="w-4 h-4 mr-1" />
-                <span>{new Date(tv.first_air_date).getFullYear()}</span>
-              </div>
+              {tv.first_air_date && (
+                <div className="flex items-center text-muted-foreground">
+                  <Calendar className="w-4 h-4 mr-1" />
+                  <span>{new Date(tv.first_air_date).getFullYear()}</span>
+                </div>
+              )}
+
               <div className="flex items-center">
                 <Star className="w-5 h-5 text-yellow-400 mr-1 fill-current" />
                 <span className="font-semibold">

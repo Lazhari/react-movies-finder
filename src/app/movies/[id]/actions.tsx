@@ -2,7 +2,7 @@
 
 import MovieCard from '@/components/movies/card'
 import { Movie, MovieDetails } from '@/models/movie'
-import { MovieCredits } from '@/types/credits'
+import { Credits } from '@/types/credits'
 import { MovieVideos } from '@/types/movies'
 
 const baseURL = process.env.MOVIE_DB_URL
@@ -16,7 +16,7 @@ export async function fetchMovieDetail(id: number) {
 
 export async function fetchMovieCredits(id: number) {
   const resp = await fetch(`${baseURL}/movie/${id}/credits?api_key=${apiKey}`)
-  const data: MovieCredits = await resp.json()
+  const data: Credits = await resp.json()
   return data
 }
 

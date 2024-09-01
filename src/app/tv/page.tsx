@@ -1,8 +1,8 @@
 import { LoadMore } from '@/components/load-more'
-import { fetchPopularTv } from './actions'
+import { fetchTvSeries } from './actions'
 
 export default async function TVShowPage() {
-  const tvs = await fetchPopularTv({ page: 1 })
+  const tvs = await fetchTvSeries({ page: 1 })
   return (
     <main className="flex flex-1 flex-col gap-2 px-4 md:gap-4">
       <div className="sm:p-8 sm:py-4 px-4 flex flex-col gap-10">
@@ -10,7 +10,7 @@ export default async function TVShowPage() {
         <section className="grid xl:grid-cols-5 lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-10">
           {tvs}
         </section>
-        <LoadMore fetchAction={fetchPopularTv} />
+        <LoadMore fetchAction={fetchTvSeries} />
       </div>
     </main>
   )

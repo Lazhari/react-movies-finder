@@ -8,11 +8,13 @@ import {
   fetchTvVideos,
 } from '../actions'
 
-export default async function SeriesPage({
-  params: { id },
-}: {
-  params: { id: number }
+export default async function SeriesPage(props: {
+  params: Promise<{ id: number }>
 }) {
+  const params = await props.params
+
+  const { id } = params
+
   const tv = await fetchTvDetails(id)
   const { trailers, videos } = await fetchTvVideos(id)
   const credits = await fetchTvCredits(id)

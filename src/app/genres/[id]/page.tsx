@@ -7,10 +7,12 @@ interface GenrePageProps {
   }
   searchParams: { [key: string]: string | undefined }
 }
-export default async function GenrePage({
-  params: { id },
-  searchParams,
-}: Readonly<GenrePageProps>) {
+export default async function GenrePage(props: Readonly<GenrePageProps>) {
+  const searchParams = await props.searchParams
+  const params = await props.params
+
+  const { id } = params
+
   const name = searchParams.name
   const movies = await fetchMoviesByGenre({ genreId: id, page: 1 })
   return (

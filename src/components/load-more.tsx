@@ -2,7 +2,7 @@
 
 import { MoviesReqOptions } from '@/types/movies'
 import { LoaderCircle } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type JSX } from 'react'
 import { useInView } from 'react-intersection-observer'
 
 let page = 2

@@ -28,7 +28,7 @@ export default function Cast({ cast, title }: CastProps) {
         <CarouselContent className="-ml-3 md:-ml-5">
           {cast.map((member) => (
             <CarouselItem key={member.id} className="pl-3 basis-auto">
-              <Link href={`/actor/${member.id}`} passHref>
+              <Link href={`/actors/${member.id}`} passHref>
                 <div className="cursor-pointer hover:bg-accent/10 transition-colors rounded-lg p-3 h-full flex flex-col items-center justify-between">
                   <div className="w-28 h-28 rounded-full overflow-hidden mb-3">
                     <Image

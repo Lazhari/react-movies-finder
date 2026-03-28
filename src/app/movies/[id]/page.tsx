@@ -15,9 +15,11 @@ interface MoviePageProps {
   }
 }
 
-export default async function MoviePage({
-  params: { id },
-}: Readonly<MoviePageProps>) {
+export default async function MoviePage(props: Readonly<MoviePageProps>) {
+  const params = await props.params
+
+  const { id } = params
+
   const movieDetails = await fetchMovieDetail(id)
   const credits = await fetchMovieCredits(id)
   const { trailers, videos } = await fetchMovieVideos(id)

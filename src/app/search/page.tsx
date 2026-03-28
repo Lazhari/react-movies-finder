@@ -5,12 +5,13 @@ import { TVShow } from '@/types/tv'
 import { searchMulti } from './actions'
 
 type SearchPageProps = {
-  searchParams: {
+  searchParams: Promise<{
     query: string
-  }
+  }>
 }
 
-export default async function SearchPage({ searchParams }: SearchPageProps) {
+export default async function SearchPage(props: SearchPageProps) {
+  const searchParams = await props.searchParams
   const { query } = searchParams
   const results = await searchMulti(query)
 

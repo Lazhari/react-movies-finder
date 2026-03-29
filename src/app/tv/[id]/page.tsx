@@ -70,7 +70,7 @@ export default async function TVShowPage({ params }: Props) {
       />
 
       {/* Seasons */}
-      <Seasons seasons={show.seasons} />
+      <Seasons showId={show.id} seasons={show.seasons} />
 
       {/* Cast */}
       {leadCast.length > 0 && (

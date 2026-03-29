@@ -2,12 +2,14 @@ import { RatingBadge } from "@/components/media/rating-badge";
 import { formatYear, getPosterURL } from "@/lib/movies";
 import { Season } from "@/types/tv";
 import Image from "next/image";
+import Link from "next/link";
 
 interface SeasonsProps {
+  showId: number;
   seasons: Season[];
 }
 
-export default function Seasons({ seasons }: SeasonsProps) {
+export default function Seasons({ showId, seasons }: SeasonsProps) {
   const filtered = seasons.filter((s) => s.season_number > 0);
 
   if (filtered.length === 0) return null;
@@ -23,14 +25,18 @@ export default function Seasons({ seasons }: SeasonsProps) {
         style={{ scrollbarWidth: "none" }}
       >
         {filtered.map((season) => (
-          <div key={season.id} className="w-36 shrink-0 space-y-2 sm:w-40">
+          <Link
+            key={season.id}
+            href={`/tv/${showId}/seasons/${season.season_number}`}
+            className="group w-36 shrink-0 space-y-2 sm:w-40"
+          >
             <div className="relative aspect-[2/3] overflow-hidden rounded-lg">
               {season.poster_path ? (
                 <Image
                   src={getPosterURL(season.poster_path, "medium")}
                   alt={season.name}
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
                   sizes="160px"
                 />
               ) : (
@@ -47,7 +53,9 @@ export default function Seasons({ seasons }: SeasonsProps) {
               )}
             </div>
             <div>
-              <p className="truncate text-sm font-medium">{season.name}</p>
+              <p className="truncate text-sm font-medium transition-colors group-hover:text-primary">
+                {season.name}
+              </p>
               <p className="text-xs text-muted-foreground">
                 {season.episode_count} episodes
                 {season.air_date
@@ -55,7 +63,7 @@ export default function Seasons({ seasons }: SeasonsProps) {
                   : ""}
               </p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>

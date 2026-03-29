@@ -208,6 +208,19 @@ export async function discoverMovies(
   return tmdbFetch("/discover/movie", queryParams);
 }
 
+export async function discoverTV(
+  params: DiscoverParams,
+): Promise<TMDBPaginatedResponse<TVShow>> {
+  const queryParams: Record<string, string> = {};
+  if (params.page) queryParams.page = String(params.page);
+  if (params.sort_by) queryParams.sort_by = params.sort_by;
+  if (params.with_genres) queryParams.with_genres = params.with_genres;
+  if (params["vote_average.gte"])
+    queryParams["vote_average.gte"] = String(params["vote_average.gte"]);
+
+  return tmdbFetch("/discover/tv", queryParams);
+}
+
 // ── Collections ──
 
 export async function fetchCollection(

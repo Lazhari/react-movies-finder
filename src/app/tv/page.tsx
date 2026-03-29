@@ -133,6 +133,22 @@ export default async function TVPage() {
         </div>
       </section>
 
+      {/* Genre pills */}
+      <div
+        className="flex gap-2 overflow-x-auto px-4 sm:px-8"
+        style={{ scrollbarWidth: "none" }}
+      >
+        {genresData.genres.map((genre) => (
+          <a
+            key={genre.id}
+            href={`/tv/genres/${genre.id}?name=${encodeURIComponent(genre.name)}`}
+            className="glass shrink-0 rounded-full px-4 py-2 text-sm font-medium transition-colors hover:bg-white/10"
+          >
+            {genre.name}
+          </a>
+        ))}
+      </div>
+
       {/* Trending this week carousel */}
       {remainingTrending.length > 0 && (
         <MediaCarousel title="Trending This Week">

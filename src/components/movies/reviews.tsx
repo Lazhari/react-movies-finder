@@ -1,100 +1,63 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carousel'
+"use client";
+
+import { RatingBadge } from "@/components/media/rating-badge";
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/components/ui/dialog'
+} from "@/components/ui/dialog";
+import { formatDate } from "@/lib/movies";
+import { Review } from "@/types/review";
 
 interface ReviewsProps {
-  reviews: Review[]
+  reviews: Review[];
 }
 
 export default function Reviews({ reviews }: ReviewsProps) {
-  const ReviewCard = ({ review }: { review: Review }) => (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Card className="bg-background h-full flex flex-col cursor-pointer hover:bg-accent transition-colors">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <div className="flex items-center space-x-2">
-              <Avatar>
-                <AvatarImage
-                  src={`https://image.tmdb.org/t/p/original${review.author_details.avatar_path}`}
-                  alt={review.author}
-                />
-                <AvatarFallback>
-                  {review.author
-                    .split(' ')
-                    .map((n) => n[0])
-                    .join('')}
-                </AvatarFallback>
-              </Avatar>
-              <CardTitle className="text-lg font-semibold">
-                {review.author}
-              </CardTitle>
-            </div>
-          </CardHeader>
-          <CardContent className="flex-grow">
-            <p className="text-muted-foreground line-clamp-3">
-              {review.content}
-            </p>
-          </CardContent>
-        </Card>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[640px]">
-        <DialogHeader>
-          <DialogTitle className="flex items-center gap-x-2">
-            <Avatar>
-              <AvatarImage
-                src={`https://image.tmdb.org/t/p/original${review.author_details.avatar_path}`}
-                alt={review.author}
-              />
-              <AvatarFallback>
-                {review.author
-                  .split(' ')
-                  .map((n) => n[0])
-                  .join('')}
-              </AvatarFallback>
-            </Avatar>
-            {review.author}&lsquo;s Review
-          </DialogTitle>
-        </DialogHeader>
-        <p className="mt-4 text-muted-foreground">{review.content}</p>
-      </DialogContent>
-    </Dialog>
-  )
+  if (!reviews || reviews.length === 0) return null;
 
   return (
-    <div className="w-full mx-auto px-6 md:px-12 mt-6">
-      <h2 className="text-xl font-bold mb-2">Reviews</h2>
-      <Carousel
-        opts={{
-          align: 'start',
-          loop: true,
-        }}
-        className="w-full"
-      >
-        <CarouselContent>
-          {reviews.map((review) => (
-            <CarouselItem key={review.id} className="md:basis-1/2 lg:basis-1/3">
-              <div className="p-1">
-                <ReviewCard review={review} />
+    <section className="space-y-4 px-4 sm:px-8">
+      <h2 className="text-xl font-bold text-primary sm:text-2xl">Reviews</h2>
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {reviews.map((review) => (
+          <Dialog key={review.id}>
+            <DialogTrigger asChild>
+              <button className="glass space-y-3 rounded-lg p-4 text-left transition-colors hover:bg-white/10">
+                <div className="flex items-center gap-3">
+                  <div className="flex-1">
+                    <p className="font-medium">{review.author}</p>
+                    <p className="text-xs text-muted-foreground">
+                      {formatDate(review.created_at)}
+                    </p>
+                  </div>
+                  {review.author_details.rating && (
+                    <RatingBadge
+                      rating={review.author_details.rating}
+                      size="sm"
+                    />
+                  )}
+                </div>
+                <p className="line-clamp-4 text-sm text-foreground/80">
+                  {review.content}
+                </p>
+              </button>
+            </DialogTrigger>
+            <DialogContent className="max-h-[80vh] max-w-2xl overflow-y-auto">
+              <DialogTitle>{review.author}&apos;s Review</DialogTitle>
+              <div className="space-y-4 pt-2">
+                {review.author_details.rating && (
+                  <RatingBadge rating={review.author_details.rating} />
+                )}
+                <p className="whitespace-pre-line text-sm leading-relaxed">
+                  {review.content}
+                </p>
               </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
-    </div>
-  )
+            </DialogContent>
+          </Dialog>
+        ))}
+      </div>
+    </section>
+  );
 }

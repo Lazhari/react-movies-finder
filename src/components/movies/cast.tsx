@@ -1,64 +1,56 @@
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carousel'
-import { CastMember } from '@/types/credits'
-import Image from 'next/image'
-import Link from 'next/link'
+import { getProfileURL } from "@/lib/movies";
+import { CastMember } from "@/types/credits";
+import Image from "next/image";
+import Link from "next/link";
 
 interface CastProps {
-  cast: CastMember[]
-  title: string
+  cast: CastMember[];
 }
 
-export default function Cast({ cast, title }: CastProps) {
+export default function Cast({ cast }: CastProps) {
+  if (!cast || cast.length === 0) return null;
+
   return (
-    <div className="w-full mx-auto px-6 md:px-12">
-      <h2 className="text-xl font-bold mb-2">Cast of {title}</h2>
-      <Carousel
-        opts={{
-          align: 'start',
-          loop: true,
-        }}
-        className="w-full"
+    <section className="space-y-4">
+      <h2 className="px-4 text-xl font-bold text-primary sm:px-8 sm:text-2xl">
+        Cast
+      </h2>
+      <div
+        className="flex gap-4 overflow-x-auto px-4 pb-4 sm:px-8"
+        style={{ scrollbarWidth: "none" }}
       >
-        <CarouselContent className="-ml-3 md:-ml-5">
-          {cast.map((member) => (
-            <CarouselItem key={member.id} className="pl-3 basis-auto">
-              <Link href={`/actors/${member.id}`} passHref>
-                <div className="cursor-pointer hover:bg-accent/10 transition-colors rounded-lg p-3 h-full flex flex-col items-center justify-between">
-                  <div className="w-28 h-28 rounded-full overflow-hidden mb-3">
-                    <Image
-                      src={
-                        member.profile_path
-                          ? `https://image.tmdb.org/t/p/w276_and_h350_face/${member.profile_path}`
-                          : '/placeholder.svg'
-                      }
-                      alt={member.name}
-                      width={112}
-                      height={112}
-                      className="object-cover transition-transform duration-300 ease-in-out transform hover:scale-110"
-                    />
-                  </div>
-                  <div className="text-center">
-                    <h3 className="font-semibold text-sm line-clamp-1">
-                      {member.name}
-                    </h3>
-                    <p className="text-xs text-muted-foreground line-clamp-1">
-                      {member.character}
-                    </p>
-                  </div>
+        {cast.slice(0, 20).map((member) => (
+          <Link
+            key={member.credit_id}
+            href={`/actors/${member.id}`}
+            className="group w-32 shrink-0 space-y-2"
+          >
+            <div className="relative aspect-[2/3] overflow-hidden rounded-lg">
+              {member.profile_path ? (
+                <Image
+                  src={getProfileURL(member.profile_path, "medium")}
+                  alt={member.name}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  sizes="128px"
+                />
+              ) : (
+                <div className="flex h-full w-full items-center justify-center bg-muted">
+                  <span className="text-xs text-muted-foreground">
+                    No Photo
+                  </span>
                 </div>
-              </Link>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
-    </div>
-  )
+              )}
+            </div>
+            <div>
+              <p className="truncate text-sm font-medium">{member.name}</p>
+              <p className="truncate text-xs text-muted-foreground">
+                {member.character}
+              </p>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
 }

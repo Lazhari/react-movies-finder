@@ -1,146 +1,140 @@
-'use client'
-
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { humanizeDuration } from '@/lib/movies'
-import { MovieDetails } from '@/models/movie'
-import { Video } from '@/types/movies'
-import { Calendar, Clock, Play, X } from 'lucide-react'
-import Image from 'next/image'
-import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { ProviderList } from "@/components/media/provider-list";
+import { RatingBadge } from "@/components/media/rating-badge";
+import { VideoPlayer } from "@/components/media/video-player";
+import { Badge } from "@/components/ui/badge";
+import { WatchProviderResult } from "@/lib/api/types";
+import {
+  formatYear,
+  getBackdropURL,
+  getPosterURL,
+  humanizeDuration,
+} from "@/lib/movies";
+import { MovieDetails } from "@/types/movies";
+import Image from "next/image";
 
 interface MovieHeroProps {
-  movie: MovieDetails
-  trailers: Video[]
+  movie: MovieDetails;
+  trailerKey: string | null;
+  watchProviders?: WatchProviderResult;
 }
 
-export default function MovieHero({ movie, trailers }: MovieHeroProps) {
-  const [showTrailer, setShowTrailer] = useState(false)
-
-  useEffect(() => {
-    const handleEscKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setShowTrailer(false)
-      }
-    }
-
-    if (showTrailer) {
-      document.addEventListener('keydown', handleEscKey)
-    }
-
-    return () => {
-      document.removeEventListener('keydown', handleEscKey)
-    }
-  }, [showTrailer])
-
-  const backdropFullURL = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
-  const posterURL = `https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`
+export default function MovieHero({
+  movie,
+  trailerKey,
+  watchProviders,
+}: MovieHeroProps) {
   return (
-    <div className="relative h-[480px] w-full overflow-hidden bg-black">
-      {/* Backdrop Image with Gradient Overlay */}
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-50"
-        style={{
-          backgroundImage: `url('${backdropFullURL}')`,
-        }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent" />
-
-      {/* Content Container */}
-      <div className="relative flex h-full text-white p-6 md:p-12">
-        {/* Movie Poster */}
-        <div className="hidden lg:block mr-8">
+    <section className="relative">
+      {movie.backdrop_path && (
+        <div className="absolute inset-0 h-[80vh]">
           <Image
-            src={movie.poster_path ? posterURL : '/placeholder.svg'}
-            alt={`${movie.title} poster`}
-            className="w-60 h-[360px] object-cover rounded-lg shadow-lg"
-            width={600}
-            height={900}
+            src={getBackdropURL(movie.backdrop_path, "original")}
+            alt=""
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/50 to-transparent" />
         </div>
+      )}
 
-        {/* Movie Information */}
-        <div className="flex flex-col justify-center max-w-2xl">
-          <h1 className="text-3xl md:text-5xl font-bold mb-2">{movie.title}</h1>
-          <p className="text-sm md:text-lg mb-4 text-gray-300">
-            {movie.tagline}
-          </p>
+      <div className="relative mx-auto max-w-screen-xl px-4 pb-12 pt-8 sm:px-8 sm:pt-16">
+        <div className="flex flex-col gap-8 md:flex-row md:gap-12">
+          {movie.poster_path && (
+            <div className="hidden shrink-0 md:block">
+              <div className="relative aspect-[2/3] w-72 overflow-hidden rounded-xl shadow-2xl">
+                <Image
+                  src={getPosterURL(movie.poster_path, "large")}
+                  alt={movie.title}
+                  fill
+                  priority
+                  className="object-cover"
+                  sizes="288px"
+                />
+              </div>
+            </div>
+          )}
 
-          {/* Movie Details */}
-          <div className="flex flex-wrap gap-2 mb-4">
-            <Badge
-              variant="secondary"
-              className="bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 text-white flex items-center h-6"
-            >
-              <Calendar className="h-3 w-3 mr-1" />
-              {new Date(movie.release_date).getFullYear()}
-            </Badge>
-            <Badge
-              variant="secondary"
-              className="bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 text-white flex items-center h-6"
-            >
-              <Clock className="h-3 w-3 mr-1" />
-              {humanizeDuration(movie.runtime)}
-            </Badge>
-            {movie.genres.map((genre) => (
-              <Link key={genre.id} href={`/genres/${genre.id}`} passHref>
-                <Badge
-                  variant="secondary"
-                  className="bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 text-white hover:from-purple-600 hover:via-pink-600 hover:to-purple-600 cursor-pointer transition-colors flex items-center h-6"
-                >
+          <div className="flex flex-1 flex-col justify-end space-y-4">
+            <div className="flex flex-wrap items-center gap-3">
+              <RatingBadge rating={movie.vote_average} size="lg" />
+              <span className="text-muted-foreground">
+                {movie.vote_count.toLocaleString()} votes
+              </span>
+            </div>
+
+            <h1 className="font-display text-3xl font-bold text-primary sm:text-4xl lg:text-5xl">
+              {movie.title}
+            </h1>
+
+            {movie.tagline && (
+              <p className="text-lg italic text-muted-foreground">
+                {movie.tagline}
+              </p>
+            )}
+
+            <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+              <span>{formatYear(movie.release_date)}</span>
+              {movie.runtime > 0 && (
+                <>
+                  <span>&#183;</span>
+                  <span>{humanizeDuration(movie.runtime)}</span>
+                </>
+              )}
+              {movie.status && (
+                <>
+                  <span>&#183;</span>
+                  <span>{movie.status}</span>
+                </>
+              )}
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+              {movie.genres.map((genre) => (
+                <Badge key={genre.id} variant="secondary">
                   {genre.name}
                 </Badge>
-              </Link>
-            ))}
-          </div>
-          <div className="mb-4">
-            <p className="text-sm text-gray-300">{movie.overview}</p>
-          </div>
+              ))}
+            </div>
 
-          {/* Action Buttons */}
-          <div className="flex flex-wrap gap-2">
-            {trailers.length > 0 && (
-              <Button
-                size="sm"
-                className="bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 hover:from-purple-600 hover:via-pink-600 hover:to-purple-600 text-white border-none flex items-center gap-2"
-                onClick={() => setShowTrailer(true)}
-              >
-                <Play className="h-4 w-4" />
-                Watch Trailer
-              </Button>
+            <p className="max-w-2xl text-base leading-relaxed text-foreground/90">
+              {movie.overview}
+            </p>
+
+            <div className="flex flex-wrap gap-3 pt-2">
+              <VideoPlayer
+                videoKey={trailerKey}
+                title={`${movie.title} - Trailer`}
+              />
+            </div>
+
+            {(movie.budget > 0 || movie.revenue > 0) && (
+              <div className="flex flex-wrap gap-6 pt-4">
+                {movie.budget > 0 && (
+                  <div>
+                    <p className="text-xs text-muted-foreground">Budget</p>
+                    <p className="font-semibold">
+                      ${(movie.budget / 1_000_000).toFixed(0)}M
+                    </p>
+                  </div>
+                )}
+                {movie.revenue > 0 && (
+                  <div>
+                    <p className="text-xs text-muted-foreground">Revenue</p>
+                    <p className="font-semibold">
+                      ${(movie.revenue / 1_000_000).toFixed(0)}M
+                    </p>
+                  </div>
+                )}
+              </div>
             )}
-            <Button
-              size="sm"
-              variant="outline"
-              className="bg-black/50 hover:bg-black/70 text-pink-400 border-pink-400 hover:text-pink-300 hover:border-pink-300"
-            >
-              Add to Watchlist
-            </Button>
+
+            <ProviderList providers={watchProviders} />
           </div>
         </div>
       </div>
-      {/* Full-screen Trailer Modal */}
-      {showTrailer && trailers.length > 0 && (
-        <div className="fixed inset-0 bg-black z-50 flex items-center justify-center">
-          <div className="relative w-full h-full">
-            <iframe
-              src={`https://www.youtube.com/embed/${trailers[0]?.key}?autoplay=1`}
-              title="Interstellar Odyssey Trailer"
-              className="w-full h-full"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-            <Button
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white rounded-full p-2"
-              onClick={() => setShowTrailer(false)}
-            >
-              <X className="h-6 w-6" />
-              <span className="sr-only">Close</span>
-            </Button>
-          </div>
-        </div>
-      )}
-    </div>
-  )
+    </section>
+  );
 }

@@ -1,61 +1,46 @@
 {
   "name": "movies-finder",
-  "version": "0.4.0",
+  "version": "3.0.0",
   "private": true,
   "license": "MIT",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "type-check": "tsc --pretty --noEmit",
-    "lint": "eslint . --ext ts --ext tsx --ext js",
+    "lint": "next lint",
     "format": "prettier --write .",
     "test": "echo \"Info: tests are removed for the time being\" && exit 0",
     "test-all": "npm run lint && npm run type-check && npm run test"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "npm run test-all"
-    }
-  },
-  "lint-staged": {
-    "*.@(ts|tsx|js|jsx)": [
-      "npm run lint",
-      "npm run format"
-    ]
-  },
   "dependencies": {
-    "@radix-ui/react-avatar": "^1.1.0",
-    "@radix-ui/react-dialog": "^1.1.1",
-    "@radix-ui/react-dropdown-menu": "^2.0.6",
-    "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-avatar": "^1.1.11",
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-dropdown-menu": "^2.1.16",
+    "@radix-ui/react-slot": "^1.2.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
-    "embla-carousel-react": "^8.2.0",
-    "framer-motion": "^11.0.24",
-    "lucide-react": "^0.363.0",
-    "next": "16.0.1",
-    "next-themes": "^0.3.0",
+    "embla-carousel-react": "^8.6.0",
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^1.7.0",
+    "next": "16.2.1",
+    "next-themes": "^0.4.6",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "react-intersection-observer": "^9.8.1",
-    "tailwind-merge": "^2.2.2",
-    "tailwindcss-animate": "^1.0.7"
+    "react-intersection-observer": "^10.0.3",
+    "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
-    "@types/node": "^20.12.2",
+    "@tailwindcss/postcss": "^4.2.2",
+    "@types/node": "^22.0.0",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
-    "autoprefixer": "^10.4.19",
     "eslint": "^9",
-    "eslint-config-next": "16.0.1",
-    "husky": "4.3.8",
-    "lint-staged": "^10.5.4",
+    "eslint-config-next": "16.2.1",
     "postcss": "^8.4.38",
-    "prettier": "^2.2.1",
-    "tailwindcss": "^3.4.3",
-    "typescript": "^5.4.3"
+    "prettier": "^3.0.0",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^5.8.0"
   },
   "overrides": {
     "@types/react": "19.2.2",

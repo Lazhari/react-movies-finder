@@ -1,34 +1,34 @@
 export interface CastMember {
-  adult: boolean
-  gender: number
-  id: number
-  known_for_department: string
-  name: string
-  original_name: string
-  popularity: number
-  profile_path: string | null
-  cast_id: number
-  character: string
-  credit_id: string
-  order: number
+  id: number;
+  name: string;
+  original_name: string;
+  character: string;
+  profile_path: string | null;
+  known_for_department: string;
+  popularity: number;
+  order: number;
+  gender: number;
+  credit_id: string;
+  cast_id?: number;
+  adult?: boolean;
 }
 
 export interface CrewMember {
-  adult: boolean
-  gender: number
-  id: number
-  known_for_department: string
-  name: string
-  original_name: string
-  popularity: number
-  profile_path: string | null
-  credit_id: string
-  department: string
-  job: string
+  id: number;
+  name: string;
+  original_name: string;
+  department: string;
+  job: string;
+  profile_path: string | null;
+  known_for_department: string;
+  popularity: number;
+  gender: number;
+  credit_id: string;
+  adult?: boolean;
 }
 
 export interface Credits {
-  id: number
-  cast: CastMember[]
-  crew: CrewMember[]
+  id: number;
+  cast: CastMember[];
+  crew: CrewMember[];
 }

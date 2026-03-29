@@ -138,7 +138,7 @@ export default function TVHero({
             {/* Networks */}
             {show.networks?.length > 0 && (
               <div className="flex items-center gap-4">
-                {show.networks.map((network) =>
+                {show.networks.slice(0, 3).map((network) =>
                   network.logo_path ? (
                     <div key={network.id} className="relative h-6 w-16">
                       <Image
@@ -157,6 +157,11 @@ export default function TVHero({
                       {network.name}
                     </span>
                   ),
+                )}
+                {show.networks.length > 3 && (
+                  <span className="text-xs text-muted-foreground">
+                    +{show.networks.length - 3} more
+                  </span>
                 )}
               </div>
             )}

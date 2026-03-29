@@ -1,36 +1,90 @@
-import Cast from '@/components/movies/cast'
-import TvHero from '@/components/tv/hero'
-import TvSeasons from '@/components/tv/seasons'
-import {
-  fetchRecommendedTvShows,
-  fetchTvCredits,
-  fetchTvDetails,
-  fetchTvVideos,
-} from '../actions'
+import { MediaCard } from "@/components/media/media-card";
+import { MediaCarousel } from "@/components/media/media-carousel";
+import Cast from "@/components/movies/cast";
+import Reviews from "@/components/movies/reviews";
+import TVHero from "@/components/tv/hero";
+import Seasons from "@/components/tv/seasons";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { getTVShowPageData } from "../actions";
 
-export default async function SeriesPage(props: {
-  params: Promise<{ id: number }>
-}) {
-  const params = await props.params
+interface Props {
+  params: Promise<{ id: string }>;
+}
 
-  const { id } = params
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params;
+  try {
+    const { show } = await getTVShowPageData(Number(id));
+    return {
+      title: `${show.name} | Movies Finder`,
+      description: show.overview,
+      openGraph: {
+        title: show.name,
+        description: show.overview,
+        images: show.backdrop_path
+          ? [`https://image.tmdb.org/t/p/w1280${show.backdrop_path}`]
+          : [],
+      },
+    };
+  } catch {
+    return { title: "TV Show Not Found" };
+  }
+}
 
-  const tv = await fetchTvDetails(id)
-  const { trailers, videos } = await fetchTvVideos(id)
-  const credits = await fetchTvCredits(id)
-  const recommended = await fetchRecommendedTvShows(id)
+export default async function TVShowPage({ params }: Props) {
+  const { id } = await params;
+  const showId = Number(id);
+
+  if (isNaN(showId)) notFound();
+
+  let data;
+  try {
+    data = await getTVShowPageData(showId);
+  } catch {
+    notFound();
+  }
+
+  const {
+    show,
+    credits,
+    trailerKey,
+    reviews,
+    recommendations,
+    watchProviders,
+  } = data;
+
   return (
-    <div>
-      <TvHero tv={tv} trailers={trailers.length > 0 ? trailers : videos} />
-      <TvSeasons seasons={tv.seasons} />
+    <main className="flex flex-1 flex-col gap-8 pb-12">
+      <TVHero
+        show={show}
+        trailerKey={trailerKey}
+        watchProviders={watchProviders}
+      />
 
-      {credits.cast.length > 0 && <Cast cast={credits.cast} title={tv.name} />}
-      <div className="w-full mx-auto px-6 md:px-12 py-6">
-        <h2 className="text-xl font-bold mb-2">Recommended</h2>
-        <section className="grid xl:grid-cols-10 lg:grid-cols-5 sm:grid-cols-4 grid-cols-2 gap-4">
-          {recommended}
-        </section>
-      </div>
-    </div>
-  )
+      <Seasons seasons={show.seasons} />
+
+      <Cast cast={credits.cast} />
+
+      <Reviews reviews={reviews} />
+
+      {recommendations.length > 0 && (
+        <MediaCarousel title="More Like This">
+          {recommendations.map((rec, i) => (
+            <div key={rec.id} className="w-[160px] shrink-0 sm:w-[185px]">
+              <MediaCard
+                id={rec.id}
+                title={rec.name}
+                posterPath={rec.poster_path}
+                rating={rec.vote_average}
+                year={rec.first_air_date}
+                mediaType="tv"
+                index={i}
+              />
+            </div>
+          ))}
+        </MediaCarousel>
+      )}
+    </main>
+  );
 }

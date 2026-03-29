@@ -1,19 +1,25 @@
-'use server'
+"use server";
 
-import { redirect } from 'next/navigation'
-
-const baseURL = process.env.MOVIE_DB_URL
-const apiKey = process.env.MOVIE_DB_API_KEY
+import { fetchMovieGenres, searchMulti } from "@/lib/api/tmdb";
+import { redirect } from "next/navigation";
 
 export async function search(formData: FormData) {
-  const query = formData.get('query') as string
-  redirect(`/search?query=${query}`)
+  const query = formData.get("query") as string;
+  if (query?.trim()) {
+    redirect(`/search?query=${encodeURIComponent(query.trim())}`);
+  }
 }
 
-export async function searchMulti(query: string) {
-  const resp = await fetch(
-    `${baseURL}/search/multi?api_key=${apiKey}&query=${query}`
-  )
-  const data = await resp.json()
-  return data?.results
+export async function getSearchResults(query: string, page: number = 1) {
+  const [results, genresData] = await Promise.all([
+    searchMulti(query, page),
+    fetchMovieGenres(),
+  ]);
+
+  return {
+    results: results.results,
+    totalPages: results.total_pages,
+    totalResults: results.total_results,
+    genres: genresData.genres,
+  };
 }

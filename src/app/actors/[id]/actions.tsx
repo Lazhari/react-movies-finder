@@ -1,27 +1,29 @@
-'use server'
+"use server";
 
-import { Actor } from '@/models/actor'
-import { ActorMovieCredits } from '@/types/actors'
+import {
+  fetchActorDetails,
+  fetchActorImages,
+  fetchActorMovieCredits,
+} from "@/lib/api/tmdb";
 
-const baseURL = process.env.MOVIE_DB_URL
-const apiKey = process.env.MOVIE_DB_API_KEY
+export async function getActorPageData(id: number) {
+  const [actor, credits, images] = await Promise.all([
+    fetchActorDetails(id),
+    fetchActorMovieCredits(id),
+    fetchActorImages(id),
+  ]);
 
-export async function fetchActorDetails(id: string): Promise<Actor> {
-  const resp = await fetch(`${baseURL}/person/${id}?api_key=${apiKey}`)
-  if (!resp.ok) {
-    throw new Error(`Failed to fetch actor details: ${resp.statusText}`)
-  }
-  return resp.json()
-}
+  const sortedCredits = credits.cast
+    .filter((c) => c.release_date)
+    .sort(
+      (a, b) =>
+        new Date(b.release_date).getTime() -
+        new Date(a.release_date).getTime(),
+    );
 
-export async function fetchActorMovieCredits(
-  id: string
-): Promise<ActorMovieCredits> {
-  const resp = await fetch(
-    `${baseURL}/person/${id}/movie_credits?api_key=${apiKey}`
-  )
-  if (!resp.ok) {
-    throw new Error(`Failed to fetch actor movie credits: ${resp.statusText}`)
-  }
-  return resp.json()
+  return {
+    actor,
+    filmography: sortedCredits,
+    images: images.profiles,
+  };
 }

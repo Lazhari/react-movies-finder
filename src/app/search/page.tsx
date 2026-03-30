@@ -14,11 +14,25 @@ export default async function SearchPage({ searchParams }: Props) {
   if (!query) {
     return (
       <main className="flex flex-1 flex-col items-center justify-center gap-4 p-8">
-        <Search className="h-16 w-16 text-muted-foreground" />
-        <h1 className="text-2xl font-bold text-primary">Search</h1>
-        <p className="text-muted-foreground">
-          Use the search bar to find movies, TV shows, and people.
+        <Search className="h-16 w-16 text-muted-foreground/30" />
+        <h1 className="font-display text-2xl font-bold text-primary">
+          Search
+        </h1>
+        <p className="text-sm text-muted-foreground">
+          Find movies, TV shows, and people.
         </p>
+        <form action="/search" className="mt-2 w-full max-w-md">
+          <div className="relative">
+            <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground/40" />
+            <input
+              type="search"
+              name="query"
+              placeholder="Search movies, TV shows..."
+              autoFocus
+              className="h-12 w-full rounded-xl border border-white/[0.06] bg-white/[0.04] pl-12 pr-4 text-sm outline-none placeholder:text-muted-foreground/30 focus:border-primary/30 focus:bg-white/[0.06]"
+            />
+          </div>
+        </form>
       </main>
     );
   }

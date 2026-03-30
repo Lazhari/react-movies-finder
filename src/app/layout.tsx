@@ -1,3 +1,4 @@
+import Footer from "@/components/blocks/Footer";
 import Header from "@/components/blocks/Header";
 import { cn } from "@/lib/utils";
 import { Metadata } from "next";
@@ -28,6 +29,7 @@ export default function RootLayout({
         <div className="flex min-h-screen w-full flex-col pt-16">
           <Header />
           {children}
+          <Footer />
         </div>
       </body>
     </html>

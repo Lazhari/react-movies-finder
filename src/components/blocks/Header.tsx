@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { Menu, Search, X } from "lucide-react";
 import Link from "next/link";
@@ -112,7 +112,8 @@ export default function Header() {
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-64">
+            <SheetContent side="right" className="w-64" aria-describedby={undefined}>
+              <SheetTitle className="sr-only">Navigation</SheetTitle>
               <nav className="flex flex-col gap-4 pt-8">
                 {navLinks.map((link) => (
                   <Link

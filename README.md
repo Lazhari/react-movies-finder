@@ -1,48 +1,102 @@
-# [React Movies Finder](https://movies-finder-v2.vercel.app/)
+# Movies Finder
 
-> React Movies Finder is a Next/React/Redux app to find movies and TV shows using the [Movie DB api](https://developers.themoviedb.org/3)
+A lightweight, open-source movie and TV show discovery app. Browse trending titles, explore genres, build shareable watchlists, and find your next watch. No accounts, no tracking.
 
-[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/lazhari/react-movies-finder/general)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=Lazhari%2Freact-movies-finder&benchmark=INFRASTRUCTURE+SECURITY)
-[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/lazhari/react-movies-finder/cis_aws)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=Lazhari%2Freact-movies-finder&benchmark=CIS+AWS+V1.2)
-[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/lazhari/react-movies-finder/cis_azure)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=Lazhari%2Freact-movies-finder&benchmark=CIS+AZURE+V1.1)
-[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/lazhari/react-movies-finder/pci)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=Lazhari%2Freact-movies-finder&benchmark=PCI-DSS+V3.2)
-[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/lazhari/react-movies-finder/nist)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=Lazhari%2Freact-movies-finder&benchmark=NIST-800-53)
-[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/lazhari/react-movies-finder/hipaa)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=Lazhari%2Freact-movies-finder&benchmark=HIPAA)
-[![Build Status](https://travis-ci.org/Lazhari/react-movies-finder.svg?branch=master)](https://travis-ci.org/Lazhari/react-movies-finder)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Lazhari_react-movies-finder&metric=alert_status)](https://sonarcloud.io/dashboard?id=Lazhari_react-movies-finder)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Lazhari_react-movies-finder&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=Lazhari_react-movies-finder)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Lazhari_react-movies-finder&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=Lazhari_react-movies-finder)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Lazhari_react-movies-finder&metric=security_rating)](https://sonarcloud.io/dashboard?id=Lazhari_react-movies-finder)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Lazhari_react-movies-finder&metric=coverage)](https://sonarcloud.io/dashboard?id=Lazhari_react-movies-finder)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=Lazhari_react-movies-finder&metric=code_smells)](https://sonarcloud.io/dashboard?id=Lazhari_react-movies-finder)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=Lazhari_react-movies-finder&metric=sqale_index)](https://sonarcloud.io/dashboard?id=Lazhari_react-movies-finder)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=Lazhari_react-movies-finder&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=Lazhari_react-movies-finder)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=Lazhari_react-movies-finder&metric=ncloc)](https://sonarcloud.io/dashboard?id=Lazhari_react-movies-finder)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Lazhari_react-movies-finder&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=Lazhari_react-movies-finder)
+Built with Next.js 16, React 19, Tailwind CSS 4, and the TMDB API.
 
-Check the latest version [here](https://movies-finder-v2.vercel.app/)
+## Features
 
-## Installtion and Set up
+- **Home**: trending spotlight hero, horizontal carousels for trending/popular/upcoming
+- **Movie Details**: cinematic hero, trailer player, cast, reviews, recommendations, watch providers, collection links
+- **TV Show Details**: status badges, season browser with episode lists, network logos, next/last episode info
+- **Genres**: backdrop-image genre cards for movies, dedicated TV genre browse with sorting
+- **Upcoming**: discover endpoint with future date range, spotlight hero, countdown badges, grouped by month
+- **Search**: multi-search with results split by Movies/TV Shows
+- **Surprise Me**: random movie picker with genre and streaming provider filters
+- **Watchlist**: localStorage-based, shareable via URL (base64 encoded), bookmark toggle on detail pages
+- **Actors**: cinematic hero with best performances highlight, filmography grouped by decade
+- **Collections**: hero with average rating, movies in release order
+- **Seasons**: per-season episode list with best-rated episode hero, trailer, watch providers
 
-### Requirements
+## Tech Stack
 
-- node (v10.x or higher).
-- Yarn or npm
+| Layer      | Technology                               |
+| ---------- | ---------------------------------------- |
+| Framework  | Next.js 16.2.1 (App Router, Turbopack)   |
+| UI         | React 19, Tailwind CSS 4.2, shadcn/ui v2 |
+| Animation  | Framer Motion 12                         |
+| Icons      | Lucide React                             |
+| API        | TMDB (The Movie Database) v3             |
+| Deployment | Vercel                                   |
 
-### Get Start
+## Getting Started
 
-- `git clone https://github.com/Lazhari/react-movies-finder.git`
-- `npm install`
-- `npm dev`
+### Prerequisites
+
+- Node.js 20+
+- A TMDB API key ([get one here](https://www.themoviedb.org/settings/api))
+
+### Setup
+
+```bash
+git clone https://github.com/Lazhari/react-movies-finder.git
+cd react-movies-finder
+npm install
+```
+
+Create a `.env.local` file (see `.env.example`):
+
+```bash
+MOVIE_DB_URL=https://api.themoviedb.org/3
+MOVIE_DB_API_KEY=your_tmdb_api_key_here
+```
+
+### Development
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+### Build
+
+```bash
+npm run build
+npm start
+```
+
+## Project Structure
+
+```
+src/
+  app/              # Next.js App Router pages
+    actors/         # Actor detail
+    collections/    # Collection detail
+    genres/         # Movie genre browse
+    movies/         # Movie detail
+    search/         # Search results
+    surprise/       # Random picker
+    tv/             # TV shows, detail, genres, seasons
+    upcoming/       # Upcoming movies
+    watchlist/      # Shareable watchlist
+  components/
+    blocks/         # Header, Footer
+    media/          # MediaCard, MediaCarousel, HeroSlider, RatingBadge,
+                    #   VideoPlayer, ProviderList, WatchlistButton, PhotoGrid
+    movies/         # Movie hero, cast, reviews
+    tv/             # TV hero, seasons
+    actors/         # Actor hero
+    ui/             # shadcn/ui components
+  hooks/            # useWatchlist
+  lib/
+    api/            # TMDB client (tmdb.ts) and types
+    constants.ts    # Image sizes, YouTube embed URL
+    movies.ts       # URL helpers, date formatting
+    utils.ts        # cn() utility
+  types/            # TypeScript interfaces
+```
 
 ## License
 
-The MIT License (MIT)
-
-Copyright (c) 2020 Lazhari
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+MIT License. Copyright (c) 2020 Lazhari.

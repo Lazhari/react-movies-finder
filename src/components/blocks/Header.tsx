@@ -15,6 +15,7 @@ const navLinks = [
   { href: "/tv", label: "TV Shows" },
   { href: "/genres", label: "Genres" },
   { href: "/surprise", label: "Surprise Me" },
+  { href: "/watchlist", label: "Watchlist" },
 ];
 
 export default function Header() {

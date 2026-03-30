@@ -1,6 +1,7 @@
 import { ProviderList } from "@/components/media/provider-list";
 import { RatingBadge } from "@/components/media/rating-badge";
 import { VideoPlayer } from "@/components/media/video-player";
+import { WatchlistButton } from "@/components/media/watchlist-button";
 import { Badge } from "@/components/ui/badge";
 import { WatchProviderResult } from "@/lib/api/types";
 import {
@@ -107,6 +108,14 @@ export default function MovieHero({
               <VideoPlayer
                 videoKey={trailerKey}
                 title={`${movie.title} - Trailer`}
+              />
+              <WatchlistButton
+                id={movie.id}
+                type="movie"
+                title={movie.title}
+                posterPath={movie.poster_path}
+                rating={movie.vote_average}
+                year={movie.release_date}
               />
             </div>
 

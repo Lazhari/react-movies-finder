@@ -23,6 +23,8 @@ export function RatingBadge({
   size = "md",
   className,
 }: RatingBadgeProps) {
+  if (!rating || isNaN(rating)) return null;
+
   const score = Math.round(rating * 10) / 10;
 
   return (

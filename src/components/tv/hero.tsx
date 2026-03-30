@@ -1,6 +1,7 @@
 import { ProviderList } from "@/components/media/provider-list";
 import { RatingBadge } from "@/components/media/rating-badge";
 import { VideoPlayer } from "@/components/media/video-player";
+import { WatchlistButton } from "@/components/media/watchlist-button";
 import { Badge } from "@/components/ui/badge";
 import { WatchProviderResult } from "@/lib/api/types";
 import { formatDate, getBackdropURL, getLogoURL, getPosterURL } from "@/lib/movies";
@@ -196,6 +197,14 @@ export default function TVHero({
               <VideoPlayer
                 videoKey={trailerKey}
                 title={`${show.name} - Trailer`}
+              />
+              <WatchlistButton
+                id={show.id}
+                type="tv"
+                title={show.name}
+                posterPath={show.poster_path}
+                rating={show.vote_average}
+                year={show.first_air_date}
               />
             </div>
 

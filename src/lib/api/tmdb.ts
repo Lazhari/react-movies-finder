@@ -8,6 +8,7 @@ import {
   CollectionDetails,
   DiscoverParams,
   PersonImages,
+  StreamingProvider,
   TMDBError,
   TMDBPaginatedResponse,
   WatchProvidersResponse,
@@ -204,6 +205,10 @@ export async function discoverMovies(
     queryParams["vote_average.lte"] = String(params["vote_average.lte"]);
   if (params.with_original_language)
     queryParams.with_original_language = params.with_original_language;
+  if (params.with_watch_providers)
+    queryParams.with_watch_providers = params.with_watch_providers;
+  if (params.watch_region)
+    queryParams.watch_region = params.watch_region;
 
   return tmdbFetch("/discover/movie", queryParams);
 }
@@ -227,6 +232,18 @@ export async function fetchCollection(
   id: number,
 ): Promise<CollectionDetails> {
   return tmdbFetch(`/collection/${id}`);
+}
+
+// ── Watch Providers ──
+
+export async function fetchAvailableProviders(
+  region: string = "US",
+): Promise<StreamingProvider[]> {
+  const data = await tmdbFetch<{ results: StreamingProvider[] }>(
+    "/watch/providers/movie",
+    { watch_region: region },
+  );
+  return data.results;
 }
 
 // ── People ──

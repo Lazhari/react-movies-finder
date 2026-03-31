@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       fetchTVSeasonDetails(Number(id), Number(seasonNumber)),
     ]);
     return {
-      title: `${show.name} - ${season.name} | Movies Finder`,
+      title: `${show.name} - ${season.name} | Screenbox`,
       description: season.overview || `${show.name} ${season.name} episodes`,
     };
   } catch {

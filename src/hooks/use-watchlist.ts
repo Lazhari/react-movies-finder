@@ -12,7 +12,7 @@ export interface WatchlistItem {
   addedAt: number;
 }
 
-const STORAGE_KEY = "mf-watchlist";
+const STORAGE_KEY = "sb-watchlist";
 
 function readStorage(): WatchlistItem[] {
   if (typeof window === "undefined") return [];

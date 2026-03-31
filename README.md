@@ -1,4 +1,6 @@
-# Movies Finder
+# Screenbox
+
+> Formerly **Movies Finder**. The project has been renamed to Screenbox as of v3. The repository name (`react-movies-finder`) remains unchanged.
 
 A lightweight, open-source movie and TV show discovery app. Browse trending titles, explore genres, build shareable watchlists, and find your next watch. No accounts, no tracking.
 

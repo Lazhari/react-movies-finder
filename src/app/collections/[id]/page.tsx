@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const collection = await fetchCollection(Number(id));
     return {
-      title: `${collection.name} | Movies Finder`,
+      title: `${collection.name} | Screenbox`,
       description: collection.overview,
     };
   } catch {

@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const { actor } = await getActorPageData(Number(id));
     return {
-      title: `${actor.name} | Movies Finder`,
+      title: `${actor.name} | Screenbox`,
       description:
         actor.biography?.slice(0, 160) ||
         `${actor.name} filmography`,

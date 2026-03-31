@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-  title: "Movies Finder V3",
+  title: "Screenbox",
   description: "Find your favorite movies and TV shows",
 };
 

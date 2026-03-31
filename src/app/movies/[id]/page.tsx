@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const { movie } = await getMoviePageData(Number(id));
     return {
-      title: `${movie.title} | Movies Finder`,
+      title: `${movie.title} | Screenbox`,
       description: movie.overview,
       openGraph: {
         title: movie.title,

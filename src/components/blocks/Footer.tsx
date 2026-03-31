@@ -35,7 +35,7 @@ export default function Footer() {
               className="flex items-center gap-2 font-display text-lg font-bold text-primary"
             >
               <Clapperboard className="h-5 w-5" />
-              MoviesFinder
+              Screenbox
             </Link>
             <p className="max-w-sm text-sm leading-relaxed text-muted-foreground/60">
               A lightweight, open-source movie discovery app. Find your next
@@ -88,7 +88,7 @@ export default function Footer() {
             className="flex items-center gap-2 font-display font-bold text-primary"
           >
             <Clapperboard className="h-4 w-4" />
-            MoviesFinder
+            Screenbox
           </Link>
           <p className="text-xs text-muted-foreground/40">
             Open source movie discovery. No accounts, no tracking.
@@ -120,7 +120,7 @@ export default function Footer() {
         {/* Bottom bar: desktop only */}
         <div className="mt-10 hidden items-center justify-between border-t border-white/[0.04] pt-6 sm:flex">
           <p className="text-xs text-muted-foreground/30">
-            MoviesFinder v3.0 &middot; Open Source &middot; No tracking
+            Screenbox v3.0 &middot; Open Source &middot; No tracking
           </p>
           <p className="text-xs text-muted-foreground/20">
             Data provided by{" "}

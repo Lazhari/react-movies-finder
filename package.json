@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "type-check": "tsc --pretty --noEmit",
-    "lint": "next lint",
+    "lint": "eslint src/",
     "format": "prettier --write .",
     "test": "echo \"Info: tests are removed for the time being\" && exit 0",
     "test-all": "npm run lint && npm run type-check && npm run test"

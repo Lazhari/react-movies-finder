@@ -29,11 +29,7 @@ function writeStorage(items: WatchlistItem[]) {
 }
 
 export function useWatchlist() {
-  const [items, setItems] = useState<WatchlistItem[]>([]);
-
-  useEffect(() => {
-    setItems(readStorage());
-  }, []);
+  const [items, setItems] = useState<WatchlistItem[]>(() => readStorage());
 
   const add = useCallback(
     (item: Omit<WatchlistItem, "addedAt">) => {
